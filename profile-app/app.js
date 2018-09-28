@@ -66,7 +66,7 @@ app.locals.title = 'Express - Generated with IronGenerator';
 
 // Enable authentication using session + passport
 app.use(session({
-  secret: 'irongenerator',
+  secret: 'profile-app',
   resave: true,
   saveUninitialized: true,
   store: new MongoStore( { mongooseConnection: mongoose.connection })

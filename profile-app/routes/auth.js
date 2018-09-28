@@ -24,16 +24,34 @@ router.get("/signup", (req, res, next) => {
 });
 
 router.post("/signup", (req, res, next) => {
-  const username = req.body.username;
-  const password = req.body.password;
-  if (username === "" || password === "") {
-    res.render("auth/signup", { message: "Indicate username and password" });
+
+  const { username, password, campus, course } = req.body;
+
+  if (username === "" || password === "" || campus === "" || course === "") {
+    res.status(400)
+        .json({message: "Indicate all the necessary data." });
+
     return;
   }
 
-  User.findOne({ username }, "username", (err, user) => {
+    if(password.length < 8){
+        res.status(400).json({ message: 'Please make your password at least 8 characters long for security purposes.' });
+        return;
+    }
+
+  User.findOne({ username }, (err, user) => {
+
+      if(err){
+          res.status(500)
+              .json({message: "Username check went bad."});
+
+          return;
+      }
+
     if (user !== null) {
-      res.render("auth/signup", { message: "The username already exists" });
+      res.status(400)
+          .json({message: "The username already exists" });
+
       return;
     }
 
@@ -42,15 +60,31 @@ router.post("/signup", (req, res, next) => {
 
     const newUser = new User({
       username,
-      password: hashPass
+      password: hashPass,
+      campus,
+      course
     });
 
     newUser.save()
     .then(() => {
-      res.redirect("/");
+
+        req.login(newUser, (err) => {
+
+            if (err) {
+                res.status(500)
+                    .json({ message: 'Login after signup went bad.' });
+
+                return;
+            }
+
+            res.status(200)
+                .json(newUser);
+        });
+
     })
     .catch(err => {
-      res.render("auth/signup", { message: "Something went wrong" });
+        res.status(400)
+            .json({ message: 'Saving user to database went wrong.' });
     })
   });
 });
