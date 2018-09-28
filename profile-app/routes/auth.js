@@ -111,9 +111,11 @@ router.post("/signup", (req, res, next) => {
   });
 });
 
-router.get("/logout", (req, res) => {
-  req.logout();
-  res.redirect("/");
+router.post('/logout', (req, res, next) => {
+
+    req.logout();
+    res.status(200)
+        .json({ message: 'Log out success!' });
 });
 
 module.exports = router;
