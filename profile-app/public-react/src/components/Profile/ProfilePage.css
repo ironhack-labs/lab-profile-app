@@ -1,0 +1,96 @@
+.user-info {
+    width: 100%;
+    height: 70px;
+}
+
+.info-name {
+    margin-top: 40px;
+}
+
+.header-info {
+    margin-top: 60px;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: left;
+}
+
+.user-info h3 {
+    margin-bottom: 5px;
+    color: grey;
+    font-size: 0.9rem;
+    font-weight: lighter;
+}
+
+.user-info p {
+    margin-top: 10px;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.Log-link {
+    color: red;
+    text-decoration: none;
+    display: block;
+    width: 100%;
+}
+
+.profile-blog {
+    display: flex;
+}
+
+.info-loader {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.circle {
+    font-size: 11rem;
+    color: grey;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.circle:hover {
+    color: deepskyblue;
+}
+
+.text-uploader {
+    margin-top: 50px;
+    font-size: 0.8rem;
+    color: grey;
+    width: 200px;
+    align-self: flex-start;
+}
+
+.photo-loader {
+    display: none;
+}
+
+.img-user {
+    border-radius: 100%;
+    align-self: center;
+    width: 220px;
+    height: 220px;
+    overflow: hidden;
+    text-align: center;
+    transform: translateY(-30px);
+    box-shadow: 0 0 20px black;
+}
+
+.img-user img {
+    width: 100%;
+    height: 100%;
+}
+
+.text-hint {
+    text-transform: uppercase;
+    color: grey;
+    font-size: 0.8rem;
+}

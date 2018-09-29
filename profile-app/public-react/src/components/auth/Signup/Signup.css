@@ -1,0 +1,79 @@
+.sign-head {
+    font-size: 1.8rem;
+    color:#638165;
+    margin-bottom: 50px;
+    font-weight: lighter;
+}
+
+.sign-wrap {
+    display: flex;
+    padding: 30px 50px 80px 50px;
+    box-sizing: border-box;
+}
+
+.btn-wrap {
+    padding-left: 80px;
+    box-sizing: border-box;
+}
+
+.btn-wrap h3 {
+    margin:0;
+    margin-top: 60px;
+}
+
+.btn-wrap .main-text {
+    margin-top: 5px;
+    margin-bottom: 100px;
+}
+
+.from-wrap, .btn-wrap {
+    display: flex;
+    flex-direction: column;
+    width: 50% !important;
+    height: 100%;
+}
+
+.sign-form {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    padding-right: 50px;
+    box-sizing: border-box;
+    color: grey;
+    position: relative;
+}
+
+.sign-form input,
+.sign-form select {
+    background: rgba(211, 211, 211, 0.3);
+    outline: none;
+    border: none;
+    height: 33px;
+    margin-bottom: 20px;
+    color: grey;
+}
+
+.sign-form label {
+    font-weight: lighter;
+}
+
+.sub-text {
+    font-size: 0.7rem;
+    margin-bottom: 0;
+    margin-top: 40px;
+    color: grey;
+    width: 220px;
+}
+
+.alert {
+    position: absolute;
+    top: -50px;
+    left: -20px;
+    width: 100%;
+    padding: 12px;
+    background: rgba(214, 102, 102, 0.3);
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+    text-shadow: 0 0 1px black;
+}

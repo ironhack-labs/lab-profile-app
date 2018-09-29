@@ -2,15 +2,12 @@ const express = require("express");
 const passport = require('passport');
 const router = express.Router();
 const User = require("../models/User");
+const parser = require('../config/cloudinary');
 
 // Bcrypt to encrypt passwords
 const bcrypt = require("bcrypt");
 const bcryptSalt = 10;
 
-
-router.get("/login", (req, res, next) => {
-  res.render("auth/login", { "message": req.flash("error") });
-});
 
 router.post('/login', (req, res, next) => {
     passport.authenticate('local', (err, theUser, failureDetails) => {
@@ -41,9 +38,6 @@ router.post('/login', (req, res, next) => {
     })(req, res, next);
 });
 
-router.get("/signup", (req, res, next) => {
-  res.render("auth/signup");
-});
 
 router.post("/signup", (req, res, next) => {
 
@@ -116,6 +110,28 @@ router.post('/logout', (req, res, next) => {
     req.logout();
     res.status(200)
         .json({ message: 'Log out success!' });
+});
+
+router.get('/loggedin', (req, res, next) => {
+
+    if (req.isAuthenticated()) {
+        res.status(200)
+            .json(req.user);
+
+        return;
+    }
+    res.status(403)
+        .json({ message: 'Unauthorized' });
+});
+
+router.post('/upload', parser.single('picture'), (req, res, next) => {
+    User.findOneAndUpdate({ username : req.user.username }, { image: req.file.url })
+        .then(() => {
+            res.json({
+                success: true,
+                image: req.file.url
+            })
+        })
 });
 
 module.exports = router;

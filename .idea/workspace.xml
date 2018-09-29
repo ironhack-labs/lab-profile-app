@@ -2,7 +2,32 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="12785a91-8575-4234-ac89-ca9a59ae859f" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/profile-app/routes/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/profile-app/routes/auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/oval-bg.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile-app/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile-app/.vscode/launch.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile-app/.vscode/settings.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile-app/app.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile-app/bin/seeds.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile-app/bin/www" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile-app/models/User.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile-app/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile-app/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile-app/passport/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile-app/passport/localStrategy.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile-app/passport/serializers.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile-app/public/images/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile-app/public/javascripts/script.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile-app/public/stylesheets/style.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile-app/routes/auth.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile-app/routes/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile-app/views/auth/login.hbs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile-app/views/auth/signup.hbs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile-app/views/error.hbs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile-app/views/index.hbs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile-app/views/layout.hbs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile-app/views/not-found.hbs" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -15,35 +40,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="User.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/profile-app/models/User.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="266">
-              <caret line="14" column="17" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/profile-app/app.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1082">
-              <caret line="68" column="22" selection-start-line="68" selection-start-column="22" selection-end-line="68" selection-end-column="22" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="auth.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/profile-app/routes/auth.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="426">
-              <caret line="117" column="8" selection-start-line="117" selection-start-column="8" selection-end-line="117" selection-end-column="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -52,8 +49,9 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/profile-app/models/User.js" />
-        <option value="$PROJECT_DIR$/profile-app/app.js" />
         <option value="$PROJECT_DIR$/profile-app/routes/auth.js" />
+        <option value="$PROJECT_DIR$/profile-app/app.js" />
+        <option value="$PROJECT_DIR$/profile-app/.env" />
       </list>
     </option>
   </component>
@@ -63,15 +61,10 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="NodeModulesDirectoryManager">
-    <handled-path value="$PROJECT_DIR$/profile-app/node_modules" />
-  </component>
   <component name="NodePackageJsonFileManager">
-    <packageJsonPaths>
-      <path value="$PROJECT_DIR$/profile-app/package.json" />
-    </packageJsonPaths>
+    <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="1">
     <option name="x" value="140" />
     <option name="y" value="43" />
     <option name="width" value="1400" />
@@ -89,11 +82,6 @@
               <item name="lab-profile-app" type="b2602c69:ProjectViewProjectNode" />
               <item name="lab-profile-app" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="lab-profile-app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="lab-profile-app" type="462c0819:PsiDirectoryNode" />
-              <item name="profile-app" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -103,11 +91,17 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="configurable.group.language" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -132,27 +126,28 @@
       <option name="presentableId" value="Default" />
       <updated>1538146639506</updated>
       <workItem from="1538146642174" duration="69000" />
-      <workItem from="1538147443748" duration="2117000" />
+      <workItem from="1538147443748" duration="2513000" />
+      <workItem from="1538155769054" duration="828000" />
+      <workItem from="1538235545481" duration="60000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2186000" />
+    <option name="totallyTimeSpent" value="3470000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="140" y="43" width="1400" height="921" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24945612" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24945612" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.18567961" />
-      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.18567961" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -169,20 +164,29 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/assets/oval-bg.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/profile-app/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-101" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/profile-app/models/User.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="266">
           <caret line="14" column="17" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/profile-app/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1292">
+          <caret line="68" column="22" selection-start-line="68" selection-start-column="22" selection-end-line="68" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/profile-app/routes/auth.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2527">
+          <caret line="133" lean-forward="true" selection-start-line="133" selection-end-line="133" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/oval-bg.png">
+      <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/profile-app/passport/serializers.js">
       <provider selected="true" editor-type-id="text-editor" />
@@ -193,19 +197,45 @@
     <entry file="file://$PROJECT_DIR$/profile-app/passport/localStrategy.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/profile-app/app.js">
+    <entry file="file://$PROJECT_DIR$/profile-app/routes/auth.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1082">
-          <caret line="68" column="22" selection-start-line="68" selection-start-column="22" selection-end-line="68" selection-end-column="22" />
+        <state relative-caret-position="1759">
+          <caret line="133" lean-forward="true" selection-start-line="133" selection-end-line="133" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/profile-app/routes/auth.js">
+    <entry file="file://$PROJECT_DIR$/profile-app/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="426">
-          <caret line="117" column="8" selection-start-line="117" selection-start-column="8" selection-end-line="117" selection-end-column="8" />
+        <state relative-caret-position="422">
+          <caret line="80" column="4" selection-start-line="80" selection-start-column="4" selection-end-line="80" selection-end-column="4" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/profile-app/models/User.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="14" column="17" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/profile-app/package.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/profile-app/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="9" selection-start-column="9" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/profile-app/bin/www">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/profile-app/public-react/src/HomePage/HomePage.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/profile-app/public-react/src/HomePage/HomePage.js">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
 </project>

@@ -1,0 +1,44 @@
+.home-wrapper {
+    width: 717px;
+    height: 458px;
+    background-image: url("../../assets/oval-bg.png");
+    margin: 0 auto;
+    margin-top: 50vh;
+    transform: translateY(-229px);
+}
+
+.info {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding-left: 50px;
+    padding-bottom: 150px;
+}
+
+.info h1 {
+    font-size: 1.8rem;
+    color:#638165;
+    margin-bottom: 20px;
+    font-weight: lighter;
+}
+
+.main-text {
+    margin-bottom: 70px;
+    color: grey;
+    width: 270px;
+    font-size: 1.2rem;
+    font-weight: lighter;
+}
+
+.nav-btn {
+    display: block;
+    text-decoration: none;
+    color: black;
+}
+
+.nav-btn:hover {
+    color: white;
+}
