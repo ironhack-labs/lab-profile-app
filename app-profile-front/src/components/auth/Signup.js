@@ -22,21 +22,21 @@ class Signup extends Component{
         e.preventDefault()
         const {signup} = this.state
         if(signup.password !== signup.password2) {
-            return toastr.error('Escribe bien hijo!')
+            return toastr.error('Contraseñas no coiciden')
         }
         axios.post('http://localhost:3000/signup', signup)
         .then(user=>{
             console.log(user)
-            toastr.success("hey! lo lograte!")
+            toastr.success("Done")
         })
-        .catch(e=>toastr.error("No pitufa"))
+        .catch(e=>toastr.error("No Work"))
     }
 
     render(){
         const {signup, loading} = this.state
         return(
             <form onSubmit={this.createUser} style={{width:600, margin:"0 auto", padding:20}}>
-                <h2>Date de alta mijo</h2>
+                <h1>Signup</h1>
                 <p>
                     <Input 
                         name="username"
