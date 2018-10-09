@@ -8,6 +8,7 @@ import Signup from './components/auth/Signup';
 import Login from './components/auth/Login';
 import AuthService from './components/auth/AuthService';
 import Contents from './components/contents/Contents'
+import { Link } from 'react-router-dom';
 
 
 class App extends Component {
@@ -55,6 +56,7 @@ class App extends Component {
         <div className="App">
           <header className="App-header">
             <Navbar userInSession={this.state.loggedInUser} logout={this.logout} />
+            <p>Profile</p>
             <Contents></Contents>
           </header>
         </div>
@@ -63,6 +65,8 @@ class App extends Component {
       return (
         <div className="App">
           <header className="App-header">
+          <h1>IronProfile</h1>
+          <p>app with autorithation</p>
             <Navbar userInSession={this.state.loggedInUser} logout={this.logout} />
             <Switch>
               <Route exact path='/signup' render={() => <Signup getUser={this.getTheUser}/>}/>
