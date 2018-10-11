@@ -4,19 +4,18 @@
 
 ## Introduction
 
-Having a profile is one of the most commons features you will need to add on your projects, so today we are going to practice creating one.
+Having a profile is one of the most common features you will need to add on your projects, so today we are going to practice creating one.
 
-We will create a Backend REST API using NodeJS and a React Application where users will be able to **Signup, Login, upload a profile picture, check their profiles and edit it.**
+We will create a backend REST API using NodeJS and a frontend using React where users will be able to **signup, login, upload a profile picture, check their profiles and edit it.**
 
 ## Requirements
 
 - Fork this repo
 - Clone this repo
 
-
 ## Submission
 
-- Upon completion, run the following commands
+- Upon completion, run the following commands:
 
   ```
   git add .
@@ -24,19 +23,19 @@ We will create a Backend REST API using NodeJS and a React Application where use
   git push origin master
   ```
 
-- Navigate to your repo and [create a Pull Request](https://help.github.com/articles/creating-a-pull-request/)
+- Create Pull Request so your TAs can check up your work.
 
-## Deliverables
+## Instructions
 
 ### Iteration 1 - The REST API
 
-You will start building the app creating the REST API. Create the `app` using the `irongenerator` with the `--auth` flag. Then, modify the **model** so the `User.js` have the following fields:
+You will start building the app creating the REST API. Create the `app` using the `irongenerator`. Then, create the **user model** so the `User.js` have the following fields:
 
-- **username**. String 
-- **password**. String
-- **campus**. String. Possible values: `Madrid`, `Barcelona`, `Miami`, `Paris`, `Berlin`, `Amsterdam`, `México`, `Sao Paulo`
-- **course**. String. Possible values: `WebDev`, `UX/UI`, `Data Science`.
-- **image**. String
+- **username**, type String, 
+- **password**, type String
+- **campus**, type String. Possible values: `Madrid`, `Barcelona`, `Miami`, `Paris`, `Berlin`, `Amsterdam`, `México`, `Sao Paulo`,
+- **course**, type String. Possible values: `WebDev`, `UX/UI`, `Data Analytics`.
+- **image**, type String.
 
 The app will need the following routes: 
 
@@ -49,6 +48,7 @@ The app will need the following routes:
 | GET     | `/auth/logout`    |                           | OK Message   |
 | GET     | `/auth/loggedin`  |                           | User logged  |
 
+
 :::info
 Remember to test the REST API using Postman, to make sure everything is working! :wink:
 :::
@@ -60,24 +60,24 @@ You should create a React App using the `create-react-app`. On the `HomePage` yo
 ![image](https://user-images.githubusercontent.com/23629340/43786924-1c5d3d5a-9a6a-11e8-90c4-7ff2f92ef983.png)
 
 :::
-All the assets you need for the design it's stored on the `assets` folder, but for now, do not worry about that, focus on the functionality!
+All the assets you need for the design are stored inside the `assets` folder, but for now, don't worry about that, focus on the functionality!
 :::
 
 ### Iteration 3 - Auth Service
 
-You should create an `authService` file, where you will have all the methods to call your REST API (the same way we learned in class). You have to create the following methods:
+You should create an `authService` file, where you will have all the methods to call your REST API. You have to create the following methods:
 
-- **Signup**. Make a POST request to the `auth/signup` route passing *username*, *password*, *campus* and *course* info.
-- **Login**. Make a POST request to the `auth/login` route passing *username* and *password*.
-- **Upload**. Make a POST request to the `auth/upload` route passing the *file*.
-- **Edit**. Make a POST request to the `auth/edit` route passing *username*, *campus* and *course*.
-- **Logout**. Make a GET request to the `auth/logout` route to destroy user session.
-- **Loggedin**. Make a GET request to the `auth/loggedin` route to check if a user is logged.
+- **signup** that makes a POST request to the `auth/signup` route passing *username*, *password*, *campus* and *course* info,
+- **login** that makes a POST request to the `auth/login` route passing *username* and *password*,
+- **upload** that makes a POST request to the `auth/upload` route passing the *file*,
+- **edit** that makes a POST request to the `auth/edit` route passing *username*, *campus* and *course*,
+- **logout** that makes a GET request to the `auth/logout` route to destroy user session,
+- **loggedin** that makes a GET request to the `auth/loggedin` route to check if a user is logged in.
 
 
 ### Iteration 4 - Signup/Login Components
 
-You should create the `signup` and `login` components, where the user will be able to fill the form with the specified fields.
+You should create the `<Signup />` and `<Login />` components, where the user will be able to fill the form with the specified fields.
 
 If the `signup` or `login` is successful, the user must be redirected to the `profile` route.
 
@@ -93,8 +93,13 @@ On the profile route, the user should be able to upload a photo to the profile. 
 
 ### Iteration 5 - Styling your App
 
-Finally, you can style your app. On the `assets` folder, you will find all the files you need. And here, you can check the color:
+Feel free to style it how ever you want. :art:
+Or you can use `.png` inside of the `assets` folder that you can use as a background image. Don't forget to copy the image inside public folder of your React app. Here you can check the colors:
 
 - Gradient background color: #C1DFC4 to #DEECDD
-- Green ---> #638165
-- Red ---> #D0021B
+- Green: #638165
+- Red: #D0021B
+
+
+Happy coding! :heart:
+
