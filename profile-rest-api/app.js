@@ -9,6 +9,8 @@ const mongoose     = require('mongoose');
 const logger       = require('morgan');
 const path         = require('path');
 
+const cors = require('cors');
+
 
 mongoose
   .connect('mongodb://localhost/profile-rest-api', {useNewUrlParser: true})
@@ -29,6 +31,12 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+//Cors
+
+app.use(cors({
+  origin: ['http://localhost:3000']
+}));
 
 // Express View engine setup
 
@@ -52,7 +60,9 @@ app.locals.title = 'Express - Generated with IronGenerator';
 
 
 const index = require('./routes/index');
+const auth = require('./routes/auth');
 app.use('/', index);
+app.use('/api/auth', auth);
 
 
 module.exports = app;
