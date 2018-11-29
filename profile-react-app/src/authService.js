@@ -9,11 +9,11 @@ export const signup = (user, history) => {
       localStorage.setItem('token', res.data.token);
       localStorage.setItem('user', JSON.stringify(res.data.user));
       alert(res.data.msg);
-      console.log(res.data.user)
+      console.log(res)
       history.push('/profile')
     })
-    .catch(err => {
-      console.log(err);
+    .catch((err) => {
+      console.log('Error Signup =====> ', err);
     })
 }
 
