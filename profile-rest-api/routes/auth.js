@@ -23,10 +23,14 @@ authRouter.post('/signup', (req, res) => {
   const salt = bcrypt.genSaltSync(256);
   const hashedPassword = bcrypt.hashSync(req.body.password, salt);
 
-  User.create({
-    username: req.body.username,
-    password: hashedPassword
+  req.body.password = hashedPassword;
+
+  let user = {}
+  Object.keys(req.body).forEach(key => {
+    user[key] = req.body[key];
   })
+
+  User.create(user)
   .then(user => {
     const token = jwt.sign({id: user._id}, process.env.SECRET, {expiresIn: 60});
     delete user._doc.password;

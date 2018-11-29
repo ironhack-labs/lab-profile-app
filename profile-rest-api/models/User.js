@@ -13,11 +13,11 @@ const UserSchema = new Schema({
   },
   campus:{
     type: String,
-    enum: ['Madrid, Barcelona, Miami, Paris, Berlin, Amsterdam, México, Sao Paulo']
+    enum: ['Madrid', 'Barcelona', 'Miami', 'Paris', 'Berlin', 'Amsterdam', 'México', 'Sao Paulo']
   },
   course:{
     type: String,
-    enum: ['WebDev, UX/UI, Data Analytics']
+    enum: ['WebDev', 'UX/UI', 'Data Analytics']
   },
   profilePicture:{
     type: String
