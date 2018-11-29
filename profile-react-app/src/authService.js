@@ -17,8 +17,6 @@ export const signup = (user, history) => {
     })
 }
 
-
-
 export const login = (user, history) => {
   axios.post(`${base_url}/auth/login`, user)
     .then(res => {
@@ -29,7 +27,11 @@ export const login = (user, history) => {
       history.push('/profile')
     })
     .catch(err => {
-      console.log(err);
+      console.log('Error Login =====> ', err);
     });
+}
+
+export const isLoggedIn = (user, history) => {
+  
 }
 

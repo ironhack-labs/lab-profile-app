@@ -43,7 +43,18 @@ class SignUp extends Component {
             <InputField title='Confirm Password' type='password' name='confirmPassword' handleChange={this.handleChange} />
           </div>
           <div>
-            <Button type='submit' name='Create the Account' />
+            <div>
+              <strong>Hello!!</strong>
+              <p>Welcome to IronProfile!</p>
+            </div>
+              <div>
+                <p>If you signup, you agree with all our
+                  <br/>terms and conditions where we can
+                  <br/>do whatever we want with the data!!!</p>
+                <Button type='submit' name='Create the Account' />
+              </div>
+          </div>
+          <div>
           </div>
         </form>
       </div>

@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import Button from '../Commun/Button';
 import {Link} from 'react-router-dom';
+import {isLoggedIn} from '../../authService';
 
 class Home extends Component {
   constructor(){
@@ -8,6 +9,12 @@ class Home extends Component {
     this.state = {
 
     }
+  }
+
+  componentWillMount(){
+
+    isLoggedIn(this.props.history)
+
   }
 
   render(){
