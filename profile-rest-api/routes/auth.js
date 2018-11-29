@@ -14,7 +14,7 @@ authRouter.post('/login', async (req, res) => {
   if(!validPassword) return res.status(500).json({msg: 'Wrong password'});
   const token = jwt.sign({id: user._id}, process.env.SECRET, {expiresIn: 60});
   delete user._doc.password;
-  res.status(200).json({user, token});
+  res.status(200).json({user, token, msg: 'Logged succesfully'});
 });
 
 authRouter.post('/signup', (req, res) => {
