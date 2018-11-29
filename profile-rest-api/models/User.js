@@ -4,7 +4,8 @@ const Schema = mongoose.Schema;
 const UserSchema = new Schema({
   username:{
     type: String,
-    required: 'User most be provided'
+    required: 'User most be provided',
+    unique: 'User already taken'
   },
   password:{
     type: String,
@@ -18,7 +19,7 @@ const UserSchema = new Schema({
     type: String,
     enum: ['WebDev, UX/UI, Data Analytics']
   },
-  picture:{
+  profilePicture:{
     type: String
   }
 },{
