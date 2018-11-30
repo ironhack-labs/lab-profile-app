@@ -1,5 +1,17 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .App {
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #C1DFC4;
+  background-image: linear-gradient(90deg, #C1DFC4, #DEECDD);
+  color: #638165;
 }
 
 .App-logo {
@@ -20,6 +32,61 @@
 
 .App-link {
   color: #61dafb;
+}
+
+.main-card{
+  background-image: url('./images/oval-bg.png');
+  height: 510px;
+  width: 800px;
+  background-size: cover;
+  display: flex;
+  flex-direction: row;
+}
+
+.main-card a{
+  text-decoration: none;
+  color: #638165;
+  font-weight: 600;
+}
+
+.card-left,
+.card-rigth{
+  width: 50%;
+  padding: 7%;
+}
+
+.main-card p{
+  font-size: 1.4em;
+  margin-top: 5%
+}
+
+.main-card h1,
+.main-card p{
+  color: #638165;
+}
+
+
+
+.home-buttons-wraper{
+  position: relative;
+  top: 25%
+}
+
+.button{
+  padding: 5px;
+  width: 70%;
+  border: 1px solid #C1DFC4;
+  border-radius: 5px;
+  margin: 10px;
+  text-align: center;
+}
+.home-button{
+  background-color: #C1DFC4;
+}
+
+.button-wraper{
+  display: flex;
+  justify-content: center;
 }
 
 @keyframes App-logo-spin {

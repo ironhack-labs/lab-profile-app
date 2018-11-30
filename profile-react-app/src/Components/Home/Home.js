@@ -19,14 +19,18 @@ class Home extends Component {
 
   render(){
     return (
-      <main>
-        <h1>Home</h1>
-        <Link to='/login'>
-          <Button name='Log in' />
-        </Link>
-        <Link to='/signup'>
-          <Button name='Sign up' />
-        </Link>
+      <main className='main-card'>
+        <div className='card-left'>
+          <h1>IronProfile</h1>
+          <p>Today we will create an app
+            <br/>with authorization, adding
+            <br/>some cool styles!</p>
+          <div className='home-buttons-wraper'>
+            <Button className='home-button button' name='Log in' />
+            <Button className='home-button button' name='Sign up' />
+          </div>
+        </div>
+        <div className='card-rigth' />
       </main>
     )
   }
