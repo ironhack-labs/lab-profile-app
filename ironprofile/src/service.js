@@ -1,18 +1,24 @@
 import axios from 'axios';
 
-const base_url = "http://localhost:3000/api"
+const base_url = "http://localhost:3000"
 
 // signup that makes a POST request to the auth/signup route passing username, password, campus and course info,
 
+
 export const signup = (auth,history) => {
+    console.log(auth)
     axios.post(`${base_url}/auth/signup`,auth)
         .then(res=> {
-            history.push(`/login`)
+            console.log(res)
+            history.push("/login")
+            
         })
         .catch (err => {
             console.error(err);
         })
 }
+
+
 
 // login that makes a POST request to the auth/login route passing username and password,
 
@@ -21,7 +27,8 @@ export const login = (auth,history) => {
         .then(res => {
             localStorage.setItem("token", res.data.token);
             localStorage.setItem("user", JSON.stringify(res.data.user));
-            history.push(`/profile/${res.data.user._id}`);
+            history.push("/login")
+            //history.push(`/profile/${res.data.user._id}`);
         })
         .catch(err => {
             console.error(err);
@@ -52,9 +59,10 @@ export const update = (id, form) => {
 
 
 // edit that makes a PATCH request to the auth/edit route passing username, campus and course,
-export const edit = (user,auth,history) => {
+export const edit = (auth,history,user) => {
     axios.patch(`${base_url}/auth/edit/${user._id}`,auth)
         .then(res=> {
+            console.log(res)
             history.push(`/profile/${user._id}`)
         })
         .catch (err => {
@@ -63,11 +71,10 @@ export const edit = (user,auth,history) => {
 }
 
 
-
 // logout that makes a GET request to the auth/logout route to destroy user session,
 
-export const logout = () => {
+export const logout = () => (
     localStorage.removeItem("token")
-}
+);
 
-// loggedin that makes a GET request to the auth/loggedin route to check if a user is logged in.
+
