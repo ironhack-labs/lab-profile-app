@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import Button from '../Commun/Button';
+import LinkButton from '../Commun/LinkButton';
 import {Link} from 'react-router-dom';
 import {isLoggedIn} from '../../authService';
 
@@ -22,12 +22,20 @@ class Home extends Component {
       <main className='main-card'>
         <div className='card-left'>
           <h1>IronProfile</h1>
-          <p>Today we will create an app
+          <p className='card-text'>Today we will create an app
             <br/>with authorization, adding
             <br/>some cool styles!</p>
           <div className='home-buttons-wraper'>
-            <Button className='home-button button' name='Log in' />
-            <Button className='home-button button' name='Sign up' />
+            <div className='button-wraper'>
+              <Link to='/login' className='home-button button main-card-link'>
+                <LinkButton name='Log in' />
+              </Link> 
+            </div>
+            <div className='button-wraper'>
+              <Link to='/signup' className='home-button button main-card-link'>
+                <LinkButton className='home-button button' to='/signup' name='Sign up' />
+              </Link> 
+            </div>
           </div>
         </div>
         <div className='card-rigth' />

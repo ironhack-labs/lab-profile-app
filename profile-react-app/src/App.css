@@ -43,33 +43,43 @@
   flex-direction: row;
 }
 
-.main-card a{
+.main-card-link{
   text-decoration: none;
   color: #638165;
   font-weight: 600;
 }
 
-.card-left,
-.card-rigth{
-  width: 50%;
-  padding: 7%;
+.card-left{
+  width: 55%;
 }
 
-.main-card p{
+.card-rigth{
+  width: 45%;
+}
+
+.card-left,
+.card-rigth{
+  padding: 4%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.card-text{
   font-size: 1.4em;
   margin-top: 5%
 }
 
-.main-card h1,
-.main-card p{
+.main-card {
   color: #638165;
 }
 
+.small-text{
+  font-size: .8em;
+}
 
-
-.home-buttons-wraper{
-  position: relative;
-  top: 25%
+.form-fiels-wraper{
+  margin-bottom: 50px;
 }
 
 .button{
@@ -79,7 +89,13 @@
   border-radius: 5px;
   margin: 10px;
   text-align: center;
+  background-color: whitesmoke;
 }
+
+.form-button{
+  padding: 9px;
+}
+
 .home-button{
   background-color: #C1DFC4;
 }
@@ -87,6 +103,18 @@
 .button-wraper{
   display: flex;
   justify-content: center;
+}
+
+.label{
+  display: grid;
+}
+
+.input{
+  background-color: whitesmoke;
+  border: 1px solid whitesmoke;
+  padding: 2%;
+  width: 80%;
+  margin: 10px;
 }
 
 @keyframes App-logo-spin {
