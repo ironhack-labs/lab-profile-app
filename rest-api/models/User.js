@@ -12,7 +12,10 @@ userSchema = new Schema({
     type: String,
     enum: [`WebDev`, `UX/UI`, `Data Analytics`]
   },
-  image:  String
+  image:  {
+    type:    String,
+    default: `https://res.cloudinary.com/cappsule/image/upload/v1540575763/public/avatar.png`
+  }
 });
 
 module.exports = mongoose.model(`User`, userSchema);

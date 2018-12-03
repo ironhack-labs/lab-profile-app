@@ -34,7 +34,7 @@ authSites.post(`/signup`, (req,res) => {
   User.create({username, campus, course, image, password})
       .then( user => (
         res.status(201)
-           .json(user)
+           .json({user})
       ))
       .catch(err => (
         res.status(500)
@@ -82,9 +82,9 @@ authSites.get(`/loggedin`, (req,res) => {
   jwt.verify(token, process.env.SECRET, async (err, decoded) => {
     if (err) return res.status(403).json({errorMessage: `No valid token`});
     req.user = await User.findById(decoded.id)
-                         .then( () => (
+                         .then( user => (
                             res.status(200)
-                               .send(`User is logged in!`)
+                               .json(user)
                          ))
                          .catch( err => (
                             res.status(500)

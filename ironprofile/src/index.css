@@ -1,14 +1,176 @@
-body {
+@import url('https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900');
+* {
+  border: none;
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+:root {
+  font-family: 'Lato', sans-serif;
+  --bg-left:  #C1DFC4;
+  --bg-right: #DEECDD;
+  --green:    #638165;
+  --red:      #D0021B;
+  --button:   #c0e3be;
+  --bg:       linear-gradient( to right, var(--bg-left), var(--bg-right) );
+}
+body {
+  background: var(--bg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+}
+.card {
+  background: center / contain no-repeat url('/assets/oval-bg.png') transparent;
+  height: 43.81vw;
+  padding: 7.5vh 5.3vw 12vh;
+  width: 69.09vw;
+}
+.page {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  height: 100%;
+}
+.left-panel, .right-panel {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-between;
+}
+.left-panel {
+  width: 50%;
+}
+.right-panel {
+  padding-top: 4.6vh;
+  width: 35%;
+}
+h1, h2 {
+  font-weight: 400;
+}
+h1 {
+  color: var(--green);
+  font-size: 3.4vw;
+}
+h3, p {
+  font-weight: 300;
+}
+.button {
+  border-radius: 10px;
+  color: #000;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.9vw;
+  font-weight: bold;
+  height: 3.21vw;
+  text-decoration: none;
+  width: 20vw;
+  transition: all 250ms;
+}
+.button-green {
+  background: var(--button);
+  font-size: 0.9vw;
+  margin-left: 2.35vw;
+}
+.button-green:hover, .button-white:hover {
+  background: var(--green);
+  color: #fff;
+}
+.button-green:first-of-type {
+  margin-bottom: 2.14vw;
+}
+.right-panel h2, .right-panel h3 {
+  font-size: 2vw;
+}
+.right-panel p {
+  font-size: 1.35vw;
+  margin-bottom: 2.14vw;
+  text-align: justify;
+}
+.button-white {
+  background: white;
+}
+.home h1 {
+  margin-bottom: 3.6vh;
+}
+.home p {
+  font-size: 1.7vw;
+  width: calc(100% * 0.7);
+}
+.left-panel.login {
+  justify-content: flex-start;
+}
+.left-panel.login h1 {
+  margin-bottom: 4.42vw;
+}
+.left-panel.login p.no-account {
+  font-size: 1.4vw;
+  margin-top: 3.35vw;
+  width: 80%;
+}
+form label {
+  font-size: 1.2vw;
+}
+form.auth input:not([type="submit"]), form.auth select {
+  background: #f6f6f6;
+  display: block;
+  font-size: 1.5vw;
+  height: 3.21vw;
+  margin-bottom: 1.64vw;
+  padding-left: 1vw;
+  width: 80%;
+}
+.profile .user-info {
+  text-transform: capitalize;
+}
+.profile .user-info p {
+  font-size: 1.64vw;
+  margin: 0.78vw 0 2.42vw;
+}
+.logout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.logout span {
+  color: #da3448;
+  cursor: pointer;
+}
+.profile .right-panel {
+  padding: 0;
+}
+.profile .img-wrapper {
+  border-radius: 100%;
+  height: 17vw;
+  margin: 0 auto;
+  width: 17vw;
+}
+.profile form input {
+  font-size: 0;
+  line-height: 0;
+}
+.profile form input::-webkit-file-upload-button {
+  border-radius: 10px;
+  color: #000;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.9vw;
+  font-weight: bold;
+  height: 2.5vw;
+  margin-top: 2.14vw;
+  text-decoration: none;
+  width: 20vw;
+  transition: all 250ms;
+}
+.profile form input::-webkit-file-upload-button:hover {
+  background: var(--green);
+  color: #fff;
+}
+.profile .right-panel p {
+  margin-bottom: 0;
 }
