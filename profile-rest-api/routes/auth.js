@@ -27,8 +27,8 @@ authRouter.post('/signup', (req, res) => {
     res.status(200).json({msg: 'User created succesfully', user, token});
   })
   .catch(err => {
-    //console.log('User SingUp Error =====>', err);
-    res.json({err, msg: 'User cannot be created'});
+    console.log('User SingUp Error =====>', err);
+    res.status(500).res.json({err, msg: 'User cannot be created'});
   });
 });
 
