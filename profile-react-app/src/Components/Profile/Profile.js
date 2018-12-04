@@ -12,10 +12,14 @@ class Profile extends Component {
 
   logout = () => {
     console.log('Logout')
+    localStorage.clear();
+    this.props.history.push('/');
   }
 
   componentWillMount(){
-    const user = JSON.parse(localStorage.getItem('user'))
+    console.log(localStorage.getItem('user'))
+    if(localStorage.getItem('user') === null) this.props.history.push('/');
+    const user = JSON.parse(localStorage.getItem('user'));
     //console.log(user)
     this.setState({user})
     
@@ -23,6 +27,8 @@ class Profile extends Component {
   
   render(){
     //console.log(this.state.user)
+    //if(localStorage.getItem('user') === null) this.props.history.push('/');
+    
     const {username, campus, course, profilePicture} = this.state.user;
     return (
       <div className='main-card'>
@@ -52,7 +58,7 @@ class Profile extends Component {
           <div className='picture-box'>
             <img className='profile-picture' src={profilePicture} alt={username} />
             <Link to='' className='button main-card-link'>
-              <LinkButton className='button' name='Edit Photo' />
+              <LinkButton className='button' name='Edit Photo/Profile' />
             </Link>
           </div>
           <div>
