@@ -28,7 +28,7 @@ authRouter.post('/signup', (req, res) => {
   })
   .catch(err => {
     console.log('User SingUp Error =====>', err);
-    res.status(500).res.json({err, msg: 'User cannot be created'});
+    res.status(500).json({err, msg: 'User cannot be created'});
   });
 });
 
@@ -42,11 +42,12 @@ authRouter.post('/login', async (req, res) => {
   res.status(200).json({user, token, msg: 'Logged succesfully'});
 });  
 
-authRouter.patch('/upload/:id', upload.single('profilePicture'), (req, res) => {
+authRouter.patch('/upload', upload.single('profilePicture'), (req, res) => {
   let user={};
+  console.log(req.body)
   if(!req.file) return res.status(500).json({msg: 'No file provided'});
   user.profilePicture = req.file.url;
-  User.findByIdAndUpdate(req.params.id, {$set: user}, {new: true})
+  User.findByIdAndUpdate(req.body._id, {$set: user}, {new: true})
     .then(user => {
       if(!user) return res.status(500).json({msg: 'File upload Error'});
       delete user._doc.password;
