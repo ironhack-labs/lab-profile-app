@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {signup} from '../../authService';
 import InputField from '../Commun/InputField';
 import FormButton from '../Commun/FormButton';
+import CampusSelect from '../Commun/CampusSelect';
+import CourseSelect from '../Commun/CourseSelect';
 
 class SignUp extends Component {
   constructor(){
@@ -31,6 +33,8 @@ class SignUp extends Component {
   }
 
   render(){
+    let {campus}=this.state.user;
+    let {course}=this.state.user;
     return(
       <form onSubmit={this.handleSubmit}>
         <div className='main-card'>
@@ -40,8 +44,8 @@ class SignUp extends Component {
             </div>
             <div className=''>
               <InputField title='Username' type='text' name='username' handleChange={this.handleChange} />
-              <InputField title='Campus' type='text' name='campus' handleChange={this.handleChange} />
-              <InputField title='Course' type='text' name='course' handleChange={this.handleChange} />
+              <CampusSelect title='Campus' name='campus' handleChange={this.handleChange} campus={campus}/>
+              <CourseSelect title='Course' name='course' handleChange={this.handleChange} course={course}/>
               <InputField title='Password' type='password' name='password' handleChange={this.handleChange} />
               <InputField title='Confirm Password' type='password' name='confirmPassword' handleChange={this.handleChange} />
             </div>

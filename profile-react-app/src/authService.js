@@ -13,7 +13,7 @@ export const signup = (user, history) => {
       history.push('/profile')
     })
     .catch((err) => {
-      console.log('Error Signup =====> ', err);
+      console.log('Error Signup =====> ', err.response);
     })
 }
 
@@ -29,6 +29,15 @@ export const login = (user, history) => {
     .catch(err => {
       console.log('Error Login =====> ', err);
     });
+}
+
+
+export const upload = (user) => {
+  let formData = new FormData();
+  Object.keys(user).forEach(key => {
+    formData.append(key, user[key])
+  });
+  return axios.patch(`${base_url}/auth/upload`, formData)
 }
 
 export const isLoggedIn = (user, history) => {
