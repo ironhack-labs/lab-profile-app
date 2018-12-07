@@ -75,6 +75,14 @@ authRoutes.post("/signup", (req, res, next) => {
       });
   });
 
+  authRouter.post('/edit', (req, res) => {      //con POST	tengo la ruta de EDIT /auth/edit con params:username, campus, course. Y devuelve User updated
+
+    User.findByIdAndUpdate(req.user.id, { username: req.body.username, campus: req.body.campus, course: req.body.course }, {new:true}).then((user) => {
+      res.status(200).json(user);
+    });
+   });
+
+
   authRoutes.get('/loggedin', (req, res, next) => {     //si guarda bien user entro a hacer este loggedin.(desde React hago peti xa saber si en Back estoy logueado)
     // req.isAuthenticated() is defined by passport
     if (req.isAuthenticated()) {
