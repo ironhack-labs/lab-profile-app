@@ -6,7 +6,7 @@ export default class ButtonLogin extends Component {
   render() {
     return (
       <div >
-       <button class="class-login"><Link to='/login'>Log in</Link></button>
+       <button class="class-login">Log in</button>
       </div>
     )
   }
