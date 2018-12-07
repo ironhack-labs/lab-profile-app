@@ -1,5 +1,6 @@
 require('dotenv').config();
 
+
 const bodyParser   = require('body-parser');
 const cookieParser = require('cookie-parser');
 const express      = require('express');
@@ -8,11 +9,11 @@ const logger       = require('morgan');
 const path         = require('path');
 const session    = require("express-session");
 const MongoStore = require('connect-mongo')(session);
-
+const cors = require("cors");
     
 
 mongoose
-  .connect('mongodb://localhost/profile-daily', {useNewUrlParser: true})
+  .connect(process.env.DBURL, {useNewUrlParser: true}) // SUSTITUYO para BD y pongo process.env.DBURL
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })
@@ -32,6 +33,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 
+require("./passport")(app) //REQUIERO PASSPORT
+
 
 // Enable authentication using session + passport
 app.use(session({
@@ -41,9 +44,14 @@ app.use(session({
   store: new MongoStore( { mongooseConnection: mongoose.connection })
 }))
 
+// requiero CORS , que autoriza hacer petis desde esa dirección y pongo PUERTO 5000
+app.use(cors({
+  credentials: true,
+  origin: ['http://localhost:5000'],
+}));
     
 
-const index = require('./routes/index');
+const index = require('./routes/index'); //desde aquí va a index y en index están todas las rutas
 app.use('/', index);
 
 

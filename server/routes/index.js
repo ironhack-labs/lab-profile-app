@@ -8,9 +8,7 @@ router.get('/', (req, res, next) => {
 
 
 
-      
-
-router.use("/auth", require('./auth'));
+router.use("/auth", require('./auth')); //desde app.js llega a index.js y de index va a todas las rutas
 
 
 module.exports = router;
