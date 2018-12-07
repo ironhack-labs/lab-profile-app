@@ -1,0 +1,10 @@
+
+.card-background {
+    background-image: url('../../oval-bg.png');
+    background-size: cover;
+   width: 1000px;
+   height: 400px;
+    background-repeat: no-repeat;
+    display:flex;
+    flex-direction: column;
+ }
