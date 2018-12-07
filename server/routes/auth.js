@@ -8,25 +8,29 @@ const bcrypt = require("bcrypt");
 const bcryptSalt = 10;
 
 
-router.post("/login", passport.authenticate("local", {
-  successRedirect: "/",
-  failureRedirect: "/auth/login",
-  failureFlash: true,
-  passReqToCallback: true
-}));
+router.post("/login", function (req, res, next){
+  passport.authenticate('local', function(err, user, info) {
+  if (err) { res.status(400).json({ message: "Something went wrong"});return; }
+  if (!user) { res.status(400).json ({message: "The username don't exists"}); return; }
+  req.logIn(user, function(err) {
+    if (err) { res.status(400).json({message: "Something went wrong"}); return; }
+    return res.json(user);
+  });
+})(req, res, next)
+});
 
 
 router.post("/signup", (req, res, next) => {
   const username = req.body.username;
   const password = req.body.password;
   if (username === "" || password === "") {
-    res.render("auth/signup", { message: "Indicate username and password" });
+    res.status(400).json( { message: "Indicate username and password" });
     return;
   }
 
   User.findOne({ username }, "username", (err, user) => {
     if (user !== null) {
-      res.render("auth/signup", { message: "The username already exists" });
+      res.status(400).json( { message: "The username already exists" });
       return;
     }
 
@@ -39,18 +43,31 @@ router.post("/signup", (req, res, next) => {
     });
 
     newUser.save()
-    .then(() => {
-      res.redirect("/");
+    .then(user => {
+      res.json(user)
     })
     .catch(err => {
-      res.render("auth/signup", { message: "Something went wrong" });
+      res.status(500).json({ message: "Something went wrong" });
     })
   });
 });
 
+
+
+router.get('/loggedin', (req, res, next) => {
+  // req.isAuthenticated() is defined by passport
+  if (req.isAuthenticated()) {
+      res.status(200).json(req.user);
+      return;
+  }
+  res.status(403).json({ message: 'Unauthorized' });
+});
+
 router.get("/logout", (req, res) => {
   req.logout();
-  res.redirect("/");
+  res.json({message: "Logged out succesfully"});
 });
+
+
 
 module.exports = router;
