@@ -1,0 +1,21 @@
+.card{
+    background-image: url("../../images/oval-bg.png");
+    background-size: cover;
+    width: 60%;
+    height: 60vh;
+    padding: 5%;
+    margin-top: 2%;
+}
+
+.buttons{
+    margin-top: 20%;
+}
+
+.title{
+    color: #648266
+}
+
+.subtitle{
+    color: #648266;
+    width: 25%;
+}
