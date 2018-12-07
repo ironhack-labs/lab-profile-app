@@ -3,7 +3,11 @@ const Schema   = mongoose.Schema;
 
 const userSchema = new Schema({
   username: String,
-  password: String
+  password: String,
+  campus: String, enum: ["Madrid", "Barcelona", "Miami", "Paris", "Berlin", "Amsterdam", "México"," Sao Paulo"],
+  course: String, enum: ["WebDev", "UX/UI", "Data Analytics"],
+  image: String
+ 
 }, {
   timestamps: {
     createdAt: 'created_at',
