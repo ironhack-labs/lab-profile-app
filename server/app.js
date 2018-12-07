@@ -13,7 +13,15 @@ const MongoStore = require('connect-mongo')(session);
 mongoose
   .connect('mongodb://localhost/server', {useNewUrlParser: true})
   .then(x => {
-    console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
+    console.log(`Connected to Mongo! Databapp.use(cors({
+      credentials: true,
+      origin: ['http://localhost:3000']
+    }));
+    app.use(cors({
+      credentials: true,
+      origin: ['http://localhost:3000']
+    }));
+    ase name: "${x.connections[0].name}"`)
   })
   .catch(err => {
     console.error('Error connecting to mongo', err)
@@ -53,6 +61,11 @@ const index = require('./routes/index');
 app.use('/', index);
 
 
-      
+const cors = require('cors');
+app.use(cors({
+  credentials: true,
+  origin: ['http://localhost:3000']
+}));
+
 
 module.exports = app;

@@ -1,0 +1,8 @@
+.HomePage{
+    background-image: url('../../assets/oval-bg.png');
+    height: 90vh;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+
+} 
