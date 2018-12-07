@@ -34,8 +34,10 @@ router.post("/login", function(req, res, next) {
 router.post("/signup", (req, res, next) => {
   const username = req.body.username;
   const password = req.body.password;
+  const campus = req.body.campus;
+  const course = req.body.course;
 
-  if (username === "" || password === "") {
+  if (username === "" || password === "" || campus === "" || course === "") {
     res.status(400).json({ message: "Provide username and password" });
     return;
   }
@@ -51,7 +53,9 @@ router.post("/signup", (req, res, next) => {
 
     const newUser = new User({
       username,
-      password: hashPass
+      password: hashPass,
+      campus,
+      course,
     });
 
     newUser.save()
@@ -69,6 +73,17 @@ router.post("/signup", (req, res, next) => {
 //   req.logout();
 //   res.redirect("/");
 // });
+
+router.post('/edit', (req, res, next)=> {
+ const {username, campus, course} = req.body;
+ User.findByIdAndUpdate(req.user._id, {username, campus, course}, {new: true})
+ .then((userUpdated) => {
+   res.status(200).json({userUpdated})
+ })
+ .catch((err) => {
+   console.log(err)})
+})
+
 
 router.get("/logout", (req, res, next) => {
   // req.logout() is defined by passport
