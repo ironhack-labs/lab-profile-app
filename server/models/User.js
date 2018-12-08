@@ -17,7 +17,7 @@ const userSchema = new Schema({
       enum: ['WebDev', 'UX/UI', 'Data Analytics']
     }
   ], 
-  image: String
+  pictureUrl: String
 });
 
 const User = mongoose.model('User', userSchema);

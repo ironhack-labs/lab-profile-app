@@ -10,6 +10,8 @@ const path         = require('path');
 const session       = require('express-session');
 const passport      = require('passport');
 
+const cors = require('cors');
+
 require('./configs/passport');
 
 
@@ -45,6 +47,11 @@ app.use(passport.session());
 
 // default value for title local
 app.locals.title = 'Express - Generated with IronGenerator';
+
+app.use(cors({
+  credentials: true,
+  origin: ['http://localhost:3000'],
+}));
 
 
 app.use('/', require('./routes/index'));

@@ -3,8 +3,8 @@ import logo from './logo.svg';
 import './App.css';
 import { Route, Switch } from "react-router-dom";
 import Home from "./components/Home/Home"
-import SignUp from "./components/SignUp/SignUp"
-import LogIn from "./components/LogIn/LogIn"
+import SignUp from "./components/auth/SignUp/SignUp"
+import LogIn from "./components/auth/LogIn/LogIn"
 
 
 class App extends Component {
