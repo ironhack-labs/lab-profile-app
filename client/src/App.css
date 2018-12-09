@@ -1,0 +1,9 @@
+.App {
+  text-align: center;
+  background-image: linear-gradient(#C1DFC4, #DEECDD);
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

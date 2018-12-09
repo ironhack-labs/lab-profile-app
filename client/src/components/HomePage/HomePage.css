@@ -1,0 +1,13 @@
+.homePage {
+    width: 70%;
+    height: 60vh;
+    background-image: url('../../assets/oval-bg.png') ;
+    display: flex;
+    align-items: center;
+    background-repeat:  no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+.rigth,.left{
+    width: 50%;
+}
