@@ -6,10 +6,10 @@ export default class Button extends Component {
       super();
   }
   render() {
-    return (
+    return (this.props.url) ? (
       <div>
         <Link to={this.props.url}><button>{this.props.children}</button></Link>
       </div>
-    )
+    ): <div><button type={this.props.type}>{this.props.children}</button></div>
   }
 }
