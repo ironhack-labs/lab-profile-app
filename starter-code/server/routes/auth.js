@@ -3,7 +3,6 @@ const passport = require('passport');
 const router = express.Router();
 const User = require("../models/User");
 
-const router = express.Router();
 const User       = require('../models/user-model');
 
 // Bcrypt to encrypt passwords
@@ -52,6 +51,15 @@ routes.post('/login', (req, res, next) => {
           res.status(200).json(theUser);
       });
   })(req, res, next);
+});
+
+router.post("/upload", (req, res, next) => {
+  const file = req.body.file;
+});
+router.post("/edit", (req, res, next) => {
+  const username = req.body.username;
+  const campus = req.body.campus;
+  const course = req.body.course;
 });
 
 

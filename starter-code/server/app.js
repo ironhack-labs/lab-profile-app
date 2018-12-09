@@ -74,8 +74,7 @@ app.use(session({
 const index = require('./routes/index');
 app.use('/', index);
 
-const routes = require('./routes/auth');
-app.use('/auth', routes);
+
       
 
 module.exports = app;
