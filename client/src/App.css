@@ -1,0 +1,70 @@
+.App {
+  height: 100vh;
+  width: 100vw;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #DEECDD;
+}
+
+.text-box{
+  background-image: url("./oval-bg.png");
+  background-repeat: no-repeat;
+  height: 600px;
+  width: 800px;
+}
+
+.ironprofile{
+  text-align: left;
+  width: 35%;
+  height: 60%;
+  margin-left: 5%;
+  margin-top: 5%;
+}
+
+h1{
+  color: #638165;
+}
+
+p{
+  color: grey;
+  max-width: 70%;
+  margin-top: 20%;
+}
+
+button{
+  background-color: #C1DFC4;
+  width: 90%;
+  height: 30px;
+  margin-top: 10%;
+  border-radius: 10px;
+}
+
+input{
+  width: 90%;
+  height: 30px;
+  margin-top: 10%;
+  border-radius: 10px;
+}
+
+select{
+  width: 90%;
+  height: 30px;
+  margin-top: 10%;
+  border-radius: 10px;
+}
+
+.submitbutton{
+  background-color: #C1DFC4;
+}
+
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

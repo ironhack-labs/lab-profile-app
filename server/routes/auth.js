@@ -28,12 +28,14 @@ router.post("/signup", (req, res, next) => {
   const password = req.body.password;
   const campus = req.body.campus;
   const course = req.body.course;
+
   if (username === "" || password === "") {
     res.status(500).json({ message: "Indicate username and password" });
     return;
   }
 
   User.findOne({ username }, "username", (err, user) => {
+    console.log(err)
     if (user !== null) {
       res.status(403).json({ message: "The username already exists" });
       return;
@@ -54,6 +56,7 @@ router.post("/signup", (req, res, next) => {
       res.status(200).json({user});
     })
     .catch(err => {
+      console.log(err)
       res.status(500).json({ message: "Something went wrong" });
     })
   });

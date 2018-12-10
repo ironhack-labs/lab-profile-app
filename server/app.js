@@ -8,10 +8,10 @@ const hbs          = require('hbs');
 const mongoose     = require('mongoose');
 const logger       = require('morgan');
 const path         = require('path');
-
-const session    = require("express-session");
-const MongoStore = require('connect-mongo')(session);
-const flash      = require("connect-flash");
+const cors         = require('cors');
+const session      = require("express-session");
+const MongoStore   = require('connect-mongo')(session);
+const flash        = require("connect-flash");
     
 
 mongoose
@@ -44,15 +44,20 @@ app.use(session({
   saveUninitialized: true,
   store: new MongoStore( { mongooseConnection: mongoose.connection })
 }))
-app.use(flash());
 require('./passport')(app);
+
+app.use(cors({
+  credentials: true,
+  origin: ['http://localhost:3000'],
+}));
     
 
 const index = require('./routes/index');
 app.use('/', index);
 
-const authRoutes = require('./routes/auth');
-app.use('/auth', authRoutes);
+app.use((req, res) => {
+  res.sendFile(`${__dirname}/public/index.html`);
+});
       
 
 module.exports = app;
