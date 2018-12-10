@@ -12,19 +12,14 @@ const bcryptSalt = 10;
 router.post('/login', (req, res, next) => {
   passport.authenticate('local', (err, user) => {
     if (err) {
-      res.status(500).json({ message: 'Something went wrong authenticating user' });
+      res.status(500).json({ message: 'Error login' });
       return;
     }
 
     // save user in session
-    req.login(user, (err) => {
-      if (err) {
-        res.status(500).json({ message: 'Session save went bad.' });
-        return;
-      }
-
-      // We are now logged in (that's why we can also send req.user)
-      res.status(200).json(user);
+    req.logIn(user, function (err) {
+      if (err) { return res.status(500).json({ message: "Error login" }) }
+      return res.status(200).json(user);
     });
   })(req, res, next);
 });
@@ -62,7 +57,7 @@ router.post("/signup", (req, res, next) => {
           res.status(500).json({ message: 'Login after signup went bad.' });
           return;
         }
-        res.status(200).json(newUser);
+        res.status(200).json(user);
       })
     })
   });
@@ -86,7 +81,7 @@ router.post('/edit', (req, res) => {
     campus: req.body.campus,
     course: req.body.course
   }, { new: true })
-  .then((user) => {
+    .then((user) => {
       res.status(200).json(user);
     });
   // for (key in update) {
@@ -94,12 +89,12 @@ router.post('/edit', (req, res) => {
   //     delete update[key]
   //   }
   // }
-    
+
 });
 
 router.get("/logout", (req, res, next) => {
   req.logout();
-  res.status(200).json({ message: 'Log out success!' });
+  res.status(200).json({ message: 'Log out successful!' });
 })
 
 router.get('/loggedin', (req, res, next) => {
