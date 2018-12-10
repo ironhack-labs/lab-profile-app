@@ -6,7 +6,11 @@ export default class ButtonLogin extends Component {
   render() {
     return (
       <div >
-       <button class="class-login">Log in</button>
+       <h3>Sign up</h3>
+       <form >
+           <label></label>
+
+       </form>
       </div>
     )
   }

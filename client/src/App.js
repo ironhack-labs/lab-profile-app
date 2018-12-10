@@ -6,7 +6,6 @@ import { Switch, Route } from 'react-router-dom';
 import ButtonSignUp from './Components/ButtonSignUp/ButtonSignUp'
 import ButtonLogin from './Components/ButtonLogin/ButtonLogin'
 
-
 class App extends Component {
   render() {
     return (
