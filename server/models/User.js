@@ -19,7 +19,7 @@ const userSchema = new Schema(
       ]
     },
     course: { type: String, enum: ["WebDev", "UX/UI", "Data Analytics"] },
-    image:{type:String, default:"http://www.jdevoto.cl/web/wp-content/uploads/2018/04/default-user-img.jpg"}
+    image:String
   },
   {
     timestamps: {

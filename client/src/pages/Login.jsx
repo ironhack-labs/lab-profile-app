@@ -17,12 +17,11 @@ export class Loginform extends React.Component {
 
   submit = () => {
     const { history, dispatch } = this.props;
-    const {username,password}=this.state.info
-    AuthAPI.login({username,password}).then(e => {
-        console.log(e)
+    const { username, password } = this.state.info;
+    AuthAPI.login({ username, password }).then(({data}) => {
       dispatch({
-        type: "Login",
-        user: e
+        type: "LOGIN",
+        user: data
       });
       history.push("/");
     });
@@ -39,11 +38,12 @@ export class Loginform extends React.Component {
           infoname="password"
           func={this.handleChange}
         />
-        <button onClick={()=>this.submit()} className="button is-primary">Login</button>
+        <button onClick={() => this.submit()} className="button is-primary">
+          Login
+        </button>
       </div>
     );
   }
 }
-
 
 export const Login = connect()(withRouter(Loginform));
