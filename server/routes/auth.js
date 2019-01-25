@@ -13,16 +13,15 @@ let loginPromise = (req, user) => {
   });
 };
 
-router.post(
-  "/login",
+router.post("/login", (req, res, next) => {
   passport.authenticate("local", (err, user, failureDetails) => {
     if (err) return res.status(500).json({ message: "Something went wrong" });
     if (!user) return res.status(401).json(failureDetails);
     loginPromise(req, user)
       .then(() => res.status(200).json(req.user))
       .catch(e => res.status(500).json({ message: e.message }));
-  })(req, res, next)
-);
+  })(req, res, next);
+});
 
 router.post("/signup", (req, res, next) => {
   const { username, password, campus, course } = req.body;
@@ -46,7 +45,7 @@ router.post("/signup", (req, res, next) => {
       campus,
       course
     });
-
+    console.log(newUser);
     newUser
       .save()
       .then(user => loginPromise(req, user))
@@ -56,7 +55,7 @@ router.post("/signup", (req, res, next) => {
   });
 });
 
-router.get("edit", (req, res, next) => {
+router.get("/edit", (req, res, next) => {
   const { username, campus, course, id } = req.body;
 
   User.findByIdAndUpdate(id, { username, campus, course }).then(userUpdat =>
@@ -64,12 +63,12 @@ router.get("edit", (req, res, next) => {
   );
 });
 
-router.get("loggedin", (req, res) => {
+router.get("/loggedin", (req, res) => {
   const { user } = req;
 
   user
     ? res.json({ succes: "Ok", user })
-    : res.status(401).json({ succes: "No user logged" });
+    : res.status(401).json({ message: "No user logged" });
 });
 
 router.get("/logout", (req, res) => {

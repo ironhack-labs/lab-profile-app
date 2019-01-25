@@ -5,6 +5,7 @@ import "./App.css";
 import { HomePage } from "./pages/Home";
 import { LoginPage } from "./pages/Login";
 import { SignUpPage } from "./pages/SignUp";
+import { ProfilePage } from "./pages/Profile";
 
 class App extends Component {
   render() {
@@ -16,6 +17,7 @@ class App extends Component {
               <Route exact strict path="/" component={HomePage} key="1" />
               <Route path="/login" component={LoginPage} key="2" />
               <Route path="/signup" component={SignUpPage} key="3" />
+              <Route path="/profile" component={ProfilePage} key="4" />
             </Switch>
           </div>
         )}
