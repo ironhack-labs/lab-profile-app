@@ -13,4 +13,14 @@ export default class AuthService {
       .then(response => response.data)
       .catch(err => console.log(err))
   }
+  login = (username, password) => {
+    return this.service.post('/login', { username, password })
+      .then(response => response.data)
+      .catch(err => console.log(err))
+  }
+  logout = () => {
+    return this.service.post('/logout', {})
+      .then(response => response.data)
+      .catch(err => console.log(err))
+  }
 }

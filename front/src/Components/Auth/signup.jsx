@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 export default class Signup extends React.Component {
 
   constructor(props) {
-    super()
+    super(props)
     this.state = {
       username: '',
       password: '',
@@ -65,7 +65,7 @@ export default class Signup extends React.Component {
 
         </form>
         <p>Already have an account?
-          <Link to={"/"}> Login</Link>
+          <Link to={"/login"}> Login</Link>
         </p>
       </div>
     )
