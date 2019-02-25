@@ -44,6 +44,7 @@ export default class Signup extends React.Component {
   render() {
     return (
       <div>
+        <Link to="/">Home</Link>
         <form onSubmit={this.handleFormSubmit}>
 
           <label htmlFor="username">Username</label>
