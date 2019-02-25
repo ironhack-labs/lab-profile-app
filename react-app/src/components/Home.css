@@ -1,5 +1,33 @@
-button {
+.box-container {
+    background-image: url("/images/oval-bg.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 717px;
+    height: 458px;
+    margin: 100px auto;
+}
+
+.box-text{
+    margin-left: 40px;
+    padding-top: 50px;
+}
+
+.box-text h1 {
+    color: #638165;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.button-container h3{
+    text-align: center;
+    background-color:  #C1DFC4;
+    color: #638165;
+    border-radius: 20px;
+    padding: 10px 30px;
     font-size: 1em;
-    margin: 10px;
+    margin-top: 50px;
 
 }

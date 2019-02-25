@@ -1,0 +1,23 @@
+h2 {
+    color: #638165;
+    font-size: 1em;
+}
+
+.form-group .form-control{
+    width: 300px;
+    border: none;
+    background-color: rgb(231, 228, 228);
+}
+
+.button {
+    text-align: center;
+    background-color:  #C1DFC4;
+    color: #638165;
+    border-radius: 10px;
+    padding: 5px 20px;
+
+    margin-top: 10px;
+   
+   
+
+}
