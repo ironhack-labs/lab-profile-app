@@ -1,0 +1,42 @@
+body,
+html {
+	background-color: white;
+	margin: 0;
+	padding: 0;
+}
+
+.allform h2 {
+	margin-left: 150px;
+}
+
+.signup {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	margin-left: 150px;
+	width: 20%;
+}
+
+.signup input,
+label,
+select {
+	margin: 5px 0;
+	padding: 5px;
+}
+
+.container-signup p {
+	margin-left: 150px;
+}
+
+input[type=submit] {
+	color: black;
+	background-color: whitesmoke;
+	font-style: italic;
+
+	border-radius: 4px;
+
+	margin: 5px 0;
+	padding: 5px;
+	height: 25px;
+	border-radius: 10px;
+}
