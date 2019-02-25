@@ -23,4 +23,9 @@ export default class AuthService {
       .then(response => response.data)
       .catch(err => console.log(err))
   }
+  loggedin = () => {
+    return this.service.get('/loggedin')
+      .then(response => response.data)
+      .catch(err => console.log(err))
+  }
 }
