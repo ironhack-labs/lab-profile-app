@@ -71,6 +71,8 @@ app.use('/auth', authRoutes);
 const index = require('./routes/index');
 app.use('/', index);
 
+app.use('/auth', require('./routes/file-upload-routes'));
+
 
 module.exports = app;
 

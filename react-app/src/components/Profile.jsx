@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import AuthService from "./auth/auth-service";
+import AddPhoto from "./AddPhoto";
 
 export default class Profile extends Component {
   constructor(props) {
@@ -36,7 +37,9 @@ export default class Profile extends Component {
           <p>{this.state.loggedInUser.campus}</p>
           <h5>Course:</h5>
           <p>{this.state.loggedInUser.course}</p>
-          
+
+          <AddPhoto />
+         
           <Link to="/">
             <button onClick={() => this.logoutUser()}>Logout</button>
           </Link>

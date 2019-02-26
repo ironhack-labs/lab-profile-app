@@ -9,6 +9,17 @@ class AuthService {
     this.service = service;
   }
 
+  errorHandler = err => {
+    // console.error(err);
+    throw err;
+  };
+
+  handleUpload = theFile => {
+    return this.service.post('/upload', theFile)
+      .then(res => res.data)
+      .catch(this.errorHandler);
+  }
+  
   signup = (username, password, campus, course) => {
     return this.service
       .post("/signup", { username, password, campus, course })
