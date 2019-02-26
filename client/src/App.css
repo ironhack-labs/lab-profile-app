@@ -1,0 +1,191 @@
+.App {
+  text-align: center;
+ 
+}
+
+body{
+  background-color: #d7edd9
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+.login{
+  display:flex;
+  align-items: flex-start;
+  flex-direction: row;
+  justify-content: space-between;
+  width:50%;
+  height: 100vh;
+  margin: 0 auto;
+  margin-top:100px;
+  background: url("oval-bg.png") no-repeat;
+}
+
+
+.loginBueno{
+  padding-left:40px;
+  display:flex;
+  align-items: flex-start;
+  flex-direction: column;
+  width:50%;
+  height: 100vh;
+  margin: 0 auto;
+  margin-top:100px;
+  background: url("oval-bg.png") no-repeat;
+}
+
+.loginBueno p{
+  margin:0;
+}
+
+.loginBueno button{
+  position:relative;
+  left:450px;
+  background: white;
+}
+
+.loginBueno form{
+
+  display: flex;
+  flex-direction: column;
+
+}
+
+.loginBueno h2{
+  color:#5a8463
+}
+
+.loginBueno p{
+  margin-left: 40px;
+}
+
+.home{
+  display:flex;
+  align-items: flex-start;
+  flex-direction: column;
+  width:50%;
+  height: 100vh;
+  margin: 0 auto;
+  margin-top:100px;
+  background: url("oval-bg.png") no-repeat;
+  padding:40px;
+}
+
+.home .buttons{
+  margin-top:150px;
+  margin-left:20px;
+}
+
+
+.home h2{
+  margin-left:40px;
+  color:#5a8463
+}
+
+.login h2{
+ margin: 40px 0 0 40px;
+  color:#5a8463
+}
+
+.login .p{
+margin: 25px 0 0 40px;
+text-align: left;
+}
+
+button{
+  width:19vh;
+  height: 3vh;
+  background: #c0e3be;
+  color:black;
+  border: none;
+  border-radius: 5px;
+
+}
+
+.login .buttons{
+  margin: 90px 0 0 75px;
+}
+
+
+
+.profile input{
+  display: flex;
+}
+
+
+
+.formProfile{
+  display: flex;
+  flex-direction: column;
+  margin-left:40px
+}
+
+.left input{
+  background: #F7F7F7;
+  border:none;
+  height: 3vh;
+}
+
+.signup label{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.left p{
+  margin-bottom:0px;
+}
+
+.sub{
+  margin-right: 80px;
+  margin-top:0px
+}
+
+.right h2{
+  margin-right: 200px
+}
+
+.parrafo{
+  margin-top:200px;
+}
+
+.malditoBoton{
+  position: relative;
+  left: 400px;
+  width:35vh;
+  
+  height: 4vh;
+  background: white;
+  color:black;
+  border: none;
+  border-radius: 5px;
+}
