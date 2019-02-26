@@ -36,7 +36,7 @@ class App extends Component {
     if (this.state.loggedInUser) {
       return (
         <div>
-          <h3>Welcome back, {this.state.loggedInUser.username}</h3>
+          {/* <h3>Welcome back, {this.state.loggedInUser.username}</h3> */}
           <Profile user={this.state.loggedInUser} path="/profile" component={Profile} />
         </div>
       )
