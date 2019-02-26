@@ -7,7 +7,8 @@ export default class Login extends React.Component {
         super()
         this.state = {
             username: "",
-            password: ""
+            password: "",
+            message: ""
         }
         this.service = new authService()
     }
@@ -20,17 +21,25 @@ export default class Login extends React.Component {
         e.preventDefault()
         let { username, password } = this.state
         this.service.getLogin({ username, password })
-            .then(this.setState({ ...this.state, username: "", password: "" }))
+            .then(response => {
+                if(response.message === "Ok") this.props.history.push("/profile")
+                else {
+                    this.setState({ ...this.state, username: "", password: "", message: response.message.message })
+                }})
     }
     render() {
+    let message;
+    if (this.state.message !== "") message = <p style={{color: "red"}}>{this.state.message}</p>
         return (
             <div className="container">
                 <form onSubmit={e => this.handlerSubmit(e)}>
-                    <label forHtml="username">Username</label>
+                    <label htmlFor="username">Username</label>
                     <input type="text" value={this.state.username} name="username" onChange={e => this.handlerChange(e)} placeholder="Username"></input>
                     <br></br>
-                    <label forHtml="password">Password</label>
-                    <input id="password" value={this.state.password} name="password" onChange={e => this.handlerChange(e)} type="password" name="password" placeholder="Your password" />
+                    <label htmlFor="password">Password</label>
+                    <input id="password" value={this.state.password} name="password" onChange={e => this.handlerChange(e)} type="password" placeholder="Your password" />
+                    <br></br>
+                    {message}
                     <button>Login</button>
                     <p class="account-message">
                         Don't you already have an account?
