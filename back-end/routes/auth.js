@@ -5,6 +5,21 @@ const User = require("../models/User");
 const bcrypt = require("bcrypt");
 
 
+const login = (req, user) => {
+  return new Promise((resolve,reject) => {
+    req.login(user, err => {
+      console.log('req.login ')
+      console.log(user)
+
+      
+      if(err) {
+        reject(new Error('Something went wrong'))
+      }else{
+        resolve(user);
+      }
+    })
+  })
+}
 
 router.get('/loggedin', (req, res, next) => {
   if (req.user) {
@@ -14,8 +29,9 @@ router.get('/loggedin', (req, res, next) => {
   }
 })
 
-router.post("/login", (req, res) => {
+router.post("/login", (req, res, next) => {
   passport.authenticate("local", (err, user, failureDetails) => {
+    console.log("hola")
     if (err) res.json(500, { message: 'Error in the authentication' })
     if (!user) res.json(500, { message: failureDetails })
     else {
@@ -26,7 +42,7 @@ router.post("/login", (req, res) => {
         }
       })
     }
-  })
+  })(req, res, next)
 });
 
 router.post("/signup", (req, res) => {
