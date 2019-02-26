@@ -15,8 +15,10 @@ export default class Login extends React.Component {
     const password = this.state.password;
 
     this.service.login(username, password)
-      .then(response => {
+      .then(userInfoFromBackend => {
         this.setState({ username: '', password: '' })
+
+        this.props.getUser(userInfoFromBackend)
       })
       .catch(err => console.log(err))
   }

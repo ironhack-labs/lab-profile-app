@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Link } from 'react-router-dom';
 import Homepage from './Components/Homepage';
 import Signup from './Components/Auth/signup';
 import Login from './Components/Auth/login';
@@ -31,11 +31,20 @@ class App extends Component {
     })
   }
 
+  logout = () => {
+    this.service.logout().then(() => {
+      this.setState({
+        loggedInUser: null
+      })
+    })
+  }
+
   render() {
     this.fetchUser()
     if (this.state.loggedInUser) {
       return (
         <div>
+          <button onClick={this.logout}>Log out</button>
           {/* <h3>Welcome back, {this.state.loggedInUser.username}</h3> */}
           <Profile user={this.state.loggedInUser} path="/profile" component={Profile} />
         </div>
