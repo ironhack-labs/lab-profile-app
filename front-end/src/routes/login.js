@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import authService from '../services/authServices';
 
-export default class SignUp extends React.Component {
+export default class Login extends React.Component {
     constructor() {
         super()
         this.state = {
@@ -19,8 +19,8 @@ export default class SignUp extends React.Component {
     handlerSubmit = e => {
         e.preventDefault()
         let { username, password } = this.state
-        this.service.setSignup({ username, password })
-            .then(this.setState({ ...this.state, username: "", password:""}))
+        this.service.getLogin({ username, password })
+            .then(this.setState({ ...this.state, username: "", password: "" }))
     }
     render() {
         return (
@@ -31,10 +31,10 @@ export default class SignUp extends React.Component {
                     <br></br>
                     <label forHtml="password">Password</label>
                     <input id="password" value={this.state.password} name="password" onChange={e => this.handlerChange(e)} type="password" name="password" placeholder="Your password" />
-                    <button>Create account</button>
+                    <button>Login</button>
                     <p class="account-message">
-                        Do you already have an account?
-                    <Link to="/login">Login</Link>
+                        Don't you already have an account?
+                    <Link to="/signup">Signup</Link>
                     </p>
                 </form>
             </div>

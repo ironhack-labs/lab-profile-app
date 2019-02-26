@@ -6,5 +6,8 @@ export default () => (
         <Link to="/signup" style={{ textDecoration: "none" }}>
             <button>Signup</button>
         </Link>
+        <Link to="/login" style={{ textDecoration: "none" }}>
+            <button>Login</button>
+        </Link>
     </div>
 );
