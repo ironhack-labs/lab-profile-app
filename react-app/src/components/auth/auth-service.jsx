@@ -19,7 +19,15 @@ class AuthService {
       .then(res => res.data)
       .catch(this.errorHandler);
   }
-  
+
+  updatePhotoProfile = photo => {
+    this.loggedin().then(user => {
+      user.imageUrl = photo.imageUrl;
+      this.service.post("/update", user)
+      .then(res => console.log("Todo ok"))
+    })
+  }
+
   signup = (username, password, campus, course) => {
     return this.service
       .post("/signup", { username, password, campus, course })

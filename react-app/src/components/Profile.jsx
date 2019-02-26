@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import AuthService from "./auth/auth-service";
 import AddPhoto from "./AddPhoto";
+import "../components/Home.css";
 
 export default class Profile extends Component {
   constructor(props) {
@@ -30,6 +31,10 @@ export default class Profile extends Component {
     if (this.state.loggedInUser) {
       return (
         <div>
+          <div className="box-container">
+          <div className="container">
+            <div className="row">
+              <div className="box-text col-4">
           <h2>Profile</h2>
           <h5>Username:</h5>
           <p>{this.state.loggedInUser.username}</p>
@@ -37,12 +42,18 @@ export default class Profile extends Component {
           <p>{this.state.loggedInUser.campus}</p>
           <h5>Course:</h5>
           <p>{this.state.loggedInUser.course}</p>
-
-          <AddPhoto />
-         
           <Link to="/">
             <button onClick={() => this.logoutUser()}>Logout</button>
           </Link>
+          </div>
+
+          <div className="col-4">
+          <AddPhoto imageUrl={this.state.loggedInUser.imageUrl} />
+         
+          </div>
+        </div>
+        </div>
+        </div>
         </div>
       );
     } else {

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import AuthService from './auth/auth-service';
+import "../components/Home.css";
 
 class AddPhoto extends Component {
     constructor(props) {
@@ -10,6 +11,15 @@ class AddPhoto extends Component {
         this.service = new AuthService();
     }
 
+    componentDidMount() {
+      this.setState({...this.state, imageUrl: this.props.imageUrl});
+    }
+  
+  
+    componentWillReceiveProps(nextProps) {
+      this.setState({ ...this.state, imageUrl: nextProps["imageUrl"] });
+    }
+
     handleFileUpload = e => {
         console.log("The file to be uploaded is: ", e.target.files[0]);
 
@@ -18,10 +28,10 @@ class AddPhoto extends Component {
         this.service.handleUpload(uploadData)
         .then(response => {
             this.setState({ imageUrl: response.secure_url });
-            // this.service.updateProfile({ imageUrl: response.secure_url })
-            // .then(response => {
-            //     console.log(response);
-            // })
+            this.service.updatePhotoProfile({ imageUrl: response.secure_url })
+            .then(response => {
+                console.log(response);
+            })
           }).catch(err => {
             console.log("Error while uploading the file: ", err);
           });
@@ -30,15 +40,14 @@ class AddPhoto extends Component {
     render() {
         return (
           <div>
-            <h2>New Thing</h2>
-
-            <div>
+    
+            <div className="photo">
                 <img src={this.state.imageUrl} alt="user profile" />
-            </div>
 
             <form onSubmit="">
                 <input type="file" onChange={(e) => this.handleFileUpload(e)} /> 
             </form>
+            </div>
           </div>
         );
     }

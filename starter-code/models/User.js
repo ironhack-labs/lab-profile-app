@@ -6,7 +6,7 @@ const userSchema = new Schema({
   password: String,
   campus: {type: String, enum: ["Madrid", "Barcelona", "Miami", "París", "Berlín", "Amsterdam", "México", "Sao Paulo"]},
   course: {type: String, enum: ["WebDev", "UX/UI", "Data Analytics"]},
-  imageUrl: { type: String, required: true },
+  imageUrl: { type: String },
 },{
   timestamps: {
     createdAt: 'created_at',
