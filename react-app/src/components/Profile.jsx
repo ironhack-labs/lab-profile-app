@@ -9,10 +9,12 @@ export default class Profile extends Component {
     this.service = new AuthService();
   }
 
+  componentDidMount() {
+    this.setState({...this.state, loggedInUser: this.props.userInSession});
+  }
+
+
   componentWillReceiveProps(nextProps) {
-    console.log("componentWillReceiveProps")
-    console.log(nextProps["userInSession"])
-    console.log("")
     this.setState({ ...this.state, loggedInUser: nextProps["userInSession"] });
   }
 
@@ -24,14 +26,17 @@ export default class Profile extends Component {
   };
 
   render() {
-    console.log("render profile")
-    console.log(this.state.loggedInUser)
-    console.log("")
     if (this.state.loggedInUser) {
       return (
         <div>
-          Hola
-          <h1>Welcome, {this.state.loggedInUser.username}</h1>
+          <h2>Profile</h2>
+          <h5>Username:</h5>
+          <p>{this.state.loggedInUser.username}</p>
+          <h5>Campus:</h5>
+          <p>{this.state.loggedInUser.campus}</p>
+          <h5>Course:</h5>
+          <p>{this.state.loggedInUser.course}</p>
+          
           <Link to="/">
             <button onClick={() => this.logoutUser()}>Logout</button>
           </Link>

@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import AuthService from "./auth-service";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import "../auth/Signup.css";
 import "../Home.css";
 
 class Login extends Component {
   constructor(props) {
     super(props);
-    this.state = { username: "", password: "" };
+    this.state = { username: "", password: "", redirect: false };
     this.service = new AuthService();
   }
 
@@ -18,8 +18,8 @@ class Login extends Component {
     this.service
       .login(username, password)
       .then(response => {
-        this.setState({ username: "", password: "" });
         this.props.getUser(response); //Al igual que en signup guardamos el usuario.
+        this.setState({ username: "", password: "", redirect: true });
       })
       .catch(error => console.log(error));
   };
@@ -32,6 +32,7 @@ class Login extends Component {
   render() {
     return (
       <div className="box-container">
+      {this.state.redirect ? <Redirect to="/profile" /> : undefined}
         <div className="box-container">
           <div className="box-text col-sm-6">
             <h2>Login</h2>
