@@ -8,9 +8,7 @@ const bcrypt = require ('bcryptjs');
 const bcryptSalt = 10;
 
 authRoutes.post ('/signup', (req, res, next) => {
-  
-  const {username, password, campus, course} = req.body
-  console.log (req.body);
+  const {username, password, campus, course} = req.body.profile
 
   if (!username || !password) {
     res.status (400).json ({message: 'Provide username and password'});
@@ -19,7 +17,7 @@ authRoutes.post ('/signup', (req, res, next) => {
 
   if (password.length < 4) {
     res.status (400).json ({
-      message: 'Please make your password at least 8 characters long for security purposes.',
+      message: 'Please make your password at least 4 characters long for security purposes.',
     });
     return;
   }
@@ -35,7 +33,7 @@ authRoutes.post ('/signup', (req, res, next) => {
       return;
     }
 
-    const salt = bcrypt.genSaltSync (10);
+    const salt = bcrypt.genSaltSync (bcryptSalt);
     const hashPass = bcrypt.hashSync (password, salt);
 
     const aNewUser = new User ({
@@ -45,8 +43,10 @@ authRoutes.post ('/signup', (req, res, next) => {
       course: course,
     });
 
-    aNewUser.save (err => {
+    aNewUser.save(user => {
+      
       if (err) {
+        // console.log("save error")
         res
           .status (400)
           .json ({message: 'Saving user to database went wrong.'});
@@ -59,14 +59,16 @@ authRoutes.post ('/signup', (req, res, next) => {
           return;
         }
 
-        res.status (200).json (aNewUser);
+        res.status (200).json (user);
       });
     });
   });
 });
 
 authRoutes.post ('/login', (req, res, next) => {
+
   passport.authenticate ('local', (err, theUser, failureDetails) => {
+    console.log(theUser)
     if (err) {
       res
         .status (500)

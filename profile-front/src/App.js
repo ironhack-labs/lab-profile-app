@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import './App.css';
 import Signup from './components/auth/Signup';
 import Login from './components/auth/Login';
-import HomePage from './components/auth/HomePage'
+import HomePage from './components/home/HomePage'
 import { Switch, Route } from 'react-router-dom';
 import AuthService from './components/auth/Auth-service';
-
+import Profile from './components/profile/Profile';
 
 class App extends Component {
   constructor(props){
@@ -35,16 +35,18 @@ class App extends Component {
       loggedInUser: userObj
     })
   }
+  
   render() {
-    return (
+    return(
       <div className="App">
         <Switch>
           <Route exact path="/" component={HomePage}/>
+          <Route exact path="/profile" component={Profile}/>
           <Route exact path="/signup" render={() => <Signup getUser={this.getTheUser}/>}/>
           <Route exact path='/login' render={() => <Login getUser={this.getTheUser}/>}/>
         </Switch>
       </div>
-    );
+    )
   }
 }
 

@@ -11,13 +11,10 @@ class Signup extends Component {
 
   handleFormSubmit = (event) => {
     event.preventDefault();
-    const username = this.state.username;
-    const password = this.state.password;
-    const campus = this.state.campus;
-    const course = this.state.course;
+    const profile = {username: this.state.username, password: this.state.password, campus: this.state.campus, course: this.state.course}
 
     this.service
-      .signup(username, password, campus, course)
+      .signup(profile)
       .then((response) => {
         this.setState({
           username: '',

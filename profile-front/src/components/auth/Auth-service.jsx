@@ -9,9 +9,9 @@ class AuthService {
     this.service = service;
   }
 
-  signup = (username, password, campus, course) => {
-    return this.service.post('/signup', {username, password, campus, course})
-    .then(response => response.data)
+  signup = (profile) => {
+    return this.service.post('/signup', {profile})
+    .then(response => response.data) 
   }
 
   login = (username, password) => {
@@ -25,8 +25,16 @@ class AuthService {
   }
 
   logout = () => {
-    return this.service.get('/logout',)
+    return this.service.post('/logout',)
     .then(response => response.data)
+  }
+
+  updateUsername(newUsername) {
+    return this.service.put('/update', {username: newUsername})
+      .then(res => res.data)
+      .catch(err => {
+        console.log(err)
+      });
   }
 
 }

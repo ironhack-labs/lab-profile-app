@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import AuthService from './Auth-service';
 
 class Login extends Component {
   constructor(props) {
     super(props);
-    this.state = { username: '', password: '' };
+    this.state = { username: '', password: '', redirect: false };
     this.service = new AuthService();
   }
 
@@ -19,9 +19,9 @@ class Login extends Component {
         this.setState({
           username: username,
           password: password,
+          redirect: true,
           error: false
         });
-        
       console.log(response)
         this.props.getUser(response)
       })
@@ -43,6 +43,8 @@ class Login extends Component {
 
     return (
     <div>
+      {this.state.redirect ? <Redirect to="/profile"/> : ""}
+
       <h3>Please, login to our site</h3>
 
       <form onSubmit={this.handleFormSubmit}>

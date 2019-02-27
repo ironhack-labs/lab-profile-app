@@ -62,6 +62,9 @@ app.use(flash());
 require('./passport')(app);
     
 
+const fileuploads = require('./routes/file-upload')
+app.use('/api', fileuploads)
+
 const index = require('./routes/index');
 app.use('/', index);
 
