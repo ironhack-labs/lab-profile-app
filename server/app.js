@@ -46,7 +46,7 @@ app.use(passport.session());
 app.use(
   cors({
     credentials: true,
-    origin: ["http://localhost:3001"]
+    origin: [`http://localhost:3000`]
   })
 );
 
@@ -94,5 +94,9 @@ const index = require("./routes/index");
 app.use("/", index);
 
 app.use("/auth", router);
+
+// Routes de Cloudinary
+
+app.use("/api", require("./routes/file-upload-routes"));
 
 module.exports = app;

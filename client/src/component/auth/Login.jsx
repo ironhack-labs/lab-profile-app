@@ -35,7 +35,7 @@ export default class Login extends Component {
     }
     return (
       <div className="App">
-        <h1>Log in</h1>
+        <h1>LOGIN</h1>
         <form action="submit" onSubmit={this.handleSubmit}>
           <input
             type="text"
@@ -59,17 +59,6 @@ export default class Login extends Component {
             <Link to="/auth/signup">here</Link>
           </p>
         </div>
-        <div>
-          <h2>Hello!!</h2>
-          <h2>Awesome to have at IronProfile Again</h2>
-        </div>
-        <div>
-          <p>
-            If you signup, you agree with all our terms and conditions where we
-            can do whatever we want with the data!
-          </p>
-        </div>
-        {/* <input type="submit">Log in</input> */}
       </div>
     );
   }

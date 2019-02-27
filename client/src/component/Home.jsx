@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./Home.css";
 import { Link } from "react-router-dom";
-import Service from "./Service";
+import Service from "./auth/Service";
 
 export default class Home extends Component {
   constructor() {
@@ -14,11 +14,8 @@ export default class Home extends Component {
   render() {
     return (
       <div className="App">
-        <h1>IronProfile</h1>
-        <p>
-          Today we will create an app with authoritation, adding some cool
-          styles!
-        </p>
+        <h1>HOME SIN LOGIN</h1>
+
         <div>
           <Link to="/auth/signup">
             <button type="button">Sign up</button>

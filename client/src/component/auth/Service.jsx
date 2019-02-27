@@ -17,7 +17,7 @@ export default class Service {
   };
 
   loggedin = () => {
-    return this.service.get("/loggedin").then(response => response.data);
+    return this.service.get("/currentUser").then(response => response.data);
   };
 
   logout = () => {

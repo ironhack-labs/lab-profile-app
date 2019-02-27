@@ -39,11 +39,11 @@ export default class Signup extends Component {
 
   render() {
     if (this.state && this.state.redirect) {
-      return <Redirect to="/" />;
+      return <Redirect to="/auth/login" />;
     }
     return (
       <div>
-        <h1>Sign Up</h1>
+        <h1>SIGNUP</h1>
 
         <form action="submit" onSubmit={e => this.handleSubmit(e)}>
           <label for="username">Username</label>
@@ -76,16 +76,6 @@ export default class Signup extends Component {
           />
           <input type="submit" />
         </form>
-        <div>
-          <h2>Hello!!</h2>
-          <h2>Welcome to IronProfile</h2>
-        </div>
-        <div>
-          <p>
-            If you signup, you agree with all our terms and conditions where we
-            can do whatever we want with the data!
-          </p>
-        </div>
       </div>
     );
   }
