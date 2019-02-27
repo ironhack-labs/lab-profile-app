@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import AuthService from '../auth/auth-service';
+import Home from '../Home';
 
 class Navbar extends Component {
   constructor(props){
@@ -16,8 +17,8 @@ class Navbar extends Component {
   logoutUser = () =>{
     this.service.logout()
     .then(() => {
-      this.setState({ loggedInUser: null });
       this.props.getUser(null);  
+      this.setState({ loggedInUser: null });
     })
   }
 
@@ -26,11 +27,12 @@ class Navbar extends Component {
       return(
         <nav className="nav-style">
           <ul>
+                <button onClick={() => this.logoutUser()}>Logout</button>
             <li>Welcome, {this.state.loggedInUser.username}</li>
-            <li><Link to='/projects' style={{ textDecoration: 'none' }}>Projects</Link></li>
+            <Home/>
+            
             <li>
               <Link to='/'>
-                <button onClick={() => this.logoutUser()}>Logout</button>
               </Link>
             </li>
           </ul>

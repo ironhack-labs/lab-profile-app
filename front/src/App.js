@@ -10,6 +10,9 @@ import Signup from './components/auth/Signup';
 import Login from './components/auth/Login';
 import AuthService from './components/auth/auth-service';
 
+
+
+
 class App extends Component {
   constructor(props){
     super(props)
@@ -44,7 +47,7 @@ class App extends Component {
     if(this.state.loggedInUser){
       return (
         <div className="App">
-          <Navbar userInSession={this.state.loggedInUser} />
+          <Navbar userInSession={this.state.loggedInUser} getUser={this.getTheUser}/>
           <Switch>
             <Route exact path="/projects" component={ProjectList}/>
             <Route exact path="/projects/:id" component={ProjectDetails} />
@@ -54,7 +57,7 @@ class App extends Component {
     } else {
       return (
         <div className="App">
-          <Navbar userInSession={this.state.loggedInUser} />
+          <Navbar userInSession={this.state.loggedInUser} getUser={this.getTheUser}/>
           <Switch> 
   <Route exact path='/signup' render={() => <Signup getUser={this.getTheUser}/>}/>
   <Route exact path='/' render={() => <Login getUser={this.getTheUser}/>}/>

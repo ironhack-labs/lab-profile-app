@@ -28,18 +28,21 @@ class Login extends Component {
     
   render(){
     return(
-      <div>
-        <form onSubmit={this.handleFormSubmit}>
-          <label>Username:</label>
+      <div id="login-box" >
+      <div class="left">
+      <form onSubmit={this.handleFormSubmit}>
+          <h1>Username:</h1>
           <input type="text" name="username" value={this.state.username} onChange={ e => this.handleChange(e)}/>
           <label>Password:</label>
-          <textarea name="password" value={this.state.password} onChange={ e => this.handleChange(e)} />
+          <input name="password" value={this.state.password} onChange={ e => this.handleChange(e)} />
           
           <input type="submit" value="Login" />
         </form>
         <p>Don't have account? 
             <Link to={"/signup"}> Signup</Link>
         </p>
+       </div>
+        
       </div>
     )
   }
