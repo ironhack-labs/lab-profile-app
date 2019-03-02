@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900');
+* {
+  border: none;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+:root {
+  font-family: 'Lato', sans-serif;
+  --bg-left:  #C1DFC4;
+  --bg-right: #DEECDD;
+  --green:    #638165;
+  --red:      #D0021B;
+  --button:   #c0e3be;
+  --bg:       linear-gradient( to right, var(--bg-left), var(--bg-righ) );
+
+}
+
+.card{
+  background: center / contain no-repeat url('/assets/oval-bg.png') transparent;
+  height: 43.81vw;
+  padding: 7.5vh 5.3vw 12vh;
+  width: 69.09vw;
+}
+
+.page {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  height: 100%;
+}
