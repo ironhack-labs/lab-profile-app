@@ -1,0 +1,8 @@
+.App {
+  text-align: center;
+  background-color: rgb(173, 209, 173);
+}
+
+.card {
+  background: url("/assets/oval-bg.png")
+}

@@ -105,32 +105,50 @@ router.post('/login', (req, res, next) => {
 });
 
 //TODO: implement edit route
-// router.post('/edit', (req, res, next) => {
+router.post("/edit", (req, res, next) => {
+  if (!req.isAuthenticated()) {
+    res
+      .status(401)
+      .json({
+        message: "You need to be logged in to edit your profile"
+      });
+    return;
+  }
 
-//   req.body._id = undefined;
-//   req.body.password = undefined;
+  // 2. Updating `req.user` with each `req.body` field
+  const cannotUpdateFields = ["_id", "password"];
+  Object.keys(req.body)
+    .filter(key => cannotUpdateFields.indexOf(key) === -1)
+    .forEach(key => {
+      req.user[key] = req.body[key];
+    });
 
-//   for (let k in req.user) {
-//     if (k in req.body) {
-//       req.user[k] = req.body[k];
-//     }
-//   }
+  // 3. Validating user with its new values (see: https://mongoosejs.com/docs/validation.html#async-custom-validators)
+  req.user.validate(function (error) {
+    if (error) {
+      // see: https://mongoosejs.com/docs/validation.html#validation-errors
+      res.status(400).json({
+        message: error.errors
+      });
+      return;
+    }
 
-//   // req.user.campus = 'Paris';
+    // 4. Validation ok, let save it
+    req.user.save(function (err) {
+      if (err) {
+        res.status(500).json({
+          message: "Error while saving user into DB."
+        });
+        return;
+      }
+      console.log("req.user");
+      console.log(req.user);
 
-//   req.user.save(err => {
-//     if (err) {
-//       res.status(500).json({
-//         message: "error while saving"
-//       })
-//     }
+      res.status(200).json(req.user);
+    });
+  });
+});
 
-// //     res.status(200).json({
-// //       message: "user uploaded"
-// //     })
-// //   })
-
-// })
 
 //LOGOUT
 router.post('/logout', (req, res, next) => {
