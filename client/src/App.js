@@ -5,6 +5,7 @@ import Home from "./components/Home"
 import Signup from './components/auth/Signup';
 import AuthService from "./components/auth/auth-service"
 import { Switch, Route } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 class App extends Component {
 
@@ -17,11 +18,13 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        < Home/>
-        <Switch>
-  <Route exact path="/signup" component={Signup}/>
+         <Link to={"/signup"}>Sign up</Link>
+      
+      <Home>
+   
+
+      </Home>
   
-    </Switch>
       </div>
     );
   }

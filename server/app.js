@@ -15,7 +15,7 @@ const cors = require('cors');
 
 
 mongoose
-  .connect('mongodb://localhost/server', {useNewUrlParser: true})
+  .connect('mongodb://localhost/server2', {useNewUrlParser: true})
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })
@@ -27,6 +27,11 @@ const app_name = require('./package.json').name;
 const debug = require('debug')(`${app_name}:${path.basename(__filename).split('.')[0]}`);
 
 const app = express();
+
+app.use(cors({
+  credentials: true,
+  origin: ['http://localhost:3000']
+}));
 
 // Middleware Setup
 app.use(logger('dev'));
@@ -69,10 +74,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session())
 
-app.use(cors({
-  credentials: true,
-  origin: ['http://localhost:3000']
-}));
+
 
 
 module.exports = app;

@@ -51,6 +51,8 @@
   color: white
 }
 .btn-box{
-  position: flex;
+display: flex;
+flex-direction: row;
+margin: 0px
   
 }
