@@ -32,7 +32,7 @@ class AuthService {
     .then(response => response.data)
   }
 
-  addPicture(file) {
+  uploadPicture(file) {
     const formData = new FormData();
     formData.append("image", file)
     return this.service
