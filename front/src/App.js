@@ -17,7 +17,6 @@ class App extends React.Component {
   }
 
   getUser = (userObj) => {
-    console.log(userObj)
     this.setState({
       loggedInUser: userObj
     })
@@ -50,13 +49,16 @@ class App extends React.Component {
     this.fetchUser()
     if (this.state.loggedInUser) {
       return(
-        <React.Fragment>
+        <BrowserRouter>
           <div className="App">
-            <header className="App-header">              
-              <Profile {...this.state.loggedInUser} ></Profile>
+            <header className="App-header">
+              <Switch>
+                <Route exact path='/profile' render={() => <Profile {...this.state.loggedInUser} />} />
+                <Redirect from='/' to='/profile'/>
+              </Switch>
             </header>
           </div>
-        </React.Fragment>
+        </BrowserRouter>
       );
     }else{
       return(

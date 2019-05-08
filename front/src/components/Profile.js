@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import AuthService from './AuthService';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link, BrowserRouter } from 'react-router-dom';
 
 class Profile extends Component {
   constructor(props){
     super(props);
-    this.state = { username: '', campus: '' , course:'', image:'' };
+    this.state = { username: props.username, campus: props.campus , course:props.course, image:'' };
     this.service = new AuthService();
   }
 
@@ -20,21 +20,35 @@ class Profile extends Component {
   }
 
   handleImageSubmit = (event) => {
-    this.service.uploadPicture(this.state.image)
-      .then(()=>{
-        return <Redirect to='/' />
+      event.preventDefault();
+
+    this.service.uploadPicture(this.state)
+      .then((response)=>{
+          this.setState({
+              ...this.state,
+              image : response.userUpdated.image
+          })
       })
       .catch(()=>{
         return <Redirect to='/' />
       })
   }
 
-  handleChange = (event) => {  
+  handleChange = (event) => {
+
     const {name, value} = event.target;
     this.setState({[name]: value});
+
   }
 
+    handleChangeFile = (event) => {
+        const {name, files} = event.target;
+        this.setState({[name]: files});
+
+    }
+
   render() {
+      console.log(this.state);
     return (
       <div>
         <h3>Profile</h3>
@@ -45,10 +59,10 @@ class Profile extends Component {
         <p>Course</p>
         <p>{this.props.course}</p>
         <img src={this.props.image}></img>
-        <form onSubmit={this.handleFormSubmit}>
+        <form onSubmit={ e => this.handleImageSubmit(e)}>
           <fieldset>
             <label>Update picture</label>
-            <input type="file" name="image" value={this.state.image} onChange={ e => this.handleChange(e)} />
+            <input type="file" name="image"  onChange={ e => this.handleChangeFile(e)} />
             <input type="submit" value="Update image" ></input>
           </fieldset>
         </form>

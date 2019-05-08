@@ -23,10 +23,6 @@ router.get("/", ensureLoggedOut(), (req, res, next) => {
 const login = (req, user) => {
   return new Promise((resolve,reject) => {
     req.login(user, err => {
-      console.log('req.login ')
-      console.log(user)
-
-      
       if(err) {
         reject(new Error('Something went wrong'))
       }else{
@@ -126,9 +122,8 @@ router.post("/edit", ensureLoggedIn('/login'), (req, res, next) => {
 });
 
 
-router.post("/upload", ensureLoggedIn('/login'), uploadCloud.single('image') ,(req, res, next) =>{
+router.post("/upload", uploadCloud.single('image') ,(req, res, next) =>{
   if(req.user){
-
     User.findOneAndUpdate(
       { "username" : req.user.username }, 
       {$set:{image: req.file.url }} ,

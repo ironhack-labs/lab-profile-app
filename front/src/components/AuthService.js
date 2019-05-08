@@ -5,14 +5,13 @@ class AuthService {
   constructor() {
     this.service = axios.create({
       baseURL: 'http://localhost:5000/auth',
-      withCredentials: false
+      withCredentials: true
     });
   }
 
   signup = (username, password, campus, course) => {
     return this.service.post('/signup', {username, password, campus, course})
     .then(response => {
-      console.log(response.data);
       return response.data;
     })
   }
@@ -32,17 +31,21 @@ class AuthService {
     .then(response => response.data)
   }
 
-  uploadPicture(file) {
+  uploadPicture(props) {
     const formData = new FormData();
-    formData.append("image", file)
+    formData.append("username", props.username);
+    formData.append("image", props.image[0]);
     return this.service
       .post('/upload', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
       })
-      .then(res => res.data)
-      .catch(err=>{console.log(err) });
+      .then(response => response.data )
+      .catch(
+          err => err.data
+      )
+
   }
 
 }
