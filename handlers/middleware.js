@@ -1,0 +1,8 @@
+const hasAuth = (req, res, next) => {
+  if (!req.user)
+    return res.status(403).send({ message: 'User is not logged in.' });
+
+  next();
+};
+
+exports.hasAuth = hasAuth;

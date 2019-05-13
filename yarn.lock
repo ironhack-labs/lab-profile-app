@@ -436,6 +436,14 @@ cliui@^3.2.0:
     strip-ansi "^3.0.1"
     wrap-ansi "^2.0.0"
 
+cloudinary@^1.14.0:
+  version "1.14.0"
+  resolved "https://registry.yarnpkg.com/cloudinary/-/cloudinary-1.14.0.tgz#40f66d6b34169849ae98ca9e56bc99b2b26dd48f"
+  integrity sha512-auJY4aD1UGnQTD2iy6kuTA+FJsqyrr9svG12WYSPAO6oRGRf+16UFDDBNuRMm37wj8Tyn8LyiED0b+Jha36ORA==
+  dependencies:
+    lodash "^4.17.11"
+    q "^1.5.1"
+
 code-point-at@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/code-point-at/-/code-point-at-1.1.0.tgz#0d070b4d043a5bea33a2f1a40e2edb3d9a4ccf77"
@@ -2339,6 +2347,11 @@ punycode@^2.1.0:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-2.1.1.tgz#b58b010ac40c22c5657616c8d2c2c02c7bf479ec"
   integrity sha512-XRsRjdf+j5ml+y/6GKHPZbrF/8p2Yga0JPtdqTIY2Xe5ohJPD9saDJJLPvp9+NSBprVvevdXZybnj2cv8OEd0A==
+
+q@^1.5.1:
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/q/-/q-1.5.1.tgz#7e32f75b41381291d04611f1bf14109ac00651d7"
+  integrity sha1-fjL3W0E4EpHQRhHxvxQQmsAGUdc=
 
 qs@6.5.2, qs@~6.5.2:
   version "6.5.2"
