@@ -38,9 +38,15 @@ app.use(
   })
 )
 
-/* app.use(passport.initialized()); 
-app.use(passport.session()); */
+app.use(passport.initialized()); 
+app.use(passport.session());
 
+//CONFIGURACIÓN CORS:
+/* para la api */
+app.use(cors({
+  credentials: true,
+  origin: ['http://localhost:3000', 'http://localhost:3001']
+}))
 // Middleware Setup
 app.use(logger('dev'));
 app.use(bodyParser.json());
