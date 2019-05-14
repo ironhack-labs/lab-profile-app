@@ -20,6 +20,19 @@ class Profile extends Component {
       });
   }
 
+  handleFiles = ({ target: input }) => {
+    const file = input.files[0];
+
+    const body = new FormData();
+    body.append('image', file);
+
+    AuthService.upload(body)
+      .then(({ data: user }) => {
+        this.setState({ user });
+      })
+      .catch(({ response: { data } }) => console.log(data));
+  };
+
   handleLogout = () => {
     AuthService.logout();
     this.props.history.push('/');
@@ -27,6 +40,7 @@ class Profile extends Component {
 
   render() {
     const { user, message } = this.state;
+    const defaultAvatar = '/assets/avatar.png';
 
     if (!user) return <p className="notification is-danger">{message}</p>;
 
@@ -53,6 +67,25 @@ class Profile extends Component {
 
     const rightPanel = (
       <>
+        <div>
+          <img src={user.image ? user.image : defaultAvatar} alt={user.name} />
+          <div className="file">
+            <label className="file-label">
+              <input
+                type="file"
+                name="image"
+                onChange={this.handleFiles}
+                className="file-input"
+              />
+              <span className="file-cta">
+                <span className="file-icon">
+                  <i className="fas fa-upload" />
+                </span>
+                <span className="file-label">Update your profile picture</span>
+              </span>
+            </label>
+          </div>
+        </div>
         <div>
           <p>
             Lorem, ipsum dolor sit amet consectetur adipisicing elit.
