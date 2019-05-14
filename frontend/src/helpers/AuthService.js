@@ -7,37 +7,37 @@ class AuthService {
 
   signup = body => {
     const { url } = this;
-    const path = '/signup';
+    const path = '/auth/signup';
     return axios.post(`${url}${path}`, body);
   };
 
   login = body => {
     const { url } = this;
-    const path = '/login';
+    const path = '/auth/login';
     return axios.post(`${url}${path}`, body);
   };
 
   upload = body => {
     const { url } = this;
-    const path = '/upload';
+    const path = '/auth/upload';
     return axios.post(`${url}${path}`, body);
   };
 
   edit = body => {
     const { url } = this;
-    const path = '/edit';
+    const path = '/auth/edit';
     return axios.post(`${url}${path}`, body);
   };
 
   logout = () => {
     const { url } = this;
-    const path = '/logout';
+    const path = '/auth/logout';
     return axios.get(`${url}${path}`);
   };
 
   loggedin = () => {
     const { url } = this;
-    const path = '/loggedin';
+    const path = '/auth/loggedin';
     return axios.get(`${url}${path}`);
   };
 }

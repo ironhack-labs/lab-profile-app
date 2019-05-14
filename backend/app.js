@@ -8,6 +8,7 @@ const hbs = require('hbs');
 const mongoose = require('mongoose');
 const logger = require('morgan');
 const path = require('path');
+const cors = require('cors');
 
 const session = require('express-session');
 const passport = require('./handlers/passport');
@@ -30,6 +31,7 @@ const debug = require('debug')(
 
 const app = express();
 
+// Configure session
 app.use(
   session({
     secret: process.env.SECRET,
@@ -39,6 +41,14 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
+
+// Configure CORS
+app.use(
+  cors({
+    credentials: true,
+    origin: ['http://localhost:3000']
+  })
+);
 
 // Middleware Setup
 app.use(logger('dev'));
