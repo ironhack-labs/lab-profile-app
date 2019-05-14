@@ -69,9 +69,7 @@ class Login extends Component {
       <>
         <div>
           <h1 className="title">Hello</h1>
-          <h2 className="subtitle">
-            Awesome to have you at IronProfile again!
-          </h2>
+          <h2 className="subtitle">Welcome to IronProfile</h2>
         </div>
         <div>
           <p>
@@ -81,7 +79,7 @@ class Login extends Component {
           </p>
           <br />
           <button className="button is-block is-dark" onClick={this.submitForm}>
-            Log In
+            Create the Account
           </button>
         </div>
       </>
