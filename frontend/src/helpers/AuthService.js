@@ -2,43 +2,46 @@ import axios from 'axios';
 
 class AuthService {
   constructor(url) {
-    this.url = url;
+    this.service = axios.create({
+      baseURL: url,
+      withCredentials: true
+    });
   }
 
   signup = body => {
-    const { url } = this;
+    const { service } = this;
     const path = '/auth/signup';
-    return axios.post(`${url}${path}`, body);
+    return service.post(path, body);
   };
 
   login = body => {
-    const { url } = this;
+    const { service } = this;
     const path = '/auth/login';
-    return axios.post(`${url}${path}`, body);
+    return service.post(path, body);
   };
 
   upload = body => {
-    const { url } = this;
+    const { service } = this;
     const path = '/auth/upload';
-    return axios.post(`${url}${path}`, body);
+    return service.post(path, body);
   };
 
   edit = body => {
-    const { url } = this;
+    const { service } = this;
     const path = '/auth/edit';
-    return axios.post(`${url}${path}`, body);
+    return service.post(path, body);
   };
 
   logout = () => {
-    const { url } = this;
+    const { service } = this;
     const path = '/auth/logout';
-    return axios.get(`${url}${path}`);
+    return service.get(path);
   };
 
   loggedin = () => {
-    const { url } = this;
+    const { service } = this;
     const path = '/auth/loggedin';
-    return axios.get(`${url}${path}`);
+    return service.get(path);
   };
 }
 

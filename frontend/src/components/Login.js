@@ -7,7 +7,7 @@ import AuthService from '../helpers/AuthService';
 
 class Login extends Component {
   state = {
-    name: '',
+    username: '',
     password: '',
     message: null
   };
@@ -24,8 +24,13 @@ class Login extends Component {
     if (e) e.preventDefault();
 
     AuthService.login(this.state)
-      .then(user => console.log(user))
-      .catch(err => this.setState({ message: err.message }));
+      .then(({ data: user }) => {
+        localStorage.setItem('userId', user._id);
+        this.props.history.push('/profile');
+      })
+      .catch(({ response: { data } }) => {
+        this.setState({ message: data.message });
+      });
   };
 
   submitForm = () => {
@@ -33,7 +38,7 @@ class Login extends Component {
   };
 
   render() {
-    const { name, password, message } = this.state;
+    const { username, password, message } = this.state;
 
     const leftPanel = (
       <>
@@ -44,8 +49,8 @@ class Login extends Component {
             Name
             <input
               type="text"
-              name="name"
-              value={name}
+              name="username"
+              value={username}
               className="input"
               onChange={this.handleInput}
             />
