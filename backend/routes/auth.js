@@ -11,7 +11,7 @@ router.post('/signup', (req, res, next) => {
     const password = req.body.password
   
     if(!username || !password) {
-      res.status(40).json({
+      res.status(400).json({
         message: 'Plis provide username and password'
       })
       return;

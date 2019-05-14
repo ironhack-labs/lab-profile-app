@@ -10,7 +10,7 @@ const logger       = require('morgan');
 const path         = require('path');
 
 const session = require('express-session');
-/* const passport = require('./handlers/passport'); */
+const passport = require('./handlers/passport');
 const cors = require('cors');
 
 
@@ -38,7 +38,7 @@ app.use(
   })
 )
 
-app.use(passport.initialized()); 
+app.use(passport.initialize()); 
 app.use(passport.session());
 
 //CONFIGURACIÓN CORS:
