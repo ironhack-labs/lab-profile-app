@@ -7,4 +7,4 @@ passport.deserializeUser(User.deserializeUser())
 
 module.exports = passport
 
-/* programar passport?????  */
+/* programar/configurar passport?????  */

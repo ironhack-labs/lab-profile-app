@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const User = require('../models/User');
-const passport = require('../handlers/passport');
+const passport = require('passport');
 const {isLogged} = require('../handlers/middlewares');
 
 /* no hay get porque no renderizamos pags nuevas */
@@ -10,21 +10,21 @@ router.post('/signup', (req, res, next) => {
     const username = req.body.username
     const password = req.body.password
   
-    if(!username || !password) {
+    if(!username || !password) { /* este sirve */
       res.status(400).json({
         message: 'Plis provide username and password'
       })
-      return;
+    next()
     }
   
-    if(password.length < 3) {
+    if(password.length < 3) { /* funciona */
       res.status(400).json({
         message: 'Password too short, at least 3 characters'
       })
-      return
+    next()
     }
   
-    User.register(username, password)
+    User.register({...req.body}, password)
     .then(user => res.status(200).json(user))
     .then(err=> res.status(500).json(err))
   

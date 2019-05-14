@@ -7,7 +7,7 @@ const userSchema = new mongoose.Schema(
             type: String,
             unique: true
         },
-        password: String,
+        // password: String, NO SE NECESITA X LA CONFIG DE PASSPORT, YA HACE EL HASHEO
         campus: {
             type: String,
             enum: ['Madrid', 'Barcelona', 'Miami', 'Paris', 'Berlin', 'Amsterdam', 'México', 'Sao Paulo']
