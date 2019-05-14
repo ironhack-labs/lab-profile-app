@@ -5,6 +5,13 @@ const {isLogged} = require('../handlers/middlewares');
 
 /* no hay get porque no renderizamos pags nuevas */
 
+router.get('/edit/:id', isLogged, (req, res, next) => {
+    const {id} = req.params
+    User.findById(id)
+    .then(user => {res.status(200).json(user)})
+    .catch(err => res.status(500).json(err))
+})
+
 /* SIGNUP */
 router.post('/signup', (req, res, next) => {
     const username = req.body.username
@@ -67,7 +74,9 @@ router.post('/signup', (req, res, next) => {
   router.get('/logout', isLogged, (req, rex, next) => {
     /* logout es de passport */
     req.logout()
-    req.status(200).json({
+    res.status(200)
+    .clearCookie('connect.sid', {path: '/'}) /* para que no se guarde la sesión */
+    .json({
       message: 'Logged out'
     })
   
@@ -77,7 +86,7 @@ router.post('/signup', (req, res, next) => {
   req.session.destroy(err => {
       if(!err) {
         res.status(200)
-        .clearCookie('connect.sid', {path: '/'})
+        CLEAR COOKIE
         .json({
           message: 'Logged out'
         })

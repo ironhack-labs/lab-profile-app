@@ -48,6 +48,7 @@ app.use(
   credentials: true,
   origin: ['http://localhost:3000', 'http://localhost:3001']
 }))
+
 // Middleware Setup
 app.use(logger('dev'));
 app.use(bodyParser.json());
