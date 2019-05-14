@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 
 import CenteredBox from './CenteredBox';
 
+import AuthService from '../helpers/AuthService';
+
 class Signup extends Component {
   state = {
-    name: '',
+    username: '',
     password: '',
     campus: '',
     course: '',
@@ -22,7 +24,14 @@ class Signup extends Component {
   handleSubmit = e => {
     if (e) e.preventDefault();
 
-    console.log(this.state);
+    AuthService.signup(this.state)
+      .then(({ data: user }) => {
+        localStorage.setItem('userId', user._id);
+        this.props.history.push('/profile');
+      })
+      .catch(({ response: { data } }) => {
+        this.setState({ message: data.message });
+      });
   };
 
   submitForm = () => {
@@ -30,19 +39,19 @@ class Signup extends Component {
   };
 
   render() {
-    const { name, password, campus, course, message } = this.state;
+    const { username, password, campus, course, message } = this.state;
 
     const leftPanel = (
       <>
         <h1 className="title">Sign up</h1>
         <form onSubmit={this.handleSubmit}>
-          {message && <p className="notification is-danger">Error Message</p>}
+          {message && <p className="notification is-danger">{message}</p>}
           <label className="label">
-            Name
+            Username
             <input
               type="text"
-              name="name"
-              value={name}
+              name="username"
+              value={username}
               className="input"
               onChange={this.handleInput}
             />

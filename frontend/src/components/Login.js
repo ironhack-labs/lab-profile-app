@@ -46,7 +46,7 @@ class Login extends Component {
         <form onSubmit={this.handleSubmit}>
           {message && <p className="notification is-danger">{message}</p>}
           <label className="label">
-            Name
+            Username
             <input
               type="text"
               name="username"
