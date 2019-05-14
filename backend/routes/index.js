@@ -8,13 +8,41 @@ router.get('/', (req, res, next) => {
   res.render('index');
 });
 
-/* xq no get */
+/* no hay get porque no renderizamos pags nuevas */
 
 /* SIGNUP */
 router.post('/signup', (req, res, next) => {
-  User.register(req.body, req.body.password);
-  .then(user => res.status(200).json(user));
-  .then(err=> res.status(500).json(err));
+  const username = req.body.username
+  const password = req.body.password
+
+  if(!username || !password) {
+    res.status(40).json({
+      message: 'Plis provide username and password'
+    })
+    return;
+  }
+
+  if(password.length < 3){
+    res.status(400).json({
+      message: 'Password too shot, at least 3 characters'
+    })
+    return
+  }
+
+  User.register(username, password)
+  .then(user => res.status(200).json(user))
+  .then(err=> res.status(500).json(err))
+
+  req.login(User, (err) => {
+    if(err) {
+      res.status(500).json({
+        message: 'Loggin went bad'
+      })
+      return
+    }
+
+    res.status(200).json(User)
+  })
 })
 
 /* LOGIN */
@@ -33,10 +61,33 @@ passport.authenticate('local', (err, user, infoErr) => {
   })(req, res, next)
 })
 
+/* PROTECTION */
 router.post('/private', isLogged, (req, res, next) => {
   res.status(200).json({
     message:'private'
   })
+})
+
+/* LOGOUT */
+router.get('/logout', isLogged, (req, rex, next) => {
+  /* logout es de passport */
+  req.logout()
+  req.status(200).json({
+    message: 'Logged out'
+  })
+
+/*  
+ESTO LO VI POR AHÍ, NECESITO ENTENDER: 
+
+req.session.destroy(err => {
+    if(!err) {
+      res.status(200)
+      .clearCookie('connect.sid', {path: '/'})
+      .json({
+        message: 'Logged out'
+      })
+    }
+  }) */
 })
 
 module.exports = router;
