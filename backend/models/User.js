@@ -3,7 +3,10 @@ const PLM = require('passport-local-mongoose');
 
 const userSchema = new mongoose.Schema(
     {
-        username: String,
+        username: {
+            type: String,
+            unique: true
+        },
         password: String,
         campus: {
             type: String,
