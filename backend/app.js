@@ -10,7 +10,7 @@ const logger       = require('morgan');
 const path         = require('path');
 
 const session = require('express-session');
-const passport = require('./handlers/passport');
+/* const passport = require('./handlers/passport'); */
 const cors = require('cors');
 
 
@@ -28,14 +28,18 @@ const debug = require('debug')(`${app_name}:${path.basename(__filename).split('.
 
 const app = express();
 
-//configuración session
+//CONFIGURACIÓN SESSION:
 app.use(
   session({
-    secret: shhh,
+    secret: process.env.SECRET,
     saveUninitialized: true,
     resave: true,
+    cookie: {maxAge: 1000 * 60 * 60 * 24} //1 day
   })
 )
+
+/* app.use(passport.initialized()); 
+app.use(passport.session()); */
 
 // Middleware Setup
 app.use(logger('dev'));
@@ -45,7 +49,8 @@ app.use(cookieParser());
 
 // Express View engine setup
 
-app.use(require('node-sass-middleware')({
+app.use(
+  require('node-sass-middleware')({
   src:  path.join(__dirname, 'public'),
   dest: path.join(__dirname, 'public'),
   sourceMap: true
@@ -60,10 +65,10 @@ app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
 
 // default value for title local
-app.locals.title = 'Express - Generated with IronGenerator';
+app.locals.title = 'Lab Profile';
 
 
-
+//RUTAS DE PÁGINAS MÚLTIPLES?
 const index = require('./routes/index');
 app.use('/', index);
 
