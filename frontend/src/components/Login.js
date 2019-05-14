@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 
 import CenteredBox from './CenteredBox';
 
+import AuthService from '../helpers/AuthService';
+
 class Login extends Component {
   state = {
     name: '',
@@ -21,7 +23,9 @@ class Login extends Component {
   handleSubmit = e => {
     if (e) e.preventDefault();
 
-    console.log(this.state);
+    AuthService.login(this.state)
+      .then(user => console.log(user))
+      .catch(err => this.setState({ message: err.message }));
   };
 
   submitForm = () => {
@@ -35,7 +39,7 @@ class Login extends Component {
       <>
         <h1 className="title">Login</h1>
         <form onSubmit={this.handleSubmit}>
-          {message && <p className="notification is-danger">Error Message</p>}
+          {message && <p className="notification is-danger">{message}</p>}
           <label className="label">
             Name
             <input
@@ -79,7 +83,7 @@ class Login extends Component {
           </p>
           <br />
           <button className="button is-block is-dark" onClick={this.submitForm}>
-            Create the Account
+            Log in
           </button>
         </div>
       </>
