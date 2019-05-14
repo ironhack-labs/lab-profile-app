@@ -1,5 +1,5 @@
 const hasAuth = (req, res, next) => {
-  if (!req.user)
+  if (!req.isAuthenticated())
     return res.status(403).send({ message: 'User is not logged in.' });
 
   next();
