@@ -1,26 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+import { Switch, Route } from 'react-router-dom';
+import Signup from './components/signUp';
+import Login from './components/LogIn'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+
+  constructor(props){
+    super(props)
+    this.state = { loggedInUser: null };
+  }
+
+  getTheUser= (userObj) => {
+    this.setState({
+      loggedInUser: userObj
+    })
+  }
+
+  render() {
+    return (
+      
+      <div className="App">  
+        <div className="welcomeMsg">
+          <h1>IronProfile</h1>
+          <h3>Today we willcreate an app with authoritation, addingsome coo styles!</h3>
+        </div>  
+        <Signup />
+        <Login />       
+      </div>
+    );
+  }
 }
 
 export default App;

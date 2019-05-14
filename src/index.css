@@ -5,9 +5,21 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: aqua;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.welcomeMsg{
+  color: rgb(77, 168, 130);
+  width: 300px;
+}
+
+.formSignUP{
+  border: 1px solid red;
+  display: block;
+  
 }
