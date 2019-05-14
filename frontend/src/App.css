@@ -36,3 +36,16 @@ body {
   justify-content: space-evenly;
   padding: 50px;
 }
+
+.is-success {
+  background: #bfe2bd !important;
+  color: #414a46 !important;
+}
+
+.title {
+  color: #577759 !important;
+}
+
+.is-block {
+  width: 100%;
+}

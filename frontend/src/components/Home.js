@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 import CenteredBox from './CenteredBox';
 
 const Home = () => {
-  const h1 = (
+  const leftPanel = (
     <>
       <div>
-        <h1 className="title has-text-success">IronProfile</h1>
+        <h1 className="title">IronProfile</h1>
         <h2 className="subtitle">
           Today we will create an app with authorization, adding some cool
           styles.
@@ -25,7 +25,7 @@ const Home = () => {
     </>
   );
 
-  return <CenteredBox leftPanel={h1} />;
+  return <CenteredBox leftPanel={leftPanel} />;
 };
 
 export default Home;
