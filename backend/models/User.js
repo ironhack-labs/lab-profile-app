@@ -14,6 +14,10 @@ const userSchema = new mongoose.Schema(
             enum: ['WebDev', 'UX/UI', 'Data Analytics']
         },
         image: String
+    },
+    {
+        timestamps: true,
+        versionKey: false
     }
 )
 

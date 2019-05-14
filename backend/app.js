@@ -43,7 +43,8 @@ app.use(passport.session());
 
 //CONFIGURACIÓN CORS:
 /* para la api */
-app.use(cors({
+app.use(
+  cors({
   credentials: true,
   origin: ['http://localhost:3000', 'http://localhost:3001']
 }))
@@ -76,7 +77,9 @@ app.locals.title = 'Lab Profile';
 
 //RUTAS DE PÁGINAS MÚLTIPLES?
 const index = require('./routes/index');
-app.use('/', index);
+const auth = require('./routes/auth');
 
+app.use('/', index);
+app.use('/auth', auth);
 
 module.exports = app;
