@@ -4,7 +4,7 @@ import { Mycontext } from '../context'
 
 const Signup = () => (
   <Mycontext.Consumer>
-  {({ handleInput, handleSubmit, name, email, password, campus, course }) => {
+  {({ handleInput, handleSubmitSignup, form }) => {
     return (
       <Container className="mt-5">
         <Row>
@@ -15,18 +15,18 @@ const Signup = () => (
                 <Card.Text>
                   <Form>
                   <Form.Group>
-                      <Form.Control type="text" placeholder="Name" name="name" value={name} onChange={handleInput} />
+                      <Form.Control type="text" placeholder="Name" name="name" value={form.name} onChange={handleInput} />
                     </Form.Group>
 
                     <Form.Group>
-                      <Form.Control type="email" placeholder="Email" name="email" value={email} onChange={handleInput} />
+                      <Form.Control type="email" placeholder="Email" name="email" value={form.email} onChange={handleInput} />
                     </Form.Group>
 
                     <Form.Group>
-                      <Form.Control type="password" placeholder="Password" name="password" value={password} onChange={handleInput} />
+                      <Form.Control type="password" placeholder="Password" name="password" value={form.password} onChange={handleInput} />
                     </Form.Group>
 
-                    <select className="browser-default custom-select mb-3" name="campus" onChange={handleInput} value={campus}>
+                    <select className="browser-default custom-select mb-3" name="campus" onChange={handleInput} value={form.campus}>
                       <option>Campus</option>
                       <option value="Madrid">Madrid</option>
                       <option value="Barcelona">Barcelona</option>
@@ -38,7 +38,7 @@ const Signup = () => (
                       <option value="Sao Paulo">Sao Paulo</option>
                     </select>
 
-                    <select className="browser-default custom-select mb-3" onChange={handleInput} name="course" value={course}>
+                    <select className="browser-default custom-select mb-3" onChange={handleInput} name="course" value={form.course}>
                       <option>Course</option>
                       <option value="WebDev">WebDev</option>
                       <option value="UX/UI">UX/UI</option>
@@ -49,11 +49,11 @@ const Signup = () => (
               </Card.Body>
             </Card>
         </Col>
-        <Col sm={12} md={6}>
+        <Col sm={12} md={6} className="mb-5">
           <h2>Hello!</h2>
           <h3 className="mb-5">Welcome to IronProfile</h3>
           <p>If you signup, you agree with all our terms and conditions where we can do whatever we want with the data.</p>
-          <Button onClick={handleSubmit} variant="primary">Create an Account</Button>
+          <Button onClick={handleSubmitSignup} variant="primary">Create an Account</Button>
         </Col>
       </Row>
     </Container>

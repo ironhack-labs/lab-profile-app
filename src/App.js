@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Router from './Router';
+import RouterComponent from './RouterComponent';
 
 function App() {
   return (
-    <Router />      
+    <RouterComponent />      
   );
 }
 

@@ -10,7 +10,7 @@ const HomeContainer = () => (
         <Card.Header>IronProfile</Card.Header>
         <Card.Body>
           <Card.Text>
-            Today we will create an appa with authoritation, addin some cool styles!
+            Today we will create an app with authoritation, addin some cool styles!
           </Card.Text>
           <Link to="/signup">
             <Button className="mr-2" variant="primary">Sign up</Button>

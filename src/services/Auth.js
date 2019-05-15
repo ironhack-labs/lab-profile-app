@@ -19,28 +19,28 @@ class AuthService {
 
   login = form => {
     return this.service
-      .post('auth/login', form)
+      .post('/auth/login', form)
       .then(response => response)
-      .catch(err => ({ err: 'Password incorrect' }))
+      .catch(err => ({ err: 'Something went wrong on login' }))
   }
 
   edit = form => {
     return this.service
-      .post('auth/edit', form)
+      .post('/auth/edit', form)
       .then(response => response)
       .catch(err => err)
   }
 
   logout = () => {
     return this.service
-      .get('auth/logout')
+      .get('/auth/logout')
       .then(response => response)
-      .catch(err => err)
+      .catch(err => ({ err: 'Something went wrong on logout' }))
   }
 
   loggedin = () => {
     return this.service
-      .get('auth/loggedin')
+      .get('/auth/loggedin')
       .then(response => response)
       .catch(err => err)
   }

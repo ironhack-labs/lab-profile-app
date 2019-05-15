@@ -1,6 +1,7 @@
 import React, { createContext, Component } from 'react'
 import AuthService from '../services/Auth'
 import toastr from 'toastr'
+import history from "../components/history";
 
 export const Mycontext = createContext()
 
@@ -13,7 +14,8 @@ export default class MyProvider extends Component{
       email: '',
       password: '',
       campus: '',
-      course: ''
+      course: '',
+      photo: ''
     }
   }
 
@@ -23,26 +25,67 @@ export default class MyProvider extends Component{
     this.setState(form)
   }
 
-  handleSubmit = e => {
+  handleSubmitSignup = e => {
     service
       .signup(this.state.form)
       .then(response => {
         console.log(response)
         toastr.success('User has been created')
+        window.localStorage.setItem('loggedUser', JSON.stringify(response.data))
       })
       .catch(err => toastr.error('Something went wrong'))
+  }
+
+  handleSubmitLogin = e => {
+    service
+      .login(this.state.form)
+      .then(response => {
+        if(response.err) return toastr.error(response.err)
+        window.localStorage.setItem('loggedUser', JSON.stringify(response.data))
+        toastr.success('Login successful!')
+        history.push('/loggedin')
+      })
+      .catch(err => toastr.error('Something went wrong'))
+  }
+
+  handleLogout = e => {
+    service
+      .logout()
+      .then(response => {
+        window.localStorage.clear()
+        toastr.success('Logout successful!')
+        history.push('/')
+      })
+      .catch(err => toastr.error(err))
+  }
+
+  handleImageUpload = async e => {
+    const uploadData = new FormData()
+    uploadData.append('file', e.target.files[0])
+    uploadData.append('upload_preset', 'ironprofile')
+
+    const response = await fetch(
+      '', 
+      {
+        method: 'POST',
+        body: uploadData
+      })
+
+    const photo = await response.json()
+    
+    this.setState({
+      photo: photo.eager[0].url
+    })
   }
 
   render() {
     return(
       <Mycontext.Provider value={{
-        name: this.state.form.name,
-        email: this.state.form.email,
-        password: this.state.form.password,
-        campus: this.state.form.campus,
-        course: this.state.form.course,
+        form: this.state.form,
         handleInput: this.handleInput,
-        handleSubmit: this.handleSubmit
+        handleSubmitSignup: this.handleSubmitSignup,
+        handleSubmitLogin: this.handleSubmitLogin,
+        handleLogout: this.handleLogout
       }}>
         {this.props.children}
       </Mycontext.Provider>
