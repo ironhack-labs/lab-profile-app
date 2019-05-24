@@ -92,7 +92,7 @@ router.post("/edit", authUtils.verifyToken, (req, res, next) => {
       res.status(200).json({ message: "Edit successful" });
     })
     .catch(error => {
-      error.action = "Error while uploading image";
+      error.action = "Error while editing user";
       next(error);
     });
 });
