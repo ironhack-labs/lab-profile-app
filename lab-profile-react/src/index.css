@@ -72,3 +72,15 @@ h6 {
   background-color: #7faf7c;
   color: #fff;
 }
+
+.button-secondary {
+  background-color: #eeeeee;
+  color: #638165;
+  border: 1px solid transparent;
+  border-radius: 5px;
+}
+
+.button-secondary:hover {
+  background-color: #fff;
+  color: #3b4e3d;
+}
