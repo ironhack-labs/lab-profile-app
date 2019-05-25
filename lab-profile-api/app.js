@@ -8,6 +8,8 @@ const hbs = require("hbs");
 const mongoose = require("mongoose");
 const logger = require("morgan");
 const path = require("path");
+// traer cors
+const cors = require("cors");
 
 mongoose
   .connect(process.env.DB, { useNewUrlParser: true })
@@ -43,6 +45,12 @@ app.use(
     src: path.join(__dirname, "public"),
     dest: path.join(__dirname, "public"),
     sourceMap: true
+  })
+);
+
+app.use(
+  cors({
+    origin: ["http://localhost:3001"]
   })
 );
 

@@ -22,7 +22,7 @@ class Home extends Component {
               </Link>
             </div>
             <div className="uk-margin">
-              <Link to="/register">
+              <Link to="/login">
                 <button className="uk-button button-primary uk-width-1-2 uk-text-bold">
                   Log in
                 </button>
