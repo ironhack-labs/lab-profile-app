@@ -6,7 +6,7 @@ const ImageCard = props => (
     <div className="uk-inline">
       <img src={background} alt={background} />
       <div className="uk-overlay uk-position-cover">
-        <div className="uk-child-width-1-2 uk-grid-match" uk-grid="true">
+        <div className="uk-child-width-1-2" uk-grid="true">
           {props.children}
         </div>
       </div>

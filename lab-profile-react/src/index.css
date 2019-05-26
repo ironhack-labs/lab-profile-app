@@ -84,3 +84,13 @@ h6 {
   background-color: #fff;
   color: #3b4e3d;
 }
+
+/* UIkit overrides */
+
+.uk-link-muted a, a.uk-link-muted {
+  color: red;
+}
+
+a.uk-link-muted:hover {
+  color: rgb(104, 35, 35);
+}
