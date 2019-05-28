@@ -24,7 +24,7 @@ router.post("/signup", (req, res, next) => {
             return res
               .status(500)
               .json({ error, message: "Error while creating token" });
-          user = authUtils.cleanUser(user);
+          user = authUtils.cleanUser(user._doc);
           res.status(200).json({ user, token });
         }
       );
@@ -74,9 +74,10 @@ router.post(
   (req, res, next) => {
     const image = req.file.secure_url;
     const { _id } = req.user;
-    User.findByIdAndUpdate(_id, { $set: image }, { new: true })
+    User.findByIdAndUpdate(_id, { $set: { image } }, { new: true })
       .then(user => {
-        res.status(200).json({ message: "Upload successful" });
+        user = authUtils.cleanUser(user._doc);
+        res.status(200).json({ user });
       })
       .catch(error => {
         error.action = "Error while uploading image";
@@ -85,18 +86,32 @@ router.post(
   }
 );
 
-router.post("/edit", authUtils.verifyToken, (req, res, next) => {
-  const { _id } = req.user;
-  // here's not necessary to use form $set: {} because req.body is already an object
-  User.findByIdAndUpdate({ _id }, { $set: req.body }, { new: true })
-    .then(user => {
-      res.status(200).json({ message: "Edit successful" });
-    })
-    .catch(error => {
-      error.action = "Error while editing user";
-      next(error);
-    });
-});
+router.post(
+  "/edit",
+  authUtils.verifyToken,
+  uploader.single("image"),
+  (req, res, next) => {
+    // If a file is present
+    let user = {
+      ...req.body
+    };
+
+    if (req.file) {
+      user.image = req.file.secure_url;
+    }
+
+    const { _id } = req.user;
+    User.findByIdAndUpdate({ _id }, { $set: { ...user } }, { new: true })
+      .then(user => {
+        user = authUtils.cleanUser(user._doc);
+        res.status(200).json({ user });
+      })
+      .catch(error => {
+        error.action = "Error while editing user";
+        next(error);
+      });
+  }
+);
 
 router.get("/loggedin", authUtils.verifyToken, (req, res) => {
   res.status(200).json({ message: "User login still valid" });

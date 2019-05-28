@@ -55,6 +55,7 @@ class AuthFormContainer extends Component {
       })
       .catch(error => {
         console.log(error);
+        return notification(error.message);
       });
   };
 
@@ -76,6 +77,7 @@ class AuthFormContainer extends Component {
       })
       .catch(error => {
         console.log(error);
+        return notification(error.message);
       });
   };
 

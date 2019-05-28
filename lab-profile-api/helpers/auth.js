@@ -16,10 +16,7 @@ exports.verifyToken = (req, res, next) => {
 };
 
 exports.cleanUser = user => {
-  return {
-    _id: user._id,
-    username: user.username,
-    campus: user.campus,
-    course: user.course
-  };
+  // destructuring user to return a new object with only the required properties
+  const { password, __v, ...cleanedUser } = user;
+  return cleanedUser;
 };

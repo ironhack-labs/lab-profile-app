@@ -36,7 +36,7 @@ export const upload = image => {
           "content-type": "multipart/form-data"
         }
       })
-      .then(res => res.data.todo)
+      .then(res => res.data)
       .catch(error => {
         throw error.response.data;
       })
@@ -45,7 +45,11 @@ export const upload = image => {
 
 export const edit = profile => {
   return axios
-    .post(`${base_url}/auth/edit`, profile)
+    .post(`${base_url}/auth/edit`, profile, {
+      headers: {
+        "content-type": "multipart/form-data"
+      }
+    })
     .then(res => res.data)
     .catch(error => {
       throw error.response.data;
@@ -57,6 +61,7 @@ export const loggedin = () => {
     .get(`${base_url}/auth/loggedin`)
     .then(res => res.data)
     .catch(error => {
+      console.log(error);
       throw error.response.data;
     });
 };

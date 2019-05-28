@@ -85,12 +85,21 @@ h6 {
   color: #3b4e3d;
 }
 
-/* UIkit overrides */
-
-.uk-link-muted a, a.uk-link-muted {
-  color: red;
+.imageProfile{
+  width: 200px;
+  height: 200px;
 }
 
-a.uk-link-muted:hover {
+.logoutLink{
   color: rgb(104, 35, 35);
+}
+
+.logoutLink:hover{
+  color: #D0021B;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.small-padding-left{
+  padding-left: 40px;
 }
