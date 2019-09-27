@@ -91,7 +91,7 @@ On the profile route, the user should be able to upload a photo to the profile. 
 
 ![image](https://user-images.githubusercontent.com/23629340/43787903-6a370928-9a6c-11e8-89b1-15e86e0397e4.png)
 
-### Iteration 5 - Styling your App
+### Iteration 6 - Styling your App
 
 Feel free to style it how ever you want. :art:
 Or you can use `.png` inside of the `assets` folder that you can use as a background image. Don't forget to copy the image inside public folder of your React app. Here you can check the colors:
