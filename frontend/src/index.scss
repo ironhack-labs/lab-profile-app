@@ -1,6 +1,8 @@
-@import "node_modules/bulmaswatch/minty/bulmaswatch";
+$primary: #c1dfc4;
 
-$primary: #638165;
+$noblack: #111222;
+
+@import "node_modules/bulmaswatch/minty/bulmaswatch";
 
 html {
   font-size: 20px;
@@ -12,6 +14,7 @@ body {
   margin: 0;
   font-family: BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
     "Helvetica Neue", sans-serif;
+  color: $noblack;
 }
 
 code {
@@ -20,10 +23,13 @@ code {
 
 .iron {
   &Box {
+    background-color: transparent;
     background-image: url("/oval-bg.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    border-radius: 10px;
+    box-shadow: 0 0 0;
     border: none;
     height: 600px;
   }
@@ -36,6 +42,20 @@ code {
 
   &-cover {
     padding: 80px;
+    
+    .label {
+      font-weight: normal;
+      color: grey;
+    }
+
+    .button {
+      background-color: #fafafa;
+      color: $noblack;
+      font-weight: bold;
+      &:hover {
+        background-color: #638165;
+      }
+    }
   }
 
   &Home {
@@ -50,9 +70,90 @@ code {
       align-items: flex-start;
       margin-left: 4%;
 
-    .button {
-        width: 50%;
+      .button.is-primary {
+        background-color: $primary;
+        width: 68%;
+        color: $noblack;
+        font-weight: bold;
+
+        &:hover {
+          background-color: #638165;
+          color: #fafafa;
+        }
       }
     }
+  }
+
+  &Forms {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+
+    &-buttons {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+
+      .button {
+        width: 68%;
+        color: $noblack;
+        font-weight: bold;
+      }
+    }
+  }
+
+  &Input {
+    background-color: #f2f2f2;
+    border: none;
+    border-radius: 2px;
+    font-size: 16px;
+    width: 68%;
+  }
+
+  &Select {
+    background-color: #f2f2f2;
+    border: none;
+    border-radius: 2px;
+    width: 68%;
+    &:not(.is-multiple):not(.is-loading)::after,
+    .navbar-link:not(.is-arrowless)::after {
+      display: none;
+    }
+    
+    &:not(.is-multiple) {
+      height: 40px;
+      font-size: 16px;
+    }
+
+    select {
+      background-color: transparent;
+      border: none;
+      height: 100%;
+      width: 100%;
+      padding: 0;
+      padding-left: 16px;
+    }
+  }
+
+  &-between {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  &User{
+    background-color: #fafafa;
+    background-image: url('/avatar.png');
+    background-position: center -19px;
+    background-size: cover;
+    //filter: grayscale(100%);
+    margin: auto;
+    color: grey;
+    border-radius: 100%;
+    height: 224px;
+    width: 224px;
+    display: block;
   }
 }
