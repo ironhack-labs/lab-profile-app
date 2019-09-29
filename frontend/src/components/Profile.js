@@ -26,7 +26,7 @@ class Profile extends Component {
           <p className="mesaage is-success"></p>
           <form className="columns iron-height100" onSubmit={this.onSubmit}>
             <div className="column is-7 iron-cover ironHome">
-              <h1 className="title is-2">Log in</h1>
+              <h1 className="title is-2">Profile</h1>
               <div className="field">
                 <label className="label">Name:</label>
                 <p>{ user.username }</p>

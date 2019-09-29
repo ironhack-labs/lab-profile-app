@@ -21,6 +21,10 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
+h1.title{
+ color: #638165;
+}
+
 .iron {
   &Box {
     background-color: transparent;
@@ -32,6 +36,16 @@ code {
     box-shadow: 0 0 0;
     border: none;
     height: 600px;
+
+    .button.is-danger {
+      background-color: transparent;
+      color: tomato;
+      font-weight: bold;
+      &:hover {
+        background-color: tomato;
+        color: #fafafa;
+      }
+    }
   }
   &Section {
     height: 100vh;
