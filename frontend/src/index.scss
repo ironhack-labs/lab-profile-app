@@ -1,5 +1,11 @@
 @import "node_modules/bulmaswatch/minty/bulmaswatch";
 
+$primary: #638165;
+
+html {
+  font-size: 20px;
+}
+
 body {
   background: rgb(193, 223, 196);
   background: linear-gradient(90deg, rgba(193, 223, 196, 1) 0%, rgba(222, 236, 221, 1) 100%);
@@ -19,8 +25,34 @@ code {
     background-position: center;
     background-repeat: no-repeat;
     border: none;
+    height: 600px;
   }
   &Section {
     height: 100vh;
+  }
+  &-height100 {
+    height: 100%;
+  }
+
+  &-cover {
+    padding: 80px;
+  }
+
+  &Home {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+
+    &-buttons {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: flex-start;
+      margin-left: 4%;
+
+    .button {
+        width: 50%;
+      }
+    }
   }
 }

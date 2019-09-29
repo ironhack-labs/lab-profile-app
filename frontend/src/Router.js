@@ -6,7 +6,7 @@ import Login from './components/Login';
 import Profile from './components/Profile';
 
 const Router = () => (
-  <section className="section">
+  <section className="section ironSection">
     <div className="container">
     <BrowserRouter>
     <Switch>
