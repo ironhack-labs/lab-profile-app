@@ -35,7 +35,7 @@ export default class Profile extends Component {
   render() {
     const user = this.state
     return (
-      <div style={{display: 'flex', margin: '20%', width: '70vw', height: '60vh', flexDirection: 'column', backgroundImage: 'url("/image/oval-bg.png")', backgroundSize: 'cover'}}>
+      <div style={{display: 'flex', marginLeft: '10%', marginTop: '10%', width: '70vw', height: '60vh', flexDirection: 'column', backgroundImage: 'url("/image/oval-bg.png")', backgroundSize: 'cover'}}>
       <Button type="danger" style={{width: '10vw', float: 'left'}} onClick={this.logout}>Log out</Button>
        <div style={{marginTop: '15vh', marginLeft: '10vw'}}>
        <h2>Username:</h2>

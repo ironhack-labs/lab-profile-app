@@ -30,7 +30,7 @@ export default class ProfileEdit extends React.Component {
         .then(res=> console.log(res))
         .catch(e => console.log(e));
     }
-    this.props.history.push('/profile')
+    this.props.history.push('/login')
   };
 
 
@@ -92,6 +92,7 @@ export default class ProfileEdit extends React.Component {
             </Form.Item>
             <Form.Item>
            <Button style={{width: '20vw'}}  type="button" onClick={this.onSubmit}  value="Confirm">Confirm</Button>
+           <br></br><small><b>You have to log in again, with your updated info</b> </small>
             </Form.Item>
             
           </Form>
