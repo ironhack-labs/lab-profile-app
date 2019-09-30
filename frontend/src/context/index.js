@@ -19,7 +19,6 @@ class MyProvider extends Component {
         this.setState({ loggedUser: null });
       })
       .catch((err) => console.log(err));
-    this.props.history.push('/login')
   };
 
   render() {

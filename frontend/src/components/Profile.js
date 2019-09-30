@@ -13,7 +13,6 @@ export default class Profile extends Component {
       <div>
         <h1>Profile</h1>
         <button onClick={this.context.logOut}>Log out</button>
-        <Link to="/edit"> <Button type="submit" value="edit">Edit</Button></Link>
       </div>
     );
   }
