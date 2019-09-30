@@ -13,7 +13,7 @@ export default class Profile extends Component {
     return (
       <Container>
         <h1>Your Profile</h1>
-        <h2>{this.props.user.username}</h2>
+        {/* <h2>{this.props.user.username}</h2> */}
       </Container>
     );
   }
