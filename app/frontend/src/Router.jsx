@@ -4,6 +4,7 @@ import Home from './pages/Home'
 import Signup from './pages/Signup'
 import Login from './pages/Login'
 import Profile from './pages/Profile'
+import NotFound from './pages/NotFound'
 
 const Router = () => {
   return (
@@ -13,6 +14,7 @@ const Router = () => {
         <Route exact path='/signup' component={Signup} />
         <Route exact path='/login' component={Login} />
         <Route exact path='/profile' component={Profile} />
+        <Route component={NotFound} />
       </Switch>
     </BrowserRouter>
   )
