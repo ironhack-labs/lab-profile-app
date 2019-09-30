@@ -1,0 +1,80 @@
+.App {
+  text-align: center;
+}
+
+#main{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('/oval-bg.png');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.row{
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.col{
+  width: 20%;
+  margin: 0 80px;
+}
+
+.titles{
+  margin-top: 0 !important;
+  margin-bottom: 40px !important;
+
+}
+
+h2{
+  color: #c0e3be;
+  font-weight: bold;
+}
+
+#buttons{
+  display:flex;
+  align-items: center;
+  flex-direction: column;
+  height: 50%;
+}
+
+#buttons>a>button{
+  width: 200px;
+  margin: 10px 0;
+  background: #C0E3BE;
+}
+
+#signup{
+  margin-right: 25%;
+}
+
+.form-items{
+  margin:0;
+}
+
+.submit-button{
+  margin-top: 30px !important;
+}
+
+small{
+  line-height: 0em !important;
+}
+
+.single-col{
+   width: 20%; 
+   margin-right: 25%;
+}
+
+.links{
+  text-align: center;
+  color:red;
+  font-size: 0.9em;
+  margin:0 auto;
+  align-items: center;
+}
