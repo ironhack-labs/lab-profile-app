@@ -4,6 +4,7 @@ import HomeContainer from './components/home/HomeContainer';
 import SignupContainer from './components/signup/SignupContainer';
 import LoginContainer from './components/login/LoginContainer';
 import ProfileContainer from './components/profile/ProfileContainer';
+import EditContainer from './components/edit/EditContainer';
 
 const Router = () => (
   <BrowserRouter>
@@ -12,6 +13,7 @@ const Router = () => (
       <Route exact path="/signup" component={SignupContainer} />
       <Route exact path="/login" component={LoginContainer} />
       <Route exact path="/profile" component={ProfileContainer} />
+      <Route exact path="/edit" component={EditContainer} />
     </Switch>
   </BrowserRouter>
 );

@@ -5,6 +5,11 @@ export const MyContext = createContext();
 
 export default class MyProvider extends Component {
     state = {
+        user:{
+            username: 'Juan',
+            campus: '',
+            course: ''
+        },
         loggedUser: null
     }
 

@@ -16,6 +16,7 @@ export default class ProfileContainer extends Component {
                 <div className="gral-container-wrapper">
                     <div className="gral-container">
                         <h1>Profile</h1>
+                        <p>{this.context.state.user.username}</p>
                         <button onClick={this.context.logOut}>Log out</button>
                     </div>
                 </div>

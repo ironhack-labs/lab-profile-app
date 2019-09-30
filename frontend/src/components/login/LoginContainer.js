@@ -38,7 +38,7 @@ class LoginContainer extends Component {
                         <form onSubmit={this.onSubmit}>
                             <input type="text" name="username" placeholder="Username" onChange={this.handleInput}/>
                             <input type="password" name="password" placeholder="Password" onChange={this.handleInput}/>
-                            <input type="submit" value="signup"/>
+                            <input type="submit" value="login"/>
                         </form>
                     </div>
                 </div>
