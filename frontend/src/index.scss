@@ -1,0 +1,37 @@
+@import "node_modules/bulmaswatch/default/bulmaswatch";
+
+body {
+  background: rgb(193,223,196);
+  background: linear-gradient(90deg, rgba(193,223,196,1) 0%, rgba(222,236,221,1) 100%);
+  margin: 0;
+}
+
+.titles-color{
+    color: #93A44D;
+    font-weight: bold;
+}
+
+.main-wrapper {
+  height: 700px;
+  background-image: url("https://i.ibb.co/Tb4QJzS/oval-bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.Home-buttons{
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.button{
+ margin-top: 20px;
+ width: 120px
+}
+
+.jeit {
+    height: 100vh;
+}
