@@ -1,0 +1,42 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
+    'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(to right, #b2d1b5 0%, #e9f2e9 100%);
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+.container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  width: 70%;
+  height: 65%;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 10px;
+  background-image: url(./public/assets/oval-bg.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-sizing: content-box;
+}
+
+.home {
+  padding: 30px;
+  width: 50%;
+}
+
+.ant-btn-primary {
+  background-color: #c0e3be;
+}
