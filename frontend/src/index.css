@@ -1,0 +1,37 @@
+body{
+  background: #DEECDD;
+  height: 100vh;
+}
+.card{
+  background-image: url('/oval-bg.png');
+  background-size: cover;
+  padding: 5%;
+  width:60vw;
+  background-color: none;
+  border-radius: 5px;
+  padding-top: 3%;
+  height:70vh;
+}
+.main-box{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 5% ;
+}
+.info-section, .home-box{
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  height: 60vh;
+}
+p{
+  font-size: 12px;
+}
+.img-profile{
+  display: block;
+  margin: 0 auto;
+}
+.home-box button{
+  background: #C1DFC4;
+  margin-top:10px;
+}
