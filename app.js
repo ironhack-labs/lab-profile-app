@@ -7,6 +7,8 @@ const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const serveFavicon = require("serve-favicon");
 
+const cors = require("cors");
+
 const expressSession = require("express-session");
 const MongoStore = require("connect-mongo")(expressSession);
 const mongoose = require("mongoose");
@@ -35,6 +37,8 @@ app.use(
     })
   })
 );
+
+app.use(cors());
 
 app.use(deserializeUserMiddleware);
 

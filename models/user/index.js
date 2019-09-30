@@ -10,11 +10,6 @@ const schema = new mongoose.Schema({
     trim: true,
     unique: true
   },
-  name: {
-    type: String,
-    required: false,
-    trim: true
-  },
   passwordHash: {
     type: String,
     required: true
@@ -45,11 +40,9 @@ const schema = new mongoose.Schema({
 
 const signInStatic = require("./statics/sign-in");
 const signUpStatic = require("./statics/sign-up");
-const findByEmailStatic = require("./statics/find-by-email");
 
 schema.statics.signIn = signInStatic;
 schema.statics.signUp = signUpStatic;
-schema.statics.findByEmail = findByEmailStatic;
 
 const User = mongoose.model("User", schema);
 
