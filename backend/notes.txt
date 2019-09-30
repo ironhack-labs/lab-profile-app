@@ -1,0 +1,1 @@
+OJO: app.js se requiere la palabra secreta : secret: (process.env.SECRET) ????
