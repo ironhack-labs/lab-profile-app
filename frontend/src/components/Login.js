@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Input, Form, Button } from 'antd';
+import { Card, Input, Form } from 'antd';
 import { Link } from 'react-router-dom'
 import AUTH_SERVICE from '../services/authService';
 import { MyContext } from '../context';
@@ -21,7 +21,7 @@ class Login extends Component {
         AUTH_SERVICE.login(this.state.user)
             .then((response) => {
                 this.context.logUser(response.data.user);
-                this.props.history.push('/');
+                this.props.history.push('/auth/profile');
             })
             .catch((error) => {
                 console.log(error);
@@ -47,7 +47,7 @@ class Login extends Component {
                     backgroundImage: 'url(../oval-bg.png)',
                     backgroundSize: 'cover'
                 }}>
-                    <Form onSubmit={this.onSubmit}>
+                    <Form onSubmit={this.onSubmit} style={{ width: '40vw' }}>
                         <Form.Item>
                             <Input onChange={this.handleInput} type="text" name="username" placeholder="username" />
                         </Form.Item>
@@ -61,8 +61,8 @@ class Login extends Component {
                         </Form.Item>
                         <Form.Item>
                             <Input type="submit" value="Login" />
-                            <Link to="/signup">
-                                <Button type="link">Haven't an account, Signup</Button>
+                            <Link to="/auth/signup">
+                                Haven't an account, Signup
                             </Link>
                         </Form.Item>
                     </Form>

@@ -14,16 +14,18 @@ export default function HomePage() {
                 height: '100vh',
                 backgroundColor: '#e5fbed'
             }}>
-            <Card title="Auth Page" style={{
+            <Card title="Iron Profile" style={{
                 width: '80vw',
                 height: '80vh',
                 backgroundImage: 'url(../oval-bg.png)',
-                backgroundSize: 'cover'
+                backgroundSize: 'cover',
+                color: '#e5fbed'
             }}>
-                <Link to="/signup">
+                <h3 style={{ width: '40vw' }}>Today we will create an app with authentication, adding some cool styles!</h3>
+                <Link to="/auth/signup">
                     <Button type="primary">Sign up</Button>
                 </Link>
-                <Link to='/login'>
+                <Link to='/auth/login'>
                     <Button>Log in</Button>
                 </Link>
             </Card>
