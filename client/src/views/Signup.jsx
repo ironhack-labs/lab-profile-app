@@ -3,6 +3,8 @@ import React, { Component } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
+import "../App.css";
+
 import { signUp as signUpService } from "../services/authentication-api";
 
 export default class SignUp extends Component {
@@ -38,7 +40,7 @@ export default class SignUp extends Component {
 
   render() {
     return (
-      <div>
+      <div class="above">
         <Form onSubmit={this.signUp}>
           <Form.Group>
             <Form.Label htmlFor="sign-up-email">Email</Form.Label>

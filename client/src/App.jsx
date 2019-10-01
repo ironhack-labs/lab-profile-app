@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from "react";
 
 import "./App.css";
+import logo from "./oval-bg.png";
 
 import {
   BrowserRouter as Router,
@@ -85,41 +86,46 @@ export default class App extends Component {
   render() {
     return (
       <div className="App">
-        <Router>
-          <Container>
-            <BlogNavbar user={this.state.user} signOut={this.signOut} />
-            <Switch>
-              <Route path="/" exact component={Home} />
-              {/* <ProtectedRoute
+        <img src={logo} alt="Logo" />
+        <div class="bk">
+          <Router>
+            <Container>
+              <BlogNavbar user={this.state.user} signOut={this.signOut} />
+              <Switch>
+                {/* <img src={logo} alt="Logo" /> */}
+                <Route path="/" exact component={Home} />
+                {/* <ProtectedRoute
                 path="/post/create"
                 component={CreateView}
                 verify={this.verifyAuthenticated}
               /> */}
-              {/* <ProtectedRoute
+                {/* <ProtectedRoute
                 path="/post/:id/edit"
                 component={EditView}
                 verify={this.verifyAuthenticated}
               /> */}
-              {/* <Route path="/post/:id" exact component={PostView} /> */}
-              <ProtectedRoute
-                path="/signup"
-                verify={this.verifyUnauthenticated}
-                render={props => (
-                  <SignUp {...props} exact loadUser={this.loadUser} />
-                )}
-              />
-              <ProtectedRoute
-                path="/signin"
-                verify={this.verifyUnauthenticated}
-                render={props => (
-                  <SignIn {...props} exact loadUser={this.loadUser} />
-                )}
-              />
-              {/* <Route path="/error/:code" component={ErrorView} />
+                {/* asd */}
+                {/* <Route path="/post/:id" exact component={PostView} /> */}
+                <ProtectedRoute
+                  path="/signup"
+                  verify={this.verifyUnauthenticated}
+                  render={props => (
+                    <SignUp {...props} exact loadUser={this.loadUser} />
+                  )}
+                />
+                <ProtectedRoute
+                  path="/signin"
+                  verify={this.verifyUnauthenticated}
+                  render={props => (
+                    <SignIn {...props} exact loadUser={this.loadUser} />
+                  )}
+                />
+                {/* <Route path="/error/:code" component={ErrorView} />
               <Redirect path="/" to="/error/404" /> */}
-            </Switch>
-          </Container>
-        </Router>
+              </Switch>
+            </Container>
+          </Router>
+        </div>
       </div>
     );
   }
