@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const authenticationApi = axios.create({
-  baseURL: "http://localhost:5000/api/auth"
+  baseURL: "/api/auth"
 });
 
 export const signUp = ({ username, password, campus, course }) => {

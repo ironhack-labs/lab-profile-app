@@ -49,3 +49,22 @@ exports.upload = (req, res, next) => {
   const { image } = req.body;
   // TODO: FINISH THIS, ADD /AUTH/EDIT CONTROLLER
 };
+
+exports.edit = (req, res, next) => {
+  const { username, campus, course } = req.body;
+  User.findByIdAndUpdate(
+    req.user._id,
+    { username, campus, course },
+    { new: true }
+  )
+    .then(user => {
+      if (!user) {
+        next(new Error("USER_NOT_FOUND"));
+        return;
+      }
+      res.json({ user });
+    })
+    .catch(error => {
+      console.log(error);
+    });
+};

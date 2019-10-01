@@ -24,11 +24,11 @@ export default class LogIn extends Component {
 
   signIn = event => {
     event.preventDefault();
-    const { email, password } = this.state;
-    signInService({ email, password })
+    const { username, password } = this.state;
+    signInService({ username, password })
       .then(user => {
         this.props.loadUser(user);
-        this.props.history.push("/");
+        this.props.history.push("/profile");
       })
       .catch(error => {
         console.log(error);

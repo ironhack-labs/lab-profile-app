@@ -31,7 +31,7 @@ export default class SignUp extends Component {
     signUpService({ username, password, campus, course })
       .then(user => {
         this.props.loadUser(user);
-        this.props.history.push("/");
+        this.props.history.push("/profile");
       })
       .catch(error => {
         console.log(error);

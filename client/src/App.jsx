@@ -10,6 +10,9 @@ import CatchAllView from "./views/CatchAll";
 
 import LoginView from "./views/LogIn";
 import SignupView from "./views/SignUp";
+import ProfileView from "./views/Profile";
+
+import Navbar from "./components/NavBar";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import {
@@ -64,10 +67,30 @@ export default class App extends Component {
     return (
       <div className="App">
         <Router>
+          <Navbar signOut={this.signOut} user={this.state.user} />
           <Switch>
             <Route path="/" exact component={HomeView} />
-            <Route path="/login" exact component={LoginView} />
-            <Route path="/signup" exact component={SignupView} />
+            <Route
+              path="/login"
+              exact
+              render={props => (
+                <LoginView {...props} loadUser={this.loadUser} />
+              )}
+            />
+            <Route
+              path="/signup"
+              exact
+              render={props => (
+                <SignupView {...props} loadUser={this.loadUser} />
+              )}
+            />
+            <Route
+              path="/profile"
+              exact
+              render={props => (
+                <ProfileView {...props} user={this.state.user} />
+              )}
+            />
             <Route path="/error/:code" component={ErrorView} />
             <Route path="/" component={CatchAllView} />
           </Switch>
