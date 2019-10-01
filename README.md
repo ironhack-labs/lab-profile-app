@@ -71,7 +71,7 @@ You should create an `authService` file, where you will have all the methods to 
 - **login** that makes a POST request to the `auth/login` route passing *username* and *password*,
 - **upload** that makes a POST request to the `auth/upload` route passing the *file*,
 - **edit** that makes a POST request to the `auth/edit` route passing *username*, *campus* and *course*,
-- **logout** that makes a GET request to the `auth/logout` route to destroy user session,
+- **logout** that makes a POST request to the `auth/logout` route to destroy user session,
 - **loggedin** that makes a GET request to the `auth/loggedin` route to check if a user is logged in.
 
 
