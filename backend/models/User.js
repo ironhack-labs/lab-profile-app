@@ -9,7 +9,7 @@ const userSchema = new Schema(
   },
   campus: {
     type: String,
-    enum: ['Madrid', 'Barcelona', 'Miami', 'Berlin', 'Amsterdam', 'Mexico', 'Sao']
+    enum: ['Madrid', 'Barcelona', 'Miami', 'Paris', 'Berlin', 'Amsterdam', 'Mexico', 'Sao']
   },
   course: {
     type: String,

@@ -1,13 +1,10 @@
-.bg {
-  /* The image used */
-  background-image: url('/assets/oval-bg.png');
+* {
+  margin: 0;
+  padding: 0;
+}
 
-  /* Full height */
-  height: 100%;
-
-  /* Center and scale the image nicely */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  padding: 50px;
+.labelstyle {
+  font-size: 1rem;
+  color: #bdbdbb;
+  padding: 0
 }
