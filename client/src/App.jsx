@@ -14,10 +14,11 @@ import BlogNavbar from "./components/BlogNavbar";
 
 // import ListView from "./views/List";
 //import CreateView from "./views/Create";
-import PostView from "./views/Post";
+//import PostView from "./views/Post";
 // import EditView from "./views/Edit";
-import SignIn from "./views/SignIn";
-import SignUp from "./views/SignUp";
+import SignIn from "./views/Signin";
+import SignUp from "./views/Signup";
+import Home from "./views/Home";
 import ErrorView from "./views/Error";
 import CatchAll from "./views/CatchAll";
 
@@ -88,7 +89,7 @@ export default class App extends Component {
           <Container>
             <BlogNavbar user={this.state.user} signOut={this.signOut} />
             <Switch>
-              <Route path="/" exact component={ListView} />
+              <Route path="/" exact component={Home} />
               {/* <ProtectedRoute
                 path="/post/create"
                 component={CreateView}
@@ -99,23 +100,23 @@ export default class App extends Component {
                 component={EditView}
                 verify={this.verifyAuthenticated}
               /> */}
-              <Route path="/post/:id" exact component={PostView} />
+              {/* <Route path="/post/:id" exact component={PostView} /> */}
               <ProtectedRoute
-                path="/sign-up"
+                path="/signup"
                 verify={this.verifyUnauthenticated}
                 render={props => (
                   <SignUp {...props} exact loadUser={this.loadUser} />
                 )}
               />
               <ProtectedRoute
-                path="/sign-in"
+                path="/signin"
                 verify={this.verifyUnauthenticated}
                 render={props => (
                   <SignIn {...props} exact loadUser={this.loadUser} />
                 )}
               />
-              <Route path="/error/:code" component={ErrorView} />
-              <Redirect path="/" to="/error/404" />
+              {/* <Route path="/error/:code" component={ErrorView} />
+              <Redirect path="/" to="/error/404" /> */}
             </Switch>
           </Container>
         </Router>
