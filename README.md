@@ -45,7 +45,7 @@ The app will need the following routes:
 | POST    | `/auth/signup`    | username, password, campus, course  | User created |  
 | POST    | `/auth/upload`    | file                      | User updated |
 | POST    | `/auth/edit   `   | username, campus, course  | User updated |
-| GET     | `/auth/logout`    |                           | OK Message   |
+| POST    | `/auth/logout`    |                           | OK Message   |
 | GET     | `/auth/loggedin`  |                           | User logged  |
 
 
