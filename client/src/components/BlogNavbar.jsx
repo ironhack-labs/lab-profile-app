@@ -8,6 +8,7 @@ import Button from "react-bootstrap/Button";
 
 const BlogNavbar = props => {
   return (
+    //still missing the photo edit
     <Navbar>
       <Link className="btn" to="/">
         Home
