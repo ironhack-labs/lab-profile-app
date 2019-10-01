@@ -10,23 +10,20 @@ const BlogNavbar = props => {
   return (
     <Navbar>
       <Link className="btn" to="/">
-        Blog
+        Home
       </Link>
       {(!props.user && (
         <Fragment>
-          <Link className="btn" to="/sign-in">
+          <Link className="btn" to="/signin">
             Sign In
           </Link>
-          <Link className="btn" to="/sign-up">
+          <Link className="btn" to="/signup">
             Sign Up
           </Link>
         </Fragment>
       )) || (
         <Fragment>
           <span className="btn">{props.user.name}</span>
-          <Link className="btn" to="/post/create">
-            + Create a Post
-          </Link>
           <Form onSubmit={props.signOut}>
             <Button type="submit">Sign Out</Button>
           </Form>
