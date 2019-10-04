@@ -33,7 +33,7 @@ You will start building the app creating the REST API. Create the `app` using th
 
 - **username**, type String, 
 - **password**, type String
-- **campus**, type String. Possible values: `Madrid`, `Barcelona`, `Miami`, `Paris`, `Berlin`, `Amsterdam`, `México`, `Sao Paulo`,
+- **campus**, type String. Possible values: `Madrid`, `Barcelona`, `Miami`, `Paris`, `Berlin`, `Amsterdam`, `México`, `Sao Paulo`, `Lisbon`,
 - **course**, type String. Possible values: `WebDev`, `UX/UI`, `Data Analytics`.
 - **image**, type String.
 
