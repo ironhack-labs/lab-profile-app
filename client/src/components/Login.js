@@ -1,23 +1,25 @@
 import React, { Component } from "react";
-import AuthService from "./auth-service";
-import { Link } from "react-router-dom";
+// import AuthService from "./auth-service";
+import { Link, withRouter } from "react-router-dom";
+import axios from "axios";
 
 class Login extends Component {
   constructor(props) {
     super(props);
-    this.state = { username: "", password: "" };
-    this.service = new AuthService();
+    this.state = {
+      username: "",
+      password: ""
+    };
+    // this.service = new AuthService();
   }
 
   handleFormSubmit = event => {
     event.preventDefault();
-    const username = this.state.username;
-    const password = this.state.password;
-    this.service
-      .login(username, password)
+    axios
+      .post("/api/login", this.state)
       .then(response => {
-        this.setState({ username: "", password: "" });
-        this.props.getUser(response);
+        this.props.getUser(response.data);
+        this.props.history.push("/profile");
       })
       .catch(error => console.log(error));
   };
@@ -39,7 +41,7 @@ class Login extends Component {
                   <div className="row">
                     <div className="col-md-9 col-lg-8 mx-auto">
                       <h3 className="login-heading mb-4">Welcome back!</h3>
-                      <form>
+                      <form onSubmit={this.handleFormSubmit}>
                         <div className="form-label-group">
                           <input
                             type="text"
@@ -76,14 +78,12 @@ class Login extends Component {
                             id="customCheck1"
                           />
                         </div>
-                        <Link to="/profile/:id">
-                          <button
-                            className="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2"
-                            type="submit"
-                          >
-                            Sign in
-                          </button>
-                        </Link>
+                        <button
+                          className="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2"
+                          type="submit"
+                        >
+                          Log in
+                        </button>
                         <div className="text-center"></div>
                       </form>
                     </div>
@@ -98,4 +98,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default withRouter(Login);

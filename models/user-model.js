@@ -29,3 +29,4 @@ const userSchema = new Schema(
 const User = mongoose.model("User", userSchema);
 
 module.exports = User;
+/* toJSon - use this to conceal password if testing on Post man */

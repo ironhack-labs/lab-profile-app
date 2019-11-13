@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import AuthService from "./auth-service";
+import { withRouter } from "react-router-dom";
+import axios from "axios";
 
 class Signup extends Component {
   constructor(props) {
@@ -16,20 +18,13 @@ class Signup extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    const { username, password, image, course, campus } = this.state;
-    this.service
-      .signup(username, password, image, course, campus)
+    axios
+      .post("/api//signup", this.state)
       .then(response => {
-        this.setState({
-          username: "",
-          password: "",
-          image: "",
-          course: "",
-          campus: ""
-        });
-        // this.props.getUser(response)
+        this.props.getUser(response.data);
+        this.props.history.push("/profile");
       })
-      .catch(error => console.log(error));
+      .catch(() => {});
   };
 
   handleChange = event => {
@@ -156,4 +151,4 @@ class Signup extends Component {
     );
   }
 }
-export default Signup;
+export default withRouter(Signup);

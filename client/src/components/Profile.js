@@ -1,50 +1,30 @@
 import React, { Component } from "react";
+import axios from "axios";
+import { Link, withRouter } from "react-router-dom";
 
 class Profile extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
-  // componentDidMount() {
-  //   this.getSingleProject();
-  // }
-
-  // getSingleProject = () => {
-  //   const { params } = this.props.match;
-  //   axios
-  //     .get(`http://localhost:5000/api/projects/${params.id}`, {
-  //       withCredentials: true
-  //     })
-  //     .then(responseFromApi => {
-  //       const theProject = responseFromApi.data;
-  //       this.setState(theProject);
-  //     })
-  //     .catch(err => {
-  //       console.log(err);
-  //     });
-  // };
-
-  // renderEditForm = () => {
-  //   if (!this.state.title) {
-  //     this.getSingleProject();
-  //   } else {
-  //     //                                                    {...props} => so we can have 'this.props.history' in Edit.js
-  //     //                                                                                          ^
-  //     //                                                                                          |
-  //     return (
-  //       <EditProject
-  //         theProject={this.state}
-  //         getTheProject={this.getSingleProject}
-  //         {...this.props}
-  //       />
-  //     );
-  //   }
-  // };
-
+  logoutUser = props => {
+    axios
+      .post("/api/logout")
+      .then(() => {
+        this.props.getUser(null);
+        this.props.history.push("/");
+      })
+      .catch(error => console.log(error));
+  };
   render() {
-    return <div></div>;
+    return (
+      <div>
+        <p> Welcome {this.props.userData.username} !</p>
+        <p> Username: {this.props.userData.username}</p>
+        <p> Course: {this.props.userData.course} </p>
+        <p> Campus: {this.props.userData.campus} </p>
+
+        <Link to="/">
+          <button onClick={this.logoutUser}>Logout</button>
+        </Link>
+      </div>
+    );
   }
 }
-
 export default Profile;

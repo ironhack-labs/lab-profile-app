@@ -4,14 +4,25 @@ import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import "bootstrap/dist/css/bootstrap.css";
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
+import axios from "axios";
 
-ReactDOM.render(
-  <Router>
-    <App />
-  </Router>,
-  document.getElementById("root")
-);
+document.getElementById("root").innerText =
+  "The React app has not connected to the backend yet.";
+
+axios
+  .get("/api/checkuser")
+  .then(res => {
+    ReactDOM.render(
+      <BrowserRouter>
+        <App user={res.data.userDoc} />
+      </BrowserRouter>,
+      document.getElementById("root")
+    );
+  })
+  .catch(err => {
+    alert("backend not running or /checkuser route not defined !");
+  });
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

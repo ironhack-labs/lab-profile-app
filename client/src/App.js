@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import "./App.css";
 
 //pages
@@ -7,30 +7,15 @@ import Home from "./components/Home";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Profile from "./components/Profile";
+// import AuthService from "./components/auth-service";
 
 class App extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      loggedInUser: null
+      loggedInUser: this.props.user
     };
-  }
-
-  fetchUser() {
-    if (this.state.loggedInUser === null) {
-      this.service
-        .loggedin()
-        .then(response => {
-          this.setState({
-            loggedInUser: response
-          });
-        })
-        .catch(err => {
-          this.setState({
-            loggedInUser: false
-          });
-        });
-    }
+    // this.service = new AuthService();
   }
 
   getTheUser = userObj => {
@@ -43,18 +28,52 @@ class App extends Component {
     return (
       <div className="App">
         <Switch>
-          <Route exact path="/" component={Home} />
+          <Route
+            exact
+            path="/"
+            render={() => {
+              if (this.state.loggedInUser === null) {
+                return <Home />;
+              }
+            }}
+          />
           <Route
             exact
             path="/login"
-            render={() => <Login getUser={this.getTheUser} />}
-          />
+            render={() => {
+              if (this.state.loggedInUser) {
+                return <Redirect to="/profile"></Redirect>;
+              } else {
+                return <Login getUser={this.getTheUser} />;
+              }
+            }}
+          ></Route>
           <Route
             exact
             path="/signup"
-            render={() => <Signup getUser={this.getTheUser} />}
+            render={() => {
+              if (this.state.loggedInUser) {
+                return <Redirect to="/profile"></Redirect>;
+              } else {
+                return (
+                  <Signup
+                    history={this.props.history}
+                    getUser={this.getTheUser}
+                  />
+                );
+              }
+            }}
+          ></Route>
+          <Route
+            exact
+            path="/profile"
+            render={() => (
+              <Profile
+                getUser={this.getTheUser}
+                userData={this.state.loggedInUser}
+              />
+            )}
           />
-          <Route exact path="/profile/:id" component={Profile} />
         </Switch>
       </div>
     );

@@ -9,7 +9,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 
 var indexRouter = require("./routes/index");
-var usersRouter = require("./routes/users");
+// var usersRouter = require("./routes/profile-routes");
 const authRoutes = require("./routes/auth-routes");
 
 var app = express();
@@ -36,11 +36,14 @@ mongoose
     console.error("Error connecting to mongo", err);
   });
 
-//cors stuff
+const MongoStore = require("connect-mongo")(session);
 app.use(
-  cors({
-    credentials: true,
-    origin: ["http://localhost:3000"] // <== this will be the URL of our React app (it will be running on port 3000)
+  session({
+    secret: "doesn't matter in our case", // but it's required
+    resave: false,
+    saveUninitialized: false, // don't create cookie for non-logged-in user
+    // MongoStore makes sure the user stays logged in also when the server restarts
+    store: new MongoStore({ mongooseConnection: mongoose.connection })
   })
 );
 
@@ -55,7 +58,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
-app.use("/users", usersRouter);
+// app.use("/users", usersRouter);
 
 // session section
 app.use(

@@ -6,6 +6,15 @@ const bcrypt = require("bcryptjs");
 
 const User = require("../models/user-model");
 
+// /api/checkuser
+authRoutes.get("/checkuser", (req, res, next) => {
+  if (req.user) {
+    res.json({ userDoc: req.user });
+  } else {
+    res.json({ userDoc: null });
+  }
+});
+
 // POST /signup
 authRoutes.post("/signup", (req, res, next) => {
   const { username, password, image, course, campus } = req.body;
@@ -106,13 +115,13 @@ authRoutes.post("/logout", (req, res, next) => {
   res.status(200).json({ message: "Log out success!" });
 });
 
-authRoutes.get("/loggedin", (req, res, next) => {
-  // req.isAuthenticated() is defined by passport
-  if (req.isAuthenticated()) {
-    res.status(200).json(req.user);
-    return;
-  }
-  res.status(403).json({ message: "Unauthorized" });
-});
+// authRoutes.get("/loggedin", (req, res, next) => {
+//   // req.isAuthenticated() is defined by passport
+//   if (req.isAuthenticated()) {
+//     res.status(200).json(req.user);
+//     return;
+//   }
+//   res.status(403).json({ message: "Unauthorized" });
+// });
 
 module.exports = authRoutes;

@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "connect-mongo": "^3.1.2",
     "cookie-parser": "~1.4.4",
     "cors": "^2.8.5",
     "debug": "~2.6.9",
@@ -21,5 +22,10 @@
     "morgan": "~1.9.1",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "client/*"
+    ]
   }
 }
