@@ -39,11 +39,11 @@ router.post('/login', (req, res, next) => {
 });
 
 router.post('/signup', (req, res, next) => {
-  let { username, password } = req.body;
+  let { username, password, campus, course } = req.body;
   const salt = bcrypt.genSaltSync(10);
   const hashedPassword = bcrypt.hashSync(password, salt);
 
-  User.create({ username, password: hashedPassword })
+  User.create({ username, password: hashedPassword, campus, course })
   .then( user => {
     jwt.sign({ id: user._id}, process.env.SECRET, { expiresIn: 86400 }, (err, token) => {
       delete user._doc.password;
@@ -59,5 +59,9 @@ router.post('/signup', (req, res, next) => {
     res.status(500).json({ err, msg: 'There was an error while creating the account...' })
   });
 });
+
+router.post('/logout', (req, res, next) => {
+  res.status(200).json({ msg: 'User logged out correctly' });
+})
 
 module.exports = router;

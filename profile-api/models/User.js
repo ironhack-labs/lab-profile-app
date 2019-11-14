@@ -13,13 +13,16 @@ const userSchema = new Schema(
       required: true
     },
     campus: {
-      type: String
+      type: String,
+      default: 'Not specified'
     },
     course: {
-      type: String
+      type: String,
+      default: 'Not specified'
     },
     image: {
-      type: String
+      type: String,
+      default: 'Not specified'
     }
   }, { timestamps: true }
 );

@@ -14,6 +14,7 @@ exports.verifyToken = (req, res, next) => {
     // Search user by accesing the id which we encoded in the token when we created it (login or signup routes)
     User.findById(decoded.id)
     .then( user => {
+      // After finding the user, we store it in the request (req.user) variable for easy access
       req.user = user;
       next();
     });
