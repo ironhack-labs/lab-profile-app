@@ -15,3 +15,11 @@ export const login = (username, password) => {
   return axios.post('http://localhost:3000/api/login', {username, password});
 
 }
+
+// Export logout function. Here we simply "erase" the token from the localStorage, and without a token any user
+// that is not logged in will not be able to access the routes that require authentication/token
+export const logout = () => {
+
+  localStorage.clear();
+  
+};

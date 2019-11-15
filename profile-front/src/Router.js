@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import Home from './Components/Home';
 import Signup from './Components/Signup';
 import Login from './Components/Login';
+import Profile from './Components/Profile';
 
 const Router = () => (
   <Switch>
@@ -14,6 +15,9 @@ const Router = () => (
     </Route>
     <Route path="/login">
       <Login />
+    </Route>
+    <Route path="/profile">
+      <Profile />
     </Route>
   </Switch>
 )
