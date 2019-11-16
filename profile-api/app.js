@@ -7,6 +7,7 @@ const favicon      = require('serve-favicon');
 const mongoose     = require('mongoose');
 const logger       = require('morgan');
 const path         = require('path');
+const cors         = require('cors')
 
 
 mongoose
@@ -36,6 +37,15 @@ app.use(require('node-sass-middleware')({
   dest: path.join(__dirname, 'public'),
   sourceMap: true
 }));
+
+// CORS configuration
+app.use(
+  cors({
+    origin: [
+      "http://localhost:3001"
+    ]
+  })
+)
       
 
 app.use(express.static(path.join(__dirname, 'public')));

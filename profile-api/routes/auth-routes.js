@@ -48,13 +48,13 @@ router.post('/signup', (req, res, next) => {
     jwt.sign({ id: user._id}, process.env.SECRET, { expiresIn: 86400 }, (err, token) => {
       delete user._doc.password;
 
-      if ( err ) return res.status(500).json({ err });
+      if ( err ) return res.status(500).json({ err, msg: 'Error in JWT' });
 
       res.status(200).json({ user, token, msg: 'User created correctly' });
     })
   })
   .catch( err => {
-    // We respond to the request with a status of 404 (ERR, not found),
+    // We respond to the request with a status of 500 (ERR),
     // the user and a message to explain the user through a notification
     res.status(500).json({ err, msg: 'There was an error while creating the account...' })
   });

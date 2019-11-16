@@ -7,18 +7,18 @@ const Profile = () => {
         <div className="column">
           <h1>Profile</h1>
           <form action="">
-            <div class="field">
-              <label class="label">Username</label>
-              <div class="control">
-                <input class="input" type="text" placeholder="Here goes the username as value" />
+            <div className="field">
+              <label className="label">Username</label>
+              <div className="control">
+                <input className="input" type="text" placeholder="Here goes the username as value" />
               </div>
-              <label class="label">Campus</label>
-              <div class="control">
-                <input class="input" type="text" placeholder="Here goes the campus as value" />
+              <label className="label">Campus</label>
+              <div className="control">
+                <input className="input" type="text" placeholder="Here goes the campus as value" />
               </div>
-              <label class="label">Course</label>
-              <div class="control">
-                <input class="input" type="text" placeholder="Here goes the course as value" />
+              <label className="label">Course</label>
+              <div className="control">
+                <input className="input" type="text" placeholder="Here goes the course as value" />
               </div>
             </div>
           </form>
