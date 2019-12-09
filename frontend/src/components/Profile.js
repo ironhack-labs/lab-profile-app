@@ -89,16 +89,13 @@ export default function SignupContainer(props) {
                             <tag>Course</tag>
                             <h3>{context.state.user.course}</h3>
                         </div>
-                        <div>
-                            <a href="/signup">
+                        <div>    
                             <button onClick={e => {
                                 e.preventDefault()
                                 context.handleLogout(() => {
                                   props.history.push("/login");
                                 });
                             }}>Logout</button>
-                            </a>
-
                         </div>
                     </div>
                     <div div className="duo-div">
