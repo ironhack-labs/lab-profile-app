@@ -21,7 +21,7 @@ const MY_SERVICE = {
     return await service.post("/logout");
   },
   loggedIn: async () => {
-    return await service.post("/loggedin");
+    return await service.get("/loggedin");
   },
   edit: async () => {
     return await service.post("/edit");

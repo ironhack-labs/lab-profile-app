@@ -47,6 +47,7 @@ class MyProvider extends Component {
     e.preventDefault();
     MY_SERVICE.login(this.state.loginForm)
     .then(({ data }) => {
+      console.log(data)
       this.setState({ loggedUser: true, user: data.user })
       cb()
     })
@@ -73,7 +74,9 @@ class MyProvider extends Component {
           handleInput: this.handleInput,
           handleSignup: this.handleSignup,
           handleLogin: this.handleLogin,
-          handleLogout: this.handleLogout
+          handleLogout: this.handleLogout,
+          // user: this.state.user,
+          state: this.state
         }}
       >
         {this.props.children}

@@ -79,22 +79,22 @@ export default function SignupContainer(props) {
                         <h1>Profile</h1>
                         <div className="form-container">
                             <tag>Username</tag>
-                            <h3>{String(context.user)}</h3>
+                            <h3>{context.state.user.username}</h3>
                         </div>
                         <div className="form-container">
                             <tag>Campus</tag>
-                            <h3>{String(context.user)}</h3>
+                            <h3>{context.state.user.campus}</h3>
                         </div>
                         <div className="form-container">
                             <tag>Course</tag>
-                            <h3>{String(context.user)}</h3>
+                            <h3>{context.state.user.course}</h3>
                         </div>
                         <div>
                             <a href="/signup">
                             <button onClick={e => {
                                 e.preventDefault()
                                 context.handleLogout(() => {
-                                    console.log("done")
+                                  props.history.push("/login");
                                 });
                             }}>Logout</button>
                             </a>

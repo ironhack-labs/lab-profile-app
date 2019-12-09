@@ -16,7 +16,7 @@ router.post('/signup', signup);
 router.post('/edit', edit);
 router.post('/logout', logout);
 router.post("/upload", uploadCloud.single("photoURL"), upload);
-router.post('/loggedin', isAuth, loggedin)
+router.get('/loggedin', isAuth, loggedin)
 
 
 function isAuth(req, res, next) {
