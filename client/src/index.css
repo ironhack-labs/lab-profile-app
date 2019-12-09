@@ -5,9 +5,24 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #dcebdc;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+#root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.img-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.img-profile>button {
+ 
 }
