@@ -1,5 +1,5 @@
 const User = require("../models/User");
-
+const 
 // Bcrypt to encrypt passwords
 const bcrypt = require("bcrypt");
 const bcryptSalt = 10;
@@ -37,9 +37,9 @@ exports.signup = (req, res, next) => {
   });
 };
 
-exports.logout = (req, res) => {
+exports.logout = (req, res, next) => {
   req.logout();
-  res.redirect("/");
+  res.status(200).json({msg: 'Desconectado'})
 };
 
 exports.login = (req, res) => {
@@ -47,7 +47,8 @@ exports.login = (req, res) => {
   res.status(200).json(user);
 };
 
-exports.current = (req, res) => {
-  const { user } = req;
-  res.status(200).json(user);
+exports.profile = (req, res, next) => {
+  User.findById(req.user._id)
+  .then((user) => res.status(200).json({ user }))
+  .catch((err) => res.status(500).json({err}))
 };

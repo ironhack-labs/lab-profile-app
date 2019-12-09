@@ -7,12 +7,14 @@ export default function SignupContainer(props) {
     <MyContext.Consumer>
     {context => (
       <>
-      <h1> Sig up</h1>
+      
       <StyledSignupForm onSubmit={e => {
         context.handleSignup(e)
         props.history.push('/login')
       }}>
-  
+
+        <div>
+        <h1> Sig up</h1>
         <label htmlFor="email">Email</label>
           <br/>
           <input
@@ -34,7 +36,7 @@ export default function SignupContainer(props) {
               onChange={e => context.handleInput(e, 'formSignup')}
             />
             <br/>
-          <label htmlFor="password">Campus</label>
+          <label htmlFor="text">Campus</label>
           <br/>
           <input
               value={context.formSignup.campus}
@@ -57,8 +59,14 @@ export default function SignupContainer(props) {
           <button type="primary" htmlType="submit">
               Create the Account
             </button>
-    </StyledSignupForm>
-      <div>
+
+          
+
+        </div>
+
+      
+
+            <div>
         <h1>Hello!!</h1>
         <h2> Welcome to IronProfile</h2>
 
@@ -67,6 +75,8 @@ export default function SignupContainer(props) {
         terms and conditions where we onChange
         do whatever we want with the data!</small>
       </div>
+    </StyledSignupForm>
+      
 
       </>
 

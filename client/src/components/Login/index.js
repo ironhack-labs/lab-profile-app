@@ -1,6 +1,6 @@
 import React from 'react';
 import { MyContext  } from '../../context';
-import { StyledSignupForm } from '../styled-components/components';
+import { StyledLoginForm } from '../styled-components/components';
 import { Link } from  'react-router-dom';
 
 
@@ -18,12 +18,14 @@ export default class LoginContainer extends React.Component {
         <MyContext.Consumer>
         {context => (
           <>
-          <h1> Log In</h1>
-          <StyledSignupForm onSubmit={e => {
+          
+          <StyledLoginForm onSubmit={e => {
             context.handleLogin(e)
             this.props.history.push('/login')
           }}>
-      
+
+            <div>
+            <h1> Log In</h1>
             <label htmlFor="email">Email</label>
               <br/>
               <input
@@ -41,8 +43,8 @@ export default class LoginContainer extends React.Component {
                   name="password"
                   type="password"
                   placeholder="Password"
-                  value={context.formSignup.password}
-                  onChange={e => context.handleInput(e, 'loginForm')}
+                  value={context.loginForm.password}
+                onChange={e => context.handleInput(e, 'loginForm')}
                 />
                 <br/>
               <br/>
@@ -52,8 +54,14 @@ export default class LoginContainer extends React.Component {
 
             <p>if you dont have a account yet, you can create your account <Link to="/signup">here</Link></p>
 
-        </StyledSignupForm>
-          <div>
+
+
+
+
+
+            </div>
+        
+            <div>
             <h1>Hello!!</h1>
             <h2> Awesome to have at IronProfile again!</h2>
     
@@ -62,6 +70,9 @@ export default class LoginContainer extends React.Component {
             terms and conditions where we onChange
             do whatever we want with the data!</small>
           </div>
+
+        </StyledLoginForm>
+         
     
           </>
     
