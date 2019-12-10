@@ -1,0 +1,21 @@
+html, body {
+  padding: 0;
+  margin: 0;
+  /* background-image: url('./images/oval-bg.png'); */
+  /* background-size: auto;
+   */
+  background-color: rgba(159, 207, 174, 0.8);
+  width: 100%;
+  height: 100%;
+}
+
+.iron-profile {
+  margin: auto auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+  width: 60vw;
+  /* background-image: url('./images/oval-bg.png'); */
+}
