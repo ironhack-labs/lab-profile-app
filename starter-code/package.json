@@ -2,12 +2,13 @@
   "name": "starter-code",
   "version": "0.1.0",
   "private": true,
-  "scripts": {
+    "scripts": {
     "start": "node ./server",
     "dev": "nodemon ./server",
     "dev:debug": "DEBUG=starter-code* npm run dev",
     "lint": "eslint ."
   },
+  "proxy": "http://localhost:3020",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",

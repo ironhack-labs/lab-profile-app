@@ -20,8 +20,8 @@ const app = express();
 
 
 app.use(logger("dev"));
-// app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+//app.use(express.urlencoded({ extended: true }));
 //it was express.urlencoded and it didn't allow me to access express body in postman
 app.use(cookieParser());
 app.use(
@@ -45,7 +45,7 @@ app.use(basicAuthenticationDeserializer);
 app.use(bindUserToViewLocals);
 
 app.use("/", indexRouter);
-app.use("/auth", authenticationRouter);
+app.use("/api/auth", authenticationRouter);
 
 // Catch missing routes and forward to error handler
 app.use((req, res, next) => {

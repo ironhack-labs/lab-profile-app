@@ -62,6 +62,22 @@ router.post("/logout", (req, res, next) => {
   res.json({});
 });
 
+router.get("/user-information", async (req, res, next) => {
+  const userId = req.session.user;
+  console.log('I am in the server, the user id is', req.session.user);
+  if (!userId) {
+    res.json({});
+  } else {
+    try {
+      const user = await User.findById(userId);
+      if (!user) throw new Error('Signed in user not found');
+      res.json({ user });
+    } catch (error) {
+      next(error);
+    }
+  }
+});
+
 const routeGuard = require("./../middleware/route-guard");
 
 router.get("/loggedin", routeGuard, async (req, res, next) => {
