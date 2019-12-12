@@ -5,9 +5,10 @@ import Home from "./Views/Home";
 import Login from './Views/authentication/Login';
 import Signup from './Views/authentication/Signup';
 import Private from './Views/Private';
+import SearchBooks from './Views/SearchBooks';
 import Error from './Views/Error';
 import Navbar from './Components/Navbar';
-//import Navbar from './Components/Navbar';
+import ProtectedRoute from './Services/protectedRoute';
 import EditProfile from './Views/authentication/EditProfile';
 
 import { loadUserInformation as loadUserInformationService } from './Services/authentication';
@@ -22,6 +23,7 @@ class App extends Component {
     };
     this.changeAuthenticationStatus = this.changeAuthenticationStatus.bind(this);
     this.loadUserInformation=this.loadUserInformation.bind(this);
+    this.verifyAuthentication=this.verifyAuthentication.bind(this);
   }
 
   changeAuthenticationStatus(user) {
@@ -46,6 +48,10 @@ class App extends Component {
     this.loadUserInformation();
   }
 
+  verifyAuthentication() {
+    return this.state.user;
+  }
+
   render() {
     const user = this.state.user;
     console.log('user', user);
@@ -53,6 +59,47 @@ class App extends Component {
     return (
       <div className="app">
         <BrowserRouter>
+        <Navbar
+            user={this.state.user}
+            changeAuthenticationStatus={this.changeAuthenticationStatus}
+          />
+       <Route path="/error/:errorCode" component={Error} /> 
+       {this.state.loaded && 
+        <Switch>
+          <Route path="/login" render={(props) => <Login {...props} changeAuthenticationStatus={this.changeAuthenticationStatus} loadUserInformation={this.loadUserInformation}/>}/>
+          <Route path="/signup" render={(props) => <Signup {...props} changeAuthenticationStatus={this.changeAuthenticationStatus} loadUserInformation={this.loadUserInformation} />} />
+            <ProtectedRoute
+                path="/edit-profile"
+                // component={EditProfile}
+                render={props => <EditProfile {...props} user={this.state.user} loadUserInformation={this.loadUserInformation} changeAuthenticationStatus={this.changeAuthenticationStatus} />}
+                verify={this.verifyAuthentication}
+                redirect="/error/401"
+              />
+            <ProtectedRoute
+                path="/private"
+                // component={Private}
+                render={props => <Private {...props} user={this.state.user} loadUserInformation={this.loadUserInformation} />}
+                verify={this.verifyAuthentication}
+                redirect="/"
+              />
+          <Route path="/searchbooks" component={SearchBooks} />
+           <Route path="/" exact component={Home} />
+           <Redirect to="/error/404" />
+           </Switch>
+       }
+        </BrowserRouter>
+      </div>
+    );
+  }
+}
+
+//need to add a redirect when page is not found. Example, /private when not logged in, or error page?
+
+export default App;
+
+
+/* ACCESING ROUTES WITHOUT PROTECTED ROUTE AND WITH CONDITIONALS
+                 <BrowserRouter>
         <Navbar
             user={this.state.user}
             changeAuthenticationStatus={this.changeAuthenticationStatus}
@@ -79,11 +126,5 @@ class App extends Component {
           </Fragment>
        }
         </BrowserRouter>
-      </div>
-    );
-  }
-}
-
-//need to add a redirect when page is not found. Example, /private when not logged in, or error page?
-
-export default App;
+        
+        */

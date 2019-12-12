@@ -14,7 +14,7 @@ class Navbar extends Component {
     try {
       await signOutService();
       this.props.changeAuthenticationStatus(null);
-      this.props.history.push(`/login`);
+      //this.props.history.push(`/login`);
     } catch (error) {
       console.log(error);
     }
@@ -34,6 +34,7 @@ class Navbar extends Component {
        {!user &&
         <Link className="nav-link" to='/'>Home</Link>
        }
+       <Link className="btn btn-success m-3" to='/searchbooks'>Search Books</Link>
       </div>
     )
   }
