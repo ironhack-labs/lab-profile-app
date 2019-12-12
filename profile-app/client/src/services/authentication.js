@@ -40,9 +40,11 @@ export const loadUserInformation = async () => {
   }
 };
 
-export const edit = async (id, user) => {
+export const edit = async (user) => {  
+  const data = new FormData();
+  data.append('image', user.image);
   try {
-    await apiAuthenticationService.patch(`/${id}`, user);
+    await apiAuthenticationService.patch(`/${user._id}/edit-image`, user);
   } catch (error) {
     throw error;
   }

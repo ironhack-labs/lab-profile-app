@@ -61,4 +61,17 @@ router.get("/user-information", routeGuard, async (req, res, next) => {
   }
 });
 
+router.patch('/:id/edit-image', multerMiddleware.single('image'), async (req, res, next) => {
+  console.log('RF', req.file, req.params.id, req.body.image);
+  try {
+    const user = await User.findByIdAndUpdate(req.params.id, {
+      image: req.file.url
+    }).exec();
+    console.log(user)
+    res.json({ user });
+  } catch (error) {
+    next(error);
+  }
+});
+
 module.exports = router;

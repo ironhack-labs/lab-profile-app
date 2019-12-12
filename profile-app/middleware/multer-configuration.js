@@ -1,8 +1,8 @@
-'use strict';
+"use strict";
 
-const multer = require('multer');
-const cloudinary = require('cloudinary');
-const storageCloudinary = require('multer-storage-cloudinary');
+const multer = require("multer");
+const cloudinary = require("cloudinary");
+const storageCloudinary = require("multer-storage-cloudinary");
 
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_API_NAME,
@@ -12,12 +12,12 @@ cloudinary.config({
 
 const storage = storageCloudinary({
   cloudinary,
-  folder: '174-react-file-upload',
-  allowedFormats: ['jpg', 'png']
+  folder: "174-react-file-upload",
+  allowedFormats: ["jpg", "png"]
 });
 
-const uploader = multer({
+const multerMiddleware = multer({
   storage
 });
 
-module.exports = uploader;
+module.exports = multerMiddleware;

@@ -57,7 +57,7 @@ render () {
     <Route path="/sign-up" component={AuthenticationSignUpView} />
     <Route path="/sign-in" component={AuthenticationSignInView} />
     <Route path="/private" component={AuthenticationPrivateView} />
-    <Route path="/:id/edit" component={EditImageView} />
+    <Route path="/:id/edit-image" component={EditImageView} />
     <Route path="/" exact component={HomeView} />
     </Switch>
     </BrowserRouter>
