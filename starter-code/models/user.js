@@ -18,7 +18,9 @@ campus: {
     type: String,
     enum: ['WebDev', 'UX/UI', 'Data Analytics']
   },
-  image: String
+  image: {
+    type:String,
+    default: "https://res.cloudinary.com/dgmvfq29c/image/upload/v1576163424/lab-profile-app-react/default_picture_grvxyf.png"}
 });
 
 module.exports = mongoose.model('User', schema);

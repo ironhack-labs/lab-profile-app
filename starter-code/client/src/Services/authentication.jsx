@@ -30,11 +30,31 @@ export const signOut = async () => {
   }
 };
 
+export const editProfile = async data => {
+  try {
+    await apiAuthenticationService.patch(`/edit`, data);
+  } catch (error) {
+    throw error;
+  }
+};
+
 export const loadUserInformation = async () => {
   try {
     const response = await apiAuthenticationService.get(`/user-information`);
     return response.data.user;
   } catch (error) {
+    throw error;
+  }
+};
+
+export const loadUserPicture = async data => {
+  const datas = new FormData();
+  datas.append('image', data);
+  try {
+    const response = await apiAuthenticationService.patch(`/upload`, datas);
+    return response;
+  } catch (error) {
+    console.log('I am in the error service load picture', error);
     throw error;
   }
 };

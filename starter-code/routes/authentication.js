@@ -37,19 +37,14 @@ router.post("/login", async (req, res, next) => {
   }
 });
 
-router.patch("/edit/:id", async (req, res, next) => {
-  const { username, campus, course, password } = req.body;
-  const userId = req.params.id;
-  let hash;
+router.patch("/edit", async (req, res, next) => {
+  const { username, campus, course} = req.body;
+  const userId = req.session.user;
   try {
-    if (password) {
-      hash = await bcryptjs.hash(password, 10);
-    }
     const user = await User.findByIdAndUpdate(userId, {
       ...(username && { username }),
       ...(campus && { campus }),
       ...(course && { course }),
-      ...(password && { passwordHash: hash })
     }).exec();
     res.json({ user });
   } catch (error) {
@@ -98,10 +93,10 @@ router.get("/loggedin", routeGuard, async (req, res, next) => {
 const multerMiddleware = require("./../middleware/multer-configuration");
 
 router.patch(
-  "/upload/:id",
+  "/upload",
   multerMiddleware.single("image"),
   async (req, res, next) => {
-    const userId = req.params.id;
+    const userId = req.session.user;
     const image = req.file.url;
     try {
       const user = await User.findByIdAndUpdate(userId, { image });

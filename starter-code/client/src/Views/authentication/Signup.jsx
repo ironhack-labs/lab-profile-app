@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {signUp as signUpService} from './../../Services/authentication'
+import {signUp as signUpService} from '../../Services/authentication'
 
 
 class Signup extends Component {
@@ -36,6 +36,7 @@ class Signup extends Component {
   try {
   const user = await signUpService({username, password, campus, course});
   this.props.changeAuthenticationStatus(user);
+  this.props.loadUserInformation(); //this is repeating the step above
   this.props.history.push(`/private`);
 } catch(error) {
   console.log(error);
