@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import { MyContext } from "../context";
-import { Link } from "react-router-dom";
 
 const ProfileTag = styled.form`
   background-image: url("/images/oval-bg.png");
@@ -24,7 +23,10 @@ const ProfileTag = styled.form`
     }
   .duo-div {
     width: 36%;
-
+    text-align:center;
+  }
+  img{
+    width: 200px;
   }
   .duo-div:last-of-type {
     padding-left: 30%;
@@ -65,53 +67,57 @@ const ProfileTag = styled.form`
     }
   }
 `;
-export default function SignupContainer(props) {
-    return (
-        <MyContext.Consumer>
-            {context => (
-                <ProfileTag
-                    onSubmit={e => {
-                        context.handleUpload(e);
-                        // props.history.push("/login");
-                    }}
-                >
-                    <div div className="duo-div">
-                        <h1>Profile</h1>
-                        <div className="form-container">
-                            <tag>Username</tag>
-                            <h3>{context.state.user.username}</h3>
-                        </div>
-                        <div className="form-container">
-                            <tag>Campus</tag>
-                            <h3>{context.state.user.campus}</h3>
-                        </div>
-                        <div className="form-container">
-                            <tag>Course</tag>
-                            <h3>{context.state.user.course}</h3>
-                        </div>
-                        <div>    
-                            <button onClick={e => {
-                                e.preventDefault()
-                                context.handleLogout(() => {
-                                  props.history.push("/login");
-                                });
-                            }}>Logout</button>
-                        </div>
-                    </div>
-                    <div div className="duo-div">
-                        <div>
-                            {/* <img src={{}}></img> */}
-                            <button type="submit">Edit Photo</button>
-                        </div>
-                        <div>
-                            <p>
-                                The user is able to upload a new profile photo, using
-                                NodeJS and Multer upploader
-                            </p>
-                        </div>
-                    </div>
-                </ProfileTag>
-            )}
-        </MyContext.Consumer>
-    );
+
+export default function Profile(props) {
+  return (
+    <MyContext.Consumer>
+      {context => (
+        <ProfileTag
+        onSubmit={e => {
+            context.handleUpload(e);
+            props.history.push("/login");
+        }}
+        >
+          <div div className="duo-div">
+            <h1>Profile</h1>
+            <div className="form-container">
+              <tag>Username</tag>
+              <h3>{context.state.user.username}</h3>
+            </div>
+            <div className="form-container">
+              <tag>Campus</tag>
+              <h3>{context.state.user.campus}</h3>
+            </div>
+            <div className="form-container">
+              <tag>Course</tag>
+              <h3>{context.state.user.course}</h3>
+            </div>
+            <div>
+              <button onClick={e => {
+                e.preventDefault()
+                context.handleLogout(() => {
+                  props.history.push("/login");
+                });
+              }}>Logout</button>
+            </div>
+          </div>
+          <div div className="duo-div">
+            <div>
+              <input type="file" name="photo" placeholder="upload an image" onChange={context.handleUpload}   />
+              {console.log(context.state.user.image)}
+              { context.state.upload 
+              ? (<h4>Loading ...</h4>)
+              : (<img src={context.state.user.image} alt=""/>)}
+            </div>
+            <div>
+              <p>
+                The user is able to upload a new profile photo, using
+                NodeJS and Multer upploader
+              </p>
+            </div>
+          </div>
+        </ProfileTag>
+      )}
+    </MyContext.Consumer>
+  );
 }

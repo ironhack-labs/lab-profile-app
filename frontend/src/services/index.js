@@ -25,6 +25,9 @@ const MY_SERVICE = {
   },
   edit: async () => {
     return await service.post("/edit");
+  },
+  upload: async (image) => {
+    return await service.post("/upload", image);
   }
 };
 

@@ -3,9 +3,9 @@ const User = require('../models/User');
 // Method	Endpoint	    Parameters                      	Return Value
 // POST  	/auth/signup	username, password, campus, course	User created
 exports.signup = async (req, res) => {
-    console.log("Is inside")
-    await User.register( req.body, req.body.password)
-        .then((user) => { res.status(201).json({user}); })
+    
+    await User.register(req.body, req.body.password)
+        .then((user) => { res.status(201).json({ user }); })
         .catch((err) => res.status(500).json({ err }));
 }
 // Method	Endpoint	    Parameters      	Return Value
@@ -34,7 +34,7 @@ exports.loggedin = (req, res, next) => {
 // Method	Endpoint	    Parameters      	        Return Value
 // POST	    /auth/edit	    username, campus, course	User updated
 exports.edit = async (req, res) => {
-    const {username, campus, course} = req.body
+    const { username, campus, course } = req.body
     await User.findByIdAndUpdate(req.user._id, { username, campus, course })
         .then(user => res.status(200).json({ user }))
         .catch(err => console.log(err));
@@ -43,9 +43,13 @@ exports.edit = async (req, res) => {
 // Method	Endpoint	    Parameters      	        Return Value
 // POST	    /auth/upload	file	                    User updated
 exports.upload = async (req, res) => {
+    console.log(req.file)
     if (req.file) {
         const { secure_url } = req.file;
-        await User.findByIdAndUpdate(req.user._id, { image: secure_url });
+        await User.findByIdAndUpdate(req.user._id, { image: secure_url })
+        .then(() =>{ 
+            res.status(200).json({ file: req.file })})
+        .catch(err => console.log(err));
     }
 }
 

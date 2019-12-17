@@ -13,7 +13,8 @@ const userSchema = new Schema(
             enum:['WebDev', 'UX/UI', 'Data Analytics']
         },
         image:{
-            type:String
+            type:String,
+            default:""
         }
     }
 )
