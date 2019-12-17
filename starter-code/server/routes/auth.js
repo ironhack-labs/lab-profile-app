@@ -3,20 +3,20 @@ const passport = require('passport');
 const router = express.Router();
 const User = require("../models/User");
 
-const User       = require('../models/user-model');
+// const User       = require('../models/user-model');
 
 // Bcrypt to encrypt passwords
 const bcrypt = require("bcrypt");
 const bcryptSalt = 10;
 
-routes.get('/logout', (req, res, next) => {
+router.get('/logout', (req, res, next) => {
   // req.logout() is defined by passport
   req.logout();
   res.status(200).json({ message: 'Log out success!' });
 });
 
 
-routes.get('/loggedin', (req, res, next) => {
+router.get('/loggedin', (req, res, next) => {
   // req.isAuthenticated() is defined by passport
   if (req.isAuthenticated()) {
       res.status(200).json(req.user);
@@ -26,7 +26,7 @@ routes.get('/loggedin', (req, res, next) => {
 });
 
 
-routes.post('/login', (req, res, next) => {
+router.post('/login', (req, res, next) => {
   passport.authenticate('local', (err, theUser, failureDetails) => {
       if (err) {
           res.status(500).json({ message: 'Something went wrong authenticating user' });
