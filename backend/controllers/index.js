@@ -2,13 +2,13 @@ const User = require('../models/User')
 const passport = require('passport')
 
 exports.signup = async (req, res, next) => {
-    const { course, email, password, campus } = req.body[0]
+    const { course, email, password, campus } = req.body
     const userOnDB = await User.findOne({ email })
     if (userOnDB !== null) {
       return res.status(406).json({message: 'email already registered'})
     }
         const user = await User.register({ email, course, campus }, password)
-    passport.authenticate('local')(req, res, next)
+    passport.authenticate()(req, res, next)
     res.status(201).json({user})
 }
 

@@ -6,6 +6,7 @@ const express      = require('express');
 const mongoose     = require('mongoose');
 const logger       = require('morgan');
 const path         = require('path');
+const cors         = require('cors')
 
 
 mongoose
@@ -18,16 +19,21 @@ mongoose
   });
 
 const app_name = require('./package.json').name;
-const debug = require('debug')(`${app_name}:${path.basename(__filename).split('.')[0]}`);
+const debug = require('debug')(`${app_name}:${path.basename(__filename).split('.')[0]}`)
 
-const app = express();
+const app = express()
 
 // Middleware Setup
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-
+app.use(
+  cors({
+    credentials: true,
+    origin: 'http://localhost:3001'
+  })
+);
 // Express View engine setup
 
 app.use(require('node-sass-middleware')({
@@ -44,8 +50,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 
-const index = require('./routes/index');
-app.use('/', index);
+const index = require('./routes/index')
+app.use('/', index)
 
 
 module.exports = app;

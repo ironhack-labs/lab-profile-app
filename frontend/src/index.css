@@ -7,6 +7,23 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.main{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background: url('./assets/oval-bg.png');
+}
+
+.forms{
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.login{
+  padding: 2%;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
