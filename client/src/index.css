@@ -10,3 +10,42 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
+
+#root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #daecd9;
+}
+.container {
+  background-image: url('/images/oval-bg.png');
+  background-size: cover;
+  display: flex;
+  width: 500px;
+  height: 300px;
+}
+
+.container section{
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px ;
+}
+
+.container section a {
+  width: 180px;
+  background-color: #daecd9;
+  text-decoration: none;
+  border: 1px solid silver;
+  padding: 5px 0;
+  color: #638165;
+  margin-top: 25px;
+  border-radius: 8px;
+}
+
+.container section h2, .container section p{
+  text-align: left;
+}
