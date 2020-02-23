@@ -1,14 +1,14 @@
 import React from 'react'
 
-const Login = ({email, password}) => {
+const Login = ({inputs, handle, login}) => {
     return (
         <div>
-            <form className="login" onSubmit={this.login}>
+            <form className="login" onSubmit={login}>
                 <h2>Login</h2>
                 <p>Email</p>
-                <input onChange={this.handleInput} value={this.state.email} type="email" placeholder="email" name="email"></input>
+                <input onChange={handle} value={inputs.email} type="email" placeholder="email" name="email"></input>
                 <p>password</p>
-                <input onChange={this.handleInput} value={this.state.password} type="text" placeholder="password" name="password"></input>
+                <input onChange={handle} value={inputs.password} type="text" placeholder="password" name="password"></input>
                 <button type="submit">login</button>
             </form>
         </div>

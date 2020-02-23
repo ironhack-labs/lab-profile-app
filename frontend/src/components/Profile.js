@@ -1,14 +1,16 @@
 import React, { Component } from 'react'
+import {loggedUser} from '../servies'
 
 export default class Profile extends Component {
     state = {
-
+        user: {}
     }
 
-    getUser = () => {
-        
+    getUser = async () => {
+        let user = loggedUser()
+        this.setState({user})
     }
-    
+
     render() {
         return (
             <div>

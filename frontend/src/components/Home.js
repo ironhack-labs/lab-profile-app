@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import {signupForm, loginForm, upload, editUser} from '../servies'
 import Login from './Login'
-import Signup from './signup'
+import Signup from './Signup'
 import Edit from './Edit'
+import {Link} from 'react-router-dom'
 
 
 export default class Home extends Component {
@@ -73,6 +74,7 @@ export default class Home extends Component {
         const {email, password, course, campus, image} = this.state
         let user = await signupForm({email, password, course, campus, image})
         this.setState(user)
+        this.props.history.push('/profile')
     }
 
     login = async (e) => {
@@ -80,6 +82,7 @@ export default class Home extends Component {
         const {email, password} = this.state
         let logged = await loginForm({email, password})
         this.setState(logged)
+        this.props.history.push('/profile')
     }
 
     handleFile = async (e) => {
@@ -100,9 +103,10 @@ export default class Home extends Component {
         console.log(this.state)
         return (
             <div className="main">
-            <Login handle={this.handleLoginInput} inputs={this.state.loginForm}/>
-            <Signup handle={this.handleSignupInput} file={this.handleFile} inputs={this.state.signupForm}/>
-            <Edit handle={this.handleSignupInput} file={this.handleFile} inputs={this.state.editForm}/>
+            <Login login={this.login} handle={this.handleLoginInput} inputs={this.state.loginForm}/>
+            <Signup signup={this.signup} handle={this.handleSignupInput} file={this.handleFile} inputs={this.state.signupForm}/>
+            <Edit edit={this.edit} handle={this.handleEditInput} file={this.handleFile} inputs={this.state.editForm}/>
+            <br/><Link exact to="/profile">Profile</Link>
             </div>
         )
     }

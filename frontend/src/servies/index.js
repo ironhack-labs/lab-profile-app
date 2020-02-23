@@ -24,3 +24,8 @@ export const editUser = async (data) => {
     let edited = await api.post('/edit', data)
     return edited
 }
+
+export const loggedUser = async () => {
+    let logged = await api.get('/loggedIn')
+    return logged
+}

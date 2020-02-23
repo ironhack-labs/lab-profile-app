@@ -1,19 +1,17 @@
 import React from 'react'
 
-const Edit = ({handleSignupInput, handleFile}) => {
+const Edit = ({handle, file, inputs, edit}) => {
     return (
         <div>
-        <form className="edit" onSubmit={this.signup}>
-                <h2>Signup</h2>
+        <form className="edit" onSubmit={edit}>
+                <h2>Edit</h2>
                 <p>Email</p>
-                <input onChange={handleInput} value={email} type="email" placeholder="email" name="email"></input>
-                <p>password</p>
-                <input onChange={handleInput} value={password} type="password" placeholder="password" name="password"></input>
+                <input onChange={handle} value={inputs.email} type="email" placeholder="email" name="email"></input>
                 <p>Campus</p>
-                <input onChange={handleInput} value={campus} type="text" placeholder="campus" name="campus"></input>
+                <input onChange={handle} value={inputs.campus} type="text" placeholder="campus" name="campus"></input>
                 <p>Course</p>
-                <input onChange={handleInput} value={course} type="text" placeholder="course" name="course"></input>
-                <input type="file" name="image" onChange={file}/>
+                <input onChange={handle} value={inputs.course} type="text" placeholder="course" name="course"></input>
+                <br/><input type="file" name="image" onChange={file}/>
                 <button type="submit">Update</button>
             </form>
         </div>
