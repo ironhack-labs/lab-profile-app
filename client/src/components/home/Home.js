@@ -7,8 +7,8 @@ function Home() {
       <section className="leftContent ">
         <h1>IronProfile</h1>
         <p>Today we will create an app authoritation, adding some cool styles!</p>
-        <Link to="/signup">Sign up</Link>
-        <Link to="/login">Log in</Link>
+        <Link className="btn" to="/signup">Sign up</Link>
+        <Link className="btn" to="/login">Log in</Link>
       </section>
     </div>
   );

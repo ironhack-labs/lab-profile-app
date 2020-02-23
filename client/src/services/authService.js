@@ -1,5 +1,5 @@
 import axios from 'axios';
-let baseURL = 'http://localhost:3001'
+let baseURL = 'http://localhost:3000'
 
 const service = axios.create({ withCredentials: true, baseURL });
 
@@ -16,7 +16,7 @@ const authService = {
   edit: async (user) => {
     return await service.post('/auth/edit', user);
   },
-  logOut: async () => {
+  logout: async () => {
     return await service.get('/auth/logout');
   },
   loggedin: async () => {

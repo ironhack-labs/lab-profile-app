@@ -22,12 +22,13 @@ code {
   background-image: url('/images/oval-bg.png');
   background-size: cover;
   display: flex;
-  width: 500px;
-  height: 300px;
+  justify-content: space-between;
+  width: 700px;
+  height: 350px;
 }
 
 .container section{
-  width: 50%;
+  width: 40%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -35,7 +36,7 @@ code {
   padding: 0 20px ;
 }
 
-.container section a {
+.container section .btn {
   width: 180px;
   background-color: #daecd9;
   text-decoration: none;
@@ -48,4 +49,20 @@ code {
 
 .container section h2, .container section p{
   text-align: left;
+}
+h4{
+  color: silver;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  border-radius: 90px;
+  height: 150px;
+  width: 150px;
+}
+.logout {
+  color: #D0021B;
+  cursor: pointer;
 }
