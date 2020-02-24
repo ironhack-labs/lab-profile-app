@@ -17,7 +17,7 @@ const authService = {
         return await service.get('/auth/loggedin');
       },
     
-    login: async (user) => {
+      login: async (user) => {
         return await service.post('/auth/login', user);
     },
     
