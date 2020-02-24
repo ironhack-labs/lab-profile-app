@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { login, signup } from "../services/auth";
+import { login, signup } from "../services/authService";
 
 export default class userForm extends Component {
   state = {
