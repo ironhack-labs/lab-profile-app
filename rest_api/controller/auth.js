@@ -3,6 +3,7 @@ const passport=require('passport')
 
 exports.login=(req,res)=>{
     const {user}=req
+    console.log(user)
     res.status(200).json({user})
 }
 exports.signup=(req,res)=>{

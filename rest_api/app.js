@@ -11,6 +11,7 @@ const path         = require('path');
 const passport     =require('./config/passport')
 const session      =require('express-session')
 const cors         =require('cors')
+
 mongoose
   .connect('mongodb://localhost/rest-api', {useNewUrlParser: true,useUnifiedTopology:true})
   .then(x => {
@@ -28,7 +29,9 @@ const app = express();
 app.use(
   cors({
     credentials: true,
-    origin: [process.env.FRONTENDPOINT]
+    //origin: ["process.env.FRONTENDPOINT"]
+    origin:["http://localhost:3001"]
+    //origin:["*"]
   })
 );
 
