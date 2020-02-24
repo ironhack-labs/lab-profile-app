@@ -8,7 +8,7 @@ const userSchema = new Schema(
       enum: ['Madrid', 'Barcelona', 'Miami', 'Paris', 'Berlin', 'Amsterdam', 'México', 'Sao Paulo', 'Lisbon'],
       type: String
     },
-    curse:{
+    course:{
       enum: ['WebDev', 'UX/UI', 'Data Analytics'],
       type: String
     },

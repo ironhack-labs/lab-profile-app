@@ -32,25 +32,37 @@ const Signup = ({
           <br />
           <br />
           <label>Campus </label>
-          <select type="text" name="campus" onChange={handleInput} value={campus} >
+          <input
+            type='text'
+            name='campus'
+            value={campus}
+            onChange={handleInput}
+          />
+{/* {          <select type="text" name="campus" onChange={handleInput} value={campus} >
             <option value="Madrid">Madrid</option>
             <option value="Barcelona">Barcelona</option>
             <option value="Miami">Miami</option>
-            <option value="Paris">Paris</option>
+            <option value="Paris">Paris</o'ption>
             <option value="Berlin">Berlin</option>
             <option value="Amsterdan">Amsterdan</option>
             <option value="México">México</option>
             <option value="Sao Paulo">Sao Paulo</option>
             <option value="Lisbon">Lisbon</option>
-          </select>
+          </select>} */}
           <br />
           <br />
           <label>Course </label>
-          <select type="text" name="course" onChange={handleInput} value={course} >
+          <input
+            type='text'
+            name='course'
+            value={course}
+            onChange={handleInput}
+          />
+{/* {          <select type="text" name="course" onChange={handleInput} value={course} >
             <option value="WebDev">WebDev</option>
             <option value="UX/UI">UX/UI</option>
             <option value="Data Analytics">Data Analytics</option>
-          </select>
+          </select>} */}
           <br />
           <br />
           <button type="submit">Create Account</button>

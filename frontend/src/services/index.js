@@ -18,7 +18,16 @@ const AUTH_SERVICE = {
     return await service.post('/login', user);
   },
   logOut: async () => {
-    return await service.get('/logout');
+    return await service.post('/logout');
+  },
+  loggedIn: async () => {
+    return await service.get('/loggedin')
+  },
+  upload: async image => {
+    return await service.post('/upload', image)
+  },
+  edit: async () => {
+    return await service.post('/edit')
   }
 };
 

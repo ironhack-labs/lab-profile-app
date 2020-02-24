@@ -10,7 +10,6 @@ class login extends Component {
 
   handleInputs = ({ target: { name, value } }) => {
     this.setState({ [name]: value });
-    console.log(this.state);
   };
 
   login = e => {
@@ -23,7 +22,7 @@ class login extends Component {
           password: ""
         });
         alert('loged - :)');
-        this.props.history.push("/");
+        this.props.history.push("/profile");
       })
       .catch(() => {
         alert(":C - error");

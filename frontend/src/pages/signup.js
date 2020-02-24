@@ -12,7 +12,6 @@ class signup extends Component {
 
     handleInputs = ({ target: { name, value } }) => {
         this.setState({ [name]: value });
-        console.log(this.state)
       };
 
     signup = e => {
@@ -23,8 +22,8 @@ class signup extends Component {
                 this.setState({
                     username: '',
                     password: '',
-                    campus: 'Madrid',
-                    course: 'WebDev'
+                    campus: '',
+                    course: ''
                 })
                 alert(msg)
                 this.props.history.push('/login')

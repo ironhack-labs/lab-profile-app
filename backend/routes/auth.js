@@ -24,7 +24,7 @@ router.post(
     const {id} = req.user
     const {secure_url: image} = req.file
     const user = await User.findByIdAndUpdate(id, {image}, {new: true})
-    res.status(200).json({ msg: 'user updated' })
+    res.status(200).json({ msg: 'user updated', user })
 })
 
 router.post('/auth/edit', isAuth, async (req,res,next) => {
@@ -39,15 +39,11 @@ router.post('/auth/logout', (req, res, next) => {
   res.status(200).json({ msg: 'OK - baibai' });
 });
 
-router.get('/auth/loggedin', isAuth, (req,res,next) => {
-  res.status(200).json({msg: 'User  - Hello honey'})
+router.get('/auth/loggedin', isAuth, async (req,res,next) => {
+  const user = await User.findById(req.user._id)
+  res.status(200).json({msg: 'User  - Hello honey', user})
 })
 
-router.get('/profile', isAuth, (req, res, next) => {
-  User.findById(req.user._id)
-    .then((user) => res.status(200).json({ user }))
-    .catch((err) => res.status(500).json({ err }));
-});
 
 function isAuth(req, res, next) {
   req.isAuthenticated() ? next() : res.status(401).json({ msg: 'Log in first' });
