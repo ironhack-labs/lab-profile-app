@@ -20,7 +20,7 @@ const userSchema = new Schema(
   {
     timestamps: true,
     versionKey: false
-  }
+  } 
 );
 
 userSchema.plugin(PLM, { usernameField: 'username' });
