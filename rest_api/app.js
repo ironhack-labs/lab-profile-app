@@ -42,7 +42,7 @@ app.use(session({
   cookie:{
     httpOnly:false
   },
-  secret:process.env
+  secret:process.env.SECRET
 }))
 app.use(passport.initialize())
 app.use(passport.session())
