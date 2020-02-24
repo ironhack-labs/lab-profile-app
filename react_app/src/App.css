@@ -24,8 +24,8 @@
 }
 
 .App-link {
-  color: #33683D;
-  background-color: #A5DCB0;
+  color: #638165;
+  background-color: #C1DFC4;
   padding: 15px 25px;
   margin:10px;
   border-radius: 20px;
@@ -34,7 +34,7 @@
 }
 
 h1{
-  color:#33683D
+  color:#638165
 }
 
 @keyframes App-logo-spin {
