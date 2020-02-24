@@ -25,6 +25,6 @@ const userSchema = new Schema(
 );
 
 
-userSchema.plugin(PLM, { usernameField: "email" });
+userSchema.plugin(PLM, { usernameField: "username" });
 
 module.exports = model("User", userSchema);

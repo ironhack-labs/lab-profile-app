@@ -6,7 +6,7 @@ const uploadCloud = require('../config/cloudinary')
 
 
 router.post('/signup', (req, res, next) => {
-    User.register(req.body, req.body.password)
+    User.register({username:req.body.username}, req.body.password)
       .then(user => res.status(201).json({ user }))
       .catch(err => res.status(500).json({ err }))
   })
