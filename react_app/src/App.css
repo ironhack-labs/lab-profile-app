@@ -84,7 +84,7 @@ form {
   margin-top: 5vh;
 }
 .Form-derecha input{
-  background-color: antiquewhite;
+  background-color: white;
   border:none;
   padding: 10px;
   width:20vw;
@@ -93,4 +93,55 @@ form {
 }
 .Form-derecha small{
   text-align: justify;
+}
+
+
+.Profile {
+  display: flex;
+  padding: 50px;
+  justify-content: space-between;
+}
+.Profile-izquierda{
+  width:60vw;
+  padding: 20px 30px;
+}
+.Profile-izquierda label{
+  font-size: 1.1rem;
+  font-weight: 100;
+}
+.Profile-izquierda input{
+  margin-bottom: 30px;
+  height: 5vh;
+  background-color: #DEECDD;
+  border: none;
+  width:30vw;
+  margin-top: 10px;
+  padding: 0px 10px;
+}
+.Profile-derecha{
+  padding: 40px 80px;
+  width: 30vw;
+  display: flex;
+  flex-direction: column;
+  font-weight: 100;
+}
+.Profile button{
+  background-color: white;
+  border:none;
+  padding: 10px;
+  width:20vw;
+  align-self: center;
+  border-radius: 5px;
+}
+
+.Profile-izquierda button:first-of-type{
+  color: red;
+  text-decoration: underline;
+}
+.Profile-derecha small{
+  text-align: justify;
+}
+
+img{
+  border-radius: 100%;
 }

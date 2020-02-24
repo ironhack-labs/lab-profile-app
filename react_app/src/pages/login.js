@@ -21,7 +21,7 @@ export default class login extends Component {
                 password: ''
               })
             alert('Usuario loggeado')
-              this.props.history.push('/')
+              this.props.history.push('/profile')
           })
           .catch((err) => {
             alert(err)

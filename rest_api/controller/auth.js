@@ -3,7 +3,6 @@ const passport=require('passport')
 
 exports.login=(req,res)=>{
     const {user}=req
-    console.log(user)
     res.status(200).json({user})
 }
 exports.signup=(req,res)=>{
@@ -31,6 +30,7 @@ exports.edit=async (req,res)=>{
     res.status(200).json({user})
 }
 exports.logout=(req,res)=>{
+    console.log(req.user)
     req.logout()
     res.status(200).json({msg:'User logged out'})
 }

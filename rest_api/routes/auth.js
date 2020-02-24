@@ -11,7 +11,7 @@ router.post('/login', passport.authenticate('local'), (req, res, next) => {
     .post('/signup',signup)
     .post('/upload',isAuth,uploadCloud.single('image'),upload)
     .post('/edit',isAuth,edit)
-    .post('logout',logout)
+    .post('/logout',logout)
     .get('/loggedin',isAuth,loggedin)
 
 function isAuth(req, res, next) {
