@@ -1,0 +1,12 @@
+.NotFound{
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    background: black;   
+}
+
+.NotFound h1{
+    padding-left: 50px;
+    padding-top: 50px;
+    color:red
+}

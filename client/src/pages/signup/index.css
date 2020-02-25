@@ -1,0 +1,82 @@
+.Signup{
+margin: 0;
+width: 100vw;
+height: 100vh;
+background: rgb(193,223,196);
+background: linear-gradient(90deg, rgba(193,223,196,1) 0%, rgba(222,236,221,1) 100%);
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.Signup div{
+    background-image: url("/images/oval-bg.png");
+    width: 717px;
+    height: 458px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.SignupForm{
+    padding-left: 35px;
+  }
+
+  .SignupForm label{
+      display: block;
+  }
+  .SignupForm h1{
+    color:#748e75;
+  }
+
+  .SignupForm label{
+    color:#5b5e60;
+  }
+  .SignupForm option{
+    color:#5b5e60;
+  }
+
+  .SignupForm input,  .SignupForm select{
+    width: 200px;
+      background-color: #f6f6f6;
+      border: none;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      color:#5b5e60;
+      padding-left: 10px;
+  }
+  .SignupSubmit{
+      padding-right: 35px;
+  }
+
+  .SignupSubmit h1{
+    color:#5b5e60;
+  }
+  .SignupSubmit h2{
+    color:#748e75;
+  }
+  .SignupSubmit p{
+    color:#748e75;
+    margin: 5px 0;
+    font-size: 0.75rem;
+    text-align: center;
+  }
+
+  .SignupSubmit h5{
+    width: 180px;
+  
+    padding: 15px 50px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    text-align: center;
+    color:#5b5e60;
+    text-decoration: none;
+  }
+
+
+  .SignupSubmit h5:hover{
+    background-color: #b9b9b9;
+    color:#e0e8ee;
+    cursor:pointer;
+  }

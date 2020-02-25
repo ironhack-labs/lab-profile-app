@@ -1,0 +1,89 @@
+.Login{
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgb(193,223,196);
+    background: linear-gradient(90deg, rgba(193,223,196,1) 0%, rgba(222,236,221,1) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    }
+    
+    .Login div{
+        background-image: url("/images/oval-bg.png");
+        width: 717px;
+        height: 458px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .LoginForm{
+        padding-left: 35px;
+      }
+    
+      .LoginForm label{
+          display: block;
+      }
+      .LoginForm h1{
+        color:#748e75;
+      }
+    
+      .LoginForm label{
+        color:#5b5e60;
+      }
+      .LoginForm option{
+        color:#5b5e60;
+      }
+
+      .LoginForm p,.LoginForm a{
+        color:#5b5e60;
+        font-size: 0.8rem;  
+    }
+    
+      .LoginForm input,  .LoginForm select{
+        width: 200px;
+          background-color: #f6f6f6;
+          border: none;
+          padding-top: 5px;
+          padding-bottom: 5px;
+          color:#5b5e60;
+          padding-left: 10px;
+      }
+      .LoginSubmit{
+          padding-right: 25px;
+      }
+    
+      .LoginSubmit h1{
+        color:#5b5e60;
+       
+      }
+      .LoginSubmit h2{
+        color:#748e75;
+        margin: 5px 0;
+      }
+      .LoginSubmit p{
+        color:#748e75;
+        margin: 5px 0;
+        font-size: 0.75rem;
+        text-align: center;
+      }
+    
+      .LoginSubmit h5{
+        width: 180px;
+      
+        padding: 15px 50px;
+        background-color: #ffffff;
+        border-radius: 10px;
+        text-align: center;
+        color:#5b5e60;
+        text-decoration: none;
+      }
+    
+    
+      .LoginSubmit h5:hover{
+        background-color: #b9b9b9;
+        color:#e0e8ee;
+        cursor:pointer;
+      }
