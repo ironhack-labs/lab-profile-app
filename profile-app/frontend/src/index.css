@@ -1,0 +1,55 @@
+body {
+  margin: 0;
+  text-align: center;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color:  #C1DFC4;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+#containerHome{
+  display: flex;
+  justify-content: center;
+  padding-top: 250px;
+  text-align: initial;
+}
+
+#card{
+  width: 75%;
+  height: 400px;
+  background-size: cover;
+  background-image: url('/oval-bg.png');
+  padding-left: 30px;
+}
+
+.boton{
+  text-align: center;
+  width: 150px;
+  height: 30px;
+  background-color: #DEECDD;
+  margin-top: 30px;
+  margin-left: 30px;
+}
+
+#containerSignUp{
+  width: 75%;
+  height: 400px;
+  background-size: cover;
+  background-image: url('/oval-bg.png');
+  padding-left: 30px;
+  display: flex;
+  justify-content: center;
+  margin-top: 250px;
+  margin-left: 150px;
+}
+
+#texto{
+  margin-left: 200px;
+  margin-top: 50px;
+}
+
