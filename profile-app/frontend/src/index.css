@@ -53,3 +53,14 @@ code {
   margin-top: 50px;
 }
 
+#containerLogin{
+  width: 75%;
+  height: 400px;
+  background-size: cover;
+  background-image: url('/oval-bg.png');
+  padding-left: 30px;
+  display: flex;
+  justify-content: center;
+  margin-top: 250px;
+  margin-left: 150px;
+}

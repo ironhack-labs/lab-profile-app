@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const index = ({handleInputs, login, username, password}) => {
   return (
-    <div id="row">
+    <div id="containerLogin">
       <div>
         <h1>Log In</h1>
         <form onSubmit={login}>
