@@ -1,0 +1,9 @@
+.nav-style .header {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.nav-style .header img {
+	margin-right: 20px;
+}
