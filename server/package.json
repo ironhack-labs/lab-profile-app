@@ -1,0 +1,29 @@
+{
+  "name": "movies-flow",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/index",
+    "dev": "DEBUG=express-mongoose:* nodemon -e js,hbs ./bin/index"
+  },
+  "dependencies": {
+    "@sentry/node": "^5.12.5",
+    "axios": "^0.19.2",
+    "bcrypt": "^3.0.8",
+    "body-parser": "^1.18.3",
+    "connect-ensure-login": "^0.1.1",
+    "connect-mongo": "^3.2.0",
+    "cookie-parser": "^1.4.3",
+    "dotenv": "^6.2.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.0",
+    "mongoose": "^5.9.1",
+    "morgan": "^1.9.0",
+    "passport": "^0.4.1",
+    "passport-google-oauth20": "^2.0.0",
+    "passport-local": "^1.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.12.1"
+  }
+}
