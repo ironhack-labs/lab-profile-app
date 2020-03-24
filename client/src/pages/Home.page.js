@@ -41,7 +41,7 @@ export const HomePage = () => {
 
         <Typography component="h1" variant="h5">
           Today we will create an app with authoritation, adding some cool
-          stlyles!
+          styles!
         </Typography>
 
         <div className={classes.wrapper}>

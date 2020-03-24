@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
@@ -13,6 +14,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Select from "@material-ui/core/Select";
 import InputLabel from "@material-ui/core/InputLabel";
 import FormControl from "@material-ui/core/FormControl";
+import Box from "@material-ui/core/Box";
 
 const campus = [
   "Madrid",
@@ -26,6 +28,14 @@ const campus = [
   "Lisbon"
 ];
 const course = ["WebDev", "UX/UI", "Data Analytics"];
+
+const ChangeAuth = () => {
+  return (
+    <Typography variant="body2" color="textSecondary" align="center">
+      If you don't have an account yet. <Link to="/login">Log in</Link>
+    </Typography>
+  );
+};
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -146,6 +156,9 @@ export const SignupPage = () => {
           </Button>
         </form>
       </div>
+      <Box mt={8}>
+        <ChangeAuth />
+      </Box>
     </Container>
   );
 };

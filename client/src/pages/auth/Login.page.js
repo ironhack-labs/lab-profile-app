@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
@@ -8,6 +9,15 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
+import Box from "@material-ui/core/Box";
+
+const ChangeAuth = () => {
+  return (
+    <Typography variant="body2" color="textSecondary" align="center">
+      If you don't have an account yet. <Link to="/signup">Sign up</Link>
+    </Typography>
+  );
+};
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -84,6 +94,9 @@ export const LoginPage = () => {
           </Button>
         </form>
       </div>
+      <Box mt={8}>
+        <ChangeAuth />
+      </Box>
     </Container>
   );
 };

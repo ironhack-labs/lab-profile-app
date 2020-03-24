@@ -12,8 +12,4 @@ router.use(isLoggedIn());
 
 router.use("/user", user);
 
-router.get("/", (req, res) => {
-  res.json({ status: "Home" });
-});
-
 module.exports = router;
