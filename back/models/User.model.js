@@ -6,6 +6,7 @@ const schema = new mongoose.Schema(
     password: String,
     campus: {
       type: String,
+      //enum es para que sea entre uno de esos valores!!
       enum: [
         "Madrid",
         "Barcelona",
