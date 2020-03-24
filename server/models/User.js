@@ -38,12 +38,12 @@ const userSchema = new mongoose.Schema(
     campus: {
       type: String,
       required: "Campus is required",
-      match: [CAMPUS]
+      enum: CAMPUS
     },
     course: {
       type: String,
       required: "Course is required",
-      match: [COURSE]
+      enum: COURSE
     },
     image: String
   },

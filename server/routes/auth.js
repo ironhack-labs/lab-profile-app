@@ -1,4 +1,5 @@
 const express = require("express");
+const router = express.Router();
 const passport = require("passport");
 
 const User = require("../models/User");
@@ -6,48 +7,50 @@ const User = require("../models/User");
 const { isLoggedIn, isLoggedOut } = require("../middleware/account-middleware");
 const { hashPassword } = require("../lib/hash-password");
 
-const router = express.Router();
-
-router.post("/signup", isLoggedOut(), async (req, res, next) => {
-  const { username, password, campus, course, image } = req.body;
+router.post("/signup", isLoggedOut(), async (req, res) => {
+  const { username, password, campus, course } = req.body;
 
   try {
-    const user = await User.findOne(username);
-
-    if (!user) {
-      await User.create({
+    if (!(await User.findOne({ username }))) {
+      const user = await User.create({
         username,
         password: hashPassword(password),
         campus,
-        course,
-        image
+        course
       });
 
-      req.login(user => res.status(201).json(user));
-    } else
-      return res.json({
-        status: "User already exist"
+      req.login(user, error => {
+        if (error)
+          return res.status(500).json({ status: "ServerError", error });
+        return res.status(201).json(user);
       });
-  } catch (e) {
-    next(e);
+    } else
+      return res.status(401).json({
+        status: "UserExists"
+      });
+  } catch (error) {
+    res.status(500).json({ status: "ServerError", error });
   }
 });
 
 router.post(
   "/login",
   isLoggedOut(),
-  passport.authenticate("local", (err, user) => {
-    if (err) res.status(500).json({ status: "ServerError", message: err });
-    if (!user) return res.status(401).json({ status: "Bad credentials" });
-    return res.json(req.user);
-  })
+  passport.authenticate("local"),
+  (req, res) => res.status(200).json(user)
 );
 
 router.get("/logout", isLoggedIn(), async (req, res) => {
-  req.logout();
-  return res.json({ status: "Log out" });
+  try {
+    req.logout();
+    return res.status(200).json({ status: "Log out" });
+  } catch (error) {
+    res.status(500).json({ status: "ServerError", error });
+  }
 });
 
-router.get("/loggedin", isLoggedIn(), async (req, res) => res.json(req.user));
+router.get("/loggedin", isLoggedIn(), async (req, res) =>
+  res.status(200).json(req.user)
+);
 
 module.exports = router;
