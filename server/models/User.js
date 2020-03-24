@@ -1,28 +1,22 @@
 const mongoose = require("mongoose");
 
-const EMAIL_PATTERN = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/;
-const PASSWORD_PATTERN = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
-const URL_PATTERN = /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/;
 const USERNAME = /[a-zA-Z0-9_-]{3,15}/;
+const PASSWORD_PATTERN = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
+const CAMPUS = [
+  "Madrid",
+  "Barcelona",
+  "Miami",
+  "Paris",
+  "Berlin",
+  "Amsterdam",
+  "México",
+  "Sao Paulo",
+  "Lisbon"
+];
+const COURSE = ["WebDev", "UX/UI", "Data Analytics"];
 
 const userSchema = new mongoose.Schema(
   {
-    email: {
-      type: String,
-      required: "Email is required",
-      unique: true,
-      lowercase: true,
-      trim: true,
-      match: [EMAIL_PATTERN, "Invalid email pattern"]
-    },
-    password: {
-      type: String,
-      required: "Password is required",
-      match: [
-        PASSWORD_PATTERN,
-        "Passwords must contain at least six characters, including uppercase, lowercase letters and numbers."
-      ]
-    },
     username: {
       type: String,
       required: "Username is required",
@@ -33,16 +27,25 @@ const userSchema = new mongoose.Schema(
         "Username must containt at least three characters and cannot spaces."
       ]
     },
-    reviews: [{ type: mongoose.ObjectId, ref: "Review" }],
-    favs: [{ type: mongoose.ObjectId, ref: "Movie" }],
-    follows: [{ type: mongoose.ObjectId, ref: "User" }],
-    picture: {
+    password: {
       type: String,
-      match: [URL_PATTERN, "Invalid picture URL pattern."]
+      required: "Password is required",
+      match: [
+        PASSWORD_PATTERN,
+        "Passwords must contain at least six characters, including uppercase, lowercase letters and numbers."
+      ]
     },
-    social: {
-      googleID: String
-    }
+    campus: {
+      type: String,
+      required: "Campus is required",
+      match: [CAMPUS]
+    },
+    course: {
+      type: String,
+      required: "Course is required",
+      match: [COURSE]
+    },
+    image: String
   },
   {
     timestamps: true
