@@ -1,11 +1,21 @@
 import React from "react";
-import { Container } from "../public/styles/Common.styles";
+import { Container, Content } from "../public/styles/Common.styles";
 import { ApiContextProvider } from "./context/Context";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { HomePage } from "./page/Home.Page";
+import { SignUpPage } from "./page/SignUp.Page";
 
 export const App = () => (
-  <ApiContextProvider>
-    <Container>
-      <h1>IronNutritions</h1>
-    </Container>
-  </ApiContextProvider>
+  <BrowserRouter>
+    <ApiContextProvider>
+      <Container>
+        <Content>
+          <Switch>
+            <Route path="/" exact component={HomePage} />
+            <Route path="/signup" exact component={SignUpPage} />
+          </Switch>
+        </Content>
+      </Container>
+    </ApiContextProvider>
+  </BrowserRouter>
 );
