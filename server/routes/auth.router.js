@@ -1,13 +1,19 @@
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');
+const { hashPassword } = require('../lib/hashing');
 const User = require('../models/User');
 
 // POST route - create new user
 router.post('/signup', async (req, res, next) => {
   const { username, password, campus, course } = req.body;
   try {
-    const newUser = await User.create({ username, password, campus, course });
+    const newUser = await User.create({
+      username,
+      password: hashPassword(password),
+      campus,
+      course
+    });
     console.log('Created user ', newUser);
     return res.status(201).json({
       status: 201,
