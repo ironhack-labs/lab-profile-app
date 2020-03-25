@@ -36,7 +36,7 @@ router.post('/signup', async (req, res, next) => {
   }
 });
 
-// POST route - create logged user
+// POST route - login = create logged user
 router.post('/login', (req, res, next) => {
   passport.authenticate('local', (err, user, failureDetails) => {
     if (err) {
@@ -47,7 +47,9 @@ router.post('/login', (req, res, next) => {
     }
 
     if (!user) {
-      return res.status(401).json({ status: 401, message: failureDetails });
+      return res
+        .status(401)
+        .json({ status: 401, message: failureDetails.message });
     }
 
     req.login(user, err => {
@@ -60,6 +62,27 @@ router.post('/login', (req, res, next) => {
         .json({ status: 200, message: 'Logged in successfully', user });
     });
   })(req, res, next);
+});
+
+// POST route - logout = remove logged user
+router.post('/logout', (req, res, next) => {
+  if (req.isAuthenticated()) {
+    req.logout();
+    return res.status(200).json({ message: 'Log out successfully' });
+  }
+
+  return res
+    .status(401)
+    .json({ message: 'Cannot logout if not authenticated' });
+});
+
+// GET route - loggedin = retrieve logged user
+router.get('/loggedin', (req, res, next) => {
+  if (req.isAuthenticated()) {
+    return res.status(200).json({ user: req.user });
+  }
+
+  return res.status(403).json({ message: 'Unauthorized to do that' });
 });
 
 module.exports = router;
