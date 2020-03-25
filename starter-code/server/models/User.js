@@ -6,7 +6,6 @@ const schema = new mongoose.Schema(
     password: String,
     campus: {
       type: String,
-      required: true,
       enum: [
         'Madrid',
         'Barcelona',
@@ -20,8 +19,7 @@ const schema = new mongoose.Schema(
       ]
     },
     course: {
-      type,
-      String,
+      type: String,
       enum: ['WebDev', 'UX/UI', 'Data Analytics']
     },
     image: { type: String }

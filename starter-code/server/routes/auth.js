@@ -16,7 +16,16 @@ router.post(
 
     // Directly login user
     req.logIn(newUser, err => {
-      res.json(_.pick(req.user, ['username', '_id', 'createdAt', 'updatedAt']));
+      res.json(
+        _.pick(req.user, [
+          'username',
+          '_id',
+          'campus',
+          'course',
+          'createdAt',
+          'updatedAt'
+        ])
+      );
     });
   }
 );
@@ -29,7 +38,14 @@ router.post(
   (req, res) => {
     // Return the logged in user
     return res.json(
-      _.pick(req.user, ['username', '_id', 'createdAt', 'updatedAt'])
+      _.pick(req.user, [
+        'username',
+        '_id',
+        'campus',
+        'course',
+        'createdAt',
+        'updatedAt'
+      ])
     );
   }
 );
@@ -38,8 +54,6 @@ router.post(
 router.post('/edit', ensureLogin.ensureLoggedIn(), async (req, res, next) => {
   const { username, campus, course } = req.body;
   const loggedUser = req.user;
-  // Create the user
-  const newUser = await User.create({ username, password, campus, course });
 
   try {
     //check if the new username sent is from one registered user
@@ -52,7 +66,14 @@ router.post('/edit', ensureLogin.ensureLoggedIn(), async (req, res, next) => {
       await loggedUser.save();
       //req.flash('error', 'Updated user!');
       return res.json(
-        req.user(req.user, ['username', '_id', 'createdAt', 'updatedAt'])
+        _.pick(req.user, [
+          'username',
+          '_id',
+          'campus',
+          'course',
+          'createdAt',
+          'updatedAt'
+        ])
       );
       // if the username is taken
     } else {
@@ -62,7 +83,14 @@ router.post('/edit', ensureLogin.ensureLoggedIn(), async (req, res, next) => {
         loggedUser.course = course;
         await loggedUser.save();
         return res.json(
-          req.user(req.user, ['username', '_id', 'createdAt', 'updatedAt'])
+          _.pick(req.user, [
+            'username',
+            '_id',
+            'campus',
+            'course',
+            'createdAt',
+            'updatedAt'
+          ])
         );
         // if it doesn't correspond to the logged user
       } else {
@@ -88,7 +116,17 @@ router.get('/logout', ensureLogin.ensureLoggedIn(), (req, res, next) => {
 
 // Check if the user is logged in
 router.get('/loggedin', ensureLogin.ensureLoggedIn(), (req, res, next) => {
-  if (req.user) return res.json(req.user);
+  if (req.user)
+    return res.json(
+      _.pick(req.user, [
+        'username',
+        '_id',
+        'campus',
+        'course',
+        'createdAt',
+        'updatedAt'
+      ])
+    );
   else return res.status(401).json({ status: 'No user session present' });
 });
 

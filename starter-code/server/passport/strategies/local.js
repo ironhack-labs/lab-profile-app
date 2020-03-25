@@ -11,7 +11,7 @@ passport.use(
       }
       const foundUser = await User.findOne({ username });
       if (foundUser) {
-        checkHashed(password, foundUser.password)
+        foundUser.password === password
           ? done(null, foundUser)
           : done(null, false);
       } else {

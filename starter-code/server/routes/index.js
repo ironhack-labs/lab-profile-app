@@ -5,7 +5,7 @@ router.get('/', (req, res, next) => {
   res.json({ status: 'Welcome' });
 });
 
-const auth = require('./routes/auth');
+const auth = require('./auth');
 router.use('/auth', auth);
 
 module.exports = router;
