@@ -4,6 +4,7 @@ const passport = require('passport');
 const _ = require('lodash');
 const ensureLogin = require('connect-ensure-login');
 const User = require('../models/User');
+const { hashPassword } = require('../lib/hashing');
 
 // Register
 router.post(
@@ -12,7 +13,12 @@ router.post(
   async (req, res, next) => {
     const { username, password, campus, course } = req.body;
     // Create the user
-    const newUser = await User.create({ username, password, campus, course });
+    const newUser = await User.create({
+      username,
+      password: hashPassword(password),
+      campus,
+      course
+    });
 
     // Directly login user
     req.logIn(newUser, err => {
