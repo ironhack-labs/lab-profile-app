@@ -5,7 +5,7 @@ export const withProtected = (
   Component,
   { redirectTo = "/login" } = {}
 ) => () => {
-  const user = undefined;
+  const user = "user";
 
   return user ? <Component /> : <Redirect to={redirectTo} />;
 };
