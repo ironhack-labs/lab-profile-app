@@ -16,20 +16,17 @@ router.post('/signup', async (req, res, next) => {
     });
     console.log('Created user ', newUser);
     return res.status(201).json({
-      status: 201,
       message: 'User registered successfully '
     });
   } catch (error) {
     if (error.name === 'ValidationError') {
       console.log('Validation error ', error);
       return res.status(400).json({
-        status: 400,
         message: error.message
       });
     } else {
       console.log('Error occurred during signup', error);
       return res.status(500).json({
-        status: 500,
         message: 'Signup failed'
       });
     }
@@ -41,15 +38,11 @@ router.post('/login', (req, res, next) => {
   passport.authenticate('local', (err, user, failureDetails) => {
     if (err) {
       console.log(err);
-      return res
-        .status(500)
-        .json({ status: 500, message: 'Authentication error' });
+      return res.json({ status: 500, message: 'Authentication error' });
     }
 
     if (!user) {
-      return res
-        .status(401)
-        .json({ status: 401, message: failureDetails.message });
+      return res.json({ status: 401, message: failureDetails.message });
     }
 
     req.login(user, err => {
@@ -57,9 +50,7 @@ router.post('/login', (req, res, next) => {
         return res.status(500).json({ message: 'Session save went bad.' });
       }
 
-      return res
-        .status(200)
-        .json({ status: 200, message: 'Logged in successfully', user });
+      return res.json({ status: 200, message: 'Logged in successfully', user });
     });
   })(req, res, next);
 });
@@ -71,9 +62,7 @@ router.post('/logout', (req, res, next) => {
     return res.status(200).json({ message: 'Log out successfully' });
   }
 
-  return res
-    .status(401)
-    .json({ message: 'Cannot logout if not authenticated' });
+  return res.json({ message: 'Cannot logout if not authenticated' });
 });
 
 // GET route - loggedin = retrieve logged user
@@ -83,6 +72,58 @@ router.get('/loggedin', (req, res, next) => {
   }
 
   return res.status(403).json({ message: 'Unauthorized to do that' });
+});
+
+// PUT route -  upload = create user image
+router.put('/upload', async (req, res, next) => {
+  const { file } = req.body;
+  try {
+    const updatedUser = await User.findByIdAndUpdate(
+      req.user._id,
+      {
+        image: file
+      },
+      { new: true }
+    );
+    console.log('User image uploaded ', updatedUser);
+    return res.status(200).json({
+      message: 'File successfully uploaded',
+      user: updatedUser
+    });
+  } catch (error) {
+    console.log('Error uploading file', error);
+    return res.status(500).json({
+      message: 'Image upload failed'
+    });
+  }
+});
+
+// PUT route - edit logged user
+router.put('/edit', async (req, res, next) => {
+  const { username, campus, course } = req.body;
+  try {
+    const updatedUser = await User.findByIdAndUpdate(
+      req.user._id,
+      {
+        username: username || req.user.username,
+        campus: campus || req.user.campus,
+        course: course || req.user.course
+      },
+      { new: true }
+    );
+    console.log('User edited ', updatedUser);
+
+    return res.status(200).json({
+      message: 'User successfully edited',
+      user: updatedUser
+    });
+  } catch (error) {
+    console.log('Error editing user', error);
+
+    return res.status(500).json({
+      message: 'Editing user failed'
+    });
+  }
 });
 
 module.exports = router;
