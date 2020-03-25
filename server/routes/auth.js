@@ -8,7 +8,7 @@ const { isLoggedIn, isLoggedOut } = require("../middleware/account-middleware");
 const { hashPassword } = require("../lib/hash-password");
 
 router.post("/signup", isLoggedOut(), async (req, res) => {
-  const { username, password, campus, course } = req.body;
+  const { username, password, campus, course } = req.body.user;
 
   try {
     if (!(await User.findOne({ username }))) {
@@ -29,7 +29,7 @@ router.post("/signup", isLoggedOut(), async (req, res) => {
         status: "UserExists"
       });
   } catch (error) {
-    res.status(500).json({ status: "ServerError", error });
+    return res.status(500).json({ status: "ServerError", error });
   }
 });
 
@@ -45,7 +45,7 @@ router.get("/logout", isLoggedIn(), async (req, res) => {
     req.logout();
     return res.status(200).json({ status: "Log out" });
   } catch (error) {
-    res.status(500).json({ status: "ServerError", error });
+    return res.status(500).json({ status: "ServerError", error });
   }
 });
 

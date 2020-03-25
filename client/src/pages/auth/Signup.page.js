@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
+
+import { signup } from "../../../lib/api/auth.api.js";
 
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
-import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
@@ -61,7 +62,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export const SignupPage = () => {
+export const SignupPage = withRouter(({ history }) => {
   const classes = useStyles();
 
   const [state, setState] = useState({});
@@ -71,9 +72,19 @@ export const SignupPage = () => {
     setState({ ...state, [name]: value });
   };
 
+  const handleSubmit = async e => {
+    e.preventDefault();
+
+    try {
+      const user = await signup(state);
+      history.push("/profile");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <Container component="main" maxWidth="xs">
-      <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon />
@@ -83,7 +94,7 @@ export const SignupPage = () => {
           Sign up
         </Typography>
 
-        <form className={classes.form} noValidate>
+        <form className={classes.form} onSubmit={handleSubmit}>
           <TextField
             variant="outlined"
             margin="normal"
@@ -161,4 +172,4 @@ export const SignupPage = () => {
       </Box>
     </Container>
   );
-};
+});

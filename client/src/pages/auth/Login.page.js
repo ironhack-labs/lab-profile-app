@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
+
+import { login } from "../../../lib/api/auth.api.js";
 
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
-import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
@@ -39,20 +40,30 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export const LoginPage = () => {
+export const LoginPage = withRouter(({ history }) => {
   const classes = useStyles();
 
   const [state, setState] = useState({});
 
   const handleChange = ({ target }) => {
-    console.log(target);
     const { value, name } = target;
     setState({ ...state, [name]: value });
   };
 
+  const handleSubmit = async e => {
+    e.preventDefault();
+    const { username, password } = state;
+
+    try {
+      const user = await login(username, password);
+      history.push("/profile");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <Container component="main" maxWidth="xs">
-      <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon />
@@ -62,7 +73,7 @@ export const LoginPage = () => {
           Log in
         </Typography>
 
-        <form className={classes.form} noValidate>
+        <form className={classes.form} onSubmit={handleSubmit}>
           <TextField
             variant="outlined"
             margin="normal"
@@ -72,6 +83,8 @@ export const LoginPage = () => {
             name="username"
             autoComplete="username"
             autoFocus
+            value={state.username || ""}
+            onChange={handleChange}
           />
           <TextField
             variant="outlined"
@@ -81,6 +94,8 @@ export const LoginPage = () => {
             name="password"
             label="Password"
             type="password"
+            value={state.password || ""}
+            onChange={handleChange}
           />
 
           <Button
@@ -99,4 +114,4 @@ export const LoginPage = () => {
       </Box>
     </Container>
   );
-};
+});

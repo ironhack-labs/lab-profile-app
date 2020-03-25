@@ -4,7 +4,9 @@ const error = (err, req, res) => {
     res.status(500).json({ status: "ServerError", message: err });
 };
 
-const notFound = (req, res) => res.status(404).json({ status: "NotFound" });
+const notFound = (req, res) => {
+  res.status(404).json({ status: "NotFound" });
+};
 
 module.exports = {
   error,
