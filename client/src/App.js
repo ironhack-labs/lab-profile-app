@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import _ from "lodash";
+import { Provider } from "react-redux";
+import { store } from "../lib/redux/store";
 
 import "./App.css";
 
@@ -11,13 +12,15 @@ import { ProfilePage } from "./pages/user/Profile.page";
 
 export const App = () => {
   return (
-    <Router>
-      <Switch>
-        <Route path="/" exact component={HomePage} />
-        <Route path="/login" component={LoginPage} />
-        <Route path="/signup" component={SignupPage} />
-        <Route path="/profile" component={ProfilePage} />
-      </Switch>
-    </Router>
+    <Provider store={store}>
+      <Router>
+        <Switch>
+          <Route path="/" exact component={HomePage} />
+          <Route path="/login" component={LoginPage} />
+          <Route path="/signup" component={SignupPage} />
+          <Route path="/profile" component={ProfilePage} />
+        </Switch>
+      </Router>
+    </Provider>
   );
 };

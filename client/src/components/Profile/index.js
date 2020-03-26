@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
@@ -9,12 +9,6 @@ import Typography from "@material-ui/core/Typography";
 import Avatar from "@material-ui/core/Avatar";
 
 import { InfoUser } from "../Profile/infoUser";
-
-const test = {
-  username: "Victor",
-  campus: "Madrid",
-  course: "DevWeb"
-};
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -55,10 +49,10 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export const Profile = () => {
+export const Profile = ({ user }) => {
   const classes = useStyles();
 
-  const [user, setUser] = useState(test);
+  console.log(user);
 
   return (
     <Container className={classes.root} component="main">
