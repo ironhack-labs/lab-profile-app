@@ -1,4 +1,6 @@
-![logo_ironhack_blue 7](https://user-images.githubusercontent.com/23629340/40541063-a07a0a8a-601a-11e8-91b5-2f13e4e6b441.png)
+<img src="https://avatars1.githubusercontent.com/u/45364181?s=460&v=4" alt="Carballo" width="200" height="200"> ![logo_ironhack_blue 7](https://user-images.githubusercontent.com/23629340/40541063-a07a0a8a-601a-11e8-91b5-2f13e4e6b441.png)
+
+# [MAD-PT DE] Joan Carballo - Octubre 2019
 
 # IronProfile
 
@@ -31,23 +33,22 @@ We will create a backend REST API using NodeJS and a frontend using React where 
 
 You will start building the app creating the REST API. Create the `app` using the `irongenerator`. Then, create the **user model** so the `User.js` have the following fields:
 
-- **username**, type String, 
+- **username**, type String,
 - **password**, type String
 - **campus**, type String. Possible values: `Madrid`, `Barcelona`, `Miami`, `Paris`, `Berlin`, `Amsterdam`, `México`, `Sao Paulo`, `Lisbon`,
 - **course**, type String. Possible values: `WebDev`, `UX/UI`, `Data Analytics`.
 - **image**, type String.
 
-The app will need the following routes: 
+The app will need the following routes:
 
-| Method  |  Endpoint         |  Parameters               | Return Value |
-|---------|-------------------|---------------------------|--------------|
-| POST    | `/auth/login`     | username, password        | User logged  |
-| POST    | `/auth/signup`    | username, password, campus, course  | User created |  
-| POST    | `/auth/upload`    | file                      | User updated |
-| POST    | `/auth/edit   `   | username, campus, course  | User updated |
-| POST    | `/auth/logout`    |                           | OK Message   |
-| GET     | `/auth/loggedin`  |                           | User logged  |
-
+| Method | Endpoint         | Parameters                         | Return Value |
+| ------ | ---------------- | ---------------------------------- | ------------ |
+| POST   | `/auth/login`    | username, password                 | User logged  |
+| POST   | `/auth/signup`   | username, password, campus, course | User created |
+| POST   | `/auth/upload`   | file                               | User updated |
+| POST   | `/auth/edit`     | username, campus, course           | User updated |
+| POST   | `/auth/logout`   |                                    | OK Message   |
+| GET    | `/auth/loggedin` |                                    | User logged  |
 
 :::info
 Remember to test the REST API using Postman, to make sure everything is working! :wink:
@@ -67,13 +68,12 @@ All the assets you need for the design are stored inside the `assets` folder, bu
 
 You should create an `authService` file, where you will have all the methods to call your REST API. You have to create the following methods:
 
-- **signup** that makes a POST request to the `auth/signup` route passing *username*, *password*, *campus* and *course* info,
-- **login** that makes a POST request to the `auth/login` route passing *username* and *password*,
-- **upload** that makes a POST request to the `auth/upload` route passing the *file*,
-- **edit** that makes a POST request to the `auth/edit` route passing *username*, *campus* and *course*,
+- **signup** that makes a POST request to the `auth/signup` route passing _username_, _password_, _campus_ and _course_ info,
+- **login** that makes a POST request to the `auth/login` route passing _username_ and _password_,
+- **upload** that makes a POST request to the `auth/upload` route passing the _file_,
+- **edit** that makes a POST request to the `auth/edit` route passing _username_, _campus_ and _course_,
 - **logout** that makes a POST request to the `auth/logout` route to destroy user session,
 - **loggedin** that makes a GET request to the `auth/loggedin` route to check if a user is logged in.
-
 
 ### Iteration 4 - Signup/Login Components
 
@@ -100,6 +100,4 @@ Or you can use `.png` inside of the `assets` folder that you can use as a backgr
 - Green: #638165
 - Red: #D0021B
 
-
 Happy coding! :heart:
-
