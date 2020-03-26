@@ -8,7 +8,7 @@ const api = axios.create({
   withCredentials: true
 });
 
-const doSignup = async (username, password, course, campus) => {
+export const doSignup = async (username, password, course, campus) => {
   const res = await api.post('/auth/signup', {
     username,
     password,
@@ -18,7 +18,7 @@ const doSignup = async (username, password, course, campus) => {
   return res.data;
 };
 
-const doLogin = async (username, password) => {
+export const doLogin = async (username, password) => {
   const res = await api.post('/auth/signup', {
     username,
     password
@@ -26,14 +26,14 @@ const doLogin = async (username, password) => {
   return res.data;
 };
 
-const doUpload = async file => {
+export const doUpload = async file => {
   const data = new FormData();
   data.append('image', file);
   const res = await api.post('/auth/upload', data);
   return res.data;
 };
 
-const doEdit = async (username, course, campus) => {
+export const doEdit = async (username, course, campus) => {
   const res = await api.post('/auth/signup', {
     username,
     course,
@@ -42,7 +42,7 @@ const doEdit = async (username, course, campus) => {
   return res.data;
 };
 
-const doLogout = async () => {
+export const doLogout = async () => {
   const res = await api.post('/auth/logout', data);
   return res.data;
 };
