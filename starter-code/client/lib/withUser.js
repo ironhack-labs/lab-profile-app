@@ -3,12 +3,13 @@ import { Loading } from './loading.js';
 import { UserContext, getUserLogged } from './auth.api.js';
 
 // THIS is a HOC
-export const withLoading = Content => () => {
+export const withUser = Content => () => {
   const [user, setUser] = useState();
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     setLoading(true);
+    console.log('loading user...');
     getUserLogged()
       .then(user => {
         setUser(user);
@@ -16,7 +17,10 @@ export const withLoading = Content => () => {
       .catch(error => {
         console.error('No user logged in');
       })
-      .finally(() => setLoading(false));
+      .finally(() => {
+        setLoading(false);
+        console.log(user);
+      });
   }, []);
 
   return (

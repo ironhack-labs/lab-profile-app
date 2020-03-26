@@ -127,7 +127,7 @@ router.post('/logout', ensureLogin.ensureLoggedIn(), (req, res, next) => {
 });
 
 // Check if the user is logged in
-router.get('/loggedin', ensureLogin.ensureLoggedIn(), (req, res, next) => {
+router.get('/loggedin', (req, res, next) => {
   if (req.user)
     return res.json(
       _.pick(req.user, [

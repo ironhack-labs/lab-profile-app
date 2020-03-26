@@ -4,8 +4,7 @@ import React, { useContext } from 'react';
 export const UserContext = React.createContext();
 
 const api = axios.create({
-  baseURL: 'http://localhost:3000',
-  withCredentials: true
+  baseURL: 'http://localhost:3000'
 });
 
 export const doSignup = async (username, password, course, campus) => {

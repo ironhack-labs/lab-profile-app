@@ -45,19 +45,25 @@ const Title = styled.p`
 
 const Text = styled.p`
   width: 80%;
-  font-size: 1.2rem;
-  margin: 5px 0;
+  font-size: 1.5rem;
+  margin: 40px 0;
   font-weight: 300;
+`;
+
+const TextContainer = styled.div`
+  margin: 10px 0;
 `;
 
 export const HomePage = () => {
   return (
     <Card>
       <Left>
-        <Title>IronProfile</Title>
-        <Text>
-          Today we will create an app with auth. Done with React and Express
-        </Text>
+        <TextContainer>
+          <Title>IronProfile</Title>
+          <Text>
+            Today we will create an app with auth. Done with React and Express
+          </Text>
+        </TextContainer>
         <ButtonContainer>
           <LinkUpdated to='/signup'>
             <Button>Sign Up</Button>

@@ -1,9 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { withLoading } from '../../../lib/withLoading';
+import { withUser } from '../../../lib/withUser';
 import { HomePage } from '../../pages/Home.page';
 
-export const App = withLoading(() => {
+export const App = withUser(() => {
   return (
     <Router>
       <Switch>
