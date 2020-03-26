@@ -1,4 +1,5 @@
 import React from 'react';
+import { signup } from './../services/authService';
 
 const SignupPage = () => {
   return(
@@ -7,4 +8,3 @@ const SignupPage = () => {
 }
 
 export default SignupPage;
-
