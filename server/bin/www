@@ -1,0 +1,42 @@
+#!/usr/bin/env node
+
+const http = require("http");
+
+const app = require("../app");
+
+app.use((req, res) => {
+  res.status(404);
+  res.json({ status: "Not found" });
+});
+
+app.use((err, req, res, next) => {
+  if (!res.headersSent) {
+    res.status(500);
+    res.json({ status: err.message });
+  }
+});
+
+const server = http.createServer(app);
+
+server.on("error", err => {
+  if (err.syscall !== "listen") {
+    throw err;
+  }
+
+  switch (err.code) {
+    case "EACCES":
+      console.error(`Port ${process.env.SERVER_PORT || 3000} requires elevated privileges`);
+      process.exit(1);
+      break;
+    case "EADDRINUSE":
+      console.error(`Port ${process.env.SERVER_PORT || 3000} is already in use`);
+      process.exit(1);
+      break;
+    default:
+      throw err;
+  }
+});
+
+server.listen(process.env.SERVER_PORT, () => {
+  console.log(`Listening on http://localhost:${process.env.SERVER_PORT || 3000}`);
+});
