@@ -1,13 +1,16 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-
+import { doSignup } from "../../lib/api";
+import { withRouter } from "react-router-dom";
 import { Button, Form, Group, Label, Control, Text } from "react-bootstrap";
 
-export const Signup = () => {
+export const Signup = withRouter(({ history }) => {
   const { register, handleSubmit } = useForm();
-  const onSubmit = data => {
-    console.log(data);
+  const onSubmit = async (username, password, campus, course) => {
+    const user = await doSignup(username, password, campus, course);
+    history.push("/");
   };
+
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
       <Form.Group controlId="formBasicEmail">
@@ -52,4 +55,4 @@ export const Signup = () => {
       </Button>
     </Form>
   );
-};
+});
