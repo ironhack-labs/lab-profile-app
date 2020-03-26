@@ -37,7 +37,7 @@ router.post(
   "/login",
   isLoggedOut(),
   passport.authenticate("local"),
-  (req, res) => res.status(200).json(user)
+  (req, res) => res.status(200).json(req.user)
 );
 
 router.get("/logout", isLoggedIn(), async (req, res) => {

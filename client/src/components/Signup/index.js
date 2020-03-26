@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, withRouter } from "react-router-dom";
+import { connect } from "react-redux";
 
 import { signup } from "../../../lib/api/auth.api.js";
 import { addUser } from "../../../lib/redux/action";
@@ -31,14 +32,6 @@ const campus = [
 ];
 const course = ["WebDev", "UX/UI", "Data Analytics"];
 
-const ChangeAuth = () => {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      If you don't have an account yet. <Link to="/login">Log in</Link>
-    </Typography>
-  );
-};
-
 const useStyles = makeStyles(theme => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -63,115 +56,119 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export const SignupPage = withRouter(({ history, dispatch }) => {
-  const classes = useStyles();
+export const Signup = connect()(
+  withRouter(({ history, dispatch }) => {
+    const classes = useStyles();
 
-  const [state, setState] = useState({});
+    const [state, setState] = useState({});
 
-  const handleChange = ({ target }) => {
-    const { value, name } = target;
-    setState({ ...state, [name]: value });
-  };
+    const handleChange = ({ target }) => {
+      const { value, name } = target;
+      setState({ ...state, [name]: value });
+    };
 
-  const handleSubmit = async e => {
-    e.preventDefault();
+    const handleSubmit = async e => {
+      e.preventDefault();
 
-    try {
-      const user = await signup(state);
-      dispatch(addUser(user));
-      history.push("/profile");
-    } catch (error) {
-      console.log(error);
-    }
-  };
+      try {
+        dispatch(addUser(await signup(state)));
+        history.push("/profile");
+      } catch (error) {
+        console.log("Error", error.response.status);
+        console.log(error.response.data.status);
+      }
+    };
 
-  return (
-    <Container component="main" maxWidth="xs">
-      <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
-          <LockOutlinedIcon />
-        </Avatar>
+    return (
+      <Container component="main" maxWidth="xs">
+        <div className={classes.paper}>
+          <Avatar className={classes.avatar}>
+            <LockOutlinedIcon />
+          </Avatar>
 
-        <Typography component="h1" variant="h5">
-          Sign up
-        </Typography>
-
-        <form className={classes.form} onSubmit={handleSubmit}>
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            label="Username"
-            name="username"
-            autoComplete="username"
-            autoFocus
-            value={state.username || ""}
-            onChange={handleChange}
-          />
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            name="password"
-            label="Password"
-            type="password"
-            autoComplete="current-password"
-            value={state.password || ""}
-            onChange={handleChange}
-          />
-          <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
-              <FormControl variant="outlined" className={classes.formControl}>
-                <InputLabel required>Campus</InputLabel>
-                <Select
-                  label="campus"
-                  name="campus"
-                  value={state.campus || ""}
-                  onChange={handleChange}
-                >
-                  {campus.map((e, i) => (
-                    <MenuItem key={i} value={e}>
-                      {e}
-                    </MenuItem>
-                  ))}
-                </Select>
-              </FormControl>
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <FormControl variant="outlined" className={classes.formControl}>
-                <InputLabel required>Course</InputLabel>
-                <Select
-                  label="course"
-                  name="course"
-                  value={state.course || ""}
-                  onChange={handleChange}
-                >
-                  {course.map((e, i) => (
-                    <MenuItem key={i} value={e}>
-                      {e}
-                    </MenuItem>
-                  ))}
-                </Select>
-              </FormControl>
-            </Grid>
-          </Grid>
-
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="secondary"
-            className={classes.submit}
-          >
+          <Typography component="h1" variant="h5">
             Sign up
-          </Button>
-        </form>
-      </div>
-      <Box mt={8}>
-        <ChangeAuth />
-      </Box>
-    </Container>
-  );
-};
+          </Typography>
+
+          <form className={classes.form} onSubmit={handleSubmit}>
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              label="Username"
+              name="username"
+              autoComplete="username"
+              autoFocus
+              value={state.username || ""}
+              onChange={handleChange}
+            />
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              name="password"
+              label="Password"
+              type="password"
+              autoComplete="current-password"
+              value={state.password || ""}
+              onChange={handleChange}
+            />
+            <Grid container spacing={2}>
+              <Grid item xs={12} sm={6}>
+                <FormControl variant="outlined" className={classes.formControl}>
+                  <InputLabel required>Campus</InputLabel>
+                  <Select
+                    label="campus"
+                    name="campus"
+                    value={state.campus || ""}
+                    onChange={handleChange}
+                  >
+                    {campus.map((e, i) => (
+                      <MenuItem key={i} value={e}>
+                        {e}
+                      </MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <FormControl variant="outlined" className={classes.formControl}>
+                  <InputLabel required>Course</InputLabel>
+                  <Select
+                    label="course"
+                    name="course"
+                    value={state.course || ""}
+                    onChange={handleChange}
+                  >
+                    {course.map((e, i) => (
+                      <MenuItem key={i} value={e}>
+                        {e}
+                      </MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
+              </Grid>
+            </Grid>
+
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="secondary"
+              className={classes.submit}
+            >
+              Sign up
+            </Button>
+          </form>
+        </div>
+        <Box mt={8}>
+          <Typography variant="body2" color="textSecondary" align="center">
+            If you don't have an account yet. <Link to="/login">Log in</Link>
+          </Typography>
+        </Box>
+      </Container>
+    );
+  })
+);

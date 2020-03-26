@@ -10,8 +10,6 @@ const LocalStrategy = require("passport-local").Strategy;
 
 passport.use(
   new LocalStrategy(async (username, password, done) => {
-    console.log(username);
-    console.log(password);
     try {
       const user = await User.findOne({ username });
       user

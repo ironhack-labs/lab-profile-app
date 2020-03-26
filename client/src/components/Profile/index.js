@@ -1,4 +1,9 @@
 import React from "react";
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
+
+import { logout } from "../../../lib/api/auth.api.js";
+import { useLogout } from "../../../lib/redux/action";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
@@ -49,40 +54,55 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export const Profile = ({ user }) => {
-  const classes = useStyles();
+export const Profile = connect(state => ({ user: state.user }))(
+  withRouter(({ user, history, dispatch }) => {
+    const classes = useStyles();
 
-  console.log(user);
+    const handleLogout = async e => {
+      try {
+        await logout();
+        dispatch(useLogout());
+        console.log("pasa por aqui");
+        console.log(history);
+        history.push("/login");
+      } catch (error) {
+        console.log("Error", error.response.status);
+        console.log(error.response.data.status);
+      }
+    };
 
-  return (
-    <Container className={classes.root} component="main">
-      <Card className={classes.card}>
-        <Typography variant="h3" color="textSecondary" gutterBottom>
-          Profile
-        </Typography>
+    return (
+      <Container className={classes.root} component="main">
+        <Card className={classes.card}>
+          <Typography variant="h3" color="textSecondary" gutterBottom>
+            Profile
+          </Typography>
 
-        <div className={classes.wrapperInfo}>
-          <div>
-            {Object.entries(user).map(([key, value]) => (
-              <InfoUser key={key} title={key.toUpperCase()} value={value} />
-            ))}
+          <div className={classes.wrapperInfo}>
+            <div>
+              {Object.entries(user).map(([key, value]) => (
+                <InfoUser key={key} title={key.toUpperCase()} value={value} />
+              ))}
+            </div>
+            <div className={classes.wrapperImage}>
+              <Avatar
+                alt="Avatar Image"
+                src={user.image || ""}
+                className={classes.large}
+              >
+                {user.username[0].toLocaleUpperCase()}
+              </Avatar>
+              <Button className={classes.button}>Edit Photo</Button>
+            </div>
           </div>
-          <div className={classes.wrapperImage}>
-            <Avatar
-              alt="Avatar Image"
-              src={user.image || ""}
-              className={classes.large}
-            >
-              {user.username[0].toLocaleUpperCase()}
-            </Avatar>
-            <Button className={classes.button}>Edit Photo</Button>
-          </div>
-        </div>
 
-        <CardActions className={classes.wrapperButton}>
-          <Button className={classes.button}>Log Out</Button>
-        </CardActions>
-      </Card>
-    </Container>
-  );
-};
+          <CardActions className={classes.wrapperButton}>
+            <Button onClick={handleLogout} className={classes.button}>
+              Log Out
+            </Button>
+          </CardActions>
+        </Card>
+      </Container>
+    );
+  })
+);

@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { Link, withRouter } from "react-router-dom";
+import { connect } from "react-redux";
 
 import { login } from "../../../lib/api/auth.api.js";
+import { addUser } from "../../../lib/redux/action";
 
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
@@ -11,14 +13,6 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Box from "@material-ui/core/Box";
-
-const ChangeAuth = () => {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      If you don't have an account yet. <Link to="/signup">Sign up</Link>
-    </Typography>
-  );
-};
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -40,78 +34,82 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export const LoginPage = withRouter(({ history, dispatch }) => {
-  const classes = useStyles();
+export const Login = connect()(
+  withRouter(({ history, dispatch }) => {
+    const classes = useStyles();
+    const [state, setState] = useState({});
 
-  const [state, setState] = useState({});
+    const handleChange = ({ target }) => {
+      const { value, name } = target;
+      setState({ ...state, [name]: value });
+    };
 
-  const handleChange = ({ target }) => {
-    const { value, name } = target;
-    setState({ ...state, [name]: value });
-  };
+    const handleSubmit = async e => {
+      e.preventDefault();
 
-  const handleSubmit = async e => {
-    e.preventDefault();
+      try {
+        dispatch(addUser(await login(state.username, state.password)));
+        history.push("/profile");
+      } catch (error) {
+        console.log(error.response);
+        console.log("Error", error.response.status);
+        console.log(error.response.data.status);
+      }
+    };
 
-    try {
-      const user = await login(state.username, state.password);
-      dispatch(addUser(user));
-      history.push("/profile");
-    } catch (error) {
-      console.log(error);
-    }
-  };
+    return (
+      <Container component="main" maxWidth="xs">
+        <div className={classes.paper}>
+          <Avatar className={classes.avatar}>
+            <LockOutlinedIcon />
+          </Avatar>
 
-  return (
-    <Container component="main" maxWidth="xs">
-      <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
-          <LockOutlinedIcon />
-        </Avatar>
+          <Typography component="h1" variant="h5">
+            Log in
+          </Typography>
 
-        <Typography component="h1" variant="h5">
-          Log in
-        </Typography>
+          <form className={classes.form} onSubmit={handleSubmit}>
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              label="Username"
+              name="username"
+              autoComplete="username"
+              autoFocus
+              value={state.username || ""}
+              onChange={handleChange}
+            />
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              name="password"
+              label="Password"
+              type="password"
+              value={state.password || ""}
+              onChange={handleChange}
+            />
 
-        <form className={classes.form} onSubmit={handleSubmit}>
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            label="Username"
-            name="username"
-            autoComplete="username"
-            autoFocus
-            value={state.username || ""}
-            onChange={handleChange}
-          />
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            name="password"
-            label="Password"
-            type="password"
-            value={state.password || ""}
-            onChange={handleChange}
-          />
-
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          >
-            Log In
-          </Button>
-        </form>
-      </div>
-      <Box mt={8}>
-        <ChangeAuth />
-      </Box>
-    </Container>
-  );
-});
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={classes.submit}
+            >
+              Log In
+            </Button>
+          </form>
+        </div>
+        <Box mt={8}>
+          <Typography variant="body2" color="textSecondary" align="center">
+            If you don't have an account yet. <Link to="/signup">Sign up</Link>
+          </Typography>
+        </Box>
+      </Container>
+    );
+  })
+);
