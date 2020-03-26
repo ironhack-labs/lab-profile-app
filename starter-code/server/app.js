@@ -60,7 +60,7 @@ app.use(
     store: new MongoStore({ mongooseConnection: mongoose.connection })
   })
 );
-//require('./passport')(app);
+require('./passport')(app);
 
 app.use(express.static(path.join(__dirname, 'public')));
 
