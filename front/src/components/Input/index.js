@@ -8,7 +8,7 @@ const hasError = (errors, name) => {
 };
 
 export const InputBox = React.forwardRef(
-  ({ label, name, type = "text" }, ref) => {
+  ({ className, label, name, type = "text" }, ref) => {
     const { errors } = useFormContext();
     return (
       <div className="box-input">

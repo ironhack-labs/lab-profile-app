@@ -7,16 +7,9 @@ export const LoginPage = () => {
     <Col2>
       <div className="left">
         <h1>Iniciar Sesión</h1>
-        <label htmlFor="">Email de Usuario</label>
-        <input
-          type="email"
-          id="username"
-          placeholder="email@email.com"
-          value=""
-          onChange=""
-        />
+
         <p>
-          Si aun no tienes cuenta, puedes crear tu cuenta
+          Si aun no tienes cuenta, puedes crear tu cuenta{" "}
           <Link to="/signup">aquí.</Link>
         </p>
       </div>

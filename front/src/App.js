@@ -14,9 +14,9 @@ export const App = () => (
         <Content>
           <Switch>
             <Route path="/" exact component={HomePage} />
-            <Route path="/signup" exact component={SignUpPage} />
-            <Route path="/login" exact component={LoginPage} />
-            <Route path="/profile" exact component={ProfilePage} />
+            <Route path="/signup" component={SignUpPage} />
+            <Route path="/login" component={LoginPage} />
+            <Route path="/profile" component={ProfilePage} />
           </Switch>
         </Content>
       </Container>
