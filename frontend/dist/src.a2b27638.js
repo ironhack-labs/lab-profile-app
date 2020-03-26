@@ -48899,7 +48899,37 @@ var Login = function Login() {
 };
 
 exports.Login = Login;
-},{"react":"node_modules/react/index.js","react-hook-form":"node_modules/react-hook-form/dist/react-hook-form.es.js","react-bootstrap":"node_modules/react-bootstrap/esm/index.js"}],"src/App.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-hook-form":"node_modules/react-hook-form/dist/react-hook-form.es.js","react-bootstrap":"node_modules/react-bootstrap/esm/index.js"}],"src/components/Profile.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Profile = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _reactBootstrap = require("react-bootstrap");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Profile = function Profile() {
+  return /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card, {
+    style: {
+      width: "18rem"
+    }
+  }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card.Img, {
+    variant: "top",
+    src: "holder.js/100px180?text=Image cap"
+  }), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card.Body, null, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card.Title, null, "Profile")), /*#__PURE__*/_react.default.createElement(_reactBootstrap.ListGroup, {
+    className: "list-group-flush"
+  }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.ListGroupItem, null, "User Name"), /*#__PURE__*/_react.default.createElement(_reactBootstrap.ListGroupItem, null, "Campus"), /*#__PURE__*/_react.default.createElement(_reactBootstrap.ListGroupItem, null, "Course")), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card.Body, null, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card.Link, {
+    href: "#"
+  }, "Logout")));
+};
+
+exports.Profile = Profile;
+},{"react":"node_modules/react/index.js","react-bootstrap":"node_modules/react-bootstrap/esm/index.js"}],"src/App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -48919,6 +48949,8 @@ var _Signup = require("./components/Signup");
 
 var _Login = require("./components/Login");
 
+var _Profile = require("./components/Profile");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /* --- UI Framework --- */
@@ -48935,12 +48967,15 @@ var App = function App() {
   }), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
     path: "/login",
     component: _Login.Login
+  }), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
+    path: "/profile",
+    component: _Profile.Profile
   })));
 };
 
 var _default = App;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","bootstrap/dist/css/bootstrap.min.css":"node_modules/bootstrap/dist/css/bootstrap.min.css","./pages/Home":"src/pages/Home.js","./components/Signup":"src/components/Signup.js","./components/Login":"src/components/Login.js"}],"src/index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","bootstrap/dist/css/bootstrap.min.css":"node_modules/bootstrap/dist/css/bootstrap.min.css","./pages/Home":"src/pages/Home.js","./components/Signup":"src/components/Signup.js","./components/Login":"src/components/Login.js","./components/Profile":"src/components/Profile.js"}],"src/index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -48984,7 +49019,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "35559" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "35757" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
