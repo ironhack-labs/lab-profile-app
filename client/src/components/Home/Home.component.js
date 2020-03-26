@@ -1,9 +1,9 @@
 import React from 'react';
-import { StyledLink, LinksContainer } from './Home.styled';
+import { StyledLink, LinksContainer, HomeContent } from './Home.styled';
 
 export const Home = () => {
   return (
-    <>
+    <HomeContent>
       <div>
         <h1>IronProfile</h1>
         <p>
@@ -15,6 +15,6 @@ export const Home = () => {
         <StyledLink to="signup">Sign up</StyledLink>
         <StyledLink to="login">Login</StyledLink>
       </LinksContainer>
-    </>
+    </HomeContent>
   );
 };
