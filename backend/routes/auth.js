@@ -2,7 +2,7 @@ const express = require("express");
 const UserModel = require("../models/User.model");
 const passport = require("passport");
 const _ = require("lodash");
-/* const upload = require("../config/cloudinary"); */
+const upload = require("../config/cloudinary");
 const router = express.Router();
 
 // 1)
@@ -36,15 +36,15 @@ router.post("/signup", async (req, res, next) => {
   });
 });
 
-/* //3)
+//3)
 // upload photo
 //*Method: Post* *Endpoint: /auth/upload	*	*Parameters: file* *Return value: User updated*
-router.post("/auth/upload", upload.single("image"), async (req, res, next) => {
+router.post("/upload", upload.single("image"), async (req, res, next) => {
   const { id } = req.user;
   const { secure_url: image } = req.file;
   const user = await User.findByIdAndUpdate(id, { image }, { new: true });
   res.status(200).json({ msg: "user updated", user });
-}); */
+});
 
 //5)
 // edit
