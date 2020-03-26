@@ -5,6 +5,8 @@ const _ = require('lodash');
 const ensureLogin = require('connect-ensure-login');
 const User = require('../models/User');
 const { hashPassword } = require('../lib/hashing');
+const { asyncController } = require('../lib/asyncControler');
+const { upload, uploadCloud } = require('../lib/multerMiddleware');
 
 // Register
 router.post(
@@ -135,5 +137,33 @@ router.get('/loggedin', ensureLogin.ensureLoggedIn(), (req, res, next) => {
     );
   else return res.status(401).json({ status: 'No user session present' });
 });
+
+router.post(
+  '/upload',
+  ensureLogin.ensureLoggedIn(),
+  asyncController(async (req, res, next) => {
+    const loggedUser = req.user;
+    //const { username } = req.body;
+    // Update user in database
+    //loggedUser.username = username;
+
+    if (req.file) {
+      loggedUser.picture = req.file;
+      await loggedUser.save();
+      return res.json(
+        _.pick(req.user, [
+          'username',
+          '_id',
+          'campus',
+          'course',
+          'createdAt',
+          'updatedAt'
+        ])
+      );
+    } else {
+      return res.status(401).json({ status: 'Not file sent' });
+    }
+  })
+);
 
 module.exports = router;
