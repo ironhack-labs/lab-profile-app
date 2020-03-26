@@ -32264,14 +32264,28 @@ exports.Home = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
+var _reactRouterDom = require("react-router-dom");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Home = function Home() {
-  return /*#__PURE__*/_react.default.createElement("h1", null, "Hi I'm home page");
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", {
+    id: "containerHome"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    id: "card"
+  }, /*#__PURE__*/_react.default.createElement("h1", null, "IronProfile"), /*#__PURE__*/_react.default.createElement("p", null, "Today we will create an app", /*#__PURE__*/_react.default.createElement("br", null), " with authoritation, adding ", /*#__PURE__*/_react.default.createElement("br", null), "some cool styles!"), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("div", {
+    className: "boton"
+  }, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
+    to: "/signup"
+  }, "SignUp")), /*#__PURE__*/_react.default.createElement("div", {
+    className: "boton"
+  }, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
+    to: "/login"
+  }, "Login")))));
 };
 
 exports.Home = Home;
-},{"react":"node_modules/react/index.js"}],"src/App.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js"}],"src/App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
