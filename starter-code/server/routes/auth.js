@@ -5,7 +5,7 @@ const _ = require('lodash');
 const ensureLogin = require('connect-ensure-login');
 const User = require('../models/User');
 const { hashPassword } = require('../lib/hashing');
-const { asyncController } = require('../lib/asyncControler');
+const { asyncController } = require('../lib/asyncController');
 const { upload, uploadCloud } = require('../lib/multerMiddleware');
 
 // Register
@@ -30,6 +30,7 @@ router.post(
           '_id',
           'campus',
           'course',
+          'image',
           'createdAt',
           'updatedAt'
         ])
@@ -51,6 +52,7 @@ router.post(
         '_id',
         'campus',
         'course',
+        'image',
         'createdAt',
         'updatedAt'
       ])
@@ -79,6 +81,7 @@ router.post('/edit', ensureLogin.ensureLoggedIn(), async (req, res, next) => {
           '_id',
           'campus',
           'course',
+          'image',
           'createdAt',
           'updatedAt'
         ])
@@ -96,6 +99,7 @@ router.post('/edit', ensureLogin.ensureLoggedIn(), async (req, res, next) => {
             '_id',
             'campus',
             'course',
+            'image',
             'createdAt',
             'updatedAt'
           ])
@@ -131,6 +135,7 @@ router.get('/loggedin', ensureLogin.ensureLoggedIn(), (req, res, next) => {
         '_id',
         'campus',
         'course',
+        'image',
         'createdAt',
         'updatedAt'
       ])
@@ -141,6 +146,7 @@ router.get('/loggedin', ensureLogin.ensureLoggedIn(), (req, res, next) => {
 router.post(
   '/upload',
   ensureLogin.ensureLoggedIn(),
+  uploadCloud.single('image'),
   asyncController(async (req, res, next) => {
     const loggedUser = req.user;
     //const { username } = req.body;
@@ -148,7 +154,7 @@ router.post(
     //loggedUser.username = username;
 
     if (req.file) {
-      loggedUser.picture = req.file;
+      loggedUser.image = req.file;
       await loggedUser.save();
       return res.json(
         _.pick(req.user, [
@@ -156,6 +162,7 @@ router.post(
           '_id',
           'campus',
           'course',
+          'profilepic',
           'createdAt',
           'updatedAt'
         ])
