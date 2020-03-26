@@ -3,6 +3,7 @@ const router = express.Router();
 const Users = require("../models/User");
 const _ = require("lodash");
 const passport = require("passport");
+const ensureLogin = require("connect-ensure-login");
 const { hashPassword, checkHashed } = require("../lib/hashing");
 const { isLoggedIn, isLoggedOut } = require("../lib/isLoggedMiddleware");
 
@@ -37,7 +38,7 @@ router.post(
   isLoggedOut(),
   passport.authenticate("local"),
   (req, res) => {
-    // Return the logged in user
+    // Directly login user
     return res.json(
       _.pick(req.user, ["username", "_id", "createdAt", "updatedAt"])
     );
@@ -76,6 +77,43 @@ router.post("/edit", isLoggedIn(), async (req, res, next) => {
 router.get("/whoami", (req, res, next) => {
   if (req.user) return res.json(req.user);
   else return res.status(401).json({ status: "No user session present" });
+});
+
+// UPLOAD
+router.post("/upload", async (req, res, next) => {
+  const { username, campus, image, password, course } = req.body;
+  const loggedUser = req.user;
+  try {
+    const existingUser = await User.findOne({ username });
+
+    // Update user in database
+    if (!existingUser) {
+      loggedUser.username = username;
+      loggedUser.campus = campus;
+      loggedUser.image = image;
+      loggedUser.password = password;
+      loggedUser.course = course;
+
+      await loggedUser.save();
+      req.flash("error", "Updated user!");
+      return res.status("Update");
+    } else {
+      if (loggedUser.username === existingUser.username) {
+        loggedUser.campus = campus;
+        loggedUser.image = image;
+        loggedUser.password = password;
+        loggedUser.course = course;
+        await loggedUser.save();
+        req.flash("error", "Updated user!");
+        return res.status("Update user");
+      } else {
+        req.flash("error", "That username is taken!");
+        return res.status("no Update");
+      }
+    }
+  } catch (e) {
+    next(e);
+  }
 });
 
 module.exports = router;
