@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { Content } from '../../Layout/Layout.styled';
+import { Content } from './Layout.styled';
 
 export const StyledLink = styled(Link)`
   color: #000;

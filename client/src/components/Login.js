@@ -1,22 +1,31 @@
-import React, { useState } from 'react';
+// dependencies
+import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 
-import { Form, SocialContent } from '../Signup/Signup.styled';
-import { Content, SocialContainer } from '../../Layout/Layout.styled';
-import { login } from '../../services/authService';
+// local modules
+import { login } from '../services/authService';
+import { AuthContext } from '../contexts/authContext';
 
-export const Login = () => {
+// styled components
+import { Form, SocialContent, SocialContainer } from '../styles/Signup.styled';
+import { Content } from '../styles/Layout.styled';
+
+export const Login = ({ history }) => {
   const [currentUser, setCurrentUser] = useState({
     username: '',
     password: ''
   });
+  const { user, setUser } = useContext(AuthContext);
+  console.log('usuario actual', user);
 
   const handleSubmit = async e => {
     e.preventDefault();
     console.log('submitting form!');
-    const user = await login(currentUser);
+    const loggedUser = await login(currentUser);
 
     console.log('user logged', user);
+    setUser(loggedUser);
+    history.push('/');
   };
 
   const handleChange = e => {

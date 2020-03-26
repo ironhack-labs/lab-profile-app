@@ -45,13 +45,3 @@ export const Content = styled.div`
   display: flex;
   flex-direction: column;
 `;
-
-export const SocialContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  height: 100%;
-
-  div:first-of-type {
-    padding-top: 3em;
-  }
-`;

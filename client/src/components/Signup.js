@@ -1,7 +1,12 @@
+// dependencies
 import React, { useState } from 'react';
-import { Form, SocialContent } from './Signup.styled';
-import { Content, SocialContainer } from '../../Layout/Layout.styled';
-import { signup } from '../../services/authService';
+
+// local modules
+import { signup } from '../services/authService';
+
+// styled components
+import { Form, SocialContent, SocialContainer } from '../styles/Signup.styled';
+import { Content } from '../styles/Layout.styled';
 
 export const Signup = () => {
   const [newUser, setNewUser] = useState({
