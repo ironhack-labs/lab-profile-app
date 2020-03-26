@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Button } from "react-bootstrap";
 
 export const Home = () => {
   return (
@@ -13,12 +14,12 @@ export const Home = () => {
             some cool styles!
           </p>
           <br></br>
-          <div className="boton">
+          <Button variant="light" className="boton">
             <Link to="/signup">SignUp</Link>
-          </div>
-          <div className="boton">
+          </Button>
+          <Button variant="light" className="boton">
             <Link to="/login">Login</Link>
-          </div>
+          </Button>
         </div>
       </div>
     </>
