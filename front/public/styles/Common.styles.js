@@ -44,6 +44,7 @@ export const Content = styled.div`
     background: #dbebda;
     border-radius: 5px;
     color: #333;
+    cursor: pointer;
     display: block;
     font-size: 16px;
     line-height: 1;
@@ -64,9 +65,31 @@ export const Content = styled.div`
 export const Col2 = styled.form`
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: flex-start;
   width: 100%;
-  div {
+  > div {
     width: 40%;
+    &.right p {
+      padding: 165px 0 0px;
+    }
+    h2 {
+      color: #000;
+      font-size: 20px;
+      line-height: 1.6;
+      margin: 0;
+      span {
+        display: block;
+        color: #628165;
+      }
+    }
+    p {
+      width: 100%;
+      font-size: 15px;
+      line-height: 1.4;
+    }
+    .box-input {
+      position: relative;
+      width: 100%;
+    }
   }
 `;

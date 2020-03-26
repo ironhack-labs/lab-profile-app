@@ -7,7 +7,7 @@ const { hashPassword, checkHashed } = require("../lib/hashing");
 const { isLoggedIn, isLoggedOut } = require("../lib/isLoggedMiddleware");
 
 // SIGNUP
-router.post("/signup", async (req, res, next) => {
+router.post("/signup", isLoggedOut(), async (req, res, next) => {
   const { username, password, campus, course, image } = req.body;
 
   console.log(username, password, campus, course, image);
@@ -45,7 +45,7 @@ router.post(
 );
 
 // LOGOUT
-router.post("/logout", isLoggedIn(), async (req, res, next) => {
+router.get("/logout", isLoggedIn(), async (req, res, next) => {
   if (req.user) {
     req.logout();
     return res.json({ status: "Log out" });

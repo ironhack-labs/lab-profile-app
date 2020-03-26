@@ -1,5 +1,5 @@
 import React from "react";
-import { ButtonItem } from "../components/button";
+import { ButtonItem } from "../components/Button/index";
 
 export const HomePage = () => {
   return (
