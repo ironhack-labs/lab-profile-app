@@ -115,7 +115,7 @@ router.post('/edit', ensureLogin.ensureLoggedIn(), async (req, res, next) => {
 });
 
 // Logout
-router.get('/logout', ensureLogin.ensureLoggedIn(), (req, res, next) => {
+router.post('/logout', ensureLogin.ensureLoggedIn(), (req, res, next) => {
   if (req.user) {
     req.logout();
     return res.json({ status: 'Logged out' });
