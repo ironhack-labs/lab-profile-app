@@ -3,8 +3,6 @@ require("dotenv").config();
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const express = require("express");
-const favicon = require("serve-favicon");
-const hbs = require("hbs");
 const mongoose = require("mongoose");
 const logger = require("morgan");
 const path = require("path");
@@ -50,8 +48,10 @@ require("./passport")(app);
 app.locals.title = "Express - Generated with IronGenerator";
 
 app.use(express.static(path.join(__dirname, "public")));
+
 const index = require("./routes/index");
 app.use("/", index);
+
 const auth = require("./routes/auth");
 app.use("/auth", auth);
 
