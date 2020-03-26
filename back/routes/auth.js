@@ -12,7 +12,7 @@ router.post("/signup", async (req, res, next) => {
   console.log(course);
   console.log(image);
 
-  const newUSer = await UserModel.create({
+  const newUser = await UserModel.create({
     username,
     password,
     campus,
@@ -20,7 +20,9 @@ router.post("/signup", async (req, res, next) => {
     image
   });
 
-  res.json({ status: "te has registrado crack" });
+  req.logIn(newUser, err => {
+    res.json(_.pick(req.user, ["username", "_id", "createdAt", "updatedAt"]));
+  });
 });
 
 router.post("/login", passport.authenticate("local"), (req, res) => {

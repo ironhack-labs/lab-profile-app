@@ -1,27 +1,24 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import { doSignup, useUserSetter } from "../../lib/authService";
+import { withRouter } from "react-router-dom";
+import { SignupForm } from "../components/SignupForm";
 
-export const Signup = () => {
+export const Signup = withRouter(({ history }) => {
+  const setUser = useUserSetter();
+  console.log(setUser);
+
+  const handleSubmit = async (username, password, campus, course) => {
+    const user = await doSignup(username, password, campus, course);
+    console.log(user);
+    setUser(user);
+    // Redirige el router a la HOME
+    history.push("/profile");
+  };
+
   return (
     <>
       <h1>Sign up</h1>
-      <form>
-        <div>
-          <label>Username</label>
-          <input></input>
-        </div>
-        <div>
-          <label>Password</label>
-          <input></input>
-        </div>
-        <div>
-          <label>Campus</label>
-          <input></input>
-        </div>
-        <div>
-          <label>Course</label>
-          <input></input>
-        </div>
-      </form>
+      <SignupForm handleSubmit={handleSubmit} />
       <div>
         <h2>
           <b>Hello!!</b>
@@ -31,8 +28,7 @@ export const Signup = () => {
           If you signup, you agree with all our terms and conditions where we
           can do whatever we want with the data!
         </p>
-        <button>Create the Account</button>
       </div>
     </>
   );
-};
+});

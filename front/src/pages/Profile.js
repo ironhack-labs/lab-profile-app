@@ -1,5 +1,8 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { doLogout, whoami } from "../../lib/authService";
+import { withRouter } from "react-router-dom";
+import axios from "axios";
 
 //provisional
 let username = "PEPITO";
@@ -9,7 +12,21 @@ let image =
   "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSyGtK6cx39ZSbh-LH5aP8PJZ45HjJf05O0OA1aMF_jbZyvYkAO";
 //
 
-export const Profile = () => {
+export const Profile = withRouter(({ history }) => {
+  const [profile, setProfile] = useState();
+
+  const Profi = () => whoami().then(prof => setProfile(prof));
+
+  useEffect(() => {
+    Profi();
+  }, []);
+
+  console.log(profile);
+
+  const handleClick = async () => {
+    await doLogout();
+    await history.push("/");
+  };
   return (
     <>
       <div>
@@ -17,7 +34,7 @@ export const Profile = () => {
         <form>
           <div>
             <label>Username</label>
-            <input value={username}></input>
+            <input value={profile}></input>
           </div>
           <div>
             <label>Campus</label>
@@ -28,7 +45,7 @@ export const Profile = () => {
             <input value={course}></input>
           </div>
         </form>
-        <Link to={"/"}>Logout</Link>
+        <Link onClick={handleClick}>Logout</Link>
       </div>
       <div>
         <img src={image}></img>
@@ -40,4 +57,4 @@ export const Profile = () => {
       </div>
     </>
   );
-};
+});
