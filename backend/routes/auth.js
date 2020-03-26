@@ -50,10 +50,11 @@ router.post("/auth/upload", upload.single("image"), async (req, res, next) => {
 // edit
 //*Method: Post* *Endpoint: /auth/edit	*	*Parameters: username, campus, course* *Return value: User updated*
 
-router.post("/auth/edit", async (req, res, next) => {
-  const { username, campus, course } = req.body;
+router.post("/edit", async (req, res, next) => {
+  const { username, campus, course, image } = req.body;
+  const editUser = { username, course, campus, image };
   const { id } = req.user;
-  await User.findByIdAndUpdate(id, { username, campus, course }, { new: true });
+  await UserModel.findByIdAndUpdate(id, editUser, { new: true });
   res.status(200).json({ msg: "User updated" });
 });
 
