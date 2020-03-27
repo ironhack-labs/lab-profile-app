@@ -1,8 +1,7 @@
 import React, { useContext } from 'react';
 import { withRouter, Link } from 'react-router-dom';
-import { UserContext, doSignup } from '../../lib/auth.api';
+import { UserContext, doLogin } from '../../lib/auth.api';
 import { Card } from '../components/Card';
-import styled from 'styled-components';
 import { useForm, FormContext } from 'react-hook-form';
 import { Input } from '../components/Input';
 import {
@@ -11,25 +10,21 @@ import {
   TextContainer,
   Title,
   Text,
-  ButtonContainer,
-  LinkUpdated,
-  Button,
+  LinkUpdated2,
   Button2,
   Form,
   TextMinor,
   SubTitle
 } from './utils/styles';
 
-export const SignupPage = withRouter(({ history }) => {
+export const LoginPage = withRouter(({ history }) => {
   const { user, setUser, setLoading } = useContext(UserContext);
 
   const methods = useForm({
     mode: 'onBlur',
     defaultValue: {
       username: '',
-      password: '',
-      course: '',
-      campus: ''
+      password: ''
     }
   });
 
@@ -38,7 +33,7 @@ export const SignupPage = withRouter(({ history }) => {
   const onSubmit = async data => {
     //console.log(data);
     setLoading(true);
-    const newUser = await doSignup(data);
+    const newUser = await doLogin(data);
     console.log('new user', newUser);
     setUser(newUser);
     console.log('user', user);
@@ -49,7 +44,7 @@ export const SignupPage = withRouter(({ history }) => {
   return (
     <Card>
       <Left>
-        <Title>Sign Up</Title>
+        <Title>Login</Title>
         <FormContext {...methods}>
           <Form onSubmit={handleSubmit(onSubmit)}>
             <Input
@@ -71,21 +66,7 @@ export const SignupPage = withRouter(({ history }) => {
                 required: 'Required *'
               })}
             />
-            <Input
-              name='course'
-              placeholder='Course'
-              ref={register({
-                required: 'Required *'
-              })}
-            />
-            <Input
-              name='campus'
-              placeholder='Campus'
-              ref={register({
-                required: 'Required *'
-              })}
-            />
-            <Button2 type='submit'>Signup</Button2>
+            <Button2 type='submit'>Login</Button2>
           </Form>
         </FormContext>
       </Left>
@@ -95,7 +76,8 @@ export const SignupPage = withRouter(({ history }) => {
           <Text>Awesome to have you here again!!!</Text>
         </TextContainer>
         <TextMinor>
-          If you sign up, you agree with our terms and conditions!
+          If you sign don't have an account register{' '}
+          <LinkUpdated2 to='/signup'>here</LinkUpdated2>
         </TextMinor>
       </Right>
     </Card>

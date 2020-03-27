@@ -9,7 +9,7 @@ export const InputBase = styled.input`
   padding: 10px;
   margin: 10px 0;
   border: none;
-  border-bottom: 1px solid #d7c9aa;
+  border-bottom: 1px solid #4ecdc4;
   text-align: center;
   font-family: 'rubik';
   :focus {
