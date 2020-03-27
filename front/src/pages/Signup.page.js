@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { doSignUp } from "../lib/auth.api";
-import { Typography, Form, Input, Button, Select } from 'antd';
+import { Typography, Form, Button } from 'antd';
 import { Field } from "../components/form/Field";
 import { SelectField } from "../components/SelectField";
 
@@ -24,9 +24,8 @@ export const SignupPage = () => {
     setState({ ...state, [name]: value });
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = () => {
     const user = { ...state };
-    console.log("Submit", user)
     doSignUp(user).then(res => console.log(res))
   };
 

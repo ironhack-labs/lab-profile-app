@@ -12,4 +12,5 @@ export const SelectField = ({ type, options, handleInputChange }) => (<Form.Item
     {options.map((e, i) => <Option key={i} value={e}>{e}</Option>)}
 
   </Select>
-</Form.Item >)
+</Form.Item >
+)
