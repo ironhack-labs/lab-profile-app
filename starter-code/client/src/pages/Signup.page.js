@@ -4,7 +4,8 @@ import { UserContext, doSignup } from '../../lib/auth.api';
 import { Card } from '../components/Card';
 import styled from 'styled-components';
 import { useForm, FormContext } from 'react-hook-form';
-import { Input } from '../components/Input';
+import { Input, Select } from '../components/Input';
+
 import {
   Left,
   Right,
@@ -29,9 +30,7 @@ export const SignupPage = withProtected(
       mode: 'onBlur',
       defaultValue: {
         username: '',
-        password: '',
-        course: '',
-        campus: ''
+        password: ''
       }
     });
 
@@ -45,7 +44,7 @@ export const SignupPage = withProtected(
       setLoading(false);
       history.push('/profile');
     };
-
+    console.log(errors);
     return (
       <Card>
         <Left>
@@ -62,6 +61,7 @@ export const SignupPage = withProtected(
                     message: 'invalid email address'
                   }
                 })}
+                type='text'
               />
               <Input
                 name='password'
@@ -71,19 +71,33 @@ export const SignupPage = withProtected(
                   required: 'Required *'
                 })}
               />
-              <Input
+              <Select
                 name='course'
-                placeholder='Course'
                 ref={register({
-                  required: 'Required *'
+                  validate: value => {
+                    value !== '' ? 'Select a valid option' : '';
+                  }
                 })}
+                options={['WebDev', 'UX/UI', 'Data Analytics']}
               />
-              <Input
+              <Select
                 name='campus'
-                placeholder='Campus'
                 ref={register({
-                  required: 'Required *'
+                  validate: value => {
+                    value !== '' ? 'Select a valid option' : '';
+                  }
                 })}
+                options={[
+                  'Madrid',
+                  'Barcelona',
+                  'Miami',
+                  'Paris',
+                  'Berlin',
+                  'Amsterdam',
+                  'México',
+                  'Sao Paulo',
+                  'Lisbon'
+                ]}
               />
               <Button2 type='submit'>Signup</Button2>
             </Form>
