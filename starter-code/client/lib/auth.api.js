@@ -18,22 +18,22 @@ export const doSignup = async ({ username, password, course, campus }) => {
   return res.data;
 };
 
-export const doLogin = async (username, password) => {
-  const res = await api.post('/auth/signup', {
+export const doLogin = async ({ username, password }) => {
+  const res = await api.post('/auth/login', {
     username,
     password
   });
   return res.data;
 };
 
-export const doUpload = async file => {
+export const doUpload = async ({ file }) => {
   const data = new FormData();
   data.append('image', file);
   const res = await api.post('/auth/upload', data);
   return res.data;
 };
 
-export const doEdit = async (username, course, campus) => {
+export const doEdit = async ({ username, course, campus }) => {
   const res = await api.post('/auth/signup', {
     username,
     course,

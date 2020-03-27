@@ -36,7 +36,6 @@ export const LoginPage = withRouter(({ history }) => {
     const newUser = await doLogin(data);
     console.log('new user', newUser);
     setUser(newUser);
-    console.log('user', user);
     setLoading(false);
     history.push('/');
   };
