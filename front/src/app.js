@@ -1,15 +1,18 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Home } from "./pages/Home.pages";
-import { Login } from "./pages/Login.Page";
-import { SignUpPage } from "./pages/SingUp.Page";
+import { LoginPage } from "./pages/Login.Page";
+import { SignUpPage } from "./pages/SignUp.Page";
+import { ApiContextProvider } from "../context/ApiContext";
 
 export const App = () => (
   <Router>
-    <Switch>
-      <Route exact path="/" component={Home} />
-      <Route exact path="/login" component={Login} />
-      <Route exact path="/signUp" component={SignUpPage} />
-    </Switch>
+    <ApiContextProvider>
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route path="/login" component={LoginPage} />
+        <Route path="/signUp" component={SignUpPage} />
+      </Switch>
+    </ApiContextProvider>
   </Router>
 );
