@@ -8,18 +8,31 @@ export const AuthForm = styled.div`
   padding: 40px;
   box-sizing: border-box;
   color: #333;
+  display: flex;
 
   .wrapper {
     width: 50%;
 
-    h1 {
-      color: ${props => props.theme.green};
+    &.right {
+      padding-left: 10%;
+      box-sizing: border-box;
     }
+  }
 
-    p {
-      font-size: 1.5rem;
-      font-weight: lighter;
-    }
+  h1 {
+    color: ${props => props.theme.green};
+  }
+
+  p {
+    font-size: 1.5rem;
+    font-weight: lighter;
+  }
+
+  input,
+  select {
+    padding: 5px;
+    display: block;
+    margin-top: 5px;
   }
 `;
 

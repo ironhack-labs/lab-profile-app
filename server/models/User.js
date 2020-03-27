@@ -14,7 +14,7 @@ const userSchema = new Schema(
         "Paris",
         "Berlin",
         "Amsterdam",
-        "México",
+        "Mexico",
         "Sao Paulo",
         "Lisbon"
       ]

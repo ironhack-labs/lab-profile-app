@@ -1,14 +1,52 @@
 const express = require("express");
 const router = express.Router();
+const User = require("../models/user");
+const passport = require("passport");
+const { hashPassword } = require("../lib/hash");
+const _ = require("lodash");
 
-router.post("/login", (req, res, next) => {
-  const { username, password } = req.body;
-  res.json(`User logged ${username} ${password}`);
+router.post("/login", passport.authenticate("local"), (req, res) => {
+  // Return the logged in user
+  return res.json(
+    _.pick(req.user, ["username", "_id", "createdAt", "updatedAt"])
+  );
 });
 
-router.post("/signup", (req, res, next) => {
+router.post("/signup", async (req, res, next) => {
   const { username, password, campus, course } = req.body;
-  res.json(`User created ${username} ${password} ${campus} ${course}`);
+  if (!username || !password) {
+    return res.json({ error: "Invalid data" });
+  }
+  try {
+    const existingUser = await User.findOne({
+      username
+    });
+    if (!existingUser) {
+      const newUser = await User.create({
+        username,
+        password: hashPassword(password),
+        campus,
+        course
+      });
+
+      // login with the user created
+      req.login(newUser, function(err) {
+        if (!err) {
+          return res
+            .status(201)
+            .json({ success: `User ${newUser.username} created` });
+        } else {
+          return res
+            .status(201)
+            .json({ error: `Error trying to login with the new user` });
+        }
+      });
+    } else {
+      return res.json({ error: "The user already exists" });
+    }
+  } catch (e) {
+    next(e);
+  }
 });
 
 router.post("/upload", (req, res, next) => {
