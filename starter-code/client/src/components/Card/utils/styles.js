@@ -13,6 +13,8 @@ export const Wrapper = styled.div`
 export const Container = styled.div`
   min-width: 60%;
   max-width: 1000;
+  height: 60%;
+  max-height: 600px;
   background-color: #1a535c;
   display: flex;
   border-radius: 5px;
