@@ -1,10 +1,18 @@
-# Dependency directory
+# Dependencies
 node_modules
 
 # Debug log from npm
 npm-debug.log
 
-# Environment Variables should NEVER be published
+# Environment variables 
 .env
 
-.DS_store
+# Parcel related folders
+.cache
+dist
+
+# macOS
+.DS_Store
+
+# Visual Studio Code settings
+.vscode
