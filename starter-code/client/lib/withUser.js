@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Loading } from './loading.js';
 import { UserContext, getUserLogged } from './auth.api.js';
-import { withRouter } from 'react-router';
 
 // THIS is a HOC
 export const withUser = Content => () => {
