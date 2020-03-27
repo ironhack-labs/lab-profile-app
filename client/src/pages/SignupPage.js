@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { signup } from './../services/authService';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import { withRouter } from "react-router-dom";
+import {UserContext} from './../contexts/userContext';
 
 const SignupPage =  withRouter(({ history })=> {
+  const {setUser} = useContext(UserContext);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [campus, setCampus] = useState('');
@@ -15,6 +17,7 @@ const SignupPage =  withRouter(({ history })=> {
     e.preventDefault();
     try {
       const res = await signup({username, password, campus, course})
+      setUser(res.username);
       console.log(res);
       history.push("/profile");
     } catch (error) {

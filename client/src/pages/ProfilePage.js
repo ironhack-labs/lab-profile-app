@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { logout, upload } from '../services/authService';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import { withRouter } from "react-router-dom";
+import {UserContext} from './../contexts/userContext';
 
 const ProfilePage = withRouter(({ history }) => {
+  const {user} = useContext(UserContext);
   const [file, setFile] = useState('');
 
   const handleSubmit =  async (e) => {
@@ -21,7 +23,7 @@ const ProfilePage = withRouter(({ history }) => {
 
   const logout = async (e) => {
     try {
-      const res = await logout({username})
+      const res = await logout({user})
       console.log(res);
       history.push("/");
     } catch (error) {
