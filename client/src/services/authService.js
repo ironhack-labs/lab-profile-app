@@ -28,3 +28,10 @@ export const logout = async () => {
   const response = await authService.post('/logout');
   console.log('respuesta del server al logout', response);
 };
+
+export const isLoggedIn = async () => {
+  const { data } = await authService.get('/loggedin');
+  console.log('respuesta del server al loggedin', data);
+
+  return data;
+};

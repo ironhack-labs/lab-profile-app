@@ -21,7 +21,6 @@ export const Login = ({ history }) => {
     password: ''
   });
   const { user, setUser } = useContext(AuthContext);
-  console.log('usuario actual', user);
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -30,7 +29,10 @@ export const Login = ({ history }) => {
 
     console.log('user logged', user);
     setUser(loggedUser);
-    history.push('/');
+    const formatted = loggedUser.username.replace(' ', '').toLowerCase();
+    console.log(formatted);
+
+    history.push(`/${formatted}`);
   };
 
   const handleChange = e => {
