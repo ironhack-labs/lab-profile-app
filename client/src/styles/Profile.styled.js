@@ -43,3 +43,18 @@ export const LogoutLink = styled(Link)`
   font-size: 0.9rem;
   text-align: center;
 `;
+
+export const ProfileHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  svg {
+    align-self: center;
+    padding-top: 3.1em;
+    color: #57595d;
+    cursor: pointer;
+
+    &:hover {
+      color: #638165;
+    }
+  }
+`;

@@ -35,3 +35,11 @@ export const isLoggedIn = async () => {
 
   return data;
 };
+
+export const editProfile = async ({ username, campus, course }) => {
+  console.log('updating user with data', username, campus, course);
+  const { data } = await authService.put('/edit', { username, campus, course });
+  console.log('respuesta del server al edit', data);
+
+  return data.user;
+};
