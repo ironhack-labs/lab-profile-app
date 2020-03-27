@@ -6,6 +6,7 @@ import { HomePage } from "./pages/Home.Page";
 import { SignUpPage } from "./pages/SignUp.Page";
 import { LoginPage } from "./pages/Login.Page";
 import { ProfilePage } from "./pages/Profile.Page";
+import { Container, Content } from "./components/Styles";
 
 export const App = () => (
   <Router>

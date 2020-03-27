@@ -12,10 +12,10 @@ export const HomePage = () => {
         Today we will create an app with authoritation, adding some cool syles
       </p>
       <div>
-        <Link className="button" To="/signup">
+        <Link className="button" to="/signup">
           Regístrate
         </Link>
-        <Link className="button" To="/login">
+        <Link className="button" to="/login">
           Iniciar Sesión
         </Link>
       </div>
