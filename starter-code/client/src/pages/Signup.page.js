@@ -4,7 +4,8 @@ import { UserContext, doSignup } from '../../lib/auth.api';
 import { Card } from '../components/Card';
 import styled from 'styled-components';
 import { useForm, FormContext } from 'react-hook-form';
-import { Input } from '../components/Input';
+import { Input, Select } from '../components/Input';
+
 import {
   Left,
   Right,
@@ -29,9 +30,7 @@ export const SignupPage = withProtected(
       mode: 'onBlur',
       defaultValue: {
         username: '',
-        password: '',
-        course: '',
-        campus: ''
+        password: ''
       }
     });
 
@@ -62,6 +61,7 @@ export const SignupPage = withProtected(
                     message: 'invalid email address'
                   }
                 })}
+                type='text'
               />
               <Input
                 name='password'
@@ -71,19 +71,33 @@ export const SignupPage = withProtected(
                   required: 'Required *'
                 })}
               />
-              <Input
+              <Select
                 name='course'
-                placeholder='Course'
                 ref={register({
-                  required: 'Required *'
+                  validate: value => {
+                    return value !== '';
+                  }
                 })}
+                options={['WebDev', 'UX/UI', 'Data Analytics']}
               />
-              <Input
+              <Select
                 name='campus'
-                placeholder='Campus'
                 ref={register({
-                  required: 'Required *'
+                  validate: value => {
+                    return value !== '';
+                  }
                 })}
+                options={[
+                  'Madrid',
+                  'Barcelona',
+                  'Miami',
+                  'Paris',
+                  'Berlin',
+                  'Amsterdam',
+                  'México',
+                  'Sao Paulo',
+                  'Lisbon'
+                ]}
               />
               <Button2 type='submit'>Signup</Button2>
             </Form>
@@ -92,7 +106,10 @@ export const SignupPage = withProtected(
         <Right>
           <TextContainer>
             <SubTitle>Hello IronHacker!</SubTitle>
-            <Text>Awesome to have you here again!!!</Text>
+            <Text>
+              Welcome to IronProfiles, a page done with React and Node to check
+              you in!
+            </Text>
           </TextContainer>
           <TextMinor>
             If you sign up, you agree with our terms and conditions!
