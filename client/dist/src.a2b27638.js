@@ -28285,7 +28285,21 @@ if ("development" === 'production') {
 } else {
   module.exports = require('./cjs/react-dom.development.js');
 }
-},{"./cjs/react-dom.development.js":"node_modules/react-dom/cjs/react-dom.development.js"}],"node_modules/react-is/cjs/react-is.development.js":[function(require,module,exports) {
+},{"./cjs/react-dom.development.js":"node_modules/react-dom/cjs/react-dom.development.js"}],"node_modules/@babel/runtime/helpers/taggedTemplateLiteral.js":[function(require,module,exports) {
+function _taggedTemplateLiteral(strings, raw) {
+  if (!raw) {
+    raw = strings.slice(0);
+  }
+
+  return Object.freeze(Object.defineProperties(strings, {
+    raw: {
+      value: Object.freeze(raw)
+    }
+  }));
+}
+
+module.exports = _taggedTemplateLiteral;
+},{}],"node_modules/react-is/cjs/react-is.development.js":[function(require,module,exports) {
 /** @license React v16.13.1
  * react-is.development.js
  *
@@ -31533,6 +31547,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Col2 = exports.Content = exports.Container = void 0;
 
+var _taggedTemplateLiteral2 = _interopRequireDefault(require("@babel/runtime/helpers/taggedTemplateLiteral"));
+
 var _styledComponents = _interopRequireDefault(require("styled-components"));
 
 var _ovalBg = _interopRequireDefault(require("../images/oval-bg.png"));
@@ -31540,7 +31556,7 @@ var _ovalBg = _interopRequireDefault(require("../images/oval-bg.png"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _templateObject3() {
-  var data = _taggedTemplateLiteral(["\n  display: flex;\n  justify-content: space-between;\n  align-items: flex-start;\n  width: 100%;\n  > div {\n    width: 40%;\n    &.right p {\n      padding: 165px 0 0px;\n    }\n    h2 {\n      color: #000;\n      font-size: 20px;\n      line-height: 1.6;\n      margin: 0;\n      span {\n        display: block;\n        color: #628165;\n      }\n    }\n    p {\n      width: 100%;\n      font-size: 15px;\n      line-height: 1.4;\n    }\n    .box-input {\n      position: relative;\n      width: 100%;\n    }\n  }\n"]);
+  var data = (0, _taggedTemplateLiteral2.default)(["\n  display: flex;\n  justify-content: space-between;\n  align-items: flex-start;\n  width: 100%;\n  > div {\n    width: 40%;\n    &.right p {\n      padding: 165px 0 0px;\n    }\n    h2 {\n      color: #000;\n      font-size: 20px;\n      line-height: 1.6;\n      margin: 0;\n      span {\n        display: block;\n        color: #628165;\n      }\n    }\n    p {\n      width: 100%;\n      font-size: 15px;\n      line-height: 1.4;\n    }\n    .box-input {\n      position: relative;\n      width: 100%;\n    }\n  }\n"]);
 
   _templateObject3 = function _templateObject3() {
     return data;
@@ -31550,7 +31566,7 @@ function _templateObject3() {
 }
 
 function _templateObject2() {
-  var data = _taggedTemplateLiteral(["\n  background: #fff url(", ") no-repeat center;\n  border-radius: 7px;\n  box-shadow: 2px 2px 7px 5px #9e9e9e;\n  box-sizing: border-box;\n  color: #628165;\n  font-family: Arial, Helvetica, sans-serif;\n  height: 450px;\n  padding: 40px;\n  width: 711px;\n  h1 {\n    font-size: 34px;\n    font-weight: 400;\n    line-height: 1;\n    margin: 0 0 20px;\n    padding: 0;\n  }\n  p {\n    display: inline-block;\n    font-size: 22px;\n    line-height: 1.6;\n    margin: 0;\n    padding: 0 0 10px;\n    font-weight: 100;\n    width: 50%;\n    strong {\n      font-weight: 700;\n    }\n  }\n  .button {\n    background: #dbebda;\n    border-radius: 5px;\n    color: #333;\n    display: block;\n    font-size: 16px;\n    line-height: 1;\n    margin-top: 20px;\n    max-width: 160px;\n    text-align: center;\n    padding: 10px 20px;\n    text-decoration: none;\n    transition: all ease 2000;\n    &:hover {\n      transition: all ease 2000;\n      background: #628165;\n      color: #fff;\n    }\n  }\n"]);
+  var data = (0, _taggedTemplateLiteral2.default)(["\n  background: #fff url(", ") no-repeat center;\n  border-radius: 7px;\n  box-shadow: 2px 2px 7px 5px #9e9e9e;\n  box-sizing: border-box;\n  color: #628165;\n  font-family: Arial, Helvetica, sans-serif;\n  height: 450px;\n  padding: 40px;\n  width: 711px;\n  h1 {\n    font-size: 34px;\n    font-weight: 400;\n    line-height: 1;\n    margin: 0 0 20px;\n    padding: 0;\n  }\n  p {\n    display: inline-block;\n    font-size: 22px;\n    line-height: 1.6;\n    margin: 0;\n    padding: 0 0 10px;\n    font-weight: 100;\n    width: 50%;\n    strong {\n      font-weight: 700;\n    }\n  }\n  .button {\n    background: #dbebda;\n    border-radius: 5px;\n    color: #333;\n    display: block;\n    font-size: 16px;\n    line-height: 1;\n    margin-top: 20px;\n    max-width: 160px;\n    text-align: center;\n    padding: 10px 20px;\n    text-decoration: none;\n    transition: all ease 2000;\n    &:hover {\n      transition: all ease 2000;\n      background: #628165;\n      color: #fff;\n    }\n  }\n"]);
 
   _templateObject2 = function _templateObject2() {
     return data;
@@ -31560,7 +31576,7 @@ function _templateObject2() {
 }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n  align-items: center;\n  background: #dbebda;\n  box-sizing: border-box;\n  display: flex;\n  height: 100vh;\n  justify-content: center;\n  width: 100vw;\n"]);
+  var data = (0, _taggedTemplateLiteral2.default)(["\n  align-items: center;\n  background: #dbebda;\n  box-sizing: border-box;\n  display: flex;\n  height: 100vh;\n  justify-content: center;\n  width: 100vw;\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -31568,8 +31584,6 @@ function _templateObject() {
 
   return data;
 }
-
-function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 var Container = _styledComponents.default.div(_templateObject());
 
@@ -31582,7 +31596,7 @@ exports.Content = Content;
 var Col2 = _styledComponents.default.form(_templateObject3());
 
 exports.Col2 = Col2;
-},{"styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js","../images/oval-bg.png":"public/images/oval-bg.png"}],"src/context/Context.js":[function(require,module,exports) {
+},{"@babel/runtime/helpers/taggedTemplateLiteral":"node_modules/@babel/runtime/helpers/taggedTemplateLiteral.js","styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js","../images/oval-bg.png":"public/images/oval-bg.png"}],"src/context/Context.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -35250,29 +35264,4587 @@ var HomePage = function HomePage() {
 };
 
 exports.HomePage = HomePage;
-},{"react":"node_modules/react/index.js","../component/Button":"src/component/Button.js"}],"src/component/button.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../component/Button":"src/component/Button.js"}],"node_modules/regenerator-runtime/runtime.js":[function(require,module,exports) {
+/**
+ * Copyright (c) 2014-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+var runtime = (function (exports) {
+  "use strict";
+
+  var Op = Object.prototype;
+  var hasOwn = Op.hasOwnProperty;
+  var undefined; // More compressible than void 0.
+  var $Symbol = typeof Symbol === "function" ? Symbol : {};
+  var iteratorSymbol = $Symbol.iterator || "@@iterator";
+  var asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator";
+  var toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag";
+
+  function wrap(innerFn, outerFn, self, tryLocsList) {
+    // If outerFn provided and outerFn.prototype is a Generator, then outerFn.prototype instanceof Generator.
+    var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator;
+    var generator = Object.create(protoGenerator.prototype);
+    var context = new Context(tryLocsList || []);
+
+    // The ._invoke method unifies the implementations of the .next,
+    // .throw, and .return methods.
+    generator._invoke = makeInvokeMethod(innerFn, self, context);
+
+    return generator;
+  }
+  exports.wrap = wrap;
+
+  // Try/catch helper to minimize deoptimizations. Returns a completion
+  // record like context.tryEntries[i].completion. This interface could
+  // have been (and was previously) designed to take a closure to be
+  // invoked without arguments, but in all the cases we care about we
+  // already have an existing method we want to call, so there's no need
+  // to create a new function object. We can even get away with assuming
+  // the method takes exactly one argument, since that happens to be true
+  // in every case, so we don't have to touch the arguments object. The
+  // only additional allocation required is the completion record, which
+  // has a stable shape and so hopefully should be cheap to allocate.
+  function tryCatch(fn, obj, arg) {
+    try {
+      return { type: "normal", arg: fn.call(obj, arg) };
+    } catch (err) {
+      return { type: "throw", arg: err };
+    }
+  }
+
+  var GenStateSuspendedStart = "suspendedStart";
+  var GenStateSuspendedYield = "suspendedYield";
+  var GenStateExecuting = "executing";
+  var GenStateCompleted = "completed";
+
+  // Returning this object from the innerFn has the same effect as
+  // breaking out of the dispatch switch statement.
+  var ContinueSentinel = {};
+
+  // Dummy constructor functions that we use as the .constructor and
+  // .constructor.prototype properties for functions that return Generator
+  // objects. For full spec compliance, you may wish to configure your
+  // minifier not to mangle the names of these two functions.
+  function Generator() {}
+  function GeneratorFunction() {}
+  function GeneratorFunctionPrototype() {}
+
+  // This is a polyfill for %IteratorPrototype% for environments that
+  // don't natively support it.
+  var IteratorPrototype = {};
+  IteratorPrototype[iteratorSymbol] = function () {
+    return this;
+  };
+
+  var getProto = Object.getPrototypeOf;
+  var NativeIteratorPrototype = getProto && getProto(getProto(values([])));
+  if (NativeIteratorPrototype &&
+      NativeIteratorPrototype !== Op &&
+      hasOwn.call(NativeIteratorPrototype, iteratorSymbol)) {
+    // This environment has a native %IteratorPrototype%; use it instead
+    // of the polyfill.
+    IteratorPrototype = NativeIteratorPrototype;
+  }
+
+  var Gp = GeneratorFunctionPrototype.prototype =
+    Generator.prototype = Object.create(IteratorPrototype);
+  GeneratorFunction.prototype = Gp.constructor = GeneratorFunctionPrototype;
+  GeneratorFunctionPrototype.constructor = GeneratorFunction;
+  GeneratorFunctionPrototype[toStringTagSymbol] =
+    GeneratorFunction.displayName = "GeneratorFunction";
+
+  // Helper for defining the .next, .throw, and .return methods of the
+  // Iterator interface in terms of a single ._invoke method.
+  function defineIteratorMethods(prototype) {
+    ["next", "throw", "return"].forEach(function(method) {
+      prototype[method] = function(arg) {
+        return this._invoke(method, arg);
+      };
+    });
+  }
+
+  exports.isGeneratorFunction = function(genFun) {
+    var ctor = typeof genFun === "function" && genFun.constructor;
+    return ctor
+      ? ctor === GeneratorFunction ||
+        // For the native GeneratorFunction constructor, the best we can
+        // do is to check its .name property.
+        (ctor.displayName || ctor.name) === "GeneratorFunction"
+      : false;
+  };
+
+  exports.mark = function(genFun) {
+    if (Object.setPrototypeOf) {
+      Object.setPrototypeOf(genFun, GeneratorFunctionPrototype);
+    } else {
+      genFun.__proto__ = GeneratorFunctionPrototype;
+      if (!(toStringTagSymbol in genFun)) {
+        genFun[toStringTagSymbol] = "GeneratorFunction";
+      }
+    }
+    genFun.prototype = Object.create(Gp);
+    return genFun;
+  };
+
+  // Within the body of any async function, `await x` is transformed to
+  // `yield regeneratorRuntime.awrap(x)`, so that the runtime can test
+  // `hasOwn.call(value, "__await")` to determine if the yielded value is
+  // meant to be awaited.
+  exports.awrap = function(arg) {
+    return { __await: arg };
+  };
+
+  function AsyncIterator(generator, PromiseImpl) {
+    function invoke(method, arg, resolve, reject) {
+      var record = tryCatch(generator[method], generator, arg);
+      if (record.type === "throw") {
+        reject(record.arg);
+      } else {
+        var result = record.arg;
+        var value = result.value;
+        if (value &&
+            typeof value === "object" &&
+            hasOwn.call(value, "__await")) {
+          return PromiseImpl.resolve(value.__await).then(function(value) {
+            invoke("next", value, resolve, reject);
+          }, function(err) {
+            invoke("throw", err, resolve, reject);
+          });
+        }
+
+        return PromiseImpl.resolve(value).then(function(unwrapped) {
+          // When a yielded Promise is resolved, its final value becomes
+          // the .value of the Promise<{value,done}> result for the
+          // current iteration.
+          result.value = unwrapped;
+          resolve(result);
+        }, function(error) {
+          // If a rejected Promise was yielded, throw the rejection back
+          // into the async generator function so it can be handled there.
+          return invoke("throw", error, resolve, reject);
+        });
+      }
+    }
+
+    var previousPromise;
+
+    function enqueue(method, arg) {
+      function callInvokeWithMethodAndArg() {
+        return new PromiseImpl(function(resolve, reject) {
+          invoke(method, arg, resolve, reject);
+        });
+      }
+
+      return previousPromise =
+        // If enqueue has been called before, then we want to wait until
+        // all previous Promises have been resolved before calling invoke,
+        // so that results are always delivered in the correct order. If
+        // enqueue has not been called before, then it is important to
+        // call invoke immediately, without waiting on a callback to fire,
+        // so that the async generator function has the opportunity to do
+        // any necessary setup in a predictable way. This predictability
+        // is why the Promise constructor synchronously invokes its
+        // executor callback, and why async functions synchronously
+        // execute code before the first await. Since we implement simple
+        // async functions in terms of async generators, it is especially
+        // important to get this right, even though it requires care.
+        previousPromise ? previousPromise.then(
+          callInvokeWithMethodAndArg,
+          // Avoid propagating failures to Promises returned by later
+          // invocations of the iterator.
+          callInvokeWithMethodAndArg
+        ) : callInvokeWithMethodAndArg();
+    }
+
+    // Define the unified helper method that is used to implement .next,
+    // .throw, and .return (see defineIteratorMethods).
+    this._invoke = enqueue;
+  }
+
+  defineIteratorMethods(AsyncIterator.prototype);
+  AsyncIterator.prototype[asyncIteratorSymbol] = function () {
+    return this;
+  };
+  exports.AsyncIterator = AsyncIterator;
+
+  // Note that simple async functions are implemented on top of
+  // AsyncIterator objects; they just return a Promise for the value of
+  // the final result produced by the iterator.
+  exports.async = function(innerFn, outerFn, self, tryLocsList, PromiseImpl) {
+    if (PromiseImpl === void 0) PromiseImpl = Promise;
+
+    var iter = new AsyncIterator(
+      wrap(innerFn, outerFn, self, tryLocsList),
+      PromiseImpl
+    );
+
+    return exports.isGeneratorFunction(outerFn)
+      ? iter // If outerFn is a generator, return the full iterator.
+      : iter.next().then(function(result) {
+          return result.done ? result.value : iter.next();
+        });
+  };
+
+  function makeInvokeMethod(innerFn, self, context) {
+    var state = GenStateSuspendedStart;
+
+    return function invoke(method, arg) {
+      if (state === GenStateExecuting) {
+        throw new Error("Generator is already running");
+      }
+
+      if (state === GenStateCompleted) {
+        if (method === "throw") {
+          throw arg;
+        }
+
+        // Be forgiving, per 25.3.3.3.3 of the spec:
+        // https://people.mozilla.org/~jorendorff/es6-draft.html#sec-generatorresume
+        return doneResult();
+      }
+
+      context.method = method;
+      context.arg = arg;
+
+      while (true) {
+        var delegate = context.delegate;
+        if (delegate) {
+          var delegateResult = maybeInvokeDelegate(delegate, context);
+          if (delegateResult) {
+            if (delegateResult === ContinueSentinel) continue;
+            return delegateResult;
+          }
+        }
+
+        if (context.method === "next") {
+          // Setting context._sent for legacy support of Babel's
+          // function.sent implementation.
+          context.sent = context._sent = context.arg;
+
+        } else if (context.method === "throw") {
+          if (state === GenStateSuspendedStart) {
+            state = GenStateCompleted;
+            throw context.arg;
+          }
+
+          context.dispatchException(context.arg);
+
+        } else if (context.method === "return") {
+          context.abrupt("return", context.arg);
+        }
+
+        state = GenStateExecuting;
+
+        var record = tryCatch(innerFn, self, context);
+        if (record.type === "normal") {
+          // If an exception is thrown from innerFn, we leave state ===
+          // GenStateExecuting and loop back for another invocation.
+          state = context.done
+            ? GenStateCompleted
+            : GenStateSuspendedYield;
+
+          if (record.arg === ContinueSentinel) {
+            continue;
+          }
+
+          return {
+            value: record.arg,
+            done: context.done
+          };
+
+        } else if (record.type === "throw") {
+          state = GenStateCompleted;
+          // Dispatch the exception by looping back around to the
+          // context.dispatchException(context.arg) call above.
+          context.method = "throw";
+          context.arg = record.arg;
+        }
+      }
+    };
+  }
+
+  // Call delegate.iterator[context.method](context.arg) and handle the
+  // result, either by returning a { value, done } result from the
+  // delegate iterator, or by modifying context.method and context.arg,
+  // setting context.delegate to null, and returning the ContinueSentinel.
+  function maybeInvokeDelegate(delegate, context) {
+    var method = delegate.iterator[context.method];
+    if (method === undefined) {
+      // A .throw or .return when the delegate iterator has no .throw
+      // method always terminates the yield* loop.
+      context.delegate = null;
+
+      if (context.method === "throw") {
+        // Note: ["return"] must be used for ES3 parsing compatibility.
+        if (delegate.iterator["return"]) {
+          // If the delegate iterator has a return method, give it a
+          // chance to clean up.
+          context.method = "return";
+          context.arg = undefined;
+          maybeInvokeDelegate(delegate, context);
+
+          if (context.method === "throw") {
+            // If maybeInvokeDelegate(context) changed context.method from
+            // "return" to "throw", let that override the TypeError below.
+            return ContinueSentinel;
+          }
+        }
+
+        context.method = "throw";
+        context.arg = new TypeError(
+          "The iterator does not provide a 'throw' method");
+      }
+
+      return ContinueSentinel;
+    }
+
+    var record = tryCatch(method, delegate.iterator, context.arg);
+
+    if (record.type === "throw") {
+      context.method = "throw";
+      context.arg = record.arg;
+      context.delegate = null;
+      return ContinueSentinel;
+    }
+
+    var info = record.arg;
+
+    if (! info) {
+      context.method = "throw";
+      context.arg = new TypeError("iterator result is not an object");
+      context.delegate = null;
+      return ContinueSentinel;
+    }
+
+    if (info.done) {
+      // Assign the result of the finished delegate to the temporary
+      // variable specified by delegate.resultName (see delegateYield).
+      context[delegate.resultName] = info.value;
+
+      // Resume execution at the desired location (see delegateYield).
+      context.next = delegate.nextLoc;
+
+      // If context.method was "throw" but the delegate handled the
+      // exception, let the outer generator proceed normally. If
+      // context.method was "next", forget context.arg since it has been
+      // "consumed" by the delegate iterator. If context.method was
+      // "return", allow the original .return call to continue in the
+      // outer generator.
+      if (context.method !== "return") {
+        context.method = "next";
+        context.arg = undefined;
+      }
+
+    } else {
+      // Re-yield the result returned by the delegate method.
+      return info;
+    }
+
+    // The delegate iterator is finished, so forget it and continue with
+    // the outer generator.
+    context.delegate = null;
+    return ContinueSentinel;
+  }
+
+  // Define Generator.prototype.{next,throw,return} in terms of the
+  // unified ._invoke helper method.
+  defineIteratorMethods(Gp);
+
+  Gp[toStringTagSymbol] = "Generator";
+
+  // A Generator should always return itself as the iterator object when the
+  // @@iterator function is called on it. Some browsers' implementations of the
+  // iterator prototype chain incorrectly implement this, causing the Generator
+  // object to not be returned from this call. This ensures that doesn't happen.
+  // See https://github.com/facebook/regenerator/issues/274 for more details.
+  Gp[iteratorSymbol] = function() {
+    return this;
+  };
+
+  Gp.toString = function() {
+    return "[object Generator]";
+  };
+
+  function pushTryEntry(locs) {
+    var entry = { tryLoc: locs[0] };
+
+    if (1 in locs) {
+      entry.catchLoc = locs[1];
+    }
+
+    if (2 in locs) {
+      entry.finallyLoc = locs[2];
+      entry.afterLoc = locs[3];
+    }
+
+    this.tryEntries.push(entry);
+  }
+
+  function resetTryEntry(entry) {
+    var record = entry.completion || {};
+    record.type = "normal";
+    delete record.arg;
+    entry.completion = record;
+  }
+
+  function Context(tryLocsList) {
+    // The root entry object (effectively a try statement without a catch
+    // or a finally block) gives us a place to store values thrown from
+    // locations where there is no enclosing try statement.
+    this.tryEntries = [{ tryLoc: "root" }];
+    tryLocsList.forEach(pushTryEntry, this);
+    this.reset(true);
+  }
+
+  exports.keys = function(object) {
+    var keys = [];
+    for (var key in object) {
+      keys.push(key);
+    }
+    keys.reverse();
+
+    // Rather than returning an object with a next method, we keep
+    // things simple and return the next function itself.
+    return function next() {
+      while (keys.length) {
+        var key = keys.pop();
+        if (key in object) {
+          next.value = key;
+          next.done = false;
+          return next;
+        }
+      }
+
+      // To avoid creating an additional object, we just hang the .value
+      // and .done properties off the next function object itself. This
+      // also ensures that the minifier will not anonymize the function.
+      next.done = true;
+      return next;
+    };
+  };
+
+  function values(iterable) {
+    if (iterable) {
+      var iteratorMethod = iterable[iteratorSymbol];
+      if (iteratorMethod) {
+        return iteratorMethod.call(iterable);
+      }
+
+      if (typeof iterable.next === "function") {
+        return iterable;
+      }
+
+      if (!isNaN(iterable.length)) {
+        var i = -1, next = function next() {
+          while (++i < iterable.length) {
+            if (hasOwn.call(iterable, i)) {
+              next.value = iterable[i];
+              next.done = false;
+              return next;
+            }
+          }
+
+          next.value = undefined;
+          next.done = true;
+
+          return next;
+        };
+
+        return next.next = next;
+      }
+    }
+
+    // Return an iterator with no values.
+    return { next: doneResult };
+  }
+  exports.values = values;
+
+  function doneResult() {
+    return { value: undefined, done: true };
+  }
+
+  Context.prototype = {
+    constructor: Context,
+
+    reset: function(skipTempReset) {
+      this.prev = 0;
+      this.next = 0;
+      // Resetting context._sent for legacy support of Babel's
+      // function.sent implementation.
+      this.sent = this._sent = undefined;
+      this.done = false;
+      this.delegate = null;
+
+      this.method = "next";
+      this.arg = undefined;
+
+      this.tryEntries.forEach(resetTryEntry);
+
+      if (!skipTempReset) {
+        for (var name in this) {
+          // Not sure about the optimal order of these conditions:
+          if (name.charAt(0) === "t" &&
+              hasOwn.call(this, name) &&
+              !isNaN(+name.slice(1))) {
+            this[name] = undefined;
+          }
+        }
+      }
+    },
+
+    stop: function() {
+      this.done = true;
+
+      var rootEntry = this.tryEntries[0];
+      var rootRecord = rootEntry.completion;
+      if (rootRecord.type === "throw") {
+        throw rootRecord.arg;
+      }
+
+      return this.rval;
+    },
+
+    dispatchException: function(exception) {
+      if (this.done) {
+        throw exception;
+      }
+
+      var context = this;
+      function handle(loc, caught) {
+        record.type = "throw";
+        record.arg = exception;
+        context.next = loc;
+
+        if (caught) {
+          // If the dispatched exception was caught by a catch block,
+          // then let that catch block handle the exception normally.
+          context.method = "next";
+          context.arg = undefined;
+        }
+
+        return !! caught;
+      }
+
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        var record = entry.completion;
+
+        if (entry.tryLoc === "root") {
+          // Exception thrown outside of any try block that could handle
+          // it, so set the completion value of the entire function to
+          // throw the exception.
+          return handle("end");
+        }
+
+        if (entry.tryLoc <= this.prev) {
+          var hasCatch = hasOwn.call(entry, "catchLoc");
+          var hasFinally = hasOwn.call(entry, "finallyLoc");
+
+          if (hasCatch && hasFinally) {
+            if (this.prev < entry.catchLoc) {
+              return handle(entry.catchLoc, true);
+            } else if (this.prev < entry.finallyLoc) {
+              return handle(entry.finallyLoc);
+            }
+
+          } else if (hasCatch) {
+            if (this.prev < entry.catchLoc) {
+              return handle(entry.catchLoc, true);
+            }
+
+          } else if (hasFinally) {
+            if (this.prev < entry.finallyLoc) {
+              return handle(entry.finallyLoc);
+            }
+
+          } else {
+            throw new Error("try statement without catch or finally");
+          }
+        }
+      }
+    },
+
+    abrupt: function(type, arg) {
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        if (entry.tryLoc <= this.prev &&
+            hasOwn.call(entry, "finallyLoc") &&
+            this.prev < entry.finallyLoc) {
+          var finallyEntry = entry;
+          break;
+        }
+      }
+
+      if (finallyEntry &&
+          (type === "break" ||
+           type === "continue") &&
+          finallyEntry.tryLoc <= arg &&
+          arg <= finallyEntry.finallyLoc) {
+        // Ignore the finally entry if control is not jumping to a
+        // location outside the try/catch block.
+        finallyEntry = null;
+      }
+
+      var record = finallyEntry ? finallyEntry.completion : {};
+      record.type = type;
+      record.arg = arg;
+
+      if (finallyEntry) {
+        this.method = "next";
+        this.next = finallyEntry.finallyLoc;
+        return ContinueSentinel;
+      }
+
+      return this.complete(record);
+    },
+
+    complete: function(record, afterLoc) {
+      if (record.type === "throw") {
+        throw record.arg;
+      }
+
+      if (record.type === "break" ||
+          record.type === "continue") {
+        this.next = record.arg;
+      } else if (record.type === "return") {
+        this.rval = this.arg = record.arg;
+        this.method = "return";
+        this.next = "end";
+      } else if (record.type === "normal" && afterLoc) {
+        this.next = afterLoc;
+      }
+
+      return ContinueSentinel;
+    },
+
+    finish: function(finallyLoc) {
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        if (entry.finallyLoc === finallyLoc) {
+          this.complete(entry.completion, entry.afterLoc);
+          resetTryEntry(entry);
+          return ContinueSentinel;
+        }
+      }
+    },
+
+    "catch": function(tryLoc) {
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        if (entry.tryLoc === tryLoc) {
+          var record = entry.completion;
+          if (record.type === "throw") {
+            var thrown = record.arg;
+            resetTryEntry(entry);
+          }
+          return thrown;
+        }
+      }
+
+      // The context.catch method must only be called with a location
+      // argument that corresponds to a known catch block.
+      throw new Error("illegal catch attempt");
+    },
+
+    delegateYield: function(iterable, resultName, nextLoc) {
+      this.delegate = {
+        iterator: values(iterable),
+        resultName: resultName,
+        nextLoc: nextLoc
+      };
+
+      if (this.method === "next") {
+        // Deliberately forget the last sent value so that we don't
+        // accidentally pass it on to the delegate.
+        this.arg = undefined;
+      }
+
+      return ContinueSentinel;
+    }
+  };
+
+  // Regardless of whether this script is executing as a CommonJS module
+  // or not, return the runtime object so that we can declare the variable
+  // regeneratorRuntime in the outer scope, which allows this module to be
+  // injected easily by `bin/regenerator --include-runtime script.js`.
+  return exports;
+
+}(
+  // If this script is executing as a CommonJS module, use module.exports
+  // as the regeneratorRuntime namespace. Otherwise create a new empty
+  // object. Either way, the resulting object will be used to initialize
+  // the regeneratorRuntime variable at the top of this file.
+  typeof module === "object" ? module.exports : {}
+));
+
+try {
+  regeneratorRuntime = runtime;
+} catch (accidentalStrictMode) {
+  // This module should not be running in strict mode, so the above
+  // assignment should always work unless something is misconfigured. Just
+  // in case runtime.js accidentally runs in strict mode, we can escape
+  // strict mode using a global Function call. This could conceivably fail
+  // if a Content Security Policy forbids using Function, but in that case
+  // the proper solution is to fix the accidental strict mode problem. If
+  // you've misconfigured your bundler to force strict mode and applied a
+  // CSP to forbid Function, and you're not willing to fix either of those
+  // problems, please detail your unique predicament in a GitHub issue.
+  Function("r", "regeneratorRuntime = r")(runtime);
+}
+
+},{}],"node_modules/@babel/runtime/regenerator/index.js":[function(require,module,exports) {
+module.exports = require("regenerator-runtime");
+
+},{"regenerator-runtime":"node_modules/regenerator-runtime/runtime.js"}],"node_modules/@babel/runtime/helpers/asyncToGenerator.js":[function(require,module,exports) {
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
+  try {
+    var info = gen[key](arg);
+    var value = info.value;
+  } catch (error) {
+    reject(error);
+    return;
+  }
+
+  if (info.done) {
+    resolve(value);
+  } else {
+    Promise.resolve(value).then(_next, _throw);
+  }
+}
+
+function _asyncToGenerator(fn) {
+  return function () {
+    var self = this,
+        args = arguments;
+    return new Promise(function (resolve, reject) {
+      var gen = fn.apply(self, args);
+
+      function _next(value) {
+        asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);
+      }
+
+      function _throw(err) {
+        asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);
+      }
+
+      _next(undefined);
+    });
+  };
+}
+
+module.exports = _asyncToGenerator;
+},{}],"node_modules/react-hook-form/dist/react-hook-form.es.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.ButtonItem = void 0;
+exports.FormContext = FormContext;
+exports.useForm = useForm;
+exports.useFormContext = useFormContext;
+exports.useFieldArray = exports.ErrorMessage = exports.Controller = void 0;
 
-var _react = _interopRequireDefault(require("react"));
+var React = _interopRequireWildcard(require("react"));
 
-var _reactRouterDom = require("react-router-dom");
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+var isUndefined = val => val === undefined;
+
+var isNullOrUndefined = value => value === null || isUndefined(value);
+
+var isArray = value => Array.isArray(value);
+
+const isObjectType = value => typeof value === 'object';
+
+var isObject = value => !isNullOrUndefined(value) && !isArray(value) && isObjectType(value);
+
+var isHTMLElement = value => isObject(value) && value.nodeType === Node.ELEMENT_NODE;
+
+const VALIDATION_MODE = {
+  onBlur: 'onBlur',
+  onChange: 'onChange',
+  onSubmit: 'onSubmit'
+};
+const VALUE = 'value';
+const UNDEFINED = 'undefined';
+const EVENTS = {
+  BLUR: 'blur',
+  CHANGE: 'change',
+  INPUT: 'input'
+};
+const INPUT_VALIDATION_RULES = {
+  max: 'max',
+  min: 'min',
+  maxLength: 'maxLength',
+  minLength: 'minLength',
+  pattern: 'pattern',
+  required: 'required',
+  validate: 'validate'
+};
+const REGEX_IS_DEEP_PROP = /\.|\[(?:[^[\]]*|(["'])(?:(?!\1)[^\\]|\\.)*?\1)\]/;
+const REGEX_IS_PLAIN_PROP = /^\w*$/;
+const REGEX_PROP_NAME = /[^.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\\]|\\.)*?)\2)\]|(?=(?:\.|\[\])(?:\.|\[\]|$))/g;
+const REGEX_ESCAPE_CHAR = /\\(\\)?/g;
+
+function attachEventListeners({
+  field,
+  handleChange,
+  isRadioOrCheckbox
+}) {
+  const {
+    ref
+  } = field;
+
+  if (isHTMLElement(ref) && ref.addEventListener && handleChange) {
+    ref.addEventListener(isRadioOrCheckbox ? EVENTS.CHANGE : EVENTS.INPUT, handleChange);
+    ref.addEventListener(EVENTS.BLUR, handleChange);
+  }
+}
+
+var isKey = value => !isArray(value) && (REGEX_IS_PLAIN_PROP.test(value) || !REGEX_IS_DEEP_PROP.test(value));
+
+var stringToPath = string => {
+  const result = [];
+  string.replace(REGEX_PROP_NAME, (match, number, quote, string) => {
+    result.push(quote ? string.replace(REGEX_ESCAPE_CHAR, '$1') : number || match);
+  });
+  return result;
+};
+
+function set(object, path, value) {
+  let index = -1;
+  const tempPath = isKey(path) ? [path] : stringToPath(path);
+  const length = tempPath.length;
+  const lastIndex = length - 1;
+
+  while (++index < length) {
+    const key = tempPath[index];
+    let newValue = value;
+
+    if (index !== lastIndex) {
+      const objValue = object[key];
+      newValue = isObject(objValue) || isArray(objValue) ? objValue : !isNaN(tempPath[index + 1]) ? [] : {};
+    }
+
+    object[key] = newValue;
+    object = object[key];
+  }
+
+  return object;
+}
+
+var transformToNestObject = data => Object.entries(data).reduce((previous, [key, value]) => {
+  if (!isKey(key)) {
+    set(previous, key, value);
+    return previous;
+  }
+
+  return Object.assign(Object.assign({}, previous), {
+    [key]: value
+  });
+}, {});
+
+var get = (obj, path, defaultValue) => {
+  const result = path.split(/[,[\].]+?/).filter(Boolean).reduce((result, key) => isNullOrUndefined(result) ? result : result[key], obj);
+  return isUndefined(result) || result === obj ? obj[path] || defaultValue : result;
+};
+
+var focusErrorField = (fields, fieldErrors) => {
+  for (const key in fields) {
+    if (get(fieldErrors, key)) {
+      const field = fields[key];
+
+      if (field) {
+        if (isHTMLElement(field.ref) && field.ref.focus) {
+          field.ref.focus();
+          break;
+        } else if (field.options) {
+          field.options[0].ref.focus();
+          break;
+        }
+      }
+    }
+  }
+};
+
+var removeAllEventListeners = (ref, validateWithStateUpdate) => {
+  if (isHTMLElement(ref) && ref.removeEventListener) {
+    ref.removeEventListener(EVENTS.INPUT, validateWithStateUpdate);
+    ref.removeEventListener(EVENTS.CHANGE, validateWithStateUpdate);
+    ref.removeEventListener(EVENTS.BLUR, validateWithStateUpdate);
+  }
+};
+
+var isRadioInput = element => !!element && element.type === 'radio';
+
+var isCheckBoxInput = element => !!element && element.type === 'checkbox';
+
+function isDetached(element) {
+  if (!element) {
+    return true;
+  }
+
+  if (!(element instanceof HTMLElement) || element.nodeType === Node.DOCUMENT_NODE) {
+    return false;
+  }
+
+  return isDetached(element.parentNode);
+}
+
+var isEmptyObject = value => isObject(value) && !Object.keys(value).length;
+
+function castPath(value) {
+  return isArray(value) ? value : stringToPath(value);
+}
+
+function baseGet(object, path) {
+  const updatePath = isKey(path) ? [path] : castPath(path);
+  const length = path.length;
+  let index = 0;
+
+  while (index < length) {
+    object = isUndefined(object) ? index++ : object[updatePath[index++]];
+  }
+
+  return index == length ? object : undefined;
+}
+
+function baseSlice(array, start, end) {
+  let index = -1;
+  let length = array.length;
+
+  if (start < 0) {
+    start = -start > length ? 0 : length + start;
+  }
+
+  end = end > length ? length : end;
+
+  if (end < 0) {
+    end += length;
+  }
+
+  length = start > end ? 0 : end - start;
+  const result = Array(length);
+
+  while (++index < length) {
+    result[index] = array[index + start];
+  }
+
+  return result;
+}
+
+function parent(object, path) {
+  return path.length == 1 ? object : baseGet(object, baseSlice(path, 0, -1));
+}
+
+function baseUnset(object, path) {
+  const updatePath = isKey(path) ? [path] : castPath(path);
+  const childObject = parent(object, updatePath);
+  const key = updatePath[updatePath.length - 1];
+  const result = !(childObject != null) || delete childObject[key];
+  let previousObjRef = undefined;
+
+  for (let k = 0; k < updatePath.slice(0, -1).length; k++) {
+    let index = -1;
+    let objectRef = undefined;
+    const currentPaths = updatePath.slice(0, -(k + 1));
+    const currentPathsLength = currentPaths.length - 1;
+
+    if (k > 0) {
+      previousObjRef = object;
+    }
+
+    while (++index < currentPaths.length) {
+      const item = currentPaths[index];
+      objectRef = objectRef ? objectRef[item] : object[item];
+
+      if (currentPathsLength === index) {
+        if (isObject(objectRef) && isEmptyObject(objectRef)) {
+          previousObjRef ? delete previousObjRef[item] : delete object[item];
+        } else if (isArray(objectRef) && !objectRef.filter(data => isObject(data) && !isEmptyObject(data)).length) {
+          if (previousObjRef) {
+            delete previousObjRef[item];
+          }
+        }
+      }
+
+      previousObjRef = objectRef;
+    }
+  }
+
+  return result;
+}
+
+function unset(object, paths) {
+  paths.forEach(path => {
+    baseUnset(object, path);
+  });
+  return object;
+}
+
+function findRemovedFieldAndRemoveListener(fields, handleChange, field, forceDelete) {
+  if (!field) {
+    return;
+  }
+
+  const {
+    ref,
+    ref: {
+      name,
+      type
+    },
+    mutationWatcher
+  } = field;
+
+  if (!type) {
+    delete fields[name];
+    return;
+  }
+
+  const fieldValue = fields[name];
+
+  if ((isRadioInput(ref) || isCheckBoxInput(ref)) && fieldValue) {
+    const {
+      options
+    } = fieldValue;
+
+    if (isArray(options) && options.length) {
+      options.forEach(({
+        ref,
+        mutationWatcher
+      }, index) => {
+        if (ref && isDetached(ref) || forceDelete) {
+          removeAllEventListeners(ref, handleChange);
+
+          if (mutationWatcher) {
+            mutationWatcher.disconnect();
+          }
+
+          unset(options, [`[${index}]`]);
+        }
+      });
+
+      if (options && !options.filter(Boolean).length) {
+        delete fields[name];
+      }
+    } else {
+      delete fields[name];
+    }
+  } else if (isDetached(ref) || forceDelete) {
+    removeAllEventListeners(ref, handleChange);
+
+    if (mutationWatcher) {
+      mutationWatcher.disconnect();
+    }
+
+    delete fields[name];
+  }
+}
+
+const defaultReturn = {
+  isValid: false,
+  value: ''
+};
+
+var getRadioValue = options => isArray(options) ? options.reduce((previous, {
+  ref: {
+    checked,
+    value
+  }
+}) => checked ? {
+  isValid: true,
+  value
+} : previous, defaultReturn) : defaultReturn;
+
+var getMultipleSelectValue = options => [...options].filter(({
+  selected
+}) => selected).map(({
+  value
+}) => value);
+
+var isFileInput = element => !!element && element.type === 'file';
+
+var isMultipleSelect = element => !!element && element.type === 'select-multiple';
+
+var isEmptyString = value => value === '';
+
+const defaultResult = {
+  value: false,
+  isValid: false
+};
+const validResult = {
+  value: true,
+  isValid: true
+};
+
+var getCheckboxValue = options => {
+  if (isArray(options)) {
+    if (options.length > 1) {
+      const values = options.filter(({
+        ref: {
+          checked
+        }
+      }) => checked).map(({
+        ref: {
+          value
+        }
+      }) => value);
+      return {
+        value: values,
+        isValid: !!values.length
+      };
+    }
+
+    const {
+      checked,
+      value,
+      attributes
+    } = options[0].ref;
+    return checked ? attributes && !isUndefined(attributes.value) ? isUndefined(value) || isEmptyString(value) ? validResult : {
+      value: value,
+      isValid: true
+    } : validResult : defaultResult;
+  }
+
+  return defaultResult;
+};
+
+function getFieldValue(fields, ref) {
+  const {
+    name,
+    value
+  } = ref;
+  const field = fields[name];
+
+  if (isFileInput(ref)) {
+    return ref.files;
+  }
+
+  if (isRadioInput(ref)) {
+    return field ? getRadioValue(field.options).value : '';
+  }
+
+  if (isMultipleSelect(ref)) {
+    return getMultipleSelectValue(ref.options);
+  }
+
+  if (isCheckBoxInput(ref)) {
+    return field ? getCheckboxValue(field.options).value : false;
+  }
+
+  return value;
+}
+
+var isString = value => typeof value === 'string';
+
+var getFieldsValues = (fields, search) => {
+  const output = {};
+  const isSearchString = isString(search);
+  const isSearchArray = isArray(search);
+  const isNest = search && search.nest;
+
+  for (const name in fields) {
+    if (isUndefined(search) || isNest || isSearchString && name.startsWith(search) || isSearchArray && search.find(data => name.startsWith(data))) {
+      output[name] = getFieldValue(fields, fields[name].ref);
+    }
+  }
+
+  return output;
+};
+
+var compareObject = (objectA = {}, objectB = {}) => Object.entries(objectA).reduce((previous, [key, value]) => previous ? objectB[key] && objectB[key] === value : false, true);
+
+var isSameError = (error, {
+  type,
+  types,
+  message
+}) => {
+  return isObject(error) && error.type === type && error.message === message && compareObject(error.types, types);
+};
+
+function shouldUpdateWithError({
+  errors,
+  name,
+  error,
+  validFields,
+  fieldsWithValidation
+}) {
+  const isFieldValid = isEmptyObject(error);
+  const isFormValid = isEmptyObject(errors);
+  const currentFieldError = get(error, name);
+  const existFieldError = get(errors, name);
+
+  if (isFieldValid && validFields.has(name) || existFieldError && existFieldError.isManual) {
+    return false;
+  }
+
+  if (isFormValid !== isFieldValid || !isFormValid && !existFieldError || isFieldValid && fieldsWithValidation.has(name) && !validFields.has(name)) {
+    return true;
+  }
+
+  return currentFieldError && !isSameError(existFieldError, currentFieldError);
+}
+
+var isRegex = value => value instanceof RegExp;
+
+var getValueAndMessage = validationData => {
+  const isPureObject = isObject(validationData) && !isRegex(validationData);
+  return {
+    value: isPureObject ? validationData.value : validationData,
+    message: isPureObject ? validationData.message : ''
+  };
+};
+
+var isFunction = value => typeof value === 'function';
+
+var isBoolean = value => typeof value === 'boolean';
+
+function getValidateError(result, ref, type = 'validate') {
+  const isStringValue = isString(result);
+
+  if (isStringValue || isBoolean(result) && !result) {
+    const message = isStringValue ? result : '';
+    return {
+      type,
+      message,
+      ref
+    };
+  }
+}
+
+var appendErrors = (name, validateAllFieldCriteria, errors, type, message) => {
+  if (!validateAllFieldCriteria) {
+    return {};
+  }
+
+  const error = errors[name];
+  return Object.assign(Object.assign({}, error), {
+    types: Object.assign(Object.assign({}, error && error.types ? error.types : {}), {
+      [type]: message || true
+    })
+  });
+};
+
+var validateField = async (fieldsRef, validateAllFieldCriteria, {
+  ref,
+  ref: {
+    type,
+    value,
+    name
+  },
+  options,
+  required,
+  maxLength,
+  minLength,
+  min,
+  max,
+  pattern,
+  validate
+}) => {
+  const fields = fieldsRef.current;
+  const error = {};
+  const isRadio = isRadioInput(ref);
+  const isCheckBox = isCheckBoxInput(ref);
+  const isRadioOrCheckbox = isRadio || isCheckBox;
+  const isEmpty = isEmptyString(value);
+  const appendErrorsCurry = appendErrors.bind(null, name, validateAllFieldCriteria, error);
+
+  const getMinMaxMessage = (exceedMax, maxLengthMessage, minLengthMessage, maxType = INPUT_VALIDATION_RULES.maxLength, minType = INPUT_VALIDATION_RULES.minLength) => {
+    const message = exceedMax ? maxLengthMessage : minLengthMessage;
+    error[name] = Object.assign({
+      type: exceedMax ? maxType : minType,
+      message,
+      ref
+    }, exceedMax ? appendErrorsCurry(maxType, message) : appendErrorsCurry(minType, message));
+
+    if (!validateAllFieldCriteria) {
+      return error;
+    }
+  };
+
+  if (required && (!isRadio && !isCheckBox && (isEmpty || isNullOrUndefined(value)) || isBoolean(value) && !value || isCheckBox && !getCheckboxValue(options).isValid || isRadio && !getRadioValue(options).isValid)) {
+    const {
+      value: requiredValue,
+      message: requiredMessage
+    } = isString(required) ? {
+      value: !!required,
+      message: required
+    } : getValueAndMessage(required);
+
+    if (requiredValue) {
+      error[name] = Object.assign({
+        type: INPUT_VALIDATION_RULES.required,
+        message: requiredMessage,
+        ref: isRadioOrCheckbox ? fields[name].options[0].ref : ref
+      }, appendErrorsCurry(INPUT_VALIDATION_RULES.required, requiredMessage));
+
+      if (!validateAllFieldCriteria) {
+        return error;
+      }
+    }
+  }
+
+  if (!isNullOrUndefined(min) || !isNullOrUndefined(max)) {
+    let exceedMax;
+    let exceedMin;
+    const {
+      value: maxValue,
+      message: maxMessage
+    } = getValueAndMessage(max);
+    const {
+      value: minValue,
+      message: minMessage
+    } = getValueAndMessage(min);
+
+    if (type === 'number' || !type && !isNaN(value)) {
+      const valueNumber = ref.valueAsNumber || parseFloat(value);
+
+      if (!isNullOrUndefined(maxValue)) {
+        exceedMax = valueNumber > maxValue;
+      }
+
+      if (!isNullOrUndefined(minValue)) {
+        exceedMin = valueNumber < minValue;
+      }
+    } else {
+      const valueDate = ref.valueAsDate || new Date(value);
+
+      if (isString(maxValue)) {
+        exceedMax = valueDate > new Date(maxValue);
+      }
+
+      if (isString(minValue)) {
+        exceedMin = valueDate < new Date(minValue);
+      }
+    }
+
+    if (exceedMax || exceedMin) {
+      getMinMaxMessage(!!exceedMax, maxMessage, minMessage, INPUT_VALIDATION_RULES.max, INPUT_VALIDATION_RULES.min);
+
+      if (!validateAllFieldCriteria) {
+        return error;
+      }
+    }
+  }
+
+  if (isString(value) && !isEmpty && (maxLength || minLength)) {
+    const {
+      value: maxLengthValue,
+      message: maxLengthMessage
+    } = getValueAndMessage(maxLength);
+    const {
+      value: minLengthValue,
+      message: minLengthMessage
+    } = getValueAndMessage(minLength);
+    const inputLength = value.toString().length;
+    const exceedMax = maxLength && inputLength > maxLengthValue;
+    const exceedMin = minLength && inputLength < minLengthValue;
+
+    if (exceedMax || exceedMin) {
+      getMinMaxMessage(!!exceedMax, maxLengthMessage, minLengthMessage);
+
+      if (!validateAllFieldCriteria) {
+        return error;
+      }
+    }
+  }
+
+  if (pattern && !isEmpty) {
+    const {
+      value: patternValue,
+      message: patternMessage
+    } = getValueAndMessage(pattern);
+
+    if (isRegex(patternValue) && !patternValue.test(value)) {
+      error[name] = Object.assign({
+        type: INPUT_VALIDATION_RULES.pattern,
+        message: patternMessage,
+        ref
+      }, appendErrorsCurry(INPUT_VALIDATION_RULES.pattern, patternMessage));
+
+      if (!validateAllFieldCriteria) {
+        return error;
+      }
+    }
+  }
+
+  if (validate) {
+    const fieldValue = getFieldValue(fields, ref);
+    const validateRef = isRadioOrCheckbox && options ? options[0].ref : ref;
+
+    if (isFunction(validate)) {
+      const result = await validate(fieldValue);
+      const validateError = getValidateError(result, validateRef);
+
+      if (validateError) {
+        error[name] = Object.assign(Object.assign({}, validateError), appendErrorsCurry(INPUT_VALIDATION_RULES.validate, validateError.message));
+
+        if (!validateAllFieldCriteria) {
+          return error;
+        }
+      }
+    } else if (isObject(validate)) {
+      const validateFunctions = Object.entries(validate);
+      const validationResult = await new Promise(resolve => {
+        validateFunctions.reduce(async (previous, [key, validate], index) => {
+          if (!isEmptyObject((await previous)) && !validateAllFieldCriteria || !isFunction(validate)) {
+            return resolve(previous);
+          }
+
+          let result;
+          const validateResult = await validate(fieldValue);
+          const validateError = getValidateError(validateResult, validateRef, key);
+
+          if (validateError) {
+            result = Object.assign(Object.assign({}, validateError), appendErrorsCurry(key, validateError.message));
+
+            if (validateAllFieldCriteria) {
+              error[name] = result;
+            }
+          } else {
+            result = previous;
+          }
+
+          return validateFunctions.length - 1 === index ? resolve(result) : result;
+        }, {});
+      });
+
+      if (!isEmptyObject(validationResult)) {
+        error[name] = Object.assign({
+          ref: validateRef
+        }, validationResult);
+
+        if (!validateAllFieldCriteria) {
+          return error;
+        }
+      }
+    }
+  }
+
+  return error;
+};
+
+const parseErrorSchema = (error, validateAllFieldCriteria) => isArray(error.inner) ? error.inner.reduce((previous, {
+  path,
+  message,
+  type
+}) => Object.assign(Object.assign({}, previous), previous[path] && validateAllFieldCriteria ? {
+  [path]: appendErrors(path, validateAllFieldCriteria, previous, type, message)
+} : {
+  [path]: previous[path] || Object.assign({
+    message,
+    type
+  }, validateAllFieldCriteria ? {
+    types: {
+      [type]: message || true
+    }
+  } : {})
+}), {}) : {
+  [error.path]: {
+    message: error.message,
+    type: error.type
+  }
+};
+
+async function validateWithSchema(validationSchema, validateAllFieldCriteria, data, validationResolver, context) {
+  if (validationResolver) {
+    return validationResolver(data, context);
+  }
+
+  try {
+    return {
+      values: await validationSchema.validate(data, {
+        abortEarly: false,
+        context
+      }),
+      errors: {}
+    };
+  } catch (e) {
+    return {
+      values: {},
+      errors: transformToNestObject(parseErrorSchema(e, validateAllFieldCriteria))
+    };
+  }
+}
+
+var getDefaultValue = (defaultValues, name, defaultValue) => isUndefined(defaultValues[name]) ? get(defaultValues, name, defaultValue) : defaultValues[name];
+
+function flatArray(list) {
+  return list.reduce((a, b) => a.concat(isArray(b) ? flatArray(b) : b), []);
+}
+
+var isPrimitive = value => isNullOrUndefined(value) || !isObjectType(value);
+
+const getPath = (path, values) => {
+  const getInnerPath = (value, key, isObject) => {
+    const pathWithIndex = isObject ? `${path}.${key}` : `${path}[${key}]`;
+    return isPrimitive(value) ? pathWithIndex : getPath(pathWithIndex, value);
+  };
+
+  return isArray(values) ? values.map((value, key) => getInnerPath(value, key)) : Object.entries(values).map(([key, value]) => getInnerPath(value, key, true));
+};
+
+var getPath$1 = (parentPath, value) => flatArray(getPath(parentPath, value));
+
+var assignWatchFields = (fieldValues, fieldName, watchFields, combinedDefaultValues, watchFieldArray) => {
+  let value;
+  watchFields.add(fieldName);
+
+  if (isEmptyObject(fieldValues)) {
+    value = watchFieldArray ? watchFieldArray : undefined;
+  } else if (!isUndefined(fieldValues[fieldName])) {
+    value = fieldValues[fieldName];
+    watchFields.add(fieldName);
+  } else {
+    value = get(transformToNestObject(fieldValues), fieldName);
+
+    if (isArray(watchFieldArray) && isArray(value) && value.length !== watchFieldArray.length) {
+      value = watchFieldArray;
+    }
+
+    if (!isUndefined(value)) {
+      getPath$1(fieldName, value).forEach(name => watchFields.add(name));
+    }
+  }
+
+  return isUndefined(value) ? isObject(combinedDefaultValues) ? getDefaultValue(combinedDefaultValues, fieldName) : combinedDefaultValues : value;
+};
+
+var skipValidation = ({
+  isOnChange,
+  hasError,
+  isBlurEvent,
+  isOnSubmit,
+  isReValidateOnSubmit,
+  isOnBlur,
+  isReValidateOnBlur,
+  isSubmitted
+}) => isOnChange && isBlurEvent || isOnSubmit && isReValidateOnSubmit || isOnSubmit && !isSubmitted || isOnBlur && !isBlurEvent && !hasError || isReValidateOnBlur && !isBlurEvent && hasError || isReValidateOnSubmit && isSubmitted;
+
+var getFieldValueByName = (fields, name) => {
+  const results = transformToNestObject(getFieldsValues(fields));
+  return name ? get(results, name, results) : results;
+};
+
+function getIsFieldsDifferent(referenceArray, differenceArray) {
+  let isMatch = false;
+
+  if (!isArray(referenceArray) || !isArray(differenceArray) || referenceArray.length !== differenceArray.length) {
+    return true;
+  }
+
+  for (let i = 0; i < referenceArray.length; i++) {
+    if (isMatch) {
+      break;
+    }
+
+    const dataA = referenceArray[i];
+    const dataB = differenceArray[i];
+
+    if (isUndefined(dataB) || Object.keys(dataA).length !== Object.keys(dataB).length) {
+      isMatch = true;
+      break;
+    }
+
+    for (const key in dataA) {
+      if (dataA[key] !== dataB[key]) {
+        isMatch = true;
+        break;
+      }
+    }
+  }
+
+  return isMatch;
+}
+
+const isMatchFieldArrayName = (name, searchName) => name.startsWith(`${searchName}[`);
+
+var isNameInFieldArray = (names, name) => [...names].reduce((prev, current) => isMatchFieldArrayName(name, current) ? true : prev, false);
+
+var isFileListObject = data => typeof FileList !== UNDEFINED && data instanceof FileList;
+
+function onDomRemove(element, onDetachCallback) {
+  const observer = new MutationObserver(() => {
+    if (isDetached(element)) {
+      observer.disconnect();
+      onDetachCallback();
+    }
+  });
+  observer.observe(window.document, {
+    childList: true,
+    subtree: true
+  });
+  return observer;
+}
+
+var modeChecker = mode => ({
+  isOnSubmit: !mode || mode === VALIDATION_MODE.onSubmit,
+  isOnBlur: mode === VALIDATION_MODE.onBlur,
+  isOnChange: mode === VALIDATION_MODE.onChange
+});
+
+const {
+  useRef,
+  useState,
+  useCallback,
+  useEffect
+} = React;
+
+function useForm({
+  mode = VALIDATION_MODE.onSubmit,
+  reValidateMode = VALIDATION_MODE.onChange,
+  validationSchema,
+  validationResolver,
+  validationContext,
+  defaultValues = {},
+  submitFocusError = true,
+  validateCriteriaMode
+} = {}) {
+  const fieldsRef = useRef({});
+  const validateAllFieldCriteria = validateCriteriaMode === 'all';
+  const errorsRef = useRef({});
+  const touchedFieldsRef = useRef({});
+  const watchFieldArrayRef = useRef({});
+  const watchFieldsRef = useRef(new Set());
+  const dirtyFieldsRef = useRef(new Set());
+  const fieldsWithValidationRef = useRef(new Set());
+  const validFieldsRef = useRef(new Set());
+  const isValidRef = useRef(true);
+  const defaultRenderValuesRef = useRef({});
+  const defaultValuesRef = useRef(defaultValues);
+  const isUnMount = useRef(false);
+  const isWatchAllRef = useRef(false);
+  const isSubmittedRef = useRef(false);
+  const isDirtyRef = useRef(false);
+  const submitCountRef = useRef(0);
+  const isSubmittingRef = useRef(false);
+  const handleChangeRef = useRef();
+  const resetFieldArrayFunctionRef = useRef({});
+  const validationContextRef = useRef(validationContext);
+  const fieldArrayNamesRef = useRef(new Set());
+  const [, render] = useState();
+  const {
+    isOnBlur,
+    isOnSubmit,
+    isOnChange
+  } = useRef(modeChecker(mode)).current;
+  const isWindowUndefined = typeof window === UNDEFINED;
+  const shouldValidateCallback = !!(validationSchema || validationResolver);
+  const isWeb = typeof document !== UNDEFINED && !isWindowUndefined && !isUndefined(window.HTMLElement);
+  const isProxyEnabled = isWeb && 'Proxy' in window;
+  const readFormStateRef = useRef({
+    dirty: !isProxyEnabled,
+    dirtyFields: !isProxyEnabled,
+    isSubmitted: isOnSubmit,
+    submitCount: !isProxyEnabled,
+    touched: !isProxyEnabled,
+    isSubmitting: !isProxyEnabled,
+    isValid: !isProxyEnabled
+  });
+  const {
+    isOnBlur: isReValidateOnBlur,
+    isOnSubmit: isReValidateOnSubmit
+  } = useRef(modeChecker(reValidateMode)).current;
+  const reRender = useCallback(() => {
+    if (!isUnMount.current) {
+      render({});
+    }
+  }, []);
+  const shouldRenderBaseOnError = useCallback((name, error, shouldRender, skipReRender) => {
+    let shouldReRender = shouldRender || shouldUpdateWithError({
+      errors: errorsRef.current,
+      error,
+      name,
+      validFields: validFieldsRef.current,
+      fieldsWithValidation: fieldsWithValidationRef.current
+    });
+
+    if (isEmptyObject(error)) {
+      if (fieldsWithValidationRef.current.has(name) || shouldValidateCallback) {
+        validFieldsRef.current.add(name);
+        shouldReRender = shouldReRender || get(errorsRef.current, name);
+      }
+
+      errorsRef.current = unset(errorsRef.current, [name]);
+    } else {
+      validFieldsRef.current.delete(name);
+      shouldReRender = shouldReRender || !get(errorsRef.current, name);
+      set(errorsRef.current, name, error[name]);
+    }
+
+    if (shouldReRender && !skipReRender) {
+      reRender();
+      return true;
+    }
+  }, [reRender, shouldValidateCallback]);
+  const setFieldValue = useCallback((field, rawValue) => {
+    const ref = field.ref;
+    const options = field.options;
+    const {
+      type
+    } = ref;
+    const value = isWeb && isHTMLElement(ref) && isNullOrUndefined(rawValue) ? '' : rawValue;
+
+    if (isRadioInput(ref) && options) {
+      options.forEach(({
+        ref: radioRef
+      }) => radioRef.checked = radioRef.value === value);
+    } else if (isFileInput(ref)) {
+      if (isEmptyString(value) || isFileListObject(value)) {
+        ref.files = value;
+      } else {
+        ref.value = value;
+      }
+    } else if (isMultipleSelect(ref)) {
+      [...ref.options].forEach(selectRef => selectRef.selected = value.includes(selectRef.value));
+    } else if (isCheckBoxInput(ref) && options) {
+      options.length > 1 ? options.forEach(({
+        ref: checkboxRef
+      }) => checkboxRef.checked = value.includes(checkboxRef.value)) : options[0].ref.checked = !!value;
+    } else {
+      ref.value = value;
+    }
+
+    return !!type;
+  }, [isWeb]);
+
+  const setDirty = name => {
+    if (!fieldsRef.current[name] || !readFormStateRef.current.dirty && !readFormStateRef.current.dirtyFields) {
+      return false;
+    }
+
+    const isFieldArray = isNameInFieldArray(fieldArrayNamesRef.current, name);
+    const previousDirtyFieldsLength = dirtyFieldsRef.current.size;
+    let isDirty = defaultRenderValuesRef.current[name] !== getFieldValue(fieldsRef.current, fieldsRef.current[name].ref);
+
+    if (isFieldArray) {
+      const fieldArrayName = name.substring(0, name.indexOf('['));
+      isDirty = getIsFieldsDifferent(getFieldValueByName(fieldsRef.current, fieldArrayName), get(defaultValuesRef.current, fieldArrayName));
+    }
+
+    const isDirtyChanged = (isFieldArray ? isDirtyRef.current : dirtyFieldsRef.current.has(name)) !== isDirty;
+
+    if (isDirty) {
+      dirtyFieldsRef.current.add(name);
+    } else {
+      dirtyFieldsRef.current.delete(name);
+    }
+
+    isDirtyRef.current = isFieldArray ? isDirty : !!dirtyFieldsRef.current.size;
+    return readFormStateRef.current.dirty ? isDirtyChanged : previousDirtyFieldsLength !== dirtyFieldsRef.current.size;
+  };
+
+  const setDirtyAndTouchedFields = useCallback(fieldName => {
+    if (setDirty(fieldName) || !get(touchedFieldsRef.current, fieldName) && readFormStateRef.current.touched) {
+      return !!set(touchedFieldsRef.current, fieldName, true);
+    }
+  }, []);
+  const setInternalValueBatch = useCallback((name, value, parentFieldName) => {
+    const isValueArray = isArray(value);
+
+    for (const key in value) {
+      const fieldName = `${parentFieldName || name}${isValueArray ? `[${key}]` : `.${key}`}`;
+
+      if (isObject(value[key])) {
+        setInternalValueBatch(name, value[key], fieldName);
+      }
+
+      const field = fieldsRef.current[fieldName];
+
+      if (field) {
+        setFieldValue(field, value[key]);
+        setDirtyAndTouchedFields(fieldName);
+      }
+    }
+  }, [setFieldValue, setDirtyAndTouchedFields]);
+  const setInternalValue = useCallback((name, value) => {
+    const field = fieldsRef.current[name];
+
+    if (field) {
+      setFieldValue(field, value);
+      const output = setDirtyAndTouchedFields(name);
+
+      if (isBoolean(output)) {
+        return output;
+      }
+    } else if (!isPrimitive(value)) {
+      setInternalValueBatch(name, value);
+    }
+  }, [setDirtyAndTouchedFields, setFieldValue, setInternalValueBatch]);
+  const executeValidation = useCallback(async (name, skipReRender) => {
+    const field = fieldsRef.current[name];
+
+    if (!field) {
+      return false;
+    }
+
+    const error = await validateField(fieldsRef, validateAllFieldCriteria, field);
+    shouldRenderBaseOnError(name, error, false, skipReRender);
+    return isEmptyObject(error);
+  }, [shouldRenderBaseOnError, validateAllFieldCriteria]);
+  const executeSchemaValidation = useCallback(async payload => {
+    const {
+      errors
+    } = await validateWithSchema(validationSchema, validateAllFieldCriteria, getFieldValueByName(fieldsRef.current), validationResolver, validationContextRef.current);
+    const previousFormIsValid = isValidRef.current;
+    isValidRef.current = isEmptyObject(errors);
+
+    if (isArray(payload)) {
+      payload.forEach(name => {
+        const error = get(errors, name);
+
+        if (error) {
+          set(errorsRef.current, name, error);
+        } else {
+          unset(errorsRef.current, [name]);
+        }
+      });
+      reRender();
+    } else {
+      shouldRenderBaseOnError(payload, get(errors, payload) ? {
+        [payload]: get(errors, payload)
+      } : {}, previousFormIsValid !== isValidRef.current);
+    }
+
+    return isEmptyObject(errorsRef.current);
+  }, [reRender, shouldRenderBaseOnError, validateAllFieldCriteria, validationResolver, validationSchema]);
+  const triggerValidation = useCallback(async payload => {
+    const fields = payload || Object.keys(fieldsRef.current);
+
+    if (shouldValidateCallback) {
+      return executeSchemaValidation(fields);
+    }
+
+    if (isArray(fields)) {
+      const result = await Promise.all(fields.map(async data => await executeValidation(data, true)));
+      reRender();
+      return result.every(Boolean);
+    }
+
+    return await executeValidation(fields);
+  }, [executeSchemaValidation, executeValidation, reRender, shouldValidateCallback]);
+
+  const isFieldWatched = name => isWatchAllRef.current || watchFieldsRef.current.has(name) || watchFieldsRef.current.has((name.match(/\w+/) || [])[0]);
+
+  function setValue(names, valueOrShouldValidate, shouldValidate) {
+    let shouldRender = false;
+    const isMultiple = isArray(names);
+    (isMultiple ? names : [names]).forEach(name => {
+      const isStringFieldName = isString(name);
+      shouldRender = setInternalValue(isStringFieldName ? name : Object.keys(name)[0], isStringFieldName ? valueOrShouldValidate : Object.values(name)[0]) || isMultiple ? true : isFieldWatched(name);
+    });
+
+    if (shouldRender || isMultiple) {
+      reRender();
+    }
+
+    if (shouldValidate || isMultiple && valueOrShouldValidate) {
+      triggerValidation(isMultiple ? undefined : names);
+    }
+  }
+
+  handleChangeRef.current = handleChangeRef.current ? handleChangeRef.current : async ({
+    type,
+    target
+  }) => {
+    const name = target ? target.name : '';
+    const fields = fieldsRef.current;
+    const errors = errorsRef.current;
+    const field = fields[name];
+    const currentError = get(errors, name);
+    let error;
+
+    if (!field) {
+      return;
+    }
+
+    const isBlurEvent = type === EVENTS.BLUR;
+    const shouldSkipValidation = skipValidation({
+      hasError: !!currentError,
+      isOnChange,
+      isBlurEvent,
+      isOnSubmit,
+      isReValidateOnSubmit,
+      isOnBlur,
+      isReValidateOnBlur,
+      isSubmitted: isSubmittedRef.current
+    });
+    const shouldUpdateDirty = setDirty(name);
+    let shouldUpdateState = isFieldWatched(name) || shouldUpdateDirty;
+
+    if (isBlurEvent && !get(touchedFieldsRef.current, name) && readFormStateRef.current.touched) {
+      set(touchedFieldsRef.current, name, true);
+      shouldUpdateState = true;
+    }
+
+    if (shouldSkipValidation) {
+      return shouldUpdateState && reRender();
+    }
+
+    if (shouldValidateCallback) {
+      const {
+        errors
+      } = await validateWithSchema(validationSchema, validateAllFieldCriteria, getFieldValueByName(fields), validationResolver, validationContextRef.current);
+      const previousFormIsValid = isValidRef.current;
+      isValidRef.current = isEmptyObject(errors);
+      error = get(errors, name) ? {
+        [name]: get(errors, name)
+      } : {};
+
+      if (previousFormIsValid !== isValidRef.current) {
+        shouldUpdateState = true;
+      }
+    } else {
+      error = await validateField(fieldsRef, validateAllFieldCriteria, field);
+    }
+
+    if (!shouldRenderBaseOnError(name, error) && shouldUpdateState) {
+      reRender();
+    }
+  };
+  const validateSchemaIsValid = useCallback((values = {}) => {
+    const fieldValues = isEmptyObject(defaultValuesRef.current) ? getFieldsValues(fieldsRef.current) : defaultValuesRef.current;
+    validateWithSchema(validationSchema, validateAllFieldCriteria, transformToNestObject(Object.assign(Object.assign({}, fieldValues), values)), validationResolver, validationContextRef.current).then(({
+      errors
+    }) => {
+      const previousFormIsValid = isValidRef.current;
+      isValidRef.current = isEmptyObject(errors);
+
+      if (previousFormIsValid !== isValidRef.current) {
+        reRender();
+      }
+    });
+  }, // eslint-disable-next-line react-hooks/exhaustive-deps
+  [reRender, validateAllFieldCriteria, validationResolver]);
+
+  const removeFieldEventListener = (field, forceDelete) => {
+    if (!isUndefined(handleChangeRef.current) && field) {
+      findRemovedFieldAndRemoveListener(fieldsRef.current, handleChangeRef.current, field, forceDelete);
+    }
+  };
+
+  const removeFieldEventListenerAndRef = useCallback((field, forceDelete) => {
+    if (!field || field && isNameInFieldArray(fieldArrayNamesRef.current, field.ref.name) && !forceDelete) {
+      return;
+    }
+
+    removeFieldEventListener(field, forceDelete);
+    const {
+      name
+    } = field.ref;
+    errorsRef.current = unset(errorsRef.current, [name]);
+    touchedFieldsRef.current = unset(touchedFieldsRef.current, [name]);
+    defaultRenderValuesRef.current = unset(defaultRenderValuesRef.current, [name]);
+    [dirtyFieldsRef, fieldsWithValidationRef, validFieldsRef, watchFieldsRef].forEach(data => data.current.delete(name));
+
+    if (readFormStateRef.current.isValid || readFormStateRef.current.touched) {
+      reRender();
+
+      if (shouldValidateCallback) {
+        validateSchemaIsValid();
+      }
+    }
+  }, [reRender, shouldValidateCallback, validateSchemaIsValid]);
+
+  function clearError(name) {
+    if (isUndefined(name)) {
+      errorsRef.current = {};
+    } else {
+      unset(errorsRef.current, isArray(name) ? name : [name]);
+    }
+
+    reRender();
+  }
+
+  const setInternalError = ({
+    name,
+    type,
+    types,
+    message,
+    preventRender
+  }) => {
+    const field = fieldsRef.current[name];
+
+    if (!isSameError(errorsRef.current[name], {
+      type,
+      message,
+      types
+    })) {
+      set(errorsRef.current, name, {
+        type,
+        types,
+        message,
+        ref: field ? field.ref : {},
+        isManual: true
+      });
+
+      if (!preventRender) {
+        reRender();
+      }
+    }
+  };
+
+  function setError(name, type = '', message) {
+    if (isString(name)) {
+      setInternalError(Object.assign({
+        name
+      }, isObject(type) ? {
+        types: type,
+        type: ''
+      } : {
+        type,
+        message
+      }));
+    } else if (isArray(name)) {
+      name.forEach(error => setInternalError(Object.assign(Object.assign({}, error), {
+        preventRender: true
+      })));
+      reRender();
+    }
+  }
+
+  function watch(fieldNames, defaultValue) {
+    const combinedDefaultValues = isUndefined(defaultValue) ? isUndefined(defaultValuesRef.current) ? {} : defaultValuesRef.current : defaultValue;
+    const fieldValues = getFieldsValues(fieldsRef.current, fieldNames);
+    const watchFields = watchFieldsRef.current;
+
+    if (isString(fieldNames)) {
+      return assignWatchFields(fieldValues, fieldNames, watchFields, combinedDefaultValues, fieldArrayNamesRef.current.has(fieldNames) ? watchFieldArrayRef.current[fieldNames] : undefined);
+    }
+
+    if (isArray(fieldNames)) {
+      return fieldNames.reduce((previous, name) => Object.assign(Object.assign({}, previous), {
+        [name]: assignWatchFields(fieldValues, name, watchFields, combinedDefaultValues)
+      }), {});
+    }
+
+    isWatchAllRef.current = true;
+    const result = !isEmptyObject(fieldValues) && fieldValues || defaultValue || defaultValuesRef.current;
+    return fieldNames && fieldNames.nest ? transformToNestObject(result) : result;
+  }
+
+  function unregister(names) {
+    if (!isEmptyObject(fieldsRef.current)) {
+      (isArray(names) ? names : [names]).forEach(fieldName => removeFieldEventListenerAndRef(fieldsRef.current[fieldName], true));
+    }
+  }
+
+  function registerFieldsRef(ref, validateOptions = {}) {
+    if (!ref.name) {
+      // eslint-disable-next-line no-console
+      return console.warn('Missing name @', ref);
+    }
+
+    const {
+      name,
+      type,
+      value
+    } = ref;
+    const fieldAttributes = Object.assign({
+      ref
+    }, validateOptions);
+    const fields = fieldsRef.current;
+    const isRadioOrCheckbox = isRadioInput(ref) || isCheckBoxInput(ref);
+    let currentField = fields[name];
+    let isEmptyDefaultValue = true;
+    let isFieldArray = false;
+    let defaultValue;
+
+    if (isRadioOrCheckbox ? currentField && isArray(currentField.options) && currentField.options.find(({
+      ref
+    }) => value === ref.value) : currentField) {
+      fields[name] = Object.assign(Object.assign({}, currentField), validateOptions);
+      return;
+    }
+
+    if (type) {
+      const mutationWatcher = onDomRemove(ref, () => removeFieldEventListenerAndRef(fieldAttributes));
+      currentField = isRadioOrCheckbox ? Object.assign({
+        options: [...(currentField && currentField.options || []), {
+          ref,
+          mutationWatcher
+        }],
+        ref: {
+          type,
+          name
+        }
+      }, validateOptions) : Object.assign(Object.assign({}, fieldAttributes), {
+        mutationWatcher
+      });
+    } else {
+      currentField = fieldAttributes;
+    }
+
+    fields[name] = currentField;
+
+    if (!isEmptyObject(defaultValuesRef.current)) {
+      defaultValue = getDefaultValue(defaultValuesRef.current, name);
+      isEmptyDefaultValue = isUndefined(defaultValue);
+      isFieldArray = isNameInFieldArray(fieldArrayNamesRef.current, name);
+
+      if (!isEmptyDefaultValue && !isFieldArray) {
+        setFieldValue(currentField, defaultValue);
+      }
+    }
+
+    if (shouldValidateCallback && !isFieldArray && readFormStateRef.current.isValid) {
+      validateSchemaIsValid();
+    } else if (!isEmptyObject(validateOptions)) {
+      fieldsWithValidationRef.current.add(name);
+
+      if (!isOnSubmit && readFormStateRef.current.isValid) {
+        validateField(fieldsRef, validateAllFieldCriteria, currentField).then(error => {
+          const previousFormIsValid = isValidRef.current;
+
+          if (isEmptyObject(error)) {
+            validFieldsRef.current.add(name);
+          } else {
+            isValidRef.current = false;
+          }
+
+          if (previousFormIsValid !== isValidRef.current) {
+            reRender();
+          }
+        });
+      }
+    }
+
+    if (!defaultRenderValuesRef.current[name] && !(isFieldArray && isEmptyDefaultValue)) {
+      defaultRenderValuesRef.current[name] = isEmptyDefaultValue ? getFieldValue(fields, currentField.ref) : defaultValue;
+    }
+
+    if (!type) {
+      return;
+    }
+
+    const fieldToAttachListener = isRadioOrCheckbox && currentField.options ? currentField.options[currentField.options.length - 1] : currentField;
+    attachEventListeners({
+      field: fieldToAttachListener,
+      isRadioOrCheckbox,
+      handleChange: handleChangeRef.current
+    });
+  }
+
+  function register(refOrValidationOptions, validationOptions) {
+    if (isWindowUndefined) {
+      return;
+    }
+
+    if (isString(refOrValidationOptions)) {
+      registerFieldsRef({
+        name: refOrValidationOptions
+      }, validationOptions);
+      return;
+    }
+
+    if (isObject(refOrValidationOptions) && 'name' in refOrValidationOptions) {
+      registerFieldsRef(refOrValidationOptions, validationOptions);
+      return;
+    }
+
+    return ref => ref && registerFieldsRef(ref, refOrValidationOptions);
+  }
+
+  const handleSubmit = useCallback(callback => async e => {
+    if (e) {
+      e.preventDefault();
+      e.persist();
+    }
+
+    let fieldErrors;
+    let fieldValues;
+    const fields = fieldsRef.current;
+
+    if (readFormStateRef.current.isSubmitting) {
+      isSubmittingRef.current = true;
+      reRender();
+    }
+
+    try {
+      if (shouldValidateCallback) {
+        fieldValues = getFieldsValues(fields);
+        const {
+          errors,
+          values
+        } = await validateWithSchema(validationSchema, validateAllFieldCriteria, transformToNestObject(fieldValues), validationResolver, validationContextRef.current);
+        errorsRef.current = errors;
+        fieldErrors = errors;
+        fieldValues = values;
+      } else {
+        const {
+          errors,
+          values
+        } = await Object.values(fields).reduce(async (previous, field) => {
+          if (!field) {
+            return previous;
+          }
+
+          const resolvedPrevious = await previous;
+          const {
+            ref,
+            ref: {
+              name
+            }
+          } = field;
+
+          if (!fields[name]) {
+            return resolvedPrevious;
+          }
+
+          const fieldError = await validateField(fieldsRef, validateAllFieldCriteria, field);
+
+          if (fieldError[name]) {
+            set(resolvedPrevious.errors, name, fieldError[name]);
+            validFieldsRef.current.delete(name);
+            return resolvedPrevious;
+          }
+
+          if (fieldsWithValidationRef.current.has(name)) {
+            validFieldsRef.current.add(name);
+          }
+
+          resolvedPrevious.values[name] = getFieldValue(fields, ref);
+          return resolvedPrevious;
+        }, Promise.resolve({
+          errors: {},
+          values: {}
+        }));
+        fieldErrors = errors;
+        fieldValues = values;
+      }
+
+      if (isEmptyObject(fieldErrors)) {
+        errorsRef.current = {};
+        await callback(transformToNestObject(fieldValues), e);
+      } else {
+        if (submitFocusError && isWeb) {
+          focusErrorField(fields, fieldErrors);
+        }
+
+        errorsRef.current = fieldErrors;
+      }
+    } finally {
+      isSubmittedRef.current = true;
+      isSubmittingRef.current = false;
+      submitCountRef.current = submitCountRef.current + 1;
+      reRender();
+    }
+  }, [isWeb, reRender, shouldValidateCallback, submitFocusError, validateAllFieldCriteria, validationResolver, validationSchema]);
+
+  const resetRefs = ({
+    errors,
+    dirty,
+    isSubmitted,
+    touched,
+    isValid,
+    submitCount
+  }) => {
+    fieldsRef.current = {};
+
+    if (!errors) {
+      errorsRef.current = {};
+    }
+
+    if (!touched) {
+      touchedFieldsRef.current = {};
+    }
+
+    if (!isValid) {
+      validFieldsRef.current = new Set();
+      fieldsWithValidationRef.current = new Set();
+      isValidRef.current = true;
+    }
+
+    if (!dirty) {
+      dirtyFieldsRef.current = new Set();
+      isDirtyRef.current = false;
+    }
+
+    if (!isSubmitted) {
+      isSubmittedRef.current = false;
+    }
+
+    if (!submitCount) {
+      submitCountRef.current = 0;
+    }
+
+    defaultRenderValuesRef.current = {};
+    watchFieldsRef.current = new Set();
+    isWatchAllRef.current = false;
+  };
+
+  const reset = (values, omitResetState = {}) => {
+    if (isWeb) {
+      for (const value of Object.values(fieldsRef.current)) {
+        if (value && isHTMLElement(value.ref) && value.ref.closest) {
+          try {
+            value.ref.closest('form').reset();
+            break;
+          } catch (_a) {}
+        }
+      }
+    }
+
+    if (values) {
+      defaultValuesRef.current = values;
+    }
+
+    Object.values(resetFieldArrayFunctionRef.current).forEach(resetFieldArray => isFunction(resetFieldArray) && resetFieldArray());
+    resetRefs(omitResetState);
+    reRender();
+  };
+
+  const getValues = payload => {
+    const fieldValues = getFieldsValues(fieldsRef.current);
+    const outputValues = isEmptyObject(fieldValues) ? defaultValuesRef.current : fieldValues;
+    return payload && payload.nest ? transformToNestObject(outputValues) : outputValues;
+  };
+
+  useEffect(() => () => {
+    isUnMount.current = true;
+    fieldsRef.current && "development" === 'production' && Object.values(fieldsRef.current).forEach(field => removeFieldEventListenerAndRef(field, true));
+  }, [removeFieldEventListenerAndRef]);
+
+  if (!shouldValidateCallback) {
+    isValidRef.current = validFieldsRef.current.size >= fieldsWithValidationRef.current.size && isEmptyObject(errorsRef.current);
+  }
+
+  const formState = {
+    dirty: isDirtyRef.current,
+    dirtyFields: dirtyFieldsRef.current,
+    isSubmitted: isSubmittedRef.current,
+    submitCount: submitCountRef.current,
+    touched: touchedFieldsRef.current,
+    isSubmitting: isSubmittingRef.current,
+    isValid: isOnSubmit ? isSubmittedRef.current && isEmptyObject(errorsRef.current) : isValidRef.current
+  };
+  const control = Object.assign(Object.assign({
+    register,
+    unregister,
+    removeFieldEventListener,
+    getValues,
+    setValue,
+    reRender,
+    triggerValidation
+  }, shouldValidateCallback ? {
+    validateSchemaIsValid
+  } : {}), {
+    formState,
+    mode: {
+      isOnBlur,
+      isOnSubmit,
+      isOnChange
+    },
+    reValidateMode: {
+      isReValidateOnBlur,
+      isReValidateOnSubmit
+    },
+    errorsRef,
+    touchedFieldsRef,
+    fieldsRef,
+    resetFieldArrayFunctionRef,
+    validFieldsRef,
+    dirtyFieldsRef,
+    fieldsWithValidationRef,
+    watchFieldArrayRef,
+    fieldArrayNamesRef,
+    isDirtyRef,
+    readFormStateRef,
+    defaultValuesRef
+  });
+  return {
+    watch,
+    control,
+    handleSubmit,
+    setValue: useCallback(setValue, [reRender, setInternalValue, triggerValidation]),
+    triggerValidation,
+    getValues: useCallback(getValues, []),
+    reset: useCallback(reset, []),
+    register: useCallback(register, [defaultValuesRef.current, defaultRenderValuesRef.current, watchFieldArrayRef.current]),
+    unregister: useCallback(unregister, []),
+    clearError: useCallback(clearError, []),
+    setError: useCallback(setError, []),
+    errors: errorsRef.current,
+    formState: isProxyEnabled ? new Proxy(formState, {
+      get: (obj, prop) => {
+        if (prop in obj) {
+          readFormStateRef.current[prop] = true;
+          return obj[prop];
+        }
+
+        return {};
+      }
+    }) : formState
+  };
+}
+/*! *****************************************************************************
+Copyright (c) Microsoft Corporation. All rights reserved.
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use
+this file except in compliance with the License. You may obtain a copy of the
+License at http://www.apache.org/licenses/LICENSE-2.0
+
+THIS CODE IS PROVIDED ON AN *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED
+WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE,
+MERCHANTABLITY OR NON-INFRINGEMENT.
+
+See the Apache Version 2.0 License for specific language governing permissions
+and limitations under the License.
+***************************************************************************** */
+
+
+function __rest(s, e) {
+  var t = {};
+
+  for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0) t[p] = s[p];
+
+  if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+    if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i])) t[p[i]] = s[p[i]];
+  }
+  return t;
+}
+
+const FormGlobalContext = (0, React.createContext)(null);
+
+function useFormContext() {
+  return (0, React.useContext)(FormGlobalContext);
+}
+
+function FormContext(_a) {
+  var {
+    children,
+    formState,
+    errors
+  } = _a,
+      restMethods = __rest(_a, ["children", "formState", "errors"]);
+
+  return (0, React.createElement)(FormGlobalContext.Provider, {
+    value: Object.assign(Object.assign({}, restMethods), {
+      formState,
+      errors
+    })
+  }, children);
+}
+
+var generateId = () => {
+  const d = typeof performance === UNDEFINED ? Date.now() : performance.now() * 1000;
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+    const r = (Math.random() * 16 + d) % 16 | 0;
+    return (c == 'x' ? r : r & 0x3 | 0x8).toString(16);
+  });
+};
+
+const appendId = (value, keyName) => Object.assign(Object.assign({}, isObject(value) ? value : {
+  value
+}), {
+  [keyName]: generateId()
+});
+
+const mapIds = (data, keyName) => (isArray(data) ? data : []).map(value => appendId(value, keyName));
+
+const removeAt = (data, index) => [...data.slice(0, index), ...data.slice(index + 1)];
+
+var removeArrayAt = (data, index) => isUndefined(index) ? [] : isArray(index) ? index.reduce(({
+  result,
+  previousIndex
+}, i) => ({
+  result: previousIndex > -1 ? removeAt(result, previousIndex < i ? i - 1 : i) : removeAt(result, i),
+  previousIndex: i
+}), {
+  result: data,
+  previousIndex: -1
+}).result : removeAt(data, index);
+
+var moveArrayAt = (data, from, to) => isArray(data) ? data.splice(to, 0, data.splice(from, 1)[0]) : [];
+
+var swapArrayAt = (fields, indexA, indexB) => isArray(fields) && ([fields[indexA], fields[indexB]] = [fields[indexB], fields[indexA]]);
+
+var prependAt = (data, value) => [...(isArray(value) ? value : [value || null]), ...data];
+
+var insertAt = (data, index, value) => [...data.slice(0, index), ...(isArray(value) ? value : [value || null]), ...data.slice(index)];
+
+var fillEmptyArray = value => isArray(value) ? Array(value.length).fill(null) : undefined;
+
+const {
+  useEffect: useEffect$1,
+  useCallback: useCallback$1,
+  useRef: useRef$1,
+  useState: useState$1
+} = React;
+
+const useFieldArray = ({
+  control,
+  name,
+  keyName = 'id'
+}) => {
+  const methods = useFormContext();
+  const {
+    resetFieldArrayFunctionRef,
+    fieldArrayNamesRef,
+    reRender,
+    fieldsRef,
+    getValues,
+    defaultValuesRef,
+    removeFieldEventListener,
+    errorsRef,
+    dirtyFieldsRef,
+    isDirtyRef,
+    touchedFieldsRef,
+    readFormStateRef,
+    watchFieldArrayRef,
+    validFieldsRef,
+    fieldsWithValidationRef,
+    validateSchemaIsValid
+  } = control || methods.control;
+  const memoizedDefaultValues = useRef$1(get(defaultValuesRef.current, name, []));
+  const [fields, setField] = useState$1(mapIds(memoizedDefaultValues.current, keyName));
+  const allFields = useRef$1(fields);
+
+  const appendValueWithKey = value => value.map(v => appendId(v, keyName));
+
+  allFields.current = fields;
+
+  const commonTasks = fieldsValues => {
+    watchFieldArrayRef.current = Object.assign(Object.assign({}, watchFieldArrayRef.current), {
+      [name]: fieldsValues
+    });
+    setField(fieldsValues);
+
+    if (readFormStateRef.current.isValid && validateSchemaIsValid) {
+      validateSchemaIsValid({
+        [name]: fieldsValues
+      });
+    }
+  };
+
+  const resetFields = flagOrFields => {
+    if (readFormStateRef.current.dirty) {
+      isDirtyRef.current = isUndefined(flagOrFields) ? true : getIsFieldsDifferent(flagOrFields, memoizedDefaultValues.current);
+    }
+
+    for (const key in fieldsRef.current) {
+      if (isMatchFieldArrayName(key, name) && fieldsRef.current[key]) {
+        removeFieldEventListener(fieldsRef.current[key], true);
+      }
+    }
+  };
+
+  const mapCurrentFieldsValueWithState = () => {
+    const currentFieldsValue = getValues({
+      nest: true
+    })[name];
+
+    if (isArray(currentFieldsValue)) {
+      for (let i = 0; i < currentFieldsValue.length; i++) {
+        allFields.current[i] = Object.assign(Object.assign({}, allFields.current[i]), currentFieldsValue[i]);
+      }
+    }
+  };
+
+  const append = value => {
+    if (readFormStateRef.current.dirty) {
+      isDirtyRef.current = true;
+      reRender();
+    }
+
+    commonTasks([...allFields.current, ...(isArray(value) ? appendValueWithKey(value) : [appendId(value, keyName)])]);
+  };
+
+  const prepend = value => {
+    resetFields();
+    commonTasks(prependAt(allFields.current, isArray(value) ? appendValueWithKey(value) : [appendId(value, keyName)]));
+
+    if (errorsRef.current[name]) {
+      errorsRef.current[name] = prependAt(errorsRef.current[name], fillEmptyArray(value));
+    }
+
+    if (readFormStateRef.current.touched && touchedFieldsRef.current[name]) {
+      touchedFieldsRef.current[name] = prependAt(touchedFieldsRef.current[name], fillEmptyArray(value));
+      reRender();
+    }
+  };
+
+  const remove = index => {
+    let shouldRender = false;
+
+    if (!isUndefined(index)) {
+      mapCurrentFieldsValueWithState();
+    }
+
+    resetFields(removeArrayAt(getFieldValueByName(fieldsRef.current, name), index));
+    commonTasks(removeArrayAt(allFields.current, index));
+
+    if (errorsRef.current[name]) {
+      errorsRef.current[name] = removeArrayAt(errorsRef.current[name], index);
+
+      if (!errorsRef.current[name].filter(Boolean).length) {
+        delete errorsRef.current[name];
+      }
+    }
+
+    if (readFormStateRef.current.touched && touchedFieldsRef.current[name]) {
+      touchedFieldsRef.current[name] = removeArrayAt(touchedFieldsRef.current[name], index);
+      shouldRender = true;
+    }
+
+    if (readFormStateRef.current.dirty) {
+      dirtyFieldsRef.current.forEach(dirtyField => {
+        if (isUndefined(name) || dirtyField.startsWith(`${name}[${index}]`)) {
+          dirtyFieldsRef.current.delete(dirtyField);
+        }
+      });
+      shouldRender = true;
+    }
+
+    if (readFormStateRef.current.isValid && !validateSchemaIsValid) {
+      let fieldIndex = -1;
+      let isFound = false;
+      const isIndexUndefined = isUndefined(index);
+
+      while (fieldIndex++ < fields.length) {
+        const isLast = fieldIndex === fields.length - 1;
+        const isCurrentIndex = (isArray(index) ? index : [index]).indexOf(fieldIndex) >= 0;
+
+        if (isCurrentIndex || isIndexUndefined) {
+          isFound = true;
+        }
+
+        if (!isFound) {
+          continue;
+        }
+
+        for (const key in fields[fieldIndex]) {
+          const currentFieldName = `${name}[${fieldIndex}].${key}`;
+
+          if (isCurrentIndex || isLast || isIndexUndefined) {
+            validFieldsRef.current.delete(currentFieldName);
+            fieldsWithValidationRef.current.delete(currentFieldName);
+          } else {
+            const previousFieldName = `${name}[${fieldIndex - 1}].${key}`;
+
+            if (validFieldsRef.current.has(currentFieldName)) {
+              validFieldsRef.current.add(previousFieldName);
+            }
+
+            if (fieldsWithValidationRef.current.has(currentFieldName)) {
+              fieldsWithValidationRef.current.add(previousFieldName);
+            }
+          }
+        }
+      }
+
+      shouldRender = true;
+    }
+
+    if (shouldRender) {
+      reRender();
+    }
+  };
+
+  const insert = (index, value) => {
+    mapCurrentFieldsValueWithState();
+    resetFields(insertAt(getFieldValueByName(fieldsRef.current, name), index));
+    commonTasks(insertAt(allFields.current, index, isArray(value) ? appendValueWithKey(value) : [appendId(value, keyName)]));
+
+    if (errorsRef.current[name]) {
+      errorsRef.current[name] = insertAt(errorsRef.current[name], index, fillEmptyArray(value));
+    }
+
+    if (readFormStateRef.current.touched && touchedFieldsRef.current[name]) {
+      touchedFieldsRef.current[name] = insertAt(touchedFieldsRef.current[name], index, fillEmptyArray(value));
+      reRender();
+    }
+  };
+
+  const swap = (indexA, indexB) => {
+    mapCurrentFieldsValueWithState();
+    const fieldValues = getFieldValueByName(fieldsRef.current, name);
+    swapArrayAt(fieldValues, indexA, indexB);
+    resetFields(fieldValues);
+    swapArrayAt(allFields.current, indexA, indexB);
+    commonTasks([...allFields.current]);
+
+    if (errorsRef.current[name]) {
+      swapArrayAt(errorsRef.current[name], indexA, indexB);
+    }
+
+    if (readFormStateRef.current.touched && touchedFieldsRef.current[name]) {
+      swapArrayAt(touchedFieldsRef.current[name], indexA, indexB);
+      reRender();
+    }
+  };
+
+  const move = (from, to) => {
+    mapCurrentFieldsValueWithState();
+    const fieldValues = getFieldValueByName(fieldsRef.current, name);
+    moveArrayAt(fieldValues, from, to);
+    resetFields(fieldValues);
+    moveArrayAt(allFields.current, from, to);
+    commonTasks([...allFields.current]);
+
+    if (errorsRef.current[name]) {
+      moveArrayAt(errorsRef.current[name], from, to);
+    }
+
+    if (readFormStateRef.current.touched && touchedFieldsRef.current[name]) {
+      moveArrayAt(touchedFieldsRef.current[name], from, to);
+      reRender();
+    }
+  };
+
+  const reset = () => {
+    resetFields();
+    memoizedDefaultValues.current = get(defaultValuesRef.current, name, []);
+    setField(mapIds(memoizedDefaultValues.current, keyName));
+  };
+
+  useEffect$1(() => {
+    const resetFunctions = resetFieldArrayFunctionRef.current;
+    const fieldArrayNames = fieldArrayNamesRef.current;
+    fieldArrayNames.add(name);
+    resetFunctions[name] = reset;
+    watchFieldArrayRef.current = Object.assign(Object.assign({}, watchFieldArrayRef.current), {
+      [name]: fields
+    });
+    return () => {
+      resetFields();
+      delete resetFunctions[name];
+      fieldArrayNames.delete(name);
+    }; // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  return {
+    swap: useCallback$1(swap, []),
+    move: useCallback$1(move, []),
+    prepend: useCallback$1(prepend, []),
+    append: useCallback$1(append, []),
+    remove: useCallback$1(remove, [fields]),
+    insert: useCallback$1(insert, []),
+    fields
+  };
+};
+
+exports.useFieldArray = useFieldArray;
+
+var getInputValue = (event, isCheckboxInput) => isPrimitive(event) || !isObject(event.target) || isObject(event.target) && !event.type ? event : isCheckboxInput || isUndefined(event.target.value) ? event.target.checked : event.target.value;
+
+const Controller = _a => {
+  var {
+    name,
+    rules,
+    as: InnerComponent,
+    onBlur,
+    onChange,
+    onChangeName = VALIDATION_MODE.onChange,
+    onBlurName = VALIDATION_MODE.onBlur,
+    valueName,
+    defaultValue,
+    control
+  } = _a,
+      rest = __rest(_a, ["name", "rules", "as", "onBlur", "onChange", "onChangeName", "onBlurName", "valueName", "defaultValue", "control"]);
+
+  const methods = useFormContext();
+  const {
+    defaultValuesRef,
+    setValue,
+    register,
+    unregister,
+    errorsRef,
+    removeFieldEventListener,
+    triggerValidation,
+    mode: {
+      isOnSubmit,
+      isOnBlur,
+      isOnChange
+    },
+    reValidateMode: {
+      isReValidateOnBlur,
+      isReValidateOnSubmit
+    },
+    formState: {
+      isSubmitted
+    },
+    fieldsRef,
+    fieldArrayNamesRef
+  } = control || methods.control;
+  const [value, setInputStateValue] = (0, React.useState)(isUndefined(defaultValue) ? get(defaultValuesRef.current, name) : defaultValue);
+  const valueRef = (0, React.useRef)(value);
+  const isCheckboxInput = isBoolean(value);
+
+  const shouldValidate = () => !skipValidation({
+    hasError: !!get(errorsRef.current, name),
+    isOnBlur,
+    isOnSubmit,
+    isOnChange,
+    isReValidateOnBlur,
+    isReValidateOnSubmit,
+    isSubmitted
+  });
+
+  const commonTask = event => {
+    const data = getInputValue(event, isCheckboxInput);
+    setInputStateValue(data);
+    valueRef.current = data;
+    return data;
+  };
+
+  const eventWrapper = event => (...arg) => setValue(name, commonTask(event(arg)), shouldValidate());
+
+  const handleChange = event => {
+    const data = commonTask(event);
+    setValue(name, data, shouldValidate());
+  };
+
+  const registerField = () => {
+    if (isNameInFieldArray(fieldArrayNamesRef.current, name) && fieldsRef.current[name]) {
+      removeFieldEventListener(fieldsRef.current[name], true);
+    }
+
+    register(Object.defineProperty({
+      name
+    }, VALUE, {
+      set(data) {
+        setInputStateValue(data);
+        valueRef.current = data;
+      },
+
+      get() {
+        return valueRef.current;
+      }
+
+    }), Object.assign({}, rules));
+  };
+
+  (0, React.useEffect)(() => {
+    if (!fieldsRef.current[name]) {
+      registerField();
+      setInputStateValue(isUndefined(defaultValue) ? get(defaultValuesRef.current, name) : defaultValue);
+    }
+  });
+  (0, React.useEffect)(() => {
+    registerField();
+    return () => {
+      if (!isNameInFieldArray(fieldArrayNamesRef.current, name)) {
+        unregister(name);
+      }
+    };
+  }, [name]);
+  (0, React.useEffect)(() => {
+    registerField();
+  }, [rules]);
+  const shouldReValidateOnBlur = isOnBlur || isReValidateOnBlur;
+  const props = Object.assign(Object.assign(Object.assign(Object.assign({
+    name
+  }, rest), onChange ? {
+    [onChangeName]: eventWrapper(onChange)
+  } : {
+    [onChangeName]: handleChange
+  }), onBlur || shouldReValidateOnBlur ? {
+    [onBlurName]: (...args) => {
+      if (onBlur) {
+        onBlur(args);
+      }
+
+      if (shouldReValidateOnBlur) {
+        triggerValidation(name);
+      }
+    }
+  } : {}), {
+    [valueName || (isCheckboxInput ? 'checked' : VALUE)]: value
+  });
+  return (0, React.isValidElement)(InnerComponent) ? (0, React.cloneElement)(InnerComponent, props) : (0, React.createElement)(InnerComponent, props);
+};
+
+exports.Controller = Controller;
+
+const ErrorMessage = _a => {
+  var {
+    as: InnerComponent,
+    errors,
+    name,
+    message,
+    children
+  } = _a,
+      rest = __rest(_a, ["as", "errors", "name", "message", "children"]);
+
+  const methods = useFormContext();
+  const error = get(errors || methods.errors, name);
+
+  if (!error) {
+    return null;
+  }
+
+  const {
+    message: messageFromRegister,
+    types
+  } = error;
+  const props = Object.assign(Object.assign({}, InnerComponent ? rest : {}), {
+    children: children ? children({
+      message: messageFromRegister || message,
+      messages: types
+    }) : messageFromRegister || message
+  });
+  return InnerComponent ? (0, React.isValidElement)(InnerComponent) ? (0, React.cloneElement)(InnerComponent, props) : (0, React.createElement)(InnerComponent, props) : (0, React.createElement)(React.Fragment, Object.assign({}, props));
+};
+
+exports.ErrorMessage = ErrorMessage;
+},{"react":"node_modules/react/index.js"}],"node_modules/axios/lib/helpers/bind.js":[function(require,module,exports) {
+'use strict';
+
+module.exports = function bind(fn, thisArg) {
+  return function wrap() {
+    var args = new Array(arguments.length);
+    for (var i = 0; i < args.length; i++) {
+      args[i] = arguments[i];
+    }
+    return fn.apply(thisArg, args);
+  };
+};
+
+},{}],"node_modules/axios/lib/utils.js":[function(require,module,exports) {
+'use strict';
+
+var bind = require('./helpers/bind');
+
+/*global toString:true*/
+
+// utils is a library of generic helper functions non-specific to axios
+
+var toString = Object.prototype.toString;
+
+/**
+ * Determine if a value is an Array
+ *
+ * @param {Object} val The value to test
+ * @returns {boolean} True if value is an Array, otherwise false
+ */
+function isArray(val) {
+  return toString.call(val) === '[object Array]';
+}
+
+/**
+ * Determine if a value is undefined
+ *
+ * @param {Object} val The value to test
+ * @returns {boolean} True if the value is undefined, otherwise false
+ */
+function isUndefined(val) {
+  return typeof val === 'undefined';
+}
+
+/**
+ * Determine if a value is a Buffer
+ *
+ * @param {Object} val The value to test
+ * @returns {boolean} True if value is a Buffer, otherwise false
+ */
+function isBuffer(val) {
+  return val !== null && !isUndefined(val) && val.constructor !== null && !isUndefined(val.constructor)
+    && typeof val.constructor.isBuffer === 'function' && val.constructor.isBuffer(val);
+}
+
+/**
+ * Determine if a value is an ArrayBuffer
+ *
+ * @param {Object} val The value to test
+ * @returns {boolean} True if value is an ArrayBuffer, otherwise false
+ */
+function isArrayBuffer(val) {
+  return toString.call(val) === '[object ArrayBuffer]';
+}
+
+/**
+ * Determine if a value is a FormData
+ *
+ * @param {Object} val The value to test
+ * @returns {boolean} True if value is an FormData, otherwise false
+ */
+function isFormData(val) {
+  return (typeof FormData !== 'undefined') && (val instanceof FormData);
+}
+
+/**
+ * Determine if a value is a view on an ArrayBuffer
+ *
+ * @param {Object} val The value to test
+ * @returns {boolean} True if value is a view on an ArrayBuffer, otherwise false
+ */
+function isArrayBufferView(val) {
+  var result;
+  if ((typeof ArrayBuffer !== 'undefined') && (ArrayBuffer.isView)) {
+    result = ArrayBuffer.isView(val);
+  } else {
+    result = (val) && (val.buffer) && (val.buffer instanceof ArrayBuffer);
+  }
+  return result;
+}
+
+/**
+ * Determine if a value is a String
+ *
+ * @param {Object} val The value to test
+ * @returns {boolean} True if value is a String, otherwise false
+ */
+function isString(val) {
+  return typeof val === 'string';
+}
+
+/**
+ * Determine if a value is a Number
+ *
+ * @param {Object} val The value to test
+ * @returns {boolean} True if value is a Number, otherwise false
+ */
+function isNumber(val) {
+  return typeof val === 'number';
+}
+
+/**
+ * Determine if a value is an Object
+ *
+ * @param {Object} val The value to test
+ * @returns {boolean} True if value is an Object, otherwise false
+ */
+function isObject(val) {
+  return val !== null && typeof val === 'object';
+}
+
+/**
+ * Determine if a value is a Date
+ *
+ * @param {Object} val The value to test
+ * @returns {boolean} True if value is a Date, otherwise false
+ */
+function isDate(val) {
+  return toString.call(val) === '[object Date]';
+}
+
+/**
+ * Determine if a value is a File
+ *
+ * @param {Object} val The value to test
+ * @returns {boolean} True if value is a File, otherwise false
+ */
+function isFile(val) {
+  return toString.call(val) === '[object File]';
+}
+
+/**
+ * Determine if a value is a Blob
+ *
+ * @param {Object} val The value to test
+ * @returns {boolean} True if value is a Blob, otherwise false
+ */
+function isBlob(val) {
+  return toString.call(val) === '[object Blob]';
+}
+
+/**
+ * Determine if a value is a Function
+ *
+ * @param {Object} val The value to test
+ * @returns {boolean} True if value is a Function, otherwise false
+ */
+function isFunction(val) {
+  return toString.call(val) === '[object Function]';
+}
+
+/**
+ * Determine if a value is a Stream
+ *
+ * @param {Object} val The value to test
+ * @returns {boolean} True if value is a Stream, otherwise false
+ */
+function isStream(val) {
+  return isObject(val) && isFunction(val.pipe);
+}
+
+/**
+ * Determine if a value is a URLSearchParams object
+ *
+ * @param {Object} val The value to test
+ * @returns {boolean} True if value is a URLSearchParams object, otherwise false
+ */
+function isURLSearchParams(val) {
+  return typeof URLSearchParams !== 'undefined' && val instanceof URLSearchParams;
+}
+
+/**
+ * Trim excess whitespace off the beginning and end of a string
+ *
+ * @param {String} str The String to trim
+ * @returns {String} The String freed of excess whitespace
+ */
+function trim(str) {
+  return str.replace(/^\s*/, '').replace(/\s*$/, '');
+}
+
+/**
+ * Determine if we're running in a standard browser environment
+ *
+ * This allows axios to run in a web worker, and react-native.
+ * Both environments support XMLHttpRequest, but not fully standard globals.
+ *
+ * web workers:
+ *  typeof window -> undefined
+ *  typeof document -> undefined
+ *
+ * react-native:
+ *  navigator.product -> 'ReactNative'
+ * nativescript
+ *  navigator.product -> 'NativeScript' or 'NS'
+ */
+function isStandardBrowserEnv() {
+  if (typeof navigator !== 'undefined' && (navigator.product === 'ReactNative' ||
+                                           navigator.product === 'NativeScript' ||
+                                           navigator.product === 'NS')) {
+    return false;
+  }
+  return (
+    typeof window !== 'undefined' &&
+    typeof document !== 'undefined'
+  );
+}
+
+/**
+ * Iterate over an Array or an Object invoking a function for each item.
+ *
+ * If `obj` is an Array callback will be called passing
+ * the value, index, and complete array for each item.
+ *
+ * If 'obj' is an Object callback will be called passing
+ * the value, key, and complete object for each property.
+ *
+ * @param {Object|Array} obj The object to iterate
+ * @param {Function} fn The callback to invoke for each item
+ */
+function forEach(obj, fn) {
+  // Don't bother if no value provided
+  if (obj === null || typeof obj === 'undefined') {
+    return;
+  }
+
+  // Force an array if not already something iterable
+  if (typeof obj !== 'object') {
+    /*eslint no-param-reassign:0*/
+    obj = [obj];
+  }
+
+  if (isArray(obj)) {
+    // Iterate over array values
+    for (var i = 0, l = obj.length; i < l; i++) {
+      fn.call(null, obj[i], i, obj);
+    }
+  } else {
+    // Iterate over object keys
+    for (var key in obj) {
+      if (Object.prototype.hasOwnProperty.call(obj, key)) {
+        fn.call(null, obj[key], key, obj);
+      }
+    }
+  }
+}
+
+/**
+ * Accepts varargs expecting each argument to be an object, then
+ * immutably merges the properties of each object and returns result.
+ *
+ * When multiple objects contain the same key the later object in
+ * the arguments list will take precedence.
+ *
+ * Example:
+ *
+ * ```js
+ * var result = merge({foo: 123}, {foo: 456});
+ * console.log(result.foo); // outputs 456
+ * ```
+ *
+ * @param {Object} obj1 Object to merge
+ * @returns {Object} Result of all merge properties
+ */
+function merge(/* obj1, obj2, obj3, ... */) {
+  var result = {};
+  function assignValue(val, key) {
+    if (typeof result[key] === 'object' && typeof val === 'object') {
+      result[key] = merge(result[key], val);
+    } else {
+      result[key] = val;
+    }
+  }
+
+  for (var i = 0, l = arguments.length; i < l; i++) {
+    forEach(arguments[i], assignValue);
+  }
+  return result;
+}
+
+/**
+ * Function equal to merge with the difference being that no reference
+ * to original objects is kept.
+ *
+ * @see merge
+ * @param {Object} obj1 Object to merge
+ * @returns {Object} Result of all merge properties
+ */
+function deepMerge(/* obj1, obj2, obj3, ... */) {
+  var result = {};
+  function assignValue(val, key) {
+    if (typeof result[key] === 'object' && typeof val === 'object') {
+      result[key] = deepMerge(result[key], val);
+    } else if (typeof val === 'object') {
+      result[key] = deepMerge({}, val);
+    } else {
+      result[key] = val;
+    }
+  }
+
+  for (var i = 0, l = arguments.length; i < l; i++) {
+    forEach(arguments[i], assignValue);
+  }
+  return result;
+}
+
+/**
+ * Extends object a by mutably adding to it the properties of object b.
+ *
+ * @param {Object} a The object to be extended
+ * @param {Object} b The object to copy properties from
+ * @param {Object} thisArg The object to bind function to
+ * @return {Object} The resulting value of object a
+ */
+function extend(a, b, thisArg) {
+  forEach(b, function assignValue(val, key) {
+    if (thisArg && typeof val === 'function') {
+      a[key] = bind(val, thisArg);
+    } else {
+      a[key] = val;
+    }
+  });
+  return a;
+}
+
+module.exports = {
+  isArray: isArray,
+  isArrayBuffer: isArrayBuffer,
+  isBuffer: isBuffer,
+  isFormData: isFormData,
+  isArrayBufferView: isArrayBufferView,
+  isString: isString,
+  isNumber: isNumber,
+  isObject: isObject,
+  isUndefined: isUndefined,
+  isDate: isDate,
+  isFile: isFile,
+  isBlob: isBlob,
+  isFunction: isFunction,
+  isStream: isStream,
+  isURLSearchParams: isURLSearchParams,
+  isStandardBrowserEnv: isStandardBrowserEnv,
+  forEach: forEach,
+  merge: merge,
+  deepMerge: deepMerge,
+  extend: extend,
+  trim: trim
+};
+
+},{"./helpers/bind":"node_modules/axios/lib/helpers/bind.js"}],"node_modules/axios/lib/helpers/buildURL.js":[function(require,module,exports) {
+'use strict';
+
+var utils = require('./../utils');
+
+function encode(val) {
+  return encodeURIComponent(val).
+    replace(/%40/gi, '@').
+    replace(/%3A/gi, ':').
+    replace(/%24/g, '$').
+    replace(/%2C/gi, ',').
+    replace(/%20/g, '+').
+    replace(/%5B/gi, '[').
+    replace(/%5D/gi, ']');
+}
+
+/**
+ * Build a URL by appending params to the end
+ *
+ * @param {string} url The base of the url (e.g., http://www.google.com)
+ * @param {object} [params] The params to be appended
+ * @returns {string} The formatted url
+ */
+module.exports = function buildURL(url, params, paramsSerializer) {
+  /*eslint no-param-reassign:0*/
+  if (!params) {
+    return url;
+  }
+
+  var serializedParams;
+  if (paramsSerializer) {
+    serializedParams = paramsSerializer(params);
+  } else if (utils.isURLSearchParams(params)) {
+    serializedParams = params.toString();
+  } else {
+    var parts = [];
+
+    utils.forEach(params, function serialize(val, key) {
+      if (val === null || typeof val === 'undefined') {
+        return;
+      }
+
+      if (utils.isArray(val)) {
+        key = key + '[]';
+      } else {
+        val = [val];
+      }
+
+      utils.forEach(val, function parseValue(v) {
+        if (utils.isDate(v)) {
+          v = v.toISOString();
+        } else if (utils.isObject(v)) {
+          v = JSON.stringify(v);
+        }
+        parts.push(encode(key) + '=' + encode(v));
+      });
+    });
+
+    serializedParams = parts.join('&');
+  }
+
+  if (serializedParams) {
+    var hashmarkIndex = url.indexOf('#');
+    if (hashmarkIndex !== -1) {
+      url = url.slice(0, hashmarkIndex);
+    }
+
+    url += (url.indexOf('?') === -1 ? '?' : '&') + serializedParams;
+  }
+
+  return url;
+};
+
+},{"./../utils":"node_modules/axios/lib/utils.js"}],"node_modules/axios/lib/core/InterceptorManager.js":[function(require,module,exports) {
+'use strict';
+
+var utils = require('./../utils');
+
+function InterceptorManager() {
+  this.handlers = [];
+}
+
+/**
+ * Add a new interceptor to the stack
+ *
+ * @param {Function} fulfilled The function to handle `then` for a `Promise`
+ * @param {Function} rejected The function to handle `reject` for a `Promise`
+ *
+ * @return {Number} An ID used to remove interceptor later
+ */
+InterceptorManager.prototype.use = function use(fulfilled, rejected) {
+  this.handlers.push({
+    fulfilled: fulfilled,
+    rejected: rejected
+  });
+  return this.handlers.length - 1;
+};
+
+/**
+ * Remove an interceptor from the stack
+ *
+ * @param {Number} id The ID that was returned by `use`
+ */
+InterceptorManager.prototype.eject = function eject(id) {
+  if (this.handlers[id]) {
+    this.handlers[id] = null;
+  }
+};
+
+/**
+ * Iterate over all the registered interceptors
+ *
+ * This method is particularly useful for skipping over any
+ * interceptors that may have become `null` calling `eject`.
+ *
+ * @param {Function} fn The function to call for each interceptor
+ */
+InterceptorManager.prototype.forEach = function forEach(fn) {
+  utils.forEach(this.handlers, function forEachHandler(h) {
+    if (h !== null) {
+      fn(h);
+    }
+  });
+};
+
+module.exports = InterceptorManager;
+
+},{"./../utils":"node_modules/axios/lib/utils.js"}],"node_modules/axios/lib/core/transformData.js":[function(require,module,exports) {
+'use strict';
+
+var utils = require('./../utils');
+
+/**
+ * Transform the data for a request or a response
+ *
+ * @param {Object|String} data The data to be transformed
+ * @param {Array} headers The headers for the request or response
+ * @param {Array|Function} fns A single function or Array of functions
+ * @returns {*} The resulting transformed data
+ */
+module.exports = function transformData(data, headers, fns) {
+  /*eslint no-param-reassign:0*/
+  utils.forEach(fns, function transform(fn) {
+    data = fn(data, headers);
+  });
+
+  return data;
+};
+
+},{"./../utils":"node_modules/axios/lib/utils.js"}],"node_modules/axios/lib/cancel/isCancel.js":[function(require,module,exports) {
+'use strict';
+
+module.exports = function isCancel(value) {
+  return !!(value && value.__CANCEL__);
+};
+
+},{}],"node_modules/axios/lib/helpers/normalizeHeaderName.js":[function(require,module,exports) {
+'use strict';
+
+var utils = require('../utils');
+
+module.exports = function normalizeHeaderName(headers, normalizedName) {
+  utils.forEach(headers, function processHeader(value, name) {
+    if (name !== normalizedName && name.toUpperCase() === normalizedName.toUpperCase()) {
+      headers[normalizedName] = value;
+      delete headers[name];
+    }
+  });
+};
+
+},{"../utils":"node_modules/axios/lib/utils.js"}],"node_modules/axios/lib/core/enhanceError.js":[function(require,module,exports) {
+'use strict';
+
+/**
+ * Update an Error with the specified config, error code, and response.
+ *
+ * @param {Error} error The error to update.
+ * @param {Object} config The config.
+ * @param {string} [code] The error code (for example, 'ECONNABORTED').
+ * @param {Object} [request] The request.
+ * @param {Object} [response] The response.
+ * @returns {Error} The error.
+ */
+module.exports = function enhanceError(error, config, code, request, response) {
+  error.config = config;
+  if (code) {
+    error.code = code;
+  }
+
+  error.request = request;
+  error.response = response;
+  error.isAxiosError = true;
+
+  error.toJSON = function() {
+    return {
+      // Standard
+      message: this.message,
+      name: this.name,
+      // Microsoft
+      description: this.description,
+      number: this.number,
+      // Mozilla
+      fileName: this.fileName,
+      lineNumber: this.lineNumber,
+      columnNumber: this.columnNumber,
+      stack: this.stack,
+      // Axios
+      config: this.config,
+      code: this.code
+    };
+  };
+  return error;
+};
+
+},{}],"node_modules/axios/lib/core/createError.js":[function(require,module,exports) {
+'use strict';
+
+var enhanceError = require('./enhanceError');
+
+/**
+ * Create an Error with the specified message, config, error code, request and response.
+ *
+ * @param {string} message The error message.
+ * @param {Object} config The config.
+ * @param {string} [code] The error code (for example, 'ECONNABORTED').
+ * @param {Object} [request] The request.
+ * @param {Object} [response] The response.
+ * @returns {Error} The created error.
+ */
+module.exports = function createError(message, config, code, request, response) {
+  var error = new Error(message);
+  return enhanceError(error, config, code, request, response);
+};
+
+},{"./enhanceError":"node_modules/axios/lib/core/enhanceError.js"}],"node_modules/axios/lib/core/settle.js":[function(require,module,exports) {
+'use strict';
+
+var createError = require('./createError');
+
+/**
+ * Resolve or reject a Promise based on response status.
+ *
+ * @param {Function} resolve A function that resolves the promise.
+ * @param {Function} reject A function that rejects the promise.
+ * @param {object} response The response.
+ */
+module.exports = function settle(resolve, reject, response) {
+  var validateStatus = response.config.validateStatus;
+  if (!validateStatus || validateStatus(response.status)) {
+    resolve(response);
+  } else {
+    reject(createError(
+      'Request failed with status code ' + response.status,
+      response.config,
+      null,
+      response.request,
+      response
+    ));
+  }
+};
+
+},{"./createError":"node_modules/axios/lib/core/createError.js"}],"node_modules/axios/lib/helpers/isAbsoluteURL.js":[function(require,module,exports) {
+'use strict';
+
+/**
+ * Determines whether the specified URL is absolute
+ *
+ * @param {string} url The URL to test
+ * @returns {boolean} True if the specified URL is absolute, otherwise false
+ */
+module.exports = function isAbsoluteURL(url) {
+  // A URL is considered absolute if it begins with "<scheme>://" or "//" (protocol-relative URL).
+  // RFC 3986 defines scheme name as a sequence of characters beginning with a letter and followed
+  // by any combination of letters, digits, plus, period, or hyphen.
+  return /^([a-z][a-z\d\+\-\.]*:)?\/\//i.test(url);
+};
+
+},{}],"node_modules/axios/lib/helpers/combineURLs.js":[function(require,module,exports) {
+'use strict';
+
+/**
+ * Creates a new URL by combining the specified URLs
+ *
+ * @param {string} baseURL The base URL
+ * @param {string} relativeURL The relative URL
+ * @returns {string} The combined URL
+ */
+module.exports = function combineURLs(baseURL, relativeURL) {
+  return relativeURL
+    ? baseURL.replace(/\/+$/, '') + '/' + relativeURL.replace(/^\/+/, '')
+    : baseURL;
+};
+
+},{}],"node_modules/axios/lib/core/buildFullPath.js":[function(require,module,exports) {
+'use strict';
+
+var isAbsoluteURL = require('../helpers/isAbsoluteURL');
+var combineURLs = require('../helpers/combineURLs');
+
+/**
+ * Creates a new URL by combining the baseURL with the requestedURL,
+ * only when the requestedURL is not already an absolute URL.
+ * If the requestURL is absolute, this function returns the requestedURL untouched.
+ *
+ * @param {string} baseURL The base URL
+ * @param {string} requestedURL Absolute or relative URL to combine
+ * @returns {string} The combined full path
+ */
+module.exports = function buildFullPath(baseURL, requestedURL) {
+  if (baseURL && !isAbsoluteURL(requestedURL)) {
+    return combineURLs(baseURL, requestedURL);
+  }
+  return requestedURL;
+};
+
+},{"../helpers/isAbsoluteURL":"node_modules/axios/lib/helpers/isAbsoluteURL.js","../helpers/combineURLs":"node_modules/axios/lib/helpers/combineURLs.js"}],"node_modules/axios/lib/helpers/parseHeaders.js":[function(require,module,exports) {
+'use strict';
+
+var utils = require('./../utils');
+
+// Headers whose duplicates are ignored by node
+// c.f. https://nodejs.org/api/http.html#http_message_headers
+var ignoreDuplicateOf = [
+  'age', 'authorization', 'content-length', 'content-type', 'etag',
+  'expires', 'from', 'host', 'if-modified-since', 'if-unmodified-since',
+  'last-modified', 'location', 'max-forwards', 'proxy-authorization',
+  'referer', 'retry-after', 'user-agent'
+];
+
+/**
+ * Parse headers into an object
+ *
+ * ```
+ * Date: Wed, 27 Aug 2014 08:58:49 GMT
+ * Content-Type: application/json
+ * Connection: keep-alive
+ * Transfer-Encoding: chunked
+ * ```
+ *
+ * @param {String} headers Headers needing to be parsed
+ * @returns {Object} Headers parsed into an object
+ */
+module.exports = function parseHeaders(headers) {
+  var parsed = {};
+  var key;
+  var val;
+  var i;
+
+  if (!headers) { return parsed; }
+
+  utils.forEach(headers.split('\n'), function parser(line) {
+    i = line.indexOf(':');
+    key = utils.trim(line.substr(0, i)).toLowerCase();
+    val = utils.trim(line.substr(i + 1));
+
+    if (key) {
+      if (parsed[key] && ignoreDuplicateOf.indexOf(key) >= 0) {
+        return;
+      }
+      if (key === 'set-cookie') {
+        parsed[key] = (parsed[key] ? parsed[key] : []).concat([val]);
+      } else {
+        parsed[key] = parsed[key] ? parsed[key] + ', ' + val : val;
+      }
+    }
+  });
+
+  return parsed;
+};
+
+},{"./../utils":"node_modules/axios/lib/utils.js"}],"node_modules/axios/lib/helpers/isURLSameOrigin.js":[function(require,module,exports) {
+'use strict';
+
+var utils = require('./../utils');
+
+module.exports = (
+  utils.isStandardBrowserEnv() ?
+
+  // Standard browser envs have full support of the APIs needed to test
+  // whether the request URL is of the same origin as current location.
+    (function standardBrowserEnv() {
+      var msie = /(msie|trident)/i.test(navigator.userAgent);
+      var urlParsingNode = document.createElement('a');
+      var originURL;
+
+      /**
+    * Parse a URL to discover it's components
+    *
+    * @param {String} url The URL to be parsed
+    * @returns {Object}
+    */
+      function resolveURL(url) {
+        var href = url;
+
+        if (msie) {
+        // IE needs attribute set twice to normalize properties
+          urlParsingNode.setAttribute('href', href);
+          href = urlParsingNode.href;
+        }
+
+        urlParsingNode.setAttribute('href', href);
+
+        // urlParsingNode provides the UrlUtils interface - http://url.spec.whatwg.org/#urlutils
+        return {
+          href: urlParsingNode.href,
+          protocol: urlParsingNode.protocol ? urlParsingNode.protocol.replace(/:$/, '') : '',
+          host: urlParsingNode.host,
+          search: urlParsingNode.search ? urlParsingNode.search.replace(/^\?/, '') : '',
+          hash: urlParsingNode.hash ? urlParsingNode.hash.replace(/^#/, '') : '',
+          hostname: urlParsingNode.hostname,
+          port: urlParsingNode.port,
+          pathname: (urlParsingNode.pathname.charAt(0) === '/') ?
+            urlParsingNode.pathname :
+            '/' + urlParsingNode.pathname
+        };
+      }
+
+      originURL = resolveURL(window.location.href);
+
+      /**
+    * Determine if a URL shares the same origin as the current location
+    *
+    * @param {String} requestURL The URL to test
+    * @returns {boolean} True if URL shares the same origin, otherwise false
+    */
+      return function isURLSameOrigin(requestURL) {
+        var parsed = (utils.isString(requestURL)) ? resolveURL(requestURL) : requestURL;
+        return (parsed.protocol === originURL.protocol &&
+            parsed.host === originURL.host);
+      };
+    })() :
+
+  // Non standard browser envs (web workers, react-native) lack needed support.
+    (function nonStandardBrowserEnv() {
+      return function isURLSameOrigin() {
+        return true;
+      };
+    })()
+);
+
+},{"./../utils":"node_modules/axios/lib/utils.js"}],"node_modules/axios/lib/helpers/cookies.js":[function(require,module,exports) {
+'use strict';
+
+var utils = require('./../utils');
+
+module.exports = (
+  utils.isStandardBrowserEnv() ?
+
+  // Standard browser envs support document.cookie
+    (function standardBrowserEnv() {
+      return {
+        write: function write(name, value, expires, path, domain, secure) {
+          var cookie = [];
+          cookie.push(name + '=' + encodeURIComponent(value));
+
+          if (utils.isNumber(expires)) {
+            cookie.push('expires=' + new Date(expires).toGMTString());
+          }
+
+          if (utils.isString(path)) {
+            cookie.push('path=' + path);
+          }
+
+          if (utils.isString(domain)) {
+            cookie.push('domain=' + domain);
+          }
+
+          if (secure === true) {
+            cookie.push('secure');
+          }
+
+          document.cookie = cookie.join('; ');
+        },
+
+        read: function read(name) {
+          var match = document.cookie.match(new RegExp('(^|;\\s*)(' + name + ')=([^;]*)'));
+          return (match ? decodeURIComponent(match[3]) : null);
+        },
+
+        remove: function remove(name) {
+          this.write(name, '', Date.now() - 86400000);
+        }
+      };
+    })() :
+
+  // Non standard browser env (web workers, react-native) lack needed support.
+    (function nonStandardBrowserEnv() {
+      return {
+        write: function write() {},
+        read: function read() { return null; },
+        remove: function remove() {}
+      };
+    })()
+);
+
+},{"./../utils":"node_modules/axios/lib/utils.js"}],"node_modules/axios/lib/adapters/xhr.js":[function(require,module,exports) {
+'use strict';
+
+var utils = require('./../utils');
+var settle = require('./../core/settle');
+var buildURL = require('./../helpers/buildURL');
+var buildFullPath = require('../core/buildFullPath');
+var parseHeaders = require('./../helpers/parseHeaders');
+var isURLSameOrigin = require('./../helpers/isURLSameOrigin');
+var createError = require('../core/createError');
+
+module.exports = function xhrAdapter(config) {
+  return new Promise(function dispatchXhrRequest(resolve, reject) {
+    var requestData = config.data;
+    var requestHeaders = config.headers;
+
+    if (utils.isFormData(requestData)) {
+      delete requestHeaders['Content-Type']; // Let the browser set it
+    }
+
+    var request = new XMLHttpRequest();
+
+    // HTTP basic authentication
+    if (config.auth) {
+      var username = config.auth.username || '';
+      var password = config.auth.password || '';
+      requestHeaders.Authorization = 'Basic ' + btoa(username + ':' + password);
+    }
+
+    var fullPath = buildFullPath(config.baseURL, config.url);
+    request.open(config.method.toUpperCase(), buildURL(fullPath, config.params, config.paramsSerializer), true);
+
+    // Set the request timeout in MS
+    request.timeout = config.timeout;
+
+    // Listen for ready state
+    request.onreadystatechange = function handleLoad() {
+      if (!request || request.readyState !== 4) {
+        return;
+      }
+
+      // The request errored out and we didn't get a response, this will be
+      // handled by onerror instead
+      // With one exception: request that using file: protocol, most browsers
+      // will return status as 0 even though it's a successful request
+      if (request.status === 0 && !(request.responseURL && request.responseURL.indexOf('file:') === 0)) {
+        return;
+      }
+
+      // Prepare the response
+      var responseHeaders = 'getAllResponseHeaders' in request ? parseHeaders(request.getAllResponseHeaders()) : null;
+      var responseData = !config.responseType || config.responseType === 'text' ? request.responseText : request.response;
+      var response = {
+        data: responseData,
+        status: request.status,
+        statusText: request.statusText,
+        headers: responseHeaders,
+        config: config,
+        request: request
+      };
+
+      settle(resolve, reject, response);
+
+      // Clean up request
+      request = null;
+    };
+
+    // Handle browser request cancellation (as opposed to a manual cancellation)
+    request.onabort = function handleAbort() {
+      if (!request) {
+        return;
+      }
+
+      reject(createError('Request aborted', config, 'ECONNABORTED', request));
+
+      // Clean up request
+      request = null;
+    };
+
+    // Handle low level network errors
+    request.onerror = function handleError() {
+      // Real errors are hidden from us by the browser
+      // onerror should only fire if it's a network error
+      reject(createError('Network Error', config, null, request));
+
+      // Clean up request
+      request = null;
+    };
+
+    // Handle timeout
+    request.ontimeout = function handleTimeout() {
+      var timeoutErrorMessage = 'timeout of ' + config.timeout + 'ms exceeded';
+      if (config.timeoutErrorMessage) {
+        timeoutErrorMessage = config.timeoutErrorMessage;
+      }
+      reject(createError(timeoutErrorMessage, config, 'ECONNABORTED',
+        request));
+
+      // Clean up request
+      request = null;
+    };
+
+    // Add xsrf header
+    // This is only done if running in a standard browser environment.
+    // Specifically not if we're in a web worker, or react-native.
+    if (utils.isStandardBrowserEnv()) {
+      var cookies = require('./../helpers/cookies');
+
+      // Add xsrf header
+      var xsrfValue = (config.withCredentials || isURLSameOrigin(fullPath)) && config.xsrfCookieName ?
+        cookies.read(config.xsrfCookieName) :
+        undefined;
+
+      if (xsrfValue) {
+        requestHeaders[config.xsrfHeaderName] = xsrfValue;
+      }
+    }
+
+    // Add headers to the request
+    if ('setRequestHeader' in request) {
+      utils.forEach(requestHeaders, function setRequestHeader(val, key) {
+        if (typeof requestData === 'undefined' && key.toLowerCase() === 'content-type') {
+          // Remove Content-Type if data is undefined
+          delete requestHeaders[key];
+        } else {
+          // Otherwise add header to the request
+          request.setRequestHeader(key, val);
+        }
+      });
+    }
+
+    // Add withCredentials to request if needed
+    if (!utils.isUndefined(config.withCredentials)) {
+      request.withCredentials = !!config.withCredentials;
+    }
+
+    // Add responseType to request if needed
+    if (config.responseType) {
+      try {
+        request.responseType = config.responseType;
+      } catch (e) {
+        // Expected DOMException thrown by browsers not compatible XMLHttpRequest Level 2.
+        // But, this can be suppressed for 'json' type as it can be parsed by default 'transformResponse' function.
+        if (config.responseType !== 'json') {
+          throw e;
+        }
+      }
+    }
+
+    // Handle progress if needed
+    if (typeof config.onDownloadProgress === 'function') {
+      request.addEventListener('progress', config.onDownloadProgress);
+    }
+
+    // Not all browsers support upload events
+    if (typeof config.onUploadProgress === 'function' && request.upload) {
+      request.upload.addEventListener('progress', config.onUploadProgress);
+    }
+
+    if (config.cancelToken) {
+      // Handle cancellation
+      config.cancelToken.promise.then(function onCanceled(cancel) {
+        if (!request) {
+          return;
+        }
+
+        request.abort();
+        reject(cancel);
+        // Clean up request
+        request = null;
+      });
+    }
+
+    if (requestData === undefined) {
+      requestData = null;
+    }
+
+    // Send the request
+    request.send(requestData);
+  });
+};
+
+},{"./../utils":"node_modules/axios/lib/utils.js","./../core/settle":"node_modules/axios/lib/core/settle.js","./../helpers/buildURL":"node_modules/axios/lib/helpers/buildURL.js","../core/buildFullPath":"node_modules/axios/lib/core/buildFullPath.js","./../helpers/parseHeaders":"node_modules/axios/lib/helpers/parseHeaders.js","./../helpers/isURLSameOrigin":"node_modules/axios/lib/helpers/isURLSameOrigin.js","../core/createError":"node_modules/axios/lib/core/createError.js","./../helpers/cookies":"node_modules/axios/lib/helpers/cookies.js"}],"node_modules/axios/lib/defaults.js":[function(require,module,exports) {
+var process = require("process");
+'use strict';
+
+var utils = require('./utils');
+var normalizeHeaderName = require('./helpers/normalizeHeaderName');
+
+var DEFAULT_CONTENT_TYPE = {
+  'Content-Type': 'application/x-www-form-urlencoded'
+};
+
+function setContentTypeIfUnset(headers, value) {
+  if (!utils.isUndefined(headers) && utils.isUndefined(headers['Content-Type'])) {
+    headers['Content-Type'] = value;
+  }
+}
+
+function getDefaultAdapter() {
+  var adapter;
+  if (typeof XMLHttpRequest !== 'undefined') {
+    // For browsers use XHR adapter
+    adapter = require('./adapters/xhr');
+  } else if (typeof process !== 'undefined' && Object.prototype.toString.call(process) === '[object process]') {
+    // For node use HTTP adapter
+    adapter = require('./adapters/http');
+  }
+  return adapter;
+}
+
+var defaults = {
+  adapter: getDefaultAdapter(),
+
+  transformRequest: [function transformRequest(data, headers) {
+    normalizeHeaderName(headers, 'Accept');
+    normalizeHeaderName(headers, 'Content-Type');
+    if (utils.isFormData(data) ||
+      utils.isArrayBuffer(data) ||
+      utils.isBuffer(data) ||
+      utils.isStream(data) ||
+      utils.isFile(data) ||
+      utils.isBlob(data)
+    ) {
+      return data;
+    }
+    if (utils.isArrayBufferView(data)) {
+      return data.buffer;
+    }
+    if (utils.isURLSearchParams(data)) {
+      setContentTypeIfUnset(headers, 'application/x-www-form-urlencoded;charset=utf-8');
+      return data.toString();
+    }
+    if (utils.isObject(data)) {
+      setContentTypeIfUnset(headers, 'application/json;charset=utf-8');
+      return JSON.stringify(data);
+    }
+    return data;
+  }],
+
+  transformResponse: [function transformResponse(data) {
+    /*eslint no-param-reassign:0*/
+    if (typeof data === 'string') {
+      try {
+        data = JSON.parse(data);
+      } catch (e) { /* Ignore */ }
+    }
+    return data;
+  }],
+
+  /**
+   * A timeout in milliseconds to abort a request. If set to 0 (default) a
+   * timeout is not created.
+   */
+  timeout: 0,
+
+  xsrfCookieName: 'XSRF-TOKEN',
+  xsrfHeaderName: 'X-XSRF-TOKEN',
+
+  maxContentLength: -1,
+
+  validateStatus: function validateStatus(status) {
+    return status >= 200 && status < 300;
+  }
+};
+
+defaults.headers = {
+  common: {
+    'Accept': 'application/json, text/plain, */*'
+  }
+};
+
+utils.forEach(['delete', 'get', 'head'], function forEachMethodNoData(method) {
+  defaults.headers[method] = {};
+});
+
+utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
+  defaults.headers[method] = utils.merge(DEFAULT_CONTENT_TYPE);
+});
+
+module.exports = defaults;
+
+},{"./utils":"node_modules/axios/lib/utils.js","./helpers/normalizeHeaderName":"node_modules/axios/lib/helpers/normalizeHeaderName.js","./adapters/xhr":"node_modules/axios/lib/adapters/xhr.js","./adapters/http":"node_modules/axios/lib/adapters/xhr.js","process":"node_modules/process/browser.js"}],"node_modules/axios/lib/core/dispatchRequest.js":[function(require,module,exports) {
+'use strict';
+
+var utils = require('./../utils');
+var transformData = require('./transformData');
+var isCancel = require('../cancel/isCancel');
+var defaults = require('../defaults');
+
+/**
+ * Throws a `Cancel` if cancellation has been requested.
+ */
+function throwIfCancellationRequested(config) {
+  if (config.cancelToken) {
+    config.cancelToken.throwIfRequested();
+  }
+}
+
+/**
+ * Dispatch a request to the server using the configured adapter.
+ *
+ * @param {object} config The config that is to be used for the request
+ * @returns {Promise} The Promise to be fulfilled
+ */
+module.exports = function dispatchRequest(config) {
+  throwIfCancellationRequested(config);
+
+  // Ensure headers exist
+  config.headers = config.headers || {};
+
+  // Transform request data
+  config.data = transformData(
+    config.data,
+    config.headers,
+    config.transformRequest
+  );
+
+  // Flatten headers
+  config.headers = utils.merge(
+    config.headers.common || {},
+    config.headers[config.method] || {},
+    config.headers
+  );
+
+  utils.forEach(
+    ['delete', 'get', 'head', 'post', 'put', 'patch', 'common'],
+    function cleanHeaderConfig(method) {
+      delete config.headers[method];
+    }
+  );
+
+  var adapter = config.adapter || defaults.adapter;
+
+  return adapter(config).then(function onAdapterResolution(response) {
+    throwIfCancellationRequested(config);
+
+    // Transform response data
+    response.data = transformData(
+      response.data,
+      response.headers,
+      config.transformResponse
+    );
+
+    return response;
+  }, function onAdapterRejection(reason) {
+    if (!isCancel(reason)) {
+      throwIfCancellationRequested(config);
+
+      // Transform response data
+      if (reason && reason.response) {
+        reason.response.data = transformData(
+          reason.response.data,
+          reason.response.headers,
+          config.transformResponse
+        );
+      }
+    }
+
+    return Promise.reject(reason);
+  });
+};
+
+},{"./../utils":"node_modules/axios/lib/utils.js","./transformData":"node_modules/axios/lib/core/transformData.js","../cancel/isCancel":"node_modules/axios/lib/cancel/isCancel.js","../defaults":"node_modules/axios/lib/defaults.js"}],"node_modules/axios/lib/core/mergeConfig.js":[function(require,module,exports) {
+'use strict';
+
+var utils = require('../utils');
+
+/**
+ * Config-specific merge-function which creates a new config-object
+ * by merging two configuration objects together.
+ *
+ * @param {Object} config1
+ * @param {Object} config2
+ * @returns {Object} New object resulting from merging config2 to config1
+ */
+module.exports = function mergeConfig(config1, config2) {
+  // eslint-disable-next-line no-param-reassign
+  config2 = config2 || {};
+  var config = {};
+
+  var valueFromConfig2Keys = ['url', 'method', 'params', 'data'];
+  var mergeDeepPropertiesKeys = ['headers', 'auth', 'proxy'];
+  var defaultToConfig2Keys = [
+    'baseURL', 'url', 'transformRequest', 'transformResponse', 'paramsSerializer',
+    'timeout', 'withCredentials', 'adapter', 'responseType', 'xsrfCookieName',
+    'xsrfHeaderName', 'onUploadProgress', 'onDownloadProgress',
+    'maxContentLength', 'validateStatus', 'maxRedirects', 'httpAgent',
+    'httpsAgent', 'cancelToken', 'socketPath'
+  ];
+
+  utils.forEach(valueFromConfig2Keys, function valueFromConfig2(prop) {
+    if (typeof config2[prop] !== 'undefined') {
+      config[prop] = config2[prop];
+    }
+  });
+
+  utils.forEach(mergeDeepPropertiesKeys, function mergeDeepProperties(prop) {
+    if (utils.isObject(config2[prop])) {
+      config[prop] = utils.deepMerge(config1[prop], config2[prop]);
+    } else if (typeof config2[prop] !== 'undefined') {
+      config[prop] = config2[prop];
+    } else if (utils.isObject(config1[prop])) {
+      config[prop] = utils.deepMerge(config1[prop]);
+    } else if (typeof config1[prop] !== 'undefined') {
+      config[prop] = config1[prop];
+    }
+  });
+
+  utils.forEach(defaultToConfig2Keys, function defaultToConfig2(prop) {
+    if (typeof config2[prop] !== 'undefined') {
+      config[prop] = config2[prop];
+    } else if (typeof config1[prop] !== 'undefined') {
+      config[prop] = config1[prop];
+    }
+  });
+
+  var axiosKeys = valueFromConfig2Keys
+    .concat(mergeDeepPropertiesKeys)
+    .concat(defaultToConfig2Keys);
+
+  var otherKeys = Object
+    .keys(config2)
+    .filter(function filterAxiosKeys(key) {
+      return axiosKeys.indexOf(key) === -1;
+    });
+
+  utils.forEach(otherKeys, function otherKeysDefaultToConfig2(prop) {
+    if (typeof config2[prop] !== 'undefined') {
+      config[prop] = config2[prop];
+    } else if (typeof config1[prop] !== 'undefined') {
+      config[prop] = config1[prop];
+    }
+  });
+
+  return config;
+};
+
+},{"../utils":"node_modules/axios/lib/utils.js"}],"node_modules/axios/lib/core/Axios.js":[function(require,module,exports) {
+'use strict';
+
+var utils = require('./../utils');
+var buildURL = require('../helpers/buildURL');
+var InterceptorManager = require('./InterceptorManager');
+var dispatchRequest = require('./dispatchRequest');
+var mergeConfig = require('./mergeConfig');
+
+/**
+ * Create a new instance of Axios
+ *
+ * @param {Object} instanceConfig The default config for the instance
+ */
+function Axios(instanceConfig) {
+  this.defaults = instanceConfig;
+  this.interceptors = {
+    request: new InterceptorManager(),
+    response: new InterceptorManager()
+  };
+}
+
+/**
+ * Dispatch a request
+ *
+ * @param {Object} config The config specific for this request (merged with this.defaults)
+ */
+Axios.prototype.request = function request(config) {
+  /*eslint no-param-reassign:0*/
+  // Allow for axios('example/url'[, config]) a la fetch API
+  if (typeof config === 'string') {
+    config = arguments[1] || {};
+    config.url = arguments[0];
+  } else {
+    config = config || {};
+  }
+
+  config = mergeConfig(this.defaults, config);
+
+  // Set config.method
+  if (config.method) {
+    config.method = config.method.toLowerCase();
+  } else if (this.defaults.method) {
+    config.method = this.defaults.method.toLowerCase();
+  } else {
+    config.method = 'get';
+  }
+
+  // Hook up interceptors middleware
+  var chain = [dispatchRequest, undefined];
+  var promise = Promise.resolve(config);
+
+  this.interceptors.request.forEach(function unshiftRequestInterceptors(interceptor) {
+    chain.unshift(interceptor.fulfilled, interceptor.rejected);
+  });
+
+  this.interceptors.response.forEach(function pushResponseInterceptors(interceptor) {
+    chain.push(interceptor.fulfilled, interceptor.rejected);
+  });
+
+  while (chain.length) {
+    promise = promise.then(chain.shift(), chain.shift());
+  }
+
+  return promise;
+};
+
+Axios.prototype.getUri = function getUri(config) {
+  config = mergeConfig(this.defaults, config);
+  return buildURL(config.url, config.params, config.paramsSerializer).replace(/^\?/, '');
+};
+
+// Provide aliases for supported request methods
+utils.forEach(['delete', 'get', 'head', 'options'], function forEachMethodNoData(method) {
+  /*eslint func-names:0*/
+  Axios.prototype[method] = function(url, config) {
+    return this.request(utils.merge(config || {}, {
+      method: method,
+      url: url
+    }));
+  };
+});
+
+utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
+  /*eslint func-names:0*/
+  Axios.prototype[method] = function(url, data, config) {
+    return this.request(utils.merge(config || {}, {
+      method: method,
+      url: url,
+      data: data
+    }));
+  };
+});
+
+module.exports = Axios;
+
+},{"./../utils":"node_modules/axios/lib/utils.js","../helpers/buildURL":"node_modules/axios/lib/helpers/buildURL.js","./InterceptorManager":"node_modules/axios/lib/core/InterceptorManager.js","./dispatchRequest":"node_modules/axios/lib/core/dispatchRequest.js","./mergeConfig":"node_modules/axios/lib/core/mergeConfig.js"}],"node_modules/axios/lib/cancel/Cancel.js":[function(require,module,exports) {
+'use strict';
+
+/**
+ * A `Cancel` is an object that is thrown when an operation is canceled.
+ *
+ * @class
+ * @param {string=} message The message.
+ */
+function Cancel(message) {
+  this.message = message;
+}
+
+Cancel.prototype.toString = function toString() {
+  return 'Cancel' + (this.message ? ': ' + this.message : '');
+};
+
+Cancel.prototype.__CANCEL__ = true;
+
+module.exports = Cancel;
+
+},{}],"node_modules/axios/lib/cancel/CancelToken.js":[function(require,module,exports) {
+'use strict';
+
+var Cancel = require('./Cancel');
+
+/**
+ * A `CancelToken` is an object that can be used to request cancellation of an operation.
+ *
+ * @class
+ * @param {Function} executor The executor function.
+ */
+function CancelToken(executor) {
+  if (typeof executor !== 'function') {
+    throw new TypeError('executor must be a function.');
+  }
+
+  var resolvePromise;
+  this.promise = new Promise(function promiseExecutor(resolve) {
+    resolvePromise = resolve;
+  });
+
+  var token = this;
+  executor(function cancel(message) {
+    if (token.reason) {
+      // Cancellation has already been requested
+      return;
+    }
+
+    token.reason = new Cancel(message);
+    resolvePromise(token.reason);
+  });
+}
+
+/**
+ * Throws a `Cancel` if cancellation has been requested.
+ */
+CancelToken.prototype.throwIfRequested = function throwIfRequested() {
+  if (this.reason) {
+    throw this.reason;
+  }
+};
+
+/**
+ * Returns an object that contains a new `CancelToken` and a function that, when called,
+ * cancels the `CancelToken`.
+ */
+CancelToken.source = function source() {
+  var cancel;
+  var token = new CancelToken(function executor(c) {
+    cancel = c;
+  });
+  return {
+    token: token,
+    cancel: cancel
+  };
+};
+
+module.exports = CancelToken;
+
+},{"./Cancel":"node_modules/axios/lib/cancel/Cancel.js"}],"node_modules/axios/lib/helpers/spread.js":[function(require,module,exports) {
+'use strict';
+
+/**
+ * Syntactic sugar for invoking a function and expanding an array for arguments.
+ *
+ * Common use case would be to use `Function.prototype.apply`.
+ *
+ *  ```js
+ *  function f(x, y, z) {}
+ *  var args = [1, 2, 3];
+ *  f.apply(null, args);
+ *  ```
+ *
+ * With `spread` this example can be re-written.
+ *
+ *  ```js
+ *  spread(function(x, y, z) {})([1, 2, 3]);
+ *  ```
+ *
+ * @param {Function} callback
+ * @returns {Function}
+ */
+module.exports = function spread(callback) {
+  return function wrap(arr) {
+    return callback.apply(null, arr);
+  };
+};
+
+},{}],"node_modules/axios/lib/axios.js":[function(require,module,exports) {
+'use strict';
+
+var utils = require('./utils');
+var bind = require('./helpers/bind');
+var Axios = require('./core/Axios');
+var mergeConfig = require('./core/mergeConfig');
+var defaults = require('./defaults');
+
+/**
+ * Create an instance of Axios
+ *
+ * @param {Object} defaultConfig The default config for the instance
+ * @return {Axios} A new instance of Axios
+ */
+function createInstance(defaultConfig) {
+  var context = new Axios(defaultConfig);
+  var instance = bind(Axios.prototype.request, context);
+
+  // Copy axios.prototype to instance
+  utils.extend(instance, Axios.prototype, context);
+
+  // Copy context to instance
+  utils.extend(instance, context);
+
+  return instance;
+}
+
+// Create the default instance to be exported
+var axios = createInstance(defaults);
+
+// Expose Axios class to allow class inheritance
+axios.Axios = Axios;
+
+// Factory for creating new instances
+axios.create = function create(instanceConfig) {
+  return createInstance(mergeConfig(axios.defaults, instanceConfig));
+};
+
+// Expose Cancel & CancelToken
+axios.Cancel = require('./cancel/Cancel');
+axios.CancelToken = require('./cancel/CancelToken');
+axios.isCancel = require('./cancel/isCancel');
+
+// Expose all/spread
+axios.all = function all(promises) {
+  return Promise.all(promises);
+};
+axios.spread = require('./helpers/spread');
+
+module.exports = axios;
+
+// Allow use of default import syntax in TypeScript
+module.exports.default = axios;
+
+},{"./utils":"node_modules/axios/lib/utils.js","./helpers/bind":"node_modules/axios/lib/helpers/bind.js","./core/Axios":"node_modules/axios/lib/core/Axios.js","./core/mergeConfig":"node_modules/axios/lib/core/mergeConfig.js","./defaults":"node_modules/axios/lib/defaults.js","./cancel/Cancel":"node_modules/axios/lib/cancel/Cancel.js","./cancel/CancelToken":"node_modules/axios/lib/cancel/CancelToken.js","./cancel/isCancel":"node_modules/axios/lib/cancel/isCancel.js","./helpers/spread":"node_modules/axios/lib/helpers/spread.js"}],"node_modules/axios/index.js":[function(require,module,exports) {
+module.exports = require('./lib/axios');
+},{"./lib/axios":"node_modules/axios/lib/axios.js"}],"src/component/Input/styles/input.styles.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.ErrorMessage = exports.LabelText = exports.InputText = void 0;
+
+var _taggedTemplateLiteral2 = _interopRequireDefault(require("@babel/runtime/helpers/taggedTemplateLiteral"));
+
+var _styledComponents = _interopRequireDefault(require("styled-components"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var ButtonItem = function ButtonItem(props) {
-  return /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
-    className: "button",
-    to: props.whereTo
-  }, props.children);
+function _templateObject3() {
+  var data = (0, _taggedTemplateLiteral2.default)(["\n  color: red;\n  font-size: 13px;\n  padding: 0;\n  margin: 0;\n  position: absolute;\n  bottom: -19px;\n"]);
+
+  _templateObject3 = function _templateObject3() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject2() {
+  var data = (0, _taggedTemplateLiteral2.default)(["\n  display: block;\n  margin-bottom: 7px;\n  width: 100%;\n"]);
+
+  _templateObject2 = function _templateObject2() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject() {
+  var data = (0, _taggedTemplateLiteral2.default)(["\n  display: block;\n  margin-bottom: 20px;\n  width: 100%;\n  &.error {\n    border: 1px solid red;\n  }\n"]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+var InputText = _styledComponents.default.input(_templateObject());
+
+exports.InputText = InputText;
+
+var LabelText = _styledComponents.default.label(_templateObject2());
+
+exports.LabelText = LabelText;
+
+var ErrorMessage = _styledComponents.default.div(_templateObject3());
+
+exports.ErrorMessage = ErrorMessage;
+},{"@babel/runtime/helpers/taggedTemplateLiteral":"node_modules/@babel/runtime/helpers/taggedTemplateLiteral.js","styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js"}],"src/component/Input/index.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.InputBox = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _input = require("./styles/input.styles");
+
+var _reactHookForm = require("react-hook-form");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var hasError = function hasError(errors, name) {
+  if (name in errors) return "error";
+  return;
 };
 
-exports.ButtonItem = ButtonItem;
-},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js"}],"src/page/SignUp.Page.js":[function(require,module,exports) {
+var InputBox = _react.default.forwardRef(function (_ref, ref) {
+  var _errors$name;
+
+  var label = _ref.label,
+      name = _ref.name,
+      _ref$type = _ref.type,
+      type = _ref$type === void 0 ? "text" : _ref$type;
+
+  var _useFormContext = (0, _reactHookForm.useFormContext)(),
+      errors = _useFormContext.errors;
+
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "box-input"
+  }, /*#__PURE__*/_react.default.createElement(_input.LabelText, null, label), /*#__PURE__*/_react.default.createElement(_input.InputText, {
+    type: type,
+    className: hasError(errors, name),
+    name: name,
+    ref: ref
+  }), ((_errors$name = errors[name]) === null || _errors$name === void 0 ? void 0 : _errors$name.message) && /*#__PURE__*/_react.default.createElement(_input.ErrorMessage, null, errors[name].message));
+});
+
+exports.InputBox = InputBox;
+},{"react":"node_modules/react/index.js","./styles/input.styles":"src/component/Input/styles/input.styles.js","react-hook-form":"node_modules/react-hook-form/dist/react-hook-form.es.js"}],"src/page/SignUp.Page.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -35280,28 +39852,150 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.SignUpPage = void 0;
 
+var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
+
+var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/asyncToGenerator"));
+
 var _react = _interopRequireDefault(require("react"));
 
-var _button = require("../component/button");
+var _reactHookForm = require("react-hook-form");
+
+var _axios = _interopRequireDefault(require("axios"));
 
 var _Common = require("../../public/styles/Common.styles");
+
+var _index = require("../component/Input/index");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var SignUpPage = function SignUpPage() {
-  return /*#__PURE__*/_react.default.createElement(_Common.Col2, null, /*#__PURE__*/_react.default.createElement("div", {
+  var methods = (0, _reactHookForm.useForm)({
+    mode: "onBlur",
+    defaultValues: {
+      username: "",
+      password: "",
+      campus: "",
+      course: ""
+    }
+  });
+  var register = methods.register,
+      handleSubmit = methods.handleSubmit,
+      errors = methods.errors;
+
+  var doSignup = /*#__PURE__*/function () {
+    var _ref = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee(api, username, password, campus, course) {
+      var res;
+      return _regenerator.default.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              // Axios post a ruta /auth/signup en servidor
+              // para crear un usuario en mongodb
+              console.log("Registrando usuario...");
+              console.log(username, password, campus, course);
+              _context.next = 4;
+              return api.post("/auth/signup", {
+                username: username,
+                password: password,
+                campus: campus,
+                course: course
+              });
+
+            case 4:
+              res = _context.sent;
+              console.log("Created User");
+              console.log(res.data);
+              return _context.abrupt("return", res.data);
+
+            case 8:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    }));
+
+    return function doSignup(_x, _x2, _x3, _x4, _x5) {
+      return _ref.apply(this, arguments);
+    };
+  }();
+
+  var onSubmit = function onSubmit(data) {
+    console.log("Data is");
+    console.log("data", data);
+
+    var api = _axios.default.create({
+      baseURL: "http://localhost:3000",
+      withCredentials: true
+    });
+
+    var username = data.username,
+        password = data.password,
+        campus = data.campus,
+        course = data.course;
+    doSignup(api, username, password, campus, course);
+  };
+
+  console.log("error", errors);
+  return /*#__PURE__*/_react.default.createElement(_reactHookForm.FormContext, methods, /*#__PURE__*/_react.default.createElement(_Common.Col2, {
+    onSubmit: handleSubmit(onSubmit)
+  }, /*#__PURE__*/_react.default.createElement("div", {
     className: "left"
-  }, /*#__PURE__*/_react.default.createElement("h1", null, "Sign Up"), /*#__PURE__*/_react.default.createElement("label", {
-    htmlFor: ""
-  }, "Email")), /*#__PURE__*/_react.default.createElement("div", {
+  }, /*#__PURE__*/_react.default.createElement("h1", null, "Registro"), /*#__PURE__*/_react.default.createElement(_index.InputBox, {
+    label: "Usuario",
+    name: "username",
+    ref: register({
+      required: {
+        value: true,
+        message: "Este campo es requerido"
+      },
+      pattern: {
+        value: /^[A-Z0-9]/i,
+        message: "Este usuario no es valido"
+      }
+    })
+  }), /*#__PURE__*/_react.default.createElement(_index.InputBox, {
+    label: "Contrase\xF1a",
+    type: "password",
+    name: "password",
+    ref: register({
+      required: {
+        value: true,
+        message: "Este campo es requerido"
+      },
+      pattern: {
+        value: /.{6,64}$/,
+        message: "Necesitas un password de al menos 6 caracteres"
+      }
+    })
+  }), /*#__PURE__*/_react.default.createElement(_index.InputBox, {
+    label: "Ciudad campus",
+    name: "campus",
+    ref: register({
+      required: {
+        value: true,
+        message: "Campo requerido"
+      }
+    })
+  }), /*#__PURE__*/_react.default.createElement(_index.InputBox, {
+    label: "Curso realizado",
+    name: "course",
+    ref: register({
+      required: {
+        value: true,
+        message: "Campo requerido"
+      }
+    })
+  })), /*#__PURE__*/_react.default.createElement("div", {
     className: "right"
-  }, /*#__PURE__*/_react.default.createElement("h2", null, "\xA1Hola! ", /*#__PURE__*/_react.default.createElement("span", null, "Bienvenido a tu IronPerfil")), /*#__PURE__*/_react.default.createElement("p", null, "Si realizas el registro, est\xE1s aceptando los t\xE9rminos y condiciones donde nosotros podemos hacer lo que queramos con sus datos."), /*#__PURE__*/_react.default.createElement("button", {
+  }, /*#__PURE__*/_react.default.createElement("h2", null, /*#__PURE__*/_react.default.createElement("span", null, "Vamos a crear tu IronPerfil")), /*#__PURE__*/_react.default.createElement("p", null, "Si realizas el registro, est\xE1s aceptando los t\xE9rminos y condiciones. Aviso, somos peor que si Google y la NSA tuvieran un hijo esp\xEDa."), /*#__PURE__*/_react.default.createElement("button", {
+    type: "submit",
     className: "button"
-  }, "Crea tu cuenta")));
+  }, "Crea tu cuenta"))));
 };
 
 exports.SignUpPage = SignUpPage;
-},{"react":"node_modules/react/index.js","../component/button":"src/component/button.js","../../public/styles/Common.styles":"public/styles/Common.styles.js"}],"src/page/Login.Page.js":[function(require,module,exports) {
+},{"@babel/runtime/regenerator":"node_modules/@babel/runtime/regenerator/index.js","@babel/runtime/helpers/asyncToGenerator":"node_modules/@babel/runtime/helpers/asyncToGenerator.js","react":"node_modules/react/index.js","react-hook-form":"node_modules/react-hook-form/dist/react-hook-form.es.js","axios":"node_modules/axios/index.js","../../public/styles/Common.styles":"public/styles/Common.styles.js","../component/Input/index":"src/component/Input/index.js"}],"src/page/Login.Page.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -35311,6 +40005,8 @@ exports.LoginPage = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
+var _reactHookForm = require("react-hook-form");
+
 var _reactRouterDom = require("react-router-dom");
 
 var _Common = require("../../public/styles/Common.styles");
@@ -35318,7 +40014,9 @@ var _Common = require("../../public/styles/Common.styles");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var LoginPage = function LoginPage() {
-  return /*#__PURE__*/_react.default.createElement(_Common.Col2, null, /*#__PURE__*/_react.default.createElement("div", {
+  return /*#__PURE__*/_react.default.createElement(_reactHookForm.FormContext, methods, /*#__PURE__*/_react.default.createElement(_Common.Col2, {
+    onSubmit: handleSubmit(onSubmit)
+  }, /*#__PURE__*/_react.default.createElement("div", {
     className: "left"
   }, /*#__PURE__*/_react.default.createElement("h1", null, "Iniciar Sesi\xF3n"), /*#__PURE__*/_react.default.createElement("p", null, "Si aun no tienes cuenta, puedes crear tu cuenta", " ", /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
     to: "/signup"
@@ -35326,11 +40024,11 @@ var LoginPage = function LoginPage() {
     className: "right"
   }, /*#__PURE__*/_react.default.createElement("h2", null, "\xA1Hola! ", /*#__PURE__*/_react.default.createElement("span", null, "Bienvenido a tu IronPerfil")), /*#__PURE__*/_react.default.createElement("p", null, "Si realizas el registro, est\xE1s aceptando los t\xE9rminos y condiciones donde nosotros podemos hacer lo que queramos con sus datos."), /*#__PURE__*/_react.default.createElement("button", {
     className: "button"
-  }, "Iniciar Sesi\xF3n")));
+  }, "Iniciar Sesi\xF3n"))));
 };
 
 exports.LoginPage = LoginPage;
-},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../../public/styles/Common.styles":"public/styles/Common.styles.js"}],"src/App.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-hook-form":"node_modules/react-hook-form/dist/react-hook-form.es.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../../public/styles/Common.styles":"public/styles/Common.styles.js"}],"src/App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -35412,7 +40110,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56816" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51658" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
