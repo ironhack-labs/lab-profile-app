@@ -149,9 +149,4 @@ router.get("/loggedin", (req, res, next) => {
   else return res.status(401).json({ status: "No user session present" });
 });
 
-// router.get("/whoami", (req, res, next) => {
-//   if (req.user) return res.json(req.user);
-//   else return res.status(401).json({ status: "No user session present" });
-// });
-
 module.exports = router;
