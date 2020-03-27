@@ -86,9 +86,9 @@ export const ProfilePage = withProtected(
           </FormContext>
           <Button3
             onClick={async () => {
-              setUser({});
-              history.push('/');
+              setUser();
               setLoading(true);
+              history.push('/');
               const logout = await doLogout();
               setLoading(false);
             }}

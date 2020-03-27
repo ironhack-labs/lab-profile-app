@@ -12,35 +12,35 @@ import {
   LinkUpdated,
   Button
 } from './utils/styles';
+import { withProtected } from '../../lib/protectedRoute';
 
-export const HomePage = withRouter(({ history }) => {
-  const { user, setLoading } = useContext(UserContext);
-
-  useEffect(() => {
-    setLoading(true);
-    if (user.username) {
-      history.push('/profile');
-    }
-    setLoading(false);
-  }, []);
-  return (
-    <Card>
-      <Left>
-        <TextContainer>
-          <Title>IronProfile</Title>
-          <Text>
-            Today we will create an app with auth. Done with React and Express
-          </Text>
-        </TextContainer>
-        <ButtonContainer>
-          <LinkUpdated to='/signup'>
-            <Button>Sign Up</Button>
-          </LinkUpdated>
-          <LinkUpdated to='/login'>
-            <Button> Login</Button>
-          </LinkUpdated>
-        </ButtonContainer>
-      </Left>
-    </Card>
-  );
-});
+export const HomePage = withProtected(
+  withRouter(({ history }) => {
+    const { user, setLoading } = useContext(UserContext);
+    return (
+      <Card>
+        <Left>
+          <TextContainer>
+            <Title>IronProfile</Title>
+            <Text>
+              Today we will create an app with auth. Done with React and Express
+            </Text>
+          </TextContainer>
+          <ButtonContainer>
+            <LinkUpdated to='/signup'>
+              <Button>Sign Up</Button>
+            </LinkUpdated>
+            <LinkUpdated to='/login'>
+              <Button> Login</Button>
+            </LinkUpdated>
+          </ButtonContainer>
+        </Left>
+      </Card>
+    );
+  }),
+  {
+    redirect: true,
+    redirectTo: 'profile',
+    inverted: true
+  }
+);

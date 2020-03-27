@@ -9,22 +9,41 @@ const ProtectedPagePlaceholder = () => <Loading />;
 // This is a HOC -> High Order Component
 export const withProtected = (
   Component,
-  { redirect = true, redirectTo = '/auth/login' } = {} // options are always present
+  { redirect = true, redirectTo = '/login', inverted = false } = {} // options are always present
 ) => props => {
   const { user, loading } = useContext(UserContext);
-  if (user) {
-    // If we have a user, then render the component
-    return <Component />;
+  if (!inverted) {
+    if (user) {
+      // If we have a user, then render the component
+      return <Component />;
+    } else {
+      // If the user auth backend is loading (because there's no user yet) render the placeholder
+      if (loading) return <ProtectedPagePlaceholder />;
+      else {
+        // If the auth has been completed and there is no user then redirect or render placehoder
+        // depending on choosen option
+        if (redirect) {
+          return <Redirect to={redirectTo} />;
+        } else {
+          return <ProtectedPagePlaceholder />;
+        }
+      }
+    }
   } else {
-    // If the user auth backend is loading (because there's no user yet) render the placeholder
-    if (loading) return <ProtectedPagePlaceholder />;
-    else {
-      // If the auth has been completed and there is no user then redirect or render placehoder
-      // depending on choosen option
-      if (redirect) {
-        return <Redirect to={redirectTo} />;
-      } else {
-        return <ProtectedPagePlaceholder />;
+    if (!user) {
+      // If we have a user, then render the component
+      return <Component />;
+    } else {
+      // If the user auth backend is loading (because there's no user yet) render the placeholder
+      if (loading) return <ProtectedPagePlaceholder />;
+      else {
+        // If the auth has been completed and there is no user then redirect or render placehoder
+        // depending on choosen option
+        if (redirect) {
+          return <Redirect to={redirectTo} />;
+        } else {
+          return <ProtectedPagePlaceholder />;
+        }
       }
     }
   }
