@@ -15,9 +15,20 @@ router.post('/signup', async (req, res, next) => {
       campus,
       course
     });
-    console.log('Created user ', newUser);
-    return res.status(201).json({
-      message: 'User registered successfully '
+
+    // login after signup
+    req.login(newUser, error => {
+      if (!error) {
+        console.log('Created user and logged', newUser);
+        return res.status(201).json({
+          message: 'User registered successfully '
+        });
+      } else {
+        console.log(`Something went wrong while login: ${error}`);
+        return res.status(500).json({
+          message: 'Login after signup failed'
+        });
+      }
     });
   } catch (error) {
     if (error.name === 'ValidationError') {

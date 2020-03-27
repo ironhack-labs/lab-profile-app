@@ -13,7 +13,7 @@ import {
 } from '../styles/Signup.styled';
 import { Content } from '../styles/Layout.styled';
 
-export const Signup = () => {
+export const Signup = ({ history }) => {
   const [newUser, setNewUser] = useState({
     username: '',
     password: '',
@@ -25,6 +25,9 @@ export const Signup = () => {
     e.preventDefault();
     console.log('submitting!');
     await signup(newUser);
+
+    const formatted = newUser.username.replace(' ', '').toLowerCase();
+    history.push(`/${formatted}`); //redirect to profile after signup & login
   };
 
   const handleChange = e => {
