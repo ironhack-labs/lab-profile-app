@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { ApiContextProvider } from "./context/context";
 
 /* --- UI Framework --- */
 
@@ -13,12 +14,14 @@ import { Profile } from "./components/Profile";
 
 const App = () => (
   <Router>
-    <Switch>
-      <Route path="/" exact component={Home} />
-      <Route path="/signup" component={Signup} />
-      <Route path="/login" component={Login} />
-      <Route path="/profile" component={Profile} />
-    </Switch>
+    <ApiContextProvider>
+      <Switch>
+        <Route path="/" exact component={Home} />
+        <Route path="/signup" component={Signup} />
+        <Route path="/login" component={Login} />
+        <Route path="/profile" component={Profile} />
+      </Switch>
+    </ApiContextProvider>
   </Router>
 );
 export default App;

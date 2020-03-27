@@ -1,13 +1,17 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-
+import { doLogin } from "../../lib/api";
+import { withRouter } from "react-router-dom";
 import { Button, Form, Group, Label, Control, Text } from "react-bootstrap";
 
-export const Login = () => {
+export const Login = withRouter(({ history }) => {
   const { register, handleSubmit } = useForm();
-  const onSubmit = data => {
-    console.log(data);
+
+  const onSubmit = async (username, password) => {
+    const user = await doLogin(username, password);
+    history.push("/");
   };
+
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
       <Form.Group controlId="formBasicEmail">
@@ -35,4 +39,4 @@ export const Login = () => {
       </Button>
     </Form>
   );
-};
+});

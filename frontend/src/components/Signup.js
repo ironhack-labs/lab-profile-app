@@ -1,13 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { doSignup } from "../../lib/api";
 import { withRouter } from "react-router-dom";
+import { ApiContext } from "../context/context";
+
 import { Button, Form, Group, Label, Control, Text } from "react-bootstrap";
 
 export const Signup = withRouter(({ history }) => {
+  const { user, setUser } = useContext(ApiContext);
+
   const { register, handleSubmit } = useForm();
+
   const onSubmit = async (username, password, campus, course) => {
     const user = await doSignup(username, password, campus, course);
+    setUser(username, password);
     history.push("/");
   };
 
