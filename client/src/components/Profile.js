@@ -12,7 +12,7 @@ import { EditForm } from './EditForm';
 import {
   SocialContent,
   SocialContainer,
-  Button
+  UploadButton
 } from '../styles/Signup.styled';
 import { Content } from '../styles/Layout.styled';
 import {
@@ -42,6 +42,7 @@ export const Profile = ({ history }) => {
     uploadImage.append('image', image);
     const newImage = await uploadPhoto(uploadImage);
     setUser({ ...user, image: newImage });
+    setIsEditing(false);
   };
 
   return (
@@ -78,12 +79,21 @@ export const Profile = ({ history }) => {
       <SocialContent>
         <ImageContainer>
           <img src={(user && user.image) || imgPlaceholder} alt="" />
-          <form onSubmit={handleSubmit} id="upload-form">
-            <input type="file" onChange={handleChange} />
-          </form>
-          <Button type="submit" form="upload-form">
-            Edit photo
-          </Button>
+          {isEditing && (
+            <>
+              <form onSubmit={handleSubmit} id="upload-form">
+                <input type="file" onChange={handleChange} />
+              </form>
+              <UploadButton
+                type="submit"
+                form="upload-form"
+                isEditing={image}
+                disabled={image ? false : true}
+              >
+                Edit photo
+              </UploadButton>
+            </>
+          )}
         </ImageContainer>
 
         <p className="small">You can change your profile image 📷</p>
