@@ -3,6 +3,7 @@ const router = express.Router();
 const passport = require('passport');
 const { hashPassword } = require('../lib/hashing');
 const User = require('../models/User');
+const uploader = require('../config/cloudinary/cloudinary.config');
 
 // POST route - create new user
 router.post('/signup', async (req, res, next) => {
@@ -77,20 +78,26 @@ router.get('/loggedin', (req, res, next) => {
 });
 
 // PUT route -  upload = create user image
-router.put('/upload', async (req, res, next) => {
-  const { file } = req.body;
+router.put('/upload', uploader.single('image'), async (req, res, next) => {
+  const { file } = req;
+  console.log('Uploading', file);
+
+  if (!file) {
+    return next(new Error('No file uploaded!'));
+  }
+
   try {
     const updatedUser = await User.findByIdAndUpdate(
       req.user._id,
       {
-        image: file
+        image: file.secure_url
       },
       { new: true }
     );
     console.log('User image uploaded ', updatedUser);
     return res.status(200).json({
       message: 'File successfully uploaded',
-      user: updatedUser
+      image: file.secure_url
     });
   } catch (error) {
     console.log('Error uploading file', error);
