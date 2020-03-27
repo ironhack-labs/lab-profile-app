@@ -72,7 +72,3 @@ export const Button = styled.button`
     box-shadow: 0 0 0.3em 0.2em #deecdd;
   }
 `;
-
-export const UploadButton = styled(Button)`
-  cursor: ${props => (props.isEditing ? 'pointer' : 'not-allowed')};
-`;

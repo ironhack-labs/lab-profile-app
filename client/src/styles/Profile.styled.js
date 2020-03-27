@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { Image } from '@styled-icons/typicons';
+import { Button } from './Signup.styled';
 
 export const ProfileContent = styled.div`
   p {
@@ -56,5 +58,17 @@ export const ProfileHeader = styled.div`
     &:hover {
       color: #638165;
     }
+  }
+`;
+
+export const UploadButton = styled(Button)`
+  cursor: ${props => (props.isEditing ? 'pointer' : 'not-allowed')};
+  margin-top: 2em;
+`;
+
+export const EditImage = styled(Image)`
+  color: #57595d;
+  &:hover {
+    color: #638165;
   }
 `;
