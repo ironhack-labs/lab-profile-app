@@ -10,6 +10,6 @@ const Container = styled.div`
 export const Home = () => (
   <Container>
     <Link to="login">LOG IN</Link>
-    <Link to="singUp">SING UP</Link>
+    <Link to="signUp">SING UP</Link>
   </Container>
 );
