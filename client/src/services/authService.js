@@ -14,7 +14,7 @@ export const signup = async (formData) => {
       course
     });
   
-    console.log("Signup user " + res);
+    console.log("Signup user " + JSON.stringify(res));
     return res.data;
 
   } catch (error) {
@@ -58,7 +58,7 @@ export const upload = async (formData) => {
 }
 
 // Edit
-export const login = async (formData) => {
+export const edit = async (formData) => {
   const {username, password, campus } = formData;
 
   try {
@@ -93,7 +93,7 @@ export const logout = async (username) => {
 }
 
 // Logged In
-export const logout = async (username) => {
+export const loggedin = async (username) => {
 
   try {
     const res = await service.get('auth/loggedin', {
