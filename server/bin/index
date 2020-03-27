@@ -1,0 +1,32 @@
+#!/usr/bin/env node
+
+const http = require("http");
+const errorMiddleware = require("../middleware/error-middleware");
+
+const app = require("../app");
+
+app.use(errorMiddleware.notFound);
+app.use(errorMiddleware.error);
+
+let server = http.createServer(app);
+
+server.on("error", error => {
+  if (error.syscall !== "listen") throw error;
+
+  switch (error.code) {
+    case "EACCES":
+      console.error(`Port ${process.env.PORT} requires elevated privileges`);
+      process.exit(1);
+
+    case "EADDRINUSE":
+      console.error(`Port ${process.env.PORT} is already in use`);
+      process.exit(1);
+
+    default:
+      throw error;
+  }
+});
+
+server.listen(process.env.PORT, () => {
+  console.log(`Listening on http://localhost: ${process.env.PORT}`);
+});
