@@ -4,7 +4,7 @@ import { UserContext, getUserLogged } from './auth.api.js';
 
 // THIS is a HOC
 export const withUser = Content => () => {
-  const [user, setUser] = useState();
+  const [user, setUser] = useState({});
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -12,6 +12,7 @@ export const withUser = Content => () => {
     console.log('loading user...');
     getUserLogged()
       .then(user => {
+        console.log(`Welcome ${user.username}`);
         setUser(user);
       })
       .catch(error => {
@@ -19,10 +20,8 @@ export const withUser = Content => () => {
       })
       .finally(() => {
         setLoading(false);
-        console.log(user);
       });
   }, []);
-
   return (
     <UserContext.Provider value={{ user, setUser, loading, setLoading }}>
       {loading && <Loading />}

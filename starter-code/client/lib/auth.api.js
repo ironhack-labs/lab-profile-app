@@ -4,10 +4,11 @@ import React, { useContext } from 'react';
 export const UserContext = React.createContext();
 
 const api = axios.create({
-  baseURL: 'http://localhost:3000'
+  baseURL: 'http://localhost:3000',
+  withCredentials: true
 });
 
-export const doSignup = async (username, password, course, campus) => {
+export const doSignup = async ({ username, password, course, campus }) => {
   const res = await api.post('/auth/signup', {
     username,
     password,
@@ -17,22 +18,22 @@ export const doSignup = async (username, password, course, campus) => {
   return res.data;
 };
 
-export const doLogin = async (username, password) => {
-  const res = await api.post('/auth/signup', {
+export const doLogin = async ({ username, password }) => {
+  const res = await api.post('/auth/login', {
     username,
     password
   });
   return res.data;
 };
 
-export const doUpload = async file => {
+export const doUpload = async ({ file }) => {
   const data = new FormData();
   data.append('image', file);
   const res = await api.post('/auth/upload', data);
   return res.data;
 };
 
-export const doEdit = async (username, course, campus) => {
+export const doEdit = async ({ username, course, campus }) => {
   const res = await api.post('/auth/signup', {
     username,
     course,
