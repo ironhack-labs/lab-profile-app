@@ -19,10 +19,8 @@ const userSchema = new Schema(
         "Lisbon"
       ]
     },
-    course: {
-      type: String,
-      enum: ["WebDev", "UX/UI", "Data Analytics"]
-    }
+    course: { type: String, enum: ["WebDev", "UX/UI", "Data Analytics"] },
+    image: String
   },
   {
     timestamps: true

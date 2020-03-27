@@ -7,16 +7,17 @@ passport.use(
   new LocalStrategy(async (username, password, done) => {
     console.log(username, password);
     try {
-      const foundUser = await User.findOne({ username });
-      if (foundUser) {
-        checkHashed(password, foundUser.password)
-          ? done(null, foundUser)
-          : done(null, false);
+      const registeredUser = await User.findOne({ username });
+      console.log("found user", registeredUser);
+      if (!registeredUser || !checkHashed(password, registeredUser.password)) {
+        console.log("Invalid credentials");
+        return done(null, false, { message: "Invalid credentials" });
       } else {
-        done(null, false);
+        console.log(`${registeredUser.username} just logged in`);
+        return done(null, registeredUser);
       }
     } catch (error) {
-      console.log(error);
+      console.log("Signup failed", error);
       done(error);
     }
   })

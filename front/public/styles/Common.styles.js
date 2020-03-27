@@ -70,7 +70,7 @@ export const Col2 = styled.form`
   > div {
     width: 40%;
     &.right p {
-      padding: 165px 0 0px;
+      padding: 25px 0 0px;
     }
     h2 {
       color: #000;
@@ -87,9 +87,31 @@ export const Col2 = styled.form`
       font-size: 15px;
       line-height: 1.4;
     }
+    .box-img {
+      border-radius: 50%;
+      display: block;
+      max-width: 100%;
+      overflow: hidden;
+      width: 100%;
+      img {
+        display: block;
+        max-width: 100%;
+        width: 100%;
+      }
+    }
     .box-input {
       position: relative;
       width: 100%;
+      label {
+        display: block;
+        margin-bottom: 7px;
+        width: 100%;
+      }
+      select {
+        display: block;
+        margin-bottom: 30px;
+        width: 100%;
+      }
     }
   }
 `;

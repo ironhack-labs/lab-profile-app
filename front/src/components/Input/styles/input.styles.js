@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const InputText = styled.input`
   display: block;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   width: 100%;
   &.error {
     border: 1px solid red;

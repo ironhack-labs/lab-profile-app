@@ -1,49 +1,37 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useForm, FormContext } from "react-hook-form";
-import axios from "axios";
+import { withRouter } from "react-router-dom";
 import { Col2 } from "../../public/styles/Common.styles";
 import { InputBox } from "../components/Input/index";
+import { doSignup } from "../services/authServices";
+import { ApiContext } from "../context/Context";
 
-export const SignUpPage = () => {
+export const SignUpPage = withRouter(({ history }) => {
+  const { user, setUser } = useContext(ApiContext);
+
   const methods = useForm({
     mode: "onBlur",
     defaultValues: {
       username: "",
       password: "",
-      campus: "",
-      course: ""
+      campus: "Madrid",
+      course: "WebDev"
     }
   });
 
   const { register, handleSubmit, errors } = methods;
 
-  const doSignup = async (api, username, password, campus, course) => {
-    // Axios post a ruta /auth/signup en servidor
-    // para crear un usuario en mongodb
-    console.log(`Registrando usuario...`);
-    console.log(username, password, campus, course);
-    const res = await api.post("/auth/signup", {
-      username,
-      password,
-      campus,
-      course
-    });
-    console.log("Created User");
-    console.log(res.data);
-    return res.data;
-  };
-
-  const onSubmit = data => {
-    console.log("Data is");
+  const onSubmit = async data => {
     console.log("data", data);
-    const api = axios.create({
-      baseURL: "http://localhost:3000",
-      withCredentials: true
-    });
 
-    const { username, password, campus, course } = data;
+    const responseServer = await doSignup(data);
 
-    doSignup(api, username, password, campus, course);
+    if (responseServer.status) {
+      return history.push("/login");
+    }
+
+    setUser(data);
+    history.push("/profile");
   };
 
   console.log("error", errors);
@@ -75,33 +63,36 @@ export const SignUpPage = () => {
               required: {
                 value: true,
                 message: "Este campo es requerido"
-              }
-              // pattern: {
-              //   value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[ -/:-@\[-`{-~]).{6,64}$/,
-              //   message: "Debe ser más"
-              // }
-            })}
-          />
-          <InputBox
-            label="Dirección campus"
-            name="campus"
-            ref={register({
-              required: {
-                value: true,
-                message: "Este campo es requerido"
+              },
+              pattern: {
+                value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[ -/:-@\[-`{-~]).{6,64}$/,
+                message: "Debe ser más"
               }
             })}
           />
-          <InputBox
-            label="Curso realizado"
-            name="course"
-            ref={register({
-              required: {
-                value: true,
-                message: "Este campo es requerido"
-              }
-            })}
-          />
+          <div className="box-input">
+            <label>Ciudad del Campus</label>
+            <select name="campus" ref={register({ required: true })}>
+              <option value="Madrid">Madrid</option>
+              <option value="Barcelona">Barcelona</option>
+              <option value="Miami">Miami</option>
+              <option value="Paris">Paris</option>
+              <option value="Berlin">Berlin</option>
+              <option value="Amsterdam">Amsterdam</option>
+              <option value="México">México</option>
+              <option value="Sao Paulo">Sao Paulo</option>
+              <option value="Lisbon">Lisbon</option>
+            </select>
+          </div>
+
+          <div className="box-input">
+            <label>Curso</label>
+            <select name="course" ref={register({ required: true })}>
+              <option value="WebDev">WebDev</option>
+              <option value="UX/UI">UX/UI</option>
+              <option value="Data Analytics">Data Analytics</option>
+            </select>
+          </div>
         </div>
         <div className="right">
           <h2>
@@ -118,4 +109,4 @@ export const SignUpPage = () => {
       </Col2>
     </FormContext>
   );
-};
+});
