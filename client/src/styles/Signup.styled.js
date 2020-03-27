@@ -42,23 +42,6 @@ export const SocialContent = styled(Content)`
       font-size: 0.9rem;
       padding-bottom: 1em;
     }
-    button {
-      width: 100%;
-      border: 0.1em solid #deecdd;
-      padding: 0.5em 1em;
-      cursor: pointer;
-      outline: none;
-      font-weight: 700;
-      border-radius: 0.5em;
-      font-size: 0.9rem;
-
-      &:hover {
-        background-color: #deecdd;
-      }
-      &:focus {
-        box-shadow: 0 0 0.3em 0.2em #deecdd;
-      }
-    }
   }
 `;
 
@@ -67,7 +50,25 @@ export const SocialContainer = styled.div`
   justify-content: space-between;
   height: 100%;
 
-  div:first-of-type {
-    padding-top: 3em;
+  h1 {
+    padding-top: 1.2em;
+  }
+`;
+
+export const Button = styled.button`
+  width: 100%;
+  border: 0.1em solid #deecdd;
+  padding: 0.5em 1em;
+  cursor: pointer;
+  outline: none;
+  font-weight: 700;
+  border-radius: 0.5em;
+  font-size: 0.9rem;
+
+  &:hover {
+    background-color: #deecdd;
+  }
+  &:focus {
+    box-shadow: 0 0 0.3em 0.2em #deecdd;
   }
 `;

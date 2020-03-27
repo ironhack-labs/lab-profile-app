@@ -7,7 +7,12 @@ import { login } from '../services/authService';
 import { AuthContext } from '../contexts/authContext';
 
 // styled components
-import { Form, SocialContent, SocialContainer } from '../styles/Signup.styled';
+import {
+  Form,
+  SocialContent,
+  SocialContainer,
+  Button
+} from '../styles/Signup.styled';
 import { Content } from '../styles/Layout.styled';
 
 export const Login = ({ history }) => {
@@ -68,9 +73,9 @@ export const Login = ({ history }) => {
             If you signup, you agree with all our terms and conditions where we
             can do whatever we want with the data
           </p>
-          <button type="submit" form="login-form">
+          <Button type="submit" form="login-form">
             Login
-          </button>
+          </Button>
         </div>
       </SocialContent>
     </SocialContainer>

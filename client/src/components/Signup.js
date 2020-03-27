@@ -5,7 +5,12 @@ import React, { useState } from 'react';
 import { signup } from '../services/authService';
 
 // styled components
-import { Form, SocialContent, SocialContainer } from '../styles/Signup.styled';
+import {
+  Form,
+  SocialContent,
+  SocialContainer,
+  Button
+} from '../styles/Signup.styled';
 import { Content } from '../styles/Layout.styled';
 
 export const Signup = () => {
@@ -72,9 +77,9 @@ export const Signup = () => {
             If you signup, you agree with all our terms and conditions where we
             can do whatever we want with the data
           </p>
-          <button type="submit" form="signup-form">
+          <Button type="submit" form="signup-form">
             Create the account
-          </button>
+          </Button>
         </div>
       </SocialContent>
     </SocialContainer>
