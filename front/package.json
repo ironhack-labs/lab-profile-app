@@ -7,6 +7,8 @@
   },
   "dependencies": {
     "antd": "^4.0.4",
+    "axios": "^0.19.2",
+    "front": "^0.0.1",
     "parcel-bundler": "^1.12.4",
     "react": ">= 16.8.0",
     "react-dom": ">= 16.8.0",
