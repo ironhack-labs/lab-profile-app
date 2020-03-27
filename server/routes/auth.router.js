@@ -58,6 +58,7 @@ router.post('/login', (req, res, next) => {
 // POST route - logout = remove logged user
 router.post('/logout', (req, res, next) => {
   if (req.isAuthenticated()) {
+    console.log(`${req.user.username} just logged out`);
     req.logout();
     return res.status(200).json({ message: 'Log out successfully' });
   }
@@ -68,6 +69,7 @@ router.post('/logout', (req, res, next) => {
 // GET route - loggedin = retrieve logged user
 router.get('/loggedin', (req, res, next) => {
   if (req.isAuthenticated()) {
+    console.log(req.user.username, ' is logged');
     return res.status(200).json({ user: req.user });
   }
 
@@ -105,9 +107,9 @@ router.put('/edit', async (req, res, next) => {
     const updatedUser = await User.findByIdAndUpdate(
       req.user._id,
       {
-        username: username || req.user.username,
-        campus: campus || req.user.campus,
-        course: course || req.user.course
+        username: username,
+        campus: campus,
+        course: course
       },
       { new: true }
     );
