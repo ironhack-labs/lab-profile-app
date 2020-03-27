@@ -29,6 +29,16 @@ export const doLogin = async ({ username, password }) => {
   return res.data;
 };
 
+export const doEdit = async ({ username, campus, course }) => {
+  console.log("edit!");
+  const res = await authService.post("/edit", {
+    username,
+    campus,
+    course
+  });
+  console.log("respuesta del server al edit", res);
+};
+
 export const doLogout = async () => {
   console.log("loggin out!");
   const res = await authService.post("/logout");
