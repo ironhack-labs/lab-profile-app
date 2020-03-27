@@ -3,9 +3,9 @@ import React, { useContext, useState } from 'react';
 import { Edit } from '@styled-icons/typicons';
 
 // local modules
-import userImage from '../../public/images/user-placeholder.png';
+import imgPlaceholder from '../../public/images/user-placeholder.png';
 import { AuthContext } from '../contexts/authContext';
-import { logout } from '../services/authService';
+import { logout, uploadPhoto } from '../services/authService';
 import { EditForm } from './EditForm';
 
 // styled components
@@ -25,6 +25,7 @@ import {
 export const Profile = ({ history }) => {
   const { user, setUser } = useContext(AuthContext);
   const [isEditing, setIsEditing] = useState(false);
+  const [image, setImage] = useState();
 
   const handleLogout = () => {
     logout();
@@ -32,6 +33,16 @@ export const Profile = ({ history }) => {
   };
 
   const handleEdit = () => setIsEditing(!isEditing);
+
+  const handleChange = e => setImage(e.target.files[0]);
+
+  const handleSubmit = async e => {
+    e.preventDefault();
+    const uploadImage = new FormData();
+    uploadImage.append('image', image);
+    const newImage = await uploadPhoto(uploadImage);
+    setUser({ ...user, image: newImage });
+  };
 
   return (
     <SocialContainer>
@@ -66,8 +77,13 @@ export const Profile = ({ history }) => {
       </Content>
       <SocialContent>
         <ImageContainer>
-          <img src={userImage} alt="" />
-          <Button>Edit photo</Button>
+          <img src={(user && user.image) || imgPlaceholder} alt="" />
+          <form onSubmit={handleSubmit} id="upload-form">
+            <input type="file" onChange={handleChange} />
+          </form>
+          <Button type="submit" form="upload-form">
+            Edit photo
+          </Button>
         </ImageContainer>
 
         <p className="small">You can change your profile image 📷</p>

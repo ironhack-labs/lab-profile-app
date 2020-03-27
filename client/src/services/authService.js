@@ -36,6 +36,13 @@ export const isLoggedIn = async () => {
   return data;
 };
 
+export const uploadPhoto = async photo => {
+  const { data } = await authService.put('/upload', photo);
+  console.log('respuesta del server al upload', data);
+
+  return data.image;
+};
+
 export const editProfile = async ({ username, campus, course }) => {
   console.log('updating user with data', username, campus, course);
   const { data } = await authService.put('/edit', { username, campus, course });
