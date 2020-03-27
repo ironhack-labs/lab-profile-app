@@ -1,5 +1,5 @@
 // dependencies
-import React, { useContext } from 'react';
+import React from 'react';
 
 // styled components
 import { StyledLink, LinksContainer, HomeContent } from '../styles/Home.styled';

@@ -60,15 +60,15 @@ export const Profile = ({ history }) => {
           <ProfileContent>
             <div>
               <p>Usename</p>
-              <p>{(user && user.username) || 'Unknown'}</p>
+              <p>{user && user.username}</p>
             </div>
             <div>
               <p>Campus</p>
-              <p>{(user && user.campus) || 'Unknown'}</p>
+              <p>{user && user.campus}</p>
             </div>
             <div>
               <p>Course</p>
-              <p>{(user && user.course) || 'Unknown'}</p>
+              <p>{user && user.course}</p>
             </div>
             <div>
               <LogoutLink to="/" onClick={handleLogout}>
