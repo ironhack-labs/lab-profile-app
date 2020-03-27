@@ -4,8 +4,9 @@ import { Signup } from "./pages/Signup";
 import { Login } from "./pages/Login";
 import { Profile } from "./pages/Profile";
 import { HomePage } from "./pages/HomePage";
+import { withAuthentication } from "../lib/withAuthentication";
 
-export const App = () => {
+export const App = withAuthentication(() => {
   return (
     <>
       <Switch>
@@ -16,4 +17,4 @@ export const App = () => {
       </Switch>
     </>
   );
-};
+});

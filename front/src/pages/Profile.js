@@ -1,15 +1,37 @@
-import React from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
+import { doLogout, doLoggedin } from "../../lib/authService";
+import { withRouter } from "react-router-dom";
+import { withAuthentication } from "../../lib/withAuthentication";
+import axios from "axios";
 
 //provisional
-let username = "PEPITO";
-let campus = "Sao Paulo";
-let course = "Web Development";
 let image =
   "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSyGtK6cx39ZSbh-LH5aP8PJZ45HjJf05O0OA1aMF_jbZyvYkAO";
 //
 
-export const Profile = () => {
+export const Profile = withRouter(({ history }) => {
+  const [profile, setProfile] = useState();
+  const [course, setCourse] = useState();
+  const [campus, setCampus] = useState();
+
+  const Profi = () => {
+    doLoggedin().then(prof => setProfile(prof.username));
+    doLoggedin().then(camp => setCampus(camp.campus));
+    doLoggedin().then(cour => setCourse(cour.course));
+  };
+  useEffect(() => {
+    Profi();
+  }, []);
+
+  console.log(profile);
+  console.log(course);
+  console.log(campus);
+
+  const handleClick = async () => {
+    await doLogout();
+    await history.push("/");
+  };
   return (
     <>
       <div>
@@ -17,7 +39,7 @@ export const Profile = () => {
         <form>
           <div>
             <label>Username</label>
-            <input value={username}></input>
+            <input value={profile}></input>
           </div>
           <div>
             <label>Campus</label>
@@ -28,7 +50,7 @@ export const Profile = () => {
             <input value={course}></input>
           </div>
         </form>
-        <Link to={"/"}>Logout</Link>
+        <Link onClick={handleClick}>Logout</Link>
       </div>
       <div>
         <img src={image}></img>
@@ -40,4 +62,4 @@ export const Profile = () => {
       </div>
     </>
   );
-};
+});
