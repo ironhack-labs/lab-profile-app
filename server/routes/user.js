@@ -32,3 +32,5 @@ router.post("/upload", async (req, res, next) => {
     return res.status(401).json({ status: "Not Found" });
   }
 });
+
+module.exports = router;

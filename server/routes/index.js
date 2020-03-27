@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const { isLoggedIn } = require("../lib/hashing");
+const { isLoggedIn } = require("../lib/isLoggedMiddleware");
 
 /* GET home page */
 router.get("/", (req, res, next) => {
