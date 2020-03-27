@@ -1,55 +1,56 @@
 const express = require("express");
-const UserModel = require("../models/User.model");
+const User = require("../models/User.model");
 const passport = require("passport");
 const _ = require("lodash");
 const router = express.Router();
+const { hashPassword, checkHashed } = require("../lib/hashing");
+const { isLoggedIn, isLoggedOut } = require("../lib/isLoggedMiddleware");
 
-// REGISTER A USER
 router.post("/signup", async (req, res, next) => {
-  const { username, password } = req.body;
-  // Create the user
-  const newUser = await User.create({ username, password });
+  const { username, password, campus, course, image } = req.body;
 
-  // Directly login user
-  req.logIn(newUser, err => {
-    res.json(
-      _.pick(req.user, [
-        "username",
-        "password",
-        "campus",
-        "course",
-        "_id",
-        "createdAt",
-        "updatedAt"
-      ])
-    );
-  });
+  console.log(username, password, campus, course, image);
+
+  // Create the user
+  const existingUser = await User.findOne({ username });
+  try {
+    if (!existingUser) {
+      const newUser = await User.create({
+        username,
+        password: hashPassword(password),
+        campus,
+        course,
+        image
+      });
+      // Directly login user
+      req.logIn(newUser, err => {
+        res.json(
+          _.pick(req.user, ["username", "_id", "createdAt", "updatedAt"])
+        );
+      });
+    } else {
+      res.json({ status: "User Exist" });
+    }
+  } catch (e) {
+    console.log(e);
+  }
 });
 
 // LOGIN
-router.post("/login", passport.authenticate("local"), (req, res) => {
-  // Return the logged in user
-  return res.json(
-    _.pick(req.user, ["username", "password", "_id", "createdAt", "updatedAt"])
-  );
-});
-
-router.post("/edit", passport.authenticate("local"), (req, res) => {
-  //Return User updated
-  return res.json(
-    _.pick(req.user, [
-      "username",
-      "campus",
-      "course",
-      "_id",
-      "createdAt",
-      "updatedAt"
-    ])
-  );
-});
+router.post(
+  "/login",
+  isLoggedOut(),
+  passport.authenticate("local"),
+  (req, res) => {
+    // Return the logged in user
+    return res.json(
+      _.pick(req.user, ["username", "_id", "createdAt", "updatedAt"])
+    );
+  }
+);
 
 // LOGOUT
-router.get("/logout", (req, res, next) => {
+router.post("/logout", isLoggedIn(), async (req, res, next) => {
   if (req.user) {
     req.logout();
     return res.json({ status: "Log out" });
@@ -59,11 +60,20 @@ router.get("/logout", (req, res, next) => {
       .json({ status: "You have to be logged in to logout" });
   }
 });
-//LOGGEDIN
-router.get("/loggedin", (req, res, next) => {
-  if (req.user) {
-    req.logout();
-    return res.json({ status: "User logged" });
+
+/* EDIT */
+router.post("/edit", isLoggedIn(), async (req, res, next) => {
+  try {
+    const id = req.user._id;
+    const { username, campus, course } = req.body;
+    await Users.findByIdAndUpdate(id, {
+      username,
+      campus,
+      course
+    });
+    return res.json({ status: "Edit Profile" });
+  } catch (error) {
+    return res.status(401).json({ status: "Not Found" });
   }
 });
 
