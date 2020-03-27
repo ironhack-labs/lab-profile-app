@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { UserContext, whoami } from "./authService";
+import { UserContext, doLoggedin } from "./authService";
 
 // THIS is a HOC
 export const withAuthentication = Component => () => {
   const [user, setUser] = useState();
+  console.log("sassssssssssssssss", user);
 
   useEffect(() => {
     // When the app starts this runs only once
     console.log("Welcome to app! 👨🏼‍💻");
 
     // Try to get the current logged in user from our backend
-    whoami()
+    doLoggedin()
       .then(user => {
         console.error(`Welcome again user ${user.username}`);
         setUser(user);

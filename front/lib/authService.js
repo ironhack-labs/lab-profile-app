@@ -64,34 +64,34 @@ export const doLogin = async (username, password) => {
 export const doEdit = async (username, campus, course) => {
   console.log("entrando en el perfil del usuario");
   console.log(username, campus, course);
-  const res = await api.post("/auth/edit");
+  const res = await api.post("/auth/signup", {
+    username,
+    course,
+    campus
+  });
   console.log(res.data);
   return res.data;
 };
 
-export const doUpload = async image => {
+export const doUpload = async ({ file }) => {
   console.log("entrando en el cambio de imagen");
-  console.log(image);
-  const res = await api.post("/auth/upload");
+  const data = new FormData();
+
+  data.append("image", file);
+  const res = await api.post("/auth/upload", data);
   console.log(res.data);
   return res.data;
 };
 
 export const doLogout = async () => {
-  const res = await api.get("/auth/logout");
+  const res = await api.post("/auth/logout");
   console.log("Se ha deslogueado");
-  console.log(res.data);
-  return res.data;
-};
-
-export const whoami = async () => {
-  const res = await api.get("/auth/whoami");
   console.log(res.data);
   return res.data;
 };
 
 export const doLoggedin = async () => {
   const res = await api.get("/auth/loggedin");
-  console.log(res.data);
+  console.log(res.data.username);
   return res.data;
 };

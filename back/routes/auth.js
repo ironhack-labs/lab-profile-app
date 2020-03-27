@@ -3,25 +3,34 @@ const UserModel = require("../models/User.model");
 const passport = require("passport");
 const router = express.Router();
 const _ = require("lodash");
+const { hashPassword } = require("../lib/hashing");
+const { asyncController } = require("../lib/asyncController");
 
 router.post("/signup", async (req, res, next) => {
-  const { username, password, campus, course, image } = req.body;
+  const { username, password, campus, course } = req.body;
   console.log(username);
   console.log(password);
   console.log(campus);
   console.log(course);
-  console.log(image);
 
   const newUser = await UserModel.create({
     username,
-    password,
+    password: hashPassword(password),
     campus,
-    course,
-    image
+    course
   });
 
   req.logIn(newUser, err => {
-    res.json(_.pick(req.user, ["username", "_id", "createdAt", "updatedAt"]));
+    res.json(
+      _.pick(req.user, [
+        "username",
+        "_id",
+        "campus",
+        "course",
+        "createdAt",
+        "updatedAt"
+      ])
+    );
   });
 });
 
@@ -30,11 +39,18 @@ router.post("/login", passport.authenticate("local"), (req, res) => {
   console.log(req.user);
   console.log("el login esta bien hecho");
   return res.json(
-    _.pick(req.user, ["username", "id", "createdAt", "updatedAt"])
+    _.pick(req.user, [
+      "username",
+      "id",
+      "campus",
+      "course",
+      "createdAt",
+      "updatedAt"
+    ])
   );
 });
 
-router.get("/logout", (req, res, next) => {
+router.post("/logout", (req, res, next) => {
   if (req.user) {
     req.logout();
     console.log(req.user);
@@ -46,21 +62,96 @@ router.get("/logout", (req, res, next) => {
   }
 });
 
-router.post("/upload", (req, res, next) => {
-  return res.json({ status: "UPLOAD PAGE" });
-});
+router.post(
+  "/upload",
+  asyncController(async (req, res, next) => {
+    const loggedUser = req.user;
 
-router.post("/edit", (req, res, next) => {
-  return res.json({ status: "EDIT PAGE" });
+    if (req.file) {
+      loggedUser.image = req.file;
+      await loggedUser.save();
+      return res.json(
+        _.pick(req.user, [
+          "username",
+          "id",
+          "campus",
+          "course",
+          "createdAt",
+          "updatedAt"
+        ])
+      );
+    } else {
+      return res.status(401).json({ status: "Not file sent" });
+    }
+  })
+);
+
+router.post("/edit", async (req, res, next) => {
+  const { username, campus, course } = req.body;
+  const loggedUser = req.user;
+
+  try {
+    const existingUser = await UserModel.findOne({ username });
+    if (!existingUser) {
+      loggedUser.username = username;
+      loggedUser.campus = campus;
+      loggedUser.course = course;
+
+      await loggedUser.save();
+      return res.json(
+        _.pick(req.user, [
+          "username",
+          "id",
+          "campus",
+          "course",
+          "createdAt",
+          "updatedAt"
+        ])
+      );
+    } else {
+      if (loggedUser.username === existingUser.username) {
+        loggedUser.campus = campus;
+        loggedUser.course = course;
+        await loggedUser.save();
+        return res.json(
+          _.pick(req.user, [
+            "username",
+            "id",
+            "campus",
+            "course",
+            "createdAt",
+            "updatedAt"
+          ])
+        );
+      } else {
+        res
+          .setMaxListeners(401)
+          .json({ status: " yo can't use that username" });
+      }
+    }
+  } catch (error) {
+    next(error);
+  }
 });
 
 router.get("/loggedin", (req, res, next) => {
-  return res.json({ status: "LOGGEDIIN!!" });
-});
-
-router.get("/whoami", (req, res, next) => {
-  if (req.user) return res.json(req.user);
+  if (req.user)
+    return res.json(
+      _.pick(req.user, [
+        "username",
+        "id",
+        "campus",
+        "course",
+        "createdAt",
+        "updatedAt"
+      ])
+    );
   else return res.status(401).json({ status: "No user session present" });
 });
+
+// router.get("/whoami", (req, res, next) => {
+//   if (req.user) return res.json(req.user);
+//   else return res.status(401).json({ status: "No user session present" });
+// });
 
 module.exports = router;
