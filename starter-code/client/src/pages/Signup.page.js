@@ -1,5 +1,6 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { withRouter } from 'react-router-dom';
+import { UserContext, doSignup } from '../../lib/auth.api';
 import { Card } from '../components/Card';
 import styled from 'styled-components';
 import { useForm, FormContext } from 'react-hook-form';
@@ -62,7 +63,9 @@ const Button = styled.button`
   border-style: solid;
 `;
 
-export const SignupPage = () => {
+export const SignupPage = withRouter(({ history }) => {
+  const { user, setUser, setLoading } = useContext(UserContext);
+
   const methods = useForm({
     mode: 'onBlur',
     defaultValue: {
@@ -75,12 +78,16 @@ export const SignupPage = () => {
 
   const { register, handleSubmit, errors } = methods;
 
-  const onSubmit = data => {
-    console.log('Data is');
-    console.log(data);
-    // axios.post("http://kajshdfal", data).then(...)
+  const onSubmit = async data => {
+    //console.log(data);
+    setLoading(true);
+    const newUser = await doSignup(data);
+    console.log(newUser);
+    setUser(newUser);
+    setLoading(false);
+    history.push('/');
   };
-  console.log(errors);
+
   return (
     <Card>
       <Left>
@@ -134,4 +141,4 @@ export const SignupPage = () => {
       </Right>
     </Card>
   );
-};
+});

@@ -7,7 +7,7 @@ const api = axios.create({
   baseURL: 'http://localhost:3000'
 });
 
-export const doSignup = async (username, password, course, campus) => {
+export const doSignup = async ({ username, password, course, campus }) => {
   const res = await api.post('/auth/signup', {
     username,
     password,

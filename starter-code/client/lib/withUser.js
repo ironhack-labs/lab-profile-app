@@ -11,8 +11,8 @@ export const withUser = Content => () => {
     setLoading(true);
     console.log('loading user...');
     getUserLogged()
-      .then(user => {
-        setUser(user);
+      .then(res => {
+        setUser(res.data);
       })
       .catch(error => {
         console.error('No user logged in');
