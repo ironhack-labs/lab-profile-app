@@ -3,7 +3,7 @@ import { withRouter, Link } from 'react-router-dom';
 import { UserContext, doEdit, doUpload, doLogout } from '../../lib/auth.api';
 import { Card } from '../components/Card';
 import { useForm, FormContext } from 'react-hook-form';
-import { Input } from '../components/Input';
+import { Input, Select } from '../components/Input';
 import { withProtected } from '../../lib/protectedRoute';
 import {
   Left,
@@ -65,21 +65,35 @@ export const ProfilePage = withProtected(
                 })}
                 defaultValue={user.username}
               />
-              <Input
+              <Select
                 name='course'
-                placeholder='Course'
                 ref={register({
-                  required: 'Required *'
+                  validate: value => {
+                    return value !== '';
+                  }
                 })}
-                defaultValue={user.course}
+                options={['WebDev', 'UX/UI', 'Data Analytics']}
+                selection={user.course}
               />
-              <Input
+              <Select
                 name='campus'
-                placeholder='Campus'
                 ref={register({
-                  required: 'Required *'
+                  validate: value => {
+                    return value !== '';
+                  }
                 })}
-                defaultValue={user.campus}
+                options={[
+                  'Madrid',
+                  'Barcelona',
+                  'Miami',
+                  'Paris',
+                  'Berlin',
+                  'Amsterdam',
+                  'México',
+                  'Sao Paulo',
+                  'Lisbon'
+                ]}
+                selection={user.campus}
               />
               <Button2 type='submit'>Update</Button2>
             </Form>

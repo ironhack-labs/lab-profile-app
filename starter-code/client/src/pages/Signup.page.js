@@ -44,7 +44,7 @@ export const SignupPage = withProtected(
       setLoading(false);
       history.push('/profile');
     };
-    console.log(errors);
+
     return (
       <Card>
         <Left>
@@ -75,7 +75,7 @@ export const SignupPage = withProtected(
                 name='course'
                 ref={register({
                   validate: value => {
-                    value !== '' ? 'Select a valid option' : '';
+                    return value !== '';
                   }
                 })}
                 options={['WebDev', 'UX/UI', 'Data Analytics']}
@@ -84,7 +84,7 @@ export const SignupPage = withProtected(
                 name='campus'
                 ref={register({
                   validate: value => {
-                    value !== '' ? 'Select a valid option' : '';
+                    return value !== '';
                   }
                 })}
                 options={[
@@ -106,7 +106,10 @@ export const SignupPage = withProtected(
         <Right>
           <TextContainer>
             <SubTitle>Hello IronHacker!</SubTitle>
-            <Text>Awesome to have you here again!!!</Text>
+            <Text>
+              Welcome to IronProfiles, a page done with React and Node to check
+              you in!
+            </Text>
           </TextContainer>
           <TextMinor>
             If you sign up, you agree with our terms and conditions!

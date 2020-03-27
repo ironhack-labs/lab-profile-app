@@ -31,7 +31,7 @@ export const Input = React.forwardRef(
 );
 
 export const Select = React.forwardRef(
-  ({ placeholder, name, options, value }, ref) => {
+  ({ placeholder, name, options, selection }, ref) => {
     const { errors } = useFormContext();
     const errorHandler = () => {
       if (errors[name]?.message) {
@@ -50,13 +50,16 @@ export const Select = React.forwardRef(
           }
           ref={ref}
           errors={errors}
-          value={value}
         >
           <option value='' key='999'>
             Please select a {name}
           </option>
           {options.map((option, i) => {
-            return (
+            return selection === option ? (
+              <option value={option} key={i} selected>
+                {option}
+              </option>
+            ) : (
               <option value={option} key={i}>
                 {option}
               </option>
