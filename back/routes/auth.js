@@ -78,7 +78,7 @@ router.post("/edit", async (req, res) => {
     res.status(200).json(_.pick(req.user, ["username", "campus", "course"]))
 })
 
-router.get("/logged", (req, res) => {
+router.get("/loggedin", (req, res) => {
     if (req.user) {
         res.status(200).json(_.pick(req.user, ["username", "campus", "course"]))
     }
