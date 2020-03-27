@@ -82,8 +82,9 @@ export const SignupPage = withRouter(({ history }) => {
     //console.log(data);
     setLoading(true);
     const newUser = await doSignup(data);
-    console.log(newUser);
+    console.log('new user', newUser);
     setUser(newUser);
+    console.log('user', user);
     setLoading(false);
     history.push('/');
   };
