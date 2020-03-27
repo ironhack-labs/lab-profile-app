@@ -22,3 +22,9 @@ export const login = async ({ username, password }) => {
   console.log('respuesta del server al login', data);
   return data.user;
 };
+
+export const logout = async () => {
+  console.log('loggin out!');
+  const response = await authService.post('/logout');
+  console.log('respuesta del server al logout', response);
+};

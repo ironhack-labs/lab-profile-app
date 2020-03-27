@@ -2,8 +2,9 @@
 import React, { useContext } from 'react';
 
 // local modules
-import { AuthContext } from '../contexts/authContext';
 import userImage from '../../public/images/user-placeholder.png';
+import { AuthContext } from '../contexts/authContext';
+import { logout } from '../services/authService';
 
 // styled components
 import {
@@ -19,7 +20,12 @@ import {
 } from '../styles/Profile.styled';
 
 export const Profile = () => {
-  const { user } = useContext(AuthContext);
+  const { user, setUser } = useContext(AuthContext);
+
+  const handleClick = () => {
+    logout();
+    setUser(null);
+  };
 
   return (
     <SocialContainer>
@@ -39,7 +45,9 @@ export const Profile = () => {
             <p>{(user && user.course) || 'Unknown'}</p>
           </div>
           <div>
-            <LogoutLink to="/">Logout</LogoutLink>
+            <LogoutLink to="/" onClick={handleClick}>
+              Logout
+            </LogoutLink>
           </div>
         </ProfileContent>
       </Content>
