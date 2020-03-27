@@ -62,12 +62,9 @@ export const Profile = connect(state => ({ user: state.user }))(
       try {
         await logout();
         dispatch(useLogout());
-        console.log("pasa por aqui");
-        console.log(history);
-        history.push("/login");
+        history.push("/");
       } catch (error) {
-        console.log("Error", error.response.status);
-        console.log(error.response.data.status);
+        console.log("Error", error.response);
       }
     };
 

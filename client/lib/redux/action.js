@@ -2,11 +2,11 @@ export const useUser = () => ({
   type: "USE_USER"
 });
 
-export const useLogout = () => ({
-  type: "USE_LOGOUT"
+export const useSetUser = user => ({
+  type: "SET_USER",
+  user
 });
 
-export const addUser = user => ({
-  type: "ADD_USER",
-  user
+export const useLogout = () => ({
+  type: "USE_LOGOUT"
 });

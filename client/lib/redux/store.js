@@ -1,13 +1,17 @@
 import { createStore } from "redux";
 
 const reducer = (state = {}, action) => {
+  console.log("State", state);
+  console.log("Action", action);
+
   switch (action.type) {
-    case "ADD_USER":
-      return { ...state, user: action.user };
     case "USE_USER":
       return state.user;
 
-    case "USE_USER":
+    case "SET_USER":
+      return { ...state, user: action.user };
+
+    case "USE_LOGOUT":
       return { ...state, user: undefined };
   }
   return state;

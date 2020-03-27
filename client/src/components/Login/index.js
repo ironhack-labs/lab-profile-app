@@ -3,16 +3,17 @@ import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 
 import { login } from "../../../lib/api/auth.api.js";
-import { addUser } from "../../../lib/redux/action";
+import { useSetUser } from "../../../lib/redux/action";
 
+import { makeStyles } from "@material-ui/core/styles";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
-import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Box from "@material-ui/core/Box";
+import MuiAlert from "@material-ui/lab/Alert";
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -34,10 +35,21 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
+const Alert = props => {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+};
+
 export const Login = connect()(
   withRouter(({ history, dispatch }) => {
     const classes = useStyles();
+
     const [state, setState] = useState({});
+    const [error, setError] = useState(false);
+
+    const handleError = () => {
+      setError(true);
+      setTimeout(() => setError(false), 3000);
+    };
 
     const handleChange = ({ target }) => {
       const { value, name } = target;
@@ -48,68 +60,74 @@ export const Login = connect()(
       e.preventDefault();
 
       try {
-        dispatch(addUser(await login(state.username, state.password)));
+        dispatch(useSetUser(await login(state.username, state.password)));
         history.push("/profile");
       } catch (error) {
-        console.log(error.response);
-        console.log("Error", error.response.status);
-        console.log(error.response.data.status);
+        if (error.response.statusText == "Unauthorized") handleError();
       }
     };
 
     return (
-      <Container component="main" maxWidth="xs">
-        <div className={classes.paper}>
-          <Avatar className={classes.avatar}>
-            <LockOutlinedIcon />
-          </Avatar>
+      <>
+        {error && (
+          <Alert severity="error">
+            El usuario o la contraseña no son correctas. Vuelva a intentarlo.
+          </Alert>
+        )}
+        <Container component="main" maxWidth="xs">
+          <div className={classes.paper}>
+            <Avatar className={classes.avatar}>
+              <LockOutlinedIcon />
+            </Avatar>
 
-          <Typography component="h1" variant="h5">
-            Log in
-          </Typography>
+            <Typography component="h1" variant="h5">
+              Log in
+            </Typography>
 
-          <form className={classes.form} onSubmit={handleSubmit}>
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              label="Username"
-              name="username"
-              autoComplete="username"
-              autoFocus
-              value={state.username || ""}
-              onChange={handleChange}
-            />
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              value={state.password || ""}
-              onChange={handleChange}
-            />
+            <form className={classes.form} onSubmit={handleSubmit}>
+              <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                label="Username"
+                name="username"
+                autoComplete="username"
+                autoFocus
+                value={state.username || ""}
+                onChange={handleChange}
+              />
+              <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                name="password"
+                label="Password"
+                type="password"
+                value={state.password || ""}
+                onChange={handleChange}
+              />
 
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-              className={classes.submit}
-            >
-              Log In
-            </Button>
-          </form>
-        </div>
-        <Box mt={8}>
-          <Typography variant="body2" color="textSecondary" align="center">
-            If you don't have an account yet. <Link to="/signup">Sign up</Link>
-          </Typography>
-        </Box>
-      </Container>
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                color="primary"
+                className={classes.submit}
+              >
+                Log In
+              </Button>
+            </form>
+          </div>
+          <Box mt={8}>
+            <Typography variant="body2" color="textSecondary" align="center">
+              If you don't have an account yet.{" "}
+              <Link to="/signup">Sign up</Link>
+            </Typography>
+          </Box>
+        </Container>
+      </>
     );
   })
 );
