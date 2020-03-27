@@ -1,5 +1,8 @@
-import React from 'react';
-import { StyledLink, LinksContainer, HomeContent } from './Home.styled';
+// dependencies
+import React, { useContext } from 'react';
+
+// styled components
+import { StyledLink, LinksContainer, HomeContent } from '../styles/Home.styled';
 
 export const Home = () => {
   return (
