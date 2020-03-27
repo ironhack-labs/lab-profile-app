@@ -14,12 +14,12 @@ passport.deserializeUser((id, cb) => {
     .then(user => cb(null, user))
     .catch(e => cb(err));
 
-  // User.findById(id, (err, user) => {
-  //   if (err) {
-  //     return c;
-  //   }
-  //   cb(null, user);
-  // });
+  User.findById(id, (err, user) => {
+    if (err) {
+      return c;
+    }
+    cb(null, user);
+  });
 });
 
 module.exports = app => {

@@ -12,6 +12,9 @@ const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
 const User = require("./models/User.model");
 const dbUrl = process.env.MONGODB_URL;
+const LocalStrategy = require("passport-local").Strategy;
+const bcrypt = require("bcrypt");
+const passport = require("passport");
 
 mongoose
   .connect(dbUrl, {
@@ -62,13 +65,56 @@ app.use(
   })
 );
 
+// Passport
+require("./passport");
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use((req, res, next) => {
+  res.locals.user = req.user;
+  next();
+});
+
+passport.serializeUser((user, cb) => {
+  cb(null, user._id);
+});
+
+passport.deserializeUser((id, callback) => {
+  User.findById(id)
+    .then(user => {
+      callback(null, user);
+    })
+    .catch(error => {
+      callback(error);
+    });
+});
+
+passport.use(
+  new LocalStrategy(async (username, password, done) => {
+    console.log(username, password);
+    try {
+      const foundUser = await User.findOne({ username });
+      if (foundUser) {
+        checkHashed(password, foundUser.password)
+          ? done(null, foundUser)
+          : done(null, false);
+      } else {
+        done(null, false);
+      }
+    } catch (error) {
+      console.log(error);
+      done(error);
+    }
+  })
+);
+
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "hbs");
 app.use(express.static(path.join(__dirname, "public")));
 app.use(favicon(path.join(__dirname, "public", "images", "favicon.ico")));
 
 // default value for title local
-app.locals.title = "Express - Generated with IronGenerator";
+app.locals.title = "Servidor Profile-app";
 
 app.use(express.static(path.join(__dirname, "public")));
 const index = require("./routes/index");
