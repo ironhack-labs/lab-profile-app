@@ -4,6 +4,7 @@ import { withUser } from '../../../lib/withUser';
 import { HomePage } from '../../pages/Home.page';
 import { SignupPage } from '../../pages/Signup.page.js';
 import { LoginPage } from '../../pages/Login.page.js';
+import { ProfilePage } from '../../pages/Profile.page';
 
 export const App = withUser(() => {
   return (
@@ -12,6 +13,7 @@ export const App = withUser(() => {
         <Route path='/' exact component={HomePage} />
         <Route path='/signup' component={SignupPage} />
         <Route path='/login' component={LoginPage} />
+        <Route path='/profile' component={ProfilePage} />
       </Switch>
     </Router>
   );

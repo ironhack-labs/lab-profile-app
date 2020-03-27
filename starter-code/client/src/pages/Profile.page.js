@@ -1,38 +1,30 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { withRouter, Link } from 'react-router-dom';
-import { UserContext, doSignup } from '../../lib/auth.api';
+import { UserContext, doEdit, doUpload, doLogout } from '../../lib/auth.api';
 import { Card } from '../components/Card';
-import styled from 'styled-components';
 import { useForm, FormContext } from 'react-hook-form';
 import { Input } from '../components/Input';
+import { withProtected } from '../../lib/protectedRoute';
 import {
   Left,
   Right,
-  TextContainer,
   Title,
-  Text,
-  ButtonContainer,
-  LinkUpdated,
-  Button,
+  Button3,
   Button2,
   Form,
   TextMinor,
-  SubTitle
+  Image,
+  ImageContainer,
+  ImageInput
 } from './utils/styles';
-import { withProtected } from '../../lib/protectedRoute';
 
-export const SignupPage = withProtected(
+export const ProfilePage = withProtected(
   withRouter(({ history }) => {
     const { user, setUser, setLoading } = useContext(UserContext);
+    const [file, setFile] = useState();
 
     const methods = useForm({
-      mode: 'onBlur',
-      defaultValue: {
-        username: '',
-        password: '',
-        course: '',
-        campus: ''
-      }
+      mode: 'onBlur'
     });
 
     const { register, handleSubmit, errors } = methods;
@@ -40,16 +32,25 @@ export const SignupPage = withProtected(
     const onSubmit = async data => {
       //console.log(data);
       setLoading(true);
-      const newUser = await doSignup(data);
+      const newUser = await doEdit(data);
+      if (newUser.username === data.username) {
+        setUser(newUser);
+      }
+      setLoading(false);
+    };
+
+    const handleUpload = async e => {
+      setLoading(true);
+      console.log(e.target.files[0]);
+      const newUser = await doUpload(e.target.files[0]);
       setUser(newUser);
       setLoading(false);
-      history.push('/profile');
     };
 
     return (
       <Card>
         <Left>
-          <Title>Sign Up</Title>
+          <Title>Profile</Title>
           <FormContext {...methods}>
             <Form onSubmit={handleSubmit(onSubmit)}>
               <Input
@@ -62,14 +63,7 @@ export const SignupPage = withProtected(
                     message: 'invalid email address'
                   }
                 })}
-              />
-              <Input
-                name='password'
-                type='password'
-                placeholder='Password'
-                ref={register({
-                  required: 'Required *'
-                })}
+                defaultValue={user.username}
               />
               <Input
                 name='course'
@@ -77,6 +71,7 @@ export const SignupPage = withProtected(
                 ref={register({
                   required: 'Required *'
                 })}
+                defaultValue={user.course}
               />
               <Input
                 name='campus'
@@ -84,26 +79,39 @@ export const SignupPage = withProtected(
                 ref={register({
                   required: 'Required *'
                 })}
+                defaultValue={user.campus}
               />
-              <Button2 type='submit'>Signup</Button2>
+              <Button2 type='submit'>Update</Button2>
             </Form>
           </FormContext>
+          <Button3
+            onClick={async () => {
+              setUser();
+              setLoading(true);
+              history.push('/');
+              const logout = await doLogout();
+              setLoading(false);
+            }}
+          >
+            Logout
+          </Button3>
         </Left>
         <Right>
-          <TextContainer>
-            <SubTitle>Hello IronHacker!</SubTitle>
-            <Text>Awesome to have you here again!!!</Text>
-          </TextContainer>
+          <ImageContainer>
+            <Image src={user.profilepic} />
+          </ImageContainer>
+          <ImageInput
+            type='file'
+            name='image'
+            onChange={e => handleUpload(e)}
+            accept='.png, .jpg'
+          />
           <TextMinor>
-            If you sign up, you agree with our terms and conditions!
+            Click to Upload a profile picture! This is done with NodeJs and
+            multer, and stored on cloudinary
           </TextMinor>
         </Right>
       </Card>
     );
-  }),
-  {
-    redirect: true,
-    redirectTo: 'profile',
-    inverted: true
-  }
+  })
 );

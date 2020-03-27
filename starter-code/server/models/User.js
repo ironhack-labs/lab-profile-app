@@ -31,6 +31,8 @@ const schema = new mongoose.Schema(
   }
 );
 
+const defaultPicture =
+  'https://www.sackettwaconia.com/wp-content/uploads/default-profile.png';
 schema.virtual('profilepic').get(function() {
   // Try to get as local path
   let pic = _.get(this, 'image.path');

@@ -3,7 +3,7 @@ import { useFormContext } from 'react-hook-form';
 import { InputBase, Error } from './utils/styles.js';
 
 export const Input = React.forwardRef(
-  ({ placeholder, name, type = 'text' }, ref) => {
+  ({ placeholder, name, type = 'text', defaultValue = '' }, ref) => {
     const { errors } = useFormContext();
     const errorHandler = () => {
       if (errors[name]?.message) {
@@ -23,6 +23,7 @@ export const Input = React.forwardRef(
           }
           ref={ref}
           errors={errors}
+          defaultValue={defaultValue}
         />
       </>
     );

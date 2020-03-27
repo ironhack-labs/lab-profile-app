@@ -83,6 +83,23 @@ export const Button2 = styled.button`
   }
 `;
 
+export const Button3 = styled.button`
+  margin-top: 20px;
+  border-radius: 5px;
+  padding: 5px;
+  width: 100%;
+  align-self: flex-start;
+  color: #1a535c;
+  border-color: #ee6055;
+  background-color: #ee6055;
+  border-style: solid;
+  &:hover {
+    color: #ee6055;
+    border-color: #4ecdc4;
+    background-color: #1a535c;
+  }
+`;
+
 export const Title = styled.p`
   font-size: 2.2rem;
   font-weight: 700;
@@ -111,4 +128,51 @@ export const TextMinor = styled.p`
 
 export const TextContainer = styled.div`
   margin: 10px 0;
+`;
+
+export const ImageContainer = styled.div`
+  width: 80%;
+`;
+
+export const Image = styled.img`
+  width: 100%;
+  border-radius: 50%;
+`;
+
+export const ImageInput = styled.input`
+  margin-top: 20px;
+  color: transparent;
+  width: 100%;
+  ::-webkit-file-upload-button {
+    visibility: hidden;
+  }
+  ::before {
+    border: 1px;
+    text-align: center;
+    font-family: 'rubik';
+    color: #1a535c;
+    border-color: #ffe66d;
+    background-color: #ffe66d;
+    border-style: solid;
+    content: 'Choose a picture';
+    width: 100%;
+    display: inline-block;
+    box-sizing: border-box;
+    border-radius: 5px;
+    padding: 5px;
+    outline: none;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    cursor: pointer;
+    font-weight: 400;
+    font-size: 0.8rem;
+  }
+  :hover::before {
+    border: 1px;
+    color: #ffe66d;
+    border-color: #1a535c;
+    background-color: #4ecdc4;
+  }
+  active::before {
+  }
 `;
