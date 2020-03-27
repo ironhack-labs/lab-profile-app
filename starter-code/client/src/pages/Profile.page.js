@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import { UserContext, doEdit, doUpload, doLogout } from '../../lib/auth.api';
 import { Card } from '../components/Card';
@@ -13,11 +13,13 @@ import {
   Form,
   TextMinor,
   Image,
-  ImageContainer
+  ImageContainer,
+  ImageInput
 } from './utils/styles';
 
 export const ProfilePage = withRouter(({ history }) => {
   const { user, setUser, setLoading } = useContext(UserContext);
+  const [file, setFile] = useState();
 
   useEffect(() => {
     setLoading(true);
@@ -40,6 +42,14 @@ export const ProfilePage = withRouter(({ history }) => {
     if (newUser.username === data.username) {
       setUser(newUser);
     }
+    setLoading(false);
+  };
+
+  const handleUpload = async e => {
+    setLoading(true);
+    console.log(e.target.files[0]);
+    const newUser = await doUpload(e.target.files[0]);
+    setUser(newUser);
     setLoading(false);
   };
 
@@ -82,7 +92,7 @@ export const ProfilePage = withRouter(({ history }) => {
         </FormContext>
         <Button3
           onClick={async () => {
-            setUser(null);
+            setUser({});
             history.push('/');
             setLoading(true);
             const logout = await doLogout();
@@ -96,6 +106,12 @@ export const ProfilePage = withRouter(({ history }) => {
         <ImageContainer>
           <Image src={user.profilepic} />
         </ImageContainer>
+        <ImageInput
+          type='file'
+          name='image'
+          onChange={e => handleUpload(e)}
+          accept='.png, .jpg'
+        />
         <TextMinor>
           Click to Upload a profile picture! This is done with NodeJs and
           multer, and stored on cloudinary

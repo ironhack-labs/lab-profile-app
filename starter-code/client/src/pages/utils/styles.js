@@ -138,3 +138,41 @@ export const Image = styled.img`
   width: 100%;
   border-radius: 50%;
 `;
+
+export const ImageInput = styled.input`
+  margin-top: 20px;
+  color: transparent;
+  width: 100%;
+  ::-webkit-file-upload-button {
+    visibility: hidden;
+  }
+  ::before {
+    border: 1px;
+    text-align: center;
+    font-family: 'rubik';
+    color: #1a535c;
+    border-color: #ffe66d;
+    background-color: #ffe66d;
+    border-style: solid;
+    content: 'Choose a picture';
+    width: 100%;
+    display: inline-block;
+    box-sizing: border-box;
+    border-radius: 5px;
+    padding: 5px;
+    outline: none;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    cursor: pointer;
+    font-weight: 400;
+    font-size: 0.8rem;
+  }
+  :hover::before {
+    border: 1px;
+    color: #ffe66d;
+    border-color: #1a535c;
+    background-color: #4ecdc4;
+  }
+  active::before {
+  }
+`;

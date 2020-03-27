@@ -26,7 +26,7 @@ export const doLogin = async ({ username, password }) => {
   return res.data;
 };
 
-export const doUpload = async ({ file }) => {
+export const doUpload = async file => {
   const data = new FormData();
   data.append('image', file);
   const res = await api.post('/auth/upload', data);

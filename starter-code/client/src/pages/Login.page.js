@@ -22,7 +22,7 @@ export const LoginPage = withRouter(({ history }) => {
 
   useEffect(() => {
     setLoading(true);
-    if (user) {
+    if (user.username) {
       history.push('/profile');
     }
     setLoading(false);
