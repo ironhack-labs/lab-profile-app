@@ -61,7 +61,7 @@ function App() {
           <div className="wrapper">
             <h1>IronProfile</h1>
             <p>
-              Today we will create an app with authorization, adding come cool
+              Today we will create an app with authorization, adding some cool
               styles.
             </p>
             <XYCentered mt>
