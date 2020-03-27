@@ -18,7 +18,6 @@ export const AuthContextProvider = ({ children }) => {
         console.log('is logged', user);
         setUser(user);
       } catch (error) {
-        console.log('error', error);
         setUser(null);
       } finally {
         setLoading(false);

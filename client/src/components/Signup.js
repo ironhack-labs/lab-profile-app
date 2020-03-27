@@ -9,7 +9,8 @@ import {
   Form,
   SocialContent,
   SocialContainer,
-  Button
+  Button,
+  Error
 } from '../styles/Signup.styled';
 import { Content } from '../styles/Layout.styled';
 import { AuthContext } from '../contexts/authContext';
@@ -22,24 +23,19 @@ export const Signup = ({ history }) => {
     campus: '',
     course: ''
   });
+  const [error, setError] = useState('');
 
   const handleSubmit = async e => {
     e.preventDefault();
-    const user = await signup(newUser);
+    const response = await signup(newUser);
 
-    if (user) {
-      setUser(user);
-
-      const formatted = newUser.username.replace(' ', '').toLowerCase();
+    console.log('el usuario!!', response);
+    if (response.username) {
+      setUser(response);
+      const formatted = response.username.replace(' ', '').toLowerCase();
       history.push(`/${formatted}`); //redirect to profile after signup & login
     } else {
-      //clear inputs if signup fails
-      setNewUser({
-        username: '',
-        password: '',
-        campus: '',
-        course: ''
-      });
+      setError(response.message);
     }
   };
 
@@ -82,6 +78,8 @@ export const Signup = ({ history }) => {
             onChange={handleChange}
           />
         </Form>
+
+        {error && <Error>Sorry, {error}</Error>}
       </Content>
       <SocialContent>
         <div className="header">

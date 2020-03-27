@@ -6,14 +6,19 @@ const authService = axios.create({
 });
 
 export const signup = async ({ username, password, campus, course }) => {
-  const { data } = await authService.post('/signup', {
-    username,
-    password,
-    campus,
-    course
-  });
-  console.log('respuesta del server al signup', data);
-  return data.user;
+  try {
+    const { data } = await authService.post('/signup', {
+      username,
+      password,
+      campus,
+      course
+    });
+    console.log('respuesta del server al signup', data);
+    return data.user;
+  } catch (error) {
+    console.log('errorcito', error.response);
+    return error.response.data;
+  }
 };
 
 export const login = async ({ username, password }) => {

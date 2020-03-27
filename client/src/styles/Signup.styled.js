@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { Content } from './Layout.styled';
 
 export const Form = styled.form`
@@ -71,4 +71,14 @@ export const Button = styled.button`
   &:focus {
     box-shadow: 0 0 0.3em 0.2em #deecdd;
   }
+`;
+
+export const Error = styled.p`
+  background-color: #ff9999;
+  color: #000;
+  font-weight: 400;
+  padding: 0.5em;
+  border-radius: 2em;
+  text-align: center;
+  font-size: 1rem;
 `;
