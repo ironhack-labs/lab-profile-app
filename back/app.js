@@ -52,13 +52,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(
   session({
-    secret: "laprofileapp",
+    secret: "keyboard cat",
     resave: true,
     saveUninitialized: true,
     store: new MongoStore({ mongooseConnection: mongoose.connection })
   })
 );
-
 require("./passport")(app);
 
 app.use(express.static(path.join(__dirname, "public")));
