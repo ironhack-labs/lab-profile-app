@@ -32,7 +32,8 @@ router.post(
           'course',
           'image',
           'createdAt',
-          'updatedAt'
+          'updatedAt',
+          'profilepic'
         ])
       );
     });
@@ -54,7 +55,8 @@ router.post(
         'course',
         'image',
         'createdAt',
-        'updatedAt'
+        'updatedAt',
+        'profilepic'
       ])
     );
   }
@@ -83,7 +85,8 @@ router.post('/edit', ensureLogin.ensureLoggedIn(), async (req, res, next) => {
           'course',
           'image',
           'createdAt',
-          'updatedAt'
+          'updatedAt',
+          'profilepic'
         ])
       );
       // if the username is taken
@@ -101,7 +104,8 @@ router.post('/edit', ensureLogin.ensureLoggedIn(), async (req, res, next) => {
             'course',
             'image',
             'createdAt',
-            'updatedAt'
+            'updatedAt',
+            'profilepic'
           ])
         );
         // if it doesn't correspond to the logged user
@@ -115,7 +119,7 @@ router.post('/edit', ensureLogin.ensureLoggedIn(), async (req, res, next) => {
 });
 
 // Logout
-router.get('/logout', ensureLogin.ensureLoggedIn(), (req, res, next) => {
+router.post('/logout', ensureLogin.ensureLoggedIn(), (req, res, next) => {
   if (req.user) {
     req.logout();
     return res.json({ status: 'Logged out' });
@@ -127,7 +131,7 @@ router.get('/logout', ensureLogin.ensureLoggedIn(), (req, res, next) => {
 });
 
 // Check if the user is logged in
-router.get('/loggedin', ensureLogin.ensureLoggedIn(), (req, res, next) => {
+router.get('/loggedin', (req, res, next) => {
   if (req.user)
     return res.json(
       _.pick(req.user, [
@@ -137,7 +141,8 @@ router.get('/loggedin', ensureLogin.ensureLoggedIn(), (req, res, next) => {
         'course',
         'image',
         'createdAt',
-        'updatedAt'
+        'updatedAt',
+        'profilepic'
       ])
     );
   else return res.status(401).json({ status: 'No user session present' });
@@ -164,7 +169,8 @@ router.post(
           'course',
           'profilepic',
           'createdAt',
-          'updatedAt'
+          'updatedAt',
+          'profilepic'
         ])
       );
     } else {
