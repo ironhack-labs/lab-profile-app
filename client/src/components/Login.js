@@ -20,18 +20,16 @@ export const Login = ({ history }) => {
     username: '',
     password: ''
   });
-  const { user, setUser } = useContext(AuthContext);
+  const { setUser } = useContext(AuthContext);
 
   const handleSubmit = async e => {
     e.preventDefault();
-    console.log('submitting form!');
     const loggedUser = await login(currentUser);
 
-    console.log('user logged', user);
     setUser(loggedUser);
-    const formatted = loggedUser.username.replace(' ', '').toLowerCase();
-    console.log(formatted);
 
+    //redirect to profile after login in
+    const formatted = loggedUser.username.replace(' ', '').toLowerCase();
     history.push(`/${formatted}`);
   };
 

@@ -1,5 +1,5 @@
 // dependencies
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 
 // local modules
 import { signup } from '../services/authService';
@@ -12,8 +12,10 @@ import {
   Button
 } from '../styles/Signup.styled';
 import { Content } from '../styles/Layout.styled';
+import { AuthContext } from '../contexts/authContext';
 
 export const Signup = ({ history }) => {
+  const { setUser } = useContext(AuthContext);
   const [newUser, setNewUser] = useState({
     username: '',
     password: '',
@@ -23,11 +25,22 @@ export const Signup = ({ history }) => {
 
   const handleSubmit = async e => {
     e.preventDefault();
-    console.log('submitting!');
-    await signup(newUser);
+    const user = await signup(newUser);
 
-    const formatted = newUser.username.replace(' ', '').toLowerCase();
-    history.push(`/${formatted}`); //redirect to profile after signup & login
+    if (user) {
+      setUser(user);
+
+      const formatted = newUser.username.replace(' ', '').toLowerCase();
+      history.push(`/${formatted}`); //redirect to profile after signup & login
+    } else {
+      //clear inputs if signup fails
+      setNewUser({
+        username: '',
+        password: '',
+        campus: '',
+        course: ''
+      });
+    }
   };
 
   const handleChange = e => {

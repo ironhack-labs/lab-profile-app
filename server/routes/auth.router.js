@@ -9,6 +9,12 @@ const uploader = require('../config/cloudinary/cloudinary.config');
 router.post('/signup', async (req, res, next) => {
   const { username, password, campus, course } = req.body;
   try {
+    const registeredUser = await User.findOne({ username });
+    if (registeredUser) {
+      console.log(`User ${username} already exists`);
+      return res.status(400).json({ message: 'Username already taken' });
+    }
+
     const newUser = await User.create({
       username,
       password: hashPassword(password),
@@ -21,7 +27,8 @@ router.post('/signup', async (req, res, next) => {
       if (!error) {
         console.log('Created user and logged', newUser);
         return res.status(201).json({
-          message: 'User registered successfully '
+          message: 'User registered successfully',
+          user: newUser
         });
       } else {
         console.log(`Something went wrong while login: ${error}`);

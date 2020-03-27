@@ -6,18 +6,17 @@ const authService = axios.create({
 });
 
 export const signup = async ({ username, password, campus, course }) => {
-  console.log('registering with data', username, password, campus, course);
-  const response = await authService.post('/signup', {
+  const { data } = await authService.post('/signup', {
     username,
     password,
     campus,
     course
   });
-  console.log('respuesta del server al signup', response);
+  console.log('respuesta del server al signup', data);
+  return data.user;
 };
 
 export const login = async ({ username, password }) => {
-  console.log('login user with data', username, password);
   const { data } = await authService.post('/login', { username, password });
   console.log('respuesta del server al login', data);
   return data.user;
@@ -44,7 +43,6 @@ export const uploadPhoto = async photo => {
 };
 
 export const editProfile = async ({ username, campus, course }) => {
-  console.log('updating user with data', username, campus, course);
   const { data } = await authService.put('/edit', { username, campus, course });
   console.log('respuesta del server al edit', data);
 
