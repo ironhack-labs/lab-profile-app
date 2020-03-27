@@ -21,7 +21,10 @@ export const InputBase = styled.input`
 `;
 
 export const Error = styled.div`
+  width: 100%;
+  font-size: 0.8rem;
+  text-align: center;
   padding: 5px;
-  color: #2f2f2f;
+  color: #ee6055;
   margin: 5px;
 `;

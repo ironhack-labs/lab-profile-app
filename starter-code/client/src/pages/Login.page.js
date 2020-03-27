@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import { UserContext, doLogin } from '../../lib/auth.api';
 import { Card } from '../components/Card';
@@ -20,6 +20,14 @@ import {
 export const LoginPage = withRouter(({ history }) => {
   const { user, setUser, setLoading } = useContext(UserContext);
 
+  useEffect(() => {
+    setLoading(true);
+    if (user.username) {
+      history.push('/');
+    }
+    setLoading(false);
+  });
+
   const methods = useForm({
     mode: 'onBlur',
     defaultValue: {
@@ -31,13 +39,16 @@ export const LoginPage = withRouter(({ history }) => {
   const { register, handleSubmit, errors } = methods;
 
   const onSubmit = async data => {
-    //console.log(data);
     setLoading(true);
-    const newUser = await doLogin(data);
-    console.log('new user', newUser);
-    setUser(newUser);
+    try {
+      const newUser = await doLogin(data);
+      console.log('new user', newUser);
+      setUser(newUser);
+      history.push('/');
+      errors.username = { type: 'pattern', message: 'Try again' };
+    } catch (error) {}
+
     setLoading(false);
-    history.push('/');
   };
 
   return (
