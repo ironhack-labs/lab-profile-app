@@ -1,34 +1,24 @@
-import React from "React";
-import { useForm } from "react-hook-form";
+import React from "react";
+import { doSignup, useUserSetter } from "../../lib/auth.api";
+import { withRouter } from "react-router-dom";
+import { MyForm } from "../components/MyForm";
 
-export const SingUp = () => {
-  const { register, handledSubmit, errors } = useForm({ mode: onblur });
-  const Onsubmit = data => {
-       console.log(data);
+// withRouter is a HighOrderComponent (HOC)
+export const SignUpPage = withRouter(({ history }) => {
+  const setUser = useUserSetter();
+
+  const handleSubmit = async (username, password, campus, course) => {
+    const user = await doSignup(username, password, campus, course);
+    setUser(user);
+    // Redirige el router a la HOME
+    history.push("/");
   };
-  return(
-<>
-<h1>Sing Up</h1>
-<form Onsubmit={handledSubmit}>
-        <div>
-          <label>Username</label>
-          <Input
-            className={hasError(errors, "username")}
-            name="username"
-            ref={register({ required: true })}
-          />
-        </div>
-        <div>
-          <label>Password</label>
-          <Input
-            className={hasError(errors, "username")}
-            name="username"
-            ref={register({ required: true })}
-          />
-        </div>
 
-</form>
-<>
-
+  return (
+    <div>
+      <h2>SignUp</h2>
+      {/* <MyForm handleSubmit={handleSubmit} /> */}
+      <MyForm {...{ handleSubmit }} />
+    </div>
   );
-};
+});

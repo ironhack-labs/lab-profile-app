@@ -1,9 +1,3 @@
-// import React from "React";
-
-// export const Login = () => {
-//   return <div>hola</div>;
-// };
-
 import React from "React";
 import { useForm } from "react-hook-form";
 
@@ -12,8 +6,8 @@ const hasError = (errors, name) => {
   return "";
 };
 
-export const Login = () => {
-  const { register, handleSubmit, errors } = useForm({ mode: onblur });
+export const MyForm = ({ handleSubmit }) => {
+  const { register, handleSubmits, errors } = useForm({ mode: onblur });
 
   const onSubmit = data => {
     console.log("Data is");
@@ -23,7 +17,7 @@ export const Login = () => {
   return (
     <>
       <h1>Sing Up</h1>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmits(onSubmit)}>
         <div>
           <label>Username</label>
           <input

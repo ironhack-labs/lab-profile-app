@@ -7,7 +7,7 @@ const userSchema = new Schema(
     password: String,
     campus: String,
     course: String,
-    image: String,
+    image: String
   },
   {
     timestamps: true
