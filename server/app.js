@@ -6,6 +6,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const logger = require("morgan");
 const path = require("path");
+const cors = require("cors");
 
 mongoose
   .connect("mongodb://localhost/profile-app", { useNewUrlParser: true })
@@ -24,6 +25,8 @@ const debug = require("debug")(
 );
 
 const app = express();
+
+app.use(cors());
 
 // Middleware Setup
 app.use(logger("dev"));
