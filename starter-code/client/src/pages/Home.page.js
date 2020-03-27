@@ -1,6 +1,7 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useContext } from 'react';
+import { Link, withRouter } from 'react-router-dom';
 import { Card } from '../components/Card';
+import { UserContext } from '../../lib/auth.api';
 
 import {
   Left,
@@ -12,7 +13,16 @@ import {
   Button
 } from './utils/styles';
 
-export const HomePage = () => {
+export const HomePage = withRouter(({ history }) => {
+  const { user, setLoading } = useContext(UserContext);
+
+  useEffect(() => {
+    setLoading(true);
+    if (user) {
+      history.push('/profile');
+    }
+    setLoading(false);
+  }, []);
   return (
     <Card>
       <Left>
@@ -33,4 +43,4 @@ export const HomePage = () => {
       </Left>
     </Card>
   );
-};
+});

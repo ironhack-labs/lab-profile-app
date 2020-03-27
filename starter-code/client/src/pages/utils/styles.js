@@ -83,6 +83,23 @@ export const Button2 = styled.button`
   }
 `;
 
+export const Button3 = styled.button`
+  margin-top: 20px;
+  border-radius: 5px;
+  padding: 5px;
+  width: 100%;
+  align-self: flex-start;
+  color: #1a535c;
+  border-color: #ee6055;
+  background-color: #ee6055;
+  border-style: solid;
+  &:hover {
+    color: #ee6055;
+    border-color: #4ecdc4;
+    background-color: #1a535c;
+  }
+`;
+
 export const Title = styled.p`
   font-size: 2.2rem;
   font-weight: 700;
@@ -111,4 +128,13 @@ export const TextMinor = styled.p`
 
 export const TextContainer = styled.div`
   margin: 10px 0;
+`;
+
+export const ImageContainer = styled.div`
+  width: 80%;
+`;
+
+export const Image = styled.img`
+  width: 100%;
+  border-radius: 50%;
 `;

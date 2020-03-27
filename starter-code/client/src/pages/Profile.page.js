@@ -1,59 +1,52 @@
 import React, { useContext, useEffect } from 'react';
 import { withRouter, Link } from 'react-router-dom';
-import { UserContext, doLogin } from '../../lib/auth.api';
+import { UserContext, doEdit, doUpload, doLogout } from '../../lib/auth.api';
 import { Card } from '../components/Card';
 import { useForm, FormContext } from 'react-hook-form';
 import { Input } from '../components/Input';
 import {
   Left,
   Right,
-  TextContainer,
   Title,
-  Text,
-  LinkUpdated2,
+  Button3,
   Button2,
   Form,
   TextMinor,
-  SubTitle
+  Image,
+  ImageContainer
 } from './utils/styles';
 
-export const LoginPage = withRouter(({ history }) => {
+export const ProfilePage = withRouter(({ history }) => {
   const { user, setUser, setLoading } = useContext(UserContext);
 
   useEffect(() => {
     setLoading(true);
-    if (user) {
-      history.push('/profile');
+    if (!user.username) {
+      history.push('/');
     }
     setLoading(false);
   }, []);
 
   const methods = useForm({
-    mode: 'onBlur',
-    defaultValue: {
-      username: '',
-      password: ''
-    }
+    mode: 'onBlur'
   });
 
   const { register, handleSubmit, errors } = methods;
 
   const onSubmit = async data => {
+    //console.log(data);
     setLoading(true);
-    try {
-      const newUser = await doLogin(data);
+    const newUser = await doEdit(data);
+    if (newUser.username === data.username) {
       setUser(newUser);
-      history.push('/profile');
-      errors.username = { type: 'pattern', message: 'Try again' };
-    } catch (error) {}
-
+    }
     setLoading(false);
   };
 
   return (
     <Card>
       <Left>
-        <Title>Login</Title>
+        <Title>Profile</Title>
         <FormContext {...methods}>
           <Form onSubmit={handleSubmit(onSubmit)}>
             <Input
@@ -66,27 +59,46 @@ export const LoginPage = withRouter(({ history }) => {
                   message: 'invalid email address'
                 }
               })}
+              defaultValue={user.username}
             />
             <Input
-              name='password'
-              type='password'
-              placeholder='Password'
+              name='course'
+              placeholder='Course'
               ref={register({
                 required: 'Required *'
               })}
+              defaultValue={user.course}
             />
-            <Button2 type='submit'>Login</Button2>
+            <Input
+              name='campus'
+              placeholder='Campus'
+              ref={register({
+                required: 'Required *'
+              })}
+              defaultValue={user.campus}
+            />
+            <Button2 type='submit'>Update</Button2>
           </Form>
         </FormContext>
+        <Button3
+          onClick={async () => {
+            setUser(null);
+            history.push('/');
+            setLoading(true);
+            const logout = await doLogout();
+            setLoading(false);
+          }}
+        >
+          Logout
+        </Button3>
       </Left>
       <Right>
-        <TextContainer>
-          <SubTitle>Hello IronHacker!</SubTitle>
-          <Text>Awesome to have you here again!!!</Text>
-        </TextContainer>
+        <ImageContainer>
+          <Image src={user.profilepic} />
+        </ImageContainer>
         <TextMinor>
-          If you sign don't have an account register{' '}
-          <LinkUpdated2 to='/signup'>here</LinkUpdated2>
+          Click to Upload a profile picture! This is done with NodeJs and
+          multer, and stored on cloudinary
         </TextMinor>
       </Right>
     </Card>

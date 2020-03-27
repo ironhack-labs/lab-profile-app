@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import { UserContext, doSignup } from '../../lib/auth.api';
 import { Card } from '../components/Card';
@@ -23,6 +23,14 @@ import {
 export const SignupPage = withRouter(({ history }) => {
   const { user, setUser, setLoading } = useContext(UserContext);
 
+  useEffect(() => {
+    setLoading(true);
+    if (user) {
+      history.push('/profile');
+    }
+    setLoading(false);
+  }, []);
+
   const methods = useForm({
     mode: 'onBlur',
     defaultValue: {
@@ -39,11 +47,9 @@ export const SignupPage = withRouter(({ history }) => {
     //console.log(data);
     setLoading(true);
     const newUser = await doSignup(data);
-    console.log('new user', newUser);
     setUser(newUser);
-    console.log('user', user);
     setLoading(false);
-    history.push('/');
+    history.push('/profile');
   };
 
   return (

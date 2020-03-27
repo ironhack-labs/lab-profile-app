@@ -34,7 +34,7 @@ export const doUpload = async ({ file }) => {
 };
 
 export const doEdit = async ({ username, course, campus }) => {
-  const res = await api.post('/auth/signup', {
+  const res = await api.post('/auth/edit', {
     username,
     course,
     campus
@@ -43,7 +43,8 @@ export const doEdit = async ({ username, course, campus }) => {
 };
 
 export const doLogout = async () => {
-  const res = await api.post('/auth/logout', data);
+  console.log('Login out');
+  const res = await api.post('/auth/logout');
   return res.data;
 };
 
