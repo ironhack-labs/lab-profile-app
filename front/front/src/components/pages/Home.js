@@ -2,6 +2,9 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Button from "../buttons/Index";
 import Buttons from "../buttons/Style";
+import Signup from "./Signup";
+import Login from "./Login";
+import Index from "../buttons/Index";
 
 const Home = () => {
   return (
@@ -15,13 +18,12 @@ const Home = () => {
 
         <Router>
           <Switch>
-            {/* <Route exact path="/" component={() => <LinksBeers />} />*/}
-            <Route path="/signup" />
-            <Route path="/login" />
+            <Route exact path="/" component={() => <Button />} />
+            <Route path="/signup" component={Signup} />
+            <Route path="/login" component={Login} />
             {/*<Route path="/beer-detail/:id" component={BeerDetail} />*/}
           </Switch>
         </Router>
-        <Button />
       </Buttons>
     </>
   );

@@ -5,14 +5,17 @@ import Buttons from "./Style";
 const Button = () => {
   return (
     <>
-      <Router>
-        <Link className="button" to="/signup">
-          {/* <Lignup />*/}Signup
+      <nav>
+        <Link to="/" className="button">
+          Home
         </Link>
-        <Link className="button" to="/login">
-          {/* <Login />*/}Login
+        <Link to="/signup" className="button">
+          Signup
         </Link>
-      </Router>
+        <Link to="/login" className="button">
+          Login
+        </Link>
+      </nav>{" "}
     </>
   );
 };
