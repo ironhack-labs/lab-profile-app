@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import image from "../images/oval-bg.png";
+import image from "../../public/images/oval-bg.png";
 
 export const Container = styled.div`
   align-items: center;
