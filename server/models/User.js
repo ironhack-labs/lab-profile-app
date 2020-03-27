@@ -29,7 +29,7 @@ const userSchema = new Schema(
   }
 );
 
-const Users = mongoose.model("Users", userSchema);
+const Users = mongoose.model("User", userSchema);
 
 Users.collection.createIndexes([
   {

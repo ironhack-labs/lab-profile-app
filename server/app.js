@@ -55,20 +55,18 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(
   session({
-    secret: "keyboard cat",
+    secret: "lab-profile-app",
     resave: true,
     saveUninitialized: true,
     store: new MongoStore({ mongooseConnection: mongoose.connection })
   })
 );
+
 require("./passport")(app);
 
 app.use(express.static(path.join(__dirname, "public")));
 
 const index = require("./routes/index");
 app.use("/", index);
-
-const auth = require("./routes/auth");
-app.use("/auth", auth);
 
 module.exports = app;
