@@ -39,9 +39,15 @@ router.post('/signup', async (req, res, next) => {
     });
   } catch (error) {
     if (error.name === 'ValidationError') {
-      console.log('Validation error ', error);
+      const errors = error.errors;
+      const message = errors.campus
+        ? errors.campus.message
+        : errors.course.message;
+      const formatMessage = message.replace(' enum', '').replace(' path', '');
+
+      console.log('validation error: ', formatMessage);
       return res.status(400).json({
-        message: error.message
+        message: formatMessage
       });
     } else {
       console.log('Error occurred during signup', error);

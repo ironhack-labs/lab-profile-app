@@ -24,7 +24,7 @@ export const signup = async ({ username, password, campus, course }) => {
 export const login = async ({ username, password }) => {
   const { data } = await authService.post('/login', { username, password });
   console.log('respuesta del server al login', data);
-  return data.user;
+  return data;
 };
 
 export const logout = async () => {
