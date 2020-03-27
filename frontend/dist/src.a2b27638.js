@@ -51455,20 +51455,18 @@ var Signup = (0, _reactRouterDom.withRouter)(function (_ref) {
       required: true
     })
   })), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Form.Label, null, "Campus"), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Form.Control, {
+    as: "select",
     name: "campus",
-    type: "text",
-    placeholder: "Insert Campus",
     ref: register({
       required: true
     })
-  }), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Form.Label, null, "Course"), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Form.Control, {
+  }, /*#__PURE__*/_react.default.createElement("option", null, "Choose..."), /*#__PURE__*/_react.default.createElement("option", null, "Madrid"), /*#__PURE__*/_react.default.createElement("option", null, "Barcelona"), /*#__PURE__*/_react.default.createElement("option", null, "Miami"), /*#__PURE__*/_react.default.createElement("option", null, "Berlin"), /*#__PURE__*/_react.default.createElement("option", null, "Amsterdam"), /*#__PURE__*/_react.default.createElement("option", null, "M\xE9xico"), /*#__PURE__*/_react.default.createElement("option", null, "Paris"), /*#__PURE__*/_react.default.createElement("option", null, "Sao Paulo")), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Form.Label, null, "Course"), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Form.Control, {
+    as: "select",
     name: "course",
-    type: "text",
-    placeholder: "Insert your Course",
     ref: register({
       required: true
     })
-  }), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Button, {
+  }, /*#__PURE__*/_react.default.createElement("option", null, "WebDev"), /*#__PURE__*/_react.default.createElement("option", null, "UX/UI"), /*#__PURE__*/_react.default.createElement("option", null, "Data Analytics")), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Button, {
     variant: "primary",
     type: "submit"
   }, "Submit"));
@@ -51648,7 +51646,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "39197" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "43163" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

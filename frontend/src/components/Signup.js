@@ -36,19 +36,31 @@ export const Signup = withRouter(({ history }) => {
 
       <Form.Label>Campus</Form.Label>
       <Form.Control
+        as="select"
         name="campus"
-        type="text"
-        placeholder="Insert Campus"
         ref={register({ required: true })}
-      />
+      >
+        <option>Choose...</option>
+        <option>Madrid</option>
+        <option>Barcelona</option>
+        <option>Miami</option>
+        <option>Berlin</option>
+        <option>Amsterdam</option>
+        <option>México</option>
+        <option>Paris</option>
+        <option>Sao Paulo</option>
+      </Form.Control>
       <br />
       <Form.Label>Course</Form.Label>
       <Form.Control
+        as="select"
         name="course"
-        type="text"
-        placeholder="Insert your Course"
         ref={register({ required: true })}
-      />
+      >
+        <option>WebDev</option>
+        <option>UX/UI</option>
+        <option>Data Analytics</option>
+      </Form.Control>
       <br />
       <Button variant="primary" type="submit">
         Submit
