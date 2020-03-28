@@ -12,9 +12,10 @@ const Wrapper = styled.div`
 const Main = styled.main`
     background: url(${bg}) no-repeat;
     background-size: cover;
+    display: flex;
     width: 717px;
     height: 458px;
-    padding: 30px;
+    padding: 50px 40px;
 `;
 
 export const Layout = ({ children }) => {
