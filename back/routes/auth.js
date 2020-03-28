@@ -20,8 +20,7 @@ router.post("/signup", async (req, res, next) => {
 
     const user = await User.findOne({ username })
     if (user !== null) {
-        res.json({ message: "This username already exists" });
-        return;
+        return res.status(401).json({ message: "This username already exists" });
     }
 
     const salt = bcrypt.genSaltSync(bcryptSalt);
@@ -46,6 +45,7 @@ router.post("/signup", async (req, res, next) => {
 
 
 router.post("/login", passport.authenticate("local"), (req, res) => {
+    console.log(req.user)
     return res.status(200).json(_.pick(req.user, ["username", "campus", "course"]))
 });
 
