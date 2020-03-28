@@ -6,10 +6,8 @@ const router = express.Router();
 const { hashPassword, checkHashed } = require("../lib/hashing");
 const { isLoggedIn, isLoggedOut } = require("../lib/isLoggedMiddleware");
 
-router.post("/signup", async (req, res, next) => {
+router.post("/signup", isLoggedOut(), async (req, res, next) => {
   const { username, password, campus, course, image } = req.body;
-
-  console.log(username, password, campus, course, image);
 
   // Create the user
   const existingUser = await User.findOne({ username });
@@ -25,7 +23,16 @@ router.post("/signup", async (req, res, next) => {
       // Directly login user
       req.logIn(newUser, err => {
         res.json(
-          _.pick(req.user, ["username", "_id", "createdAt", "updatedAt"])
+          _.pick(req.user, [
+            "username",
+            "password",
+            "campus",
+            "course",
+            "image",
+            "_id",
+            "createdAt",
+            "updatedAt"
+          ])
         );
       });
     } else {
@@ -44,7 +51,16 @@ router.post(
   (req, res) => {
     // Return the logged in user
     return res.json(
-      _.pick(req.user, ["username", "_id", "createdAt", "updatedAt"])
+      _.pick(req.user, [
+        "username",
+        "password",
+        "campus",
+        "course",
+        "image",
+        "_id",
+        "createdAt",
+        "updatedAt"
+      ])
     );
   }
 );
