@@ -1,0 +1,30 @@
+/*
+* FONTS
+* -------------------------------------------------- */
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap');
+
+
+/*
+* CSS BASE
+* -------------------------------------------------- */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+	-webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    background-color: #B7DBB9;
+    font: 14px 'Roboto', sans-serif;
+}
+
+a:hover,
+a:focus,
+a:active {
+    outline: 0;
+}
