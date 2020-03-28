@@ -24,7 +24,6 @@ export const doLogin = async ({ username, password }) => {
     username,
     password
   });
-  console.log("Respuesta del server", res);
   console.log("Respuesta del server", res.data);
   return res.data;
 };

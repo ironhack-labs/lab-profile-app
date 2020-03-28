@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { withRouter } from "react-router-dom";
 import { Col2 } from "../../public/styles/Common.styles";
 import { doLogout, doEdit } from "../services/authServices";
@@ -17,27 +17,23 @@ export const ProfilePage = withRouter(({ history }) => {
     history.push("/");
   };
 
-  const methods = user
-    ? useForm({
-        mode: "onBlur",
-        defaultValues: {
-          username: user?.username,
-          campus: user?.campus,
-          course: user?.course
-        }
-      })
-    : useForm({
-        mode: "onBlur"
-      });
+  const methods = useForm({
+    mode: "onBlur",
+    defaultValues: {
+      username: user?.username,
+      campus: user?.campus,
+      course: user?.course
+    }
+  });
 
-  console.log(
-    "username:",
-    user?.username,
-    "campus:",
-    user?.campus,
-    "course:",
-    user?.course
-  );
+  useEffect(() => {
+    methods.reset({
+      username: user?.username,
+      campus: user?.campus,
+      course: user?.course
+    });
+  }, [user]);
+
   console.log(user);
   const { register, handleSubmit, errors } = methods;
 
