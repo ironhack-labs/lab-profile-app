@@ -1,5 +1,5 @@
 // dependencies
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 
 // local modules
 import { signup } from '../services/authService';
@@ -9,22 +9,32 @@ import {
   Form,
   SocialContent,
   SocialContainer,
-  Button
+  Button,
+  Error
 } from '../styles/Signup.styled';
 import { Content } from '../styles/Layout.styled';
+import { AuthContext } from '../contexts/authContext';
 
-export const Signup = () => {
+export const Signup = ({ history }) => {
+  const { setUser } = useContext(AuthContext);
   const [newUser, setNewUser] = useState({
     username: '',
     password: '',
     campus: '',
     course: ''
   });
+  const [error, setError] = useState('');
 
   const handleSubmit = async e => {
     e.preventDefault();
-    console.log('submitting!');
-    await signup(newUser);
+    const response = await signup(newUser);
+
+    if (response.username) {
+      setUser(response);
+      history.push('/profile'); //redirect to profile after signup & login
+    } else {
+      setError(response.message);
+    }
   };
 
   const handleChange = e => {
@@ -66,6 +76,8 @@ export const Signup = () => {
             onChange={handleChange}
           />
         </Form>
+
+        {error && <Error>Sorry, {error}</Error>}
       </Content>
       <SocialContent>
         <div className="header">

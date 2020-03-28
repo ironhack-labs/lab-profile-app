@@ -11,7 +11,8 @@ import {
   Form,
   SocialContent,
   SocialContainer,
-  Button
+  Button,
+  Error
 } from '../styles/Signup.styled';
 import { Content } from '../styles/Layout.styled';
 
@@ -20,19 +21,20 @@ export const Login = ({ history }) => {
     username: '',
     password: ''
   });
-  const { user, setUser } = useContext(AuthContext);
+  const [error, setError] = useState('');
+  const { setUser } = useContext(AuthContext);
 
   const handleSubmit = async e => {
     e.preventDefault();
-    console.log('submitting form!');
-    const loggedUser = await login(currentUser);
+    const response = await login(currentUser);
+    if (response.user) {
+      setUser(response.user);
 
-    console.log('user logged', user);
-    setUser(loggedUser);
-    const formatted = loggedUser.username.replace(' ', '').toLowerCase();
-    console.log(formatted);
-
-    history.push(`/${formatted}`);
+      //redirect to profile after login in
+      history.push('/profile');
+    } else {
+      setError(response.message);
+    }
   };
 
   const handleChange = e => {
@@ -64,6 +66,7 @@ export const Login = ({ history }) => {
           If you don't have an account yet, you can create one{' '}
           <Link to="/signup">here</Link>
         </p>
+        {error && <Error>{error}</Error>}
       </Content>
       <SocialContent>
         <div className="header">

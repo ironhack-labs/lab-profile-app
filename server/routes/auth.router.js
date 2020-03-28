@@ -3,26 +3,51 @@ const router = express.Router();
 const passport = require('passport');
 const { hashPassword } = require('../lib/hashing');
 const User = require('../models/User');
+const uploader = require('../config/cloudinary/cloudinary.config');
 
 // POST route - create new user
 router.post('/signup', async (req, res, next) => {
   const { username, password, campus, course } = req.body;
   try {
+    const registeredUser = await User.findOne({ username });
+    if (registeredUser) {
+      console.log(`User ${username} already exists`);
+      return res.status(400).json({ message: 'Username already taken' });
+    }
+
     const newUser = await User.create({
       username,
       password: hashPassword(password),
       campus,
       course
     });
-    console.log('Created user ', newUser);
-    return res.status(201).json({
-      message: 'User registered successfully '
+
+    // login after signup
+    req.login(newUser, error => {
+      if (!error) {
+        console.log('Created user and logged', newUser);
+        return res.status(201).json({
+          message: 'User registered successfully',
+          user: newUser
+        });
+      } else {
+        console.log(`Something went wrong while login: ${error}`);
+        return res.status(500).json({
+          message: 'Login after signup failed'
+        });
+      }
     });
   } catch (error) {
     if (error.name === 'ValidationError') {
-      console.log('Validation error ', error);
+      const errors = error.errors;
+      const message = errors.campus
+        ? errors.campus.message
+        : errors.course.message;
+      const formatMessage = message.replace(' enum', '').replace(' path', '');
+
+      console.log('validation error: ', formatMessage);
       return res.status(400).json({
-        message: error.message
+        message: formatMessage
       });
     } else {
       console.log('Error occurred during signup', error);
@@ -77,20 +102,26 @@ router.get('/loggedin', (req, res, next) => {
 });
 
 // PUT route -  upload = create user image
-router.put('/upload', async (req, res, next) => {
-  const { file } = req.body;
+router.put('/upload', uploader.single('image'), async (req, res, next) => {
+  const { file } = req;
+  console.log('Uploading', file);
+
+  if (!file) {
+    return next(new Error('No file uploaded!'));
+  }
+
   try {
     const updatedUser = await User.findByIdAndUpdate(
       req.user._id,
       {
-        image: file
+        image: file.secure_url
       },
       { new: true }
     );
     console.log('User image uploaded ', updatedUser);
     return res.status(200).json({
       message: 'File successfully uploaded',
-      user: updatedUser
+      image: file.secure_url
     });
   } catch (error) {
     console.log('Error uploading file', error);

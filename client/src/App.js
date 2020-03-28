@@ -7,8 +7,8 @@ import { Home as HomePage } from './components/Home';
 import { Layout } from './Layout/Layout';
 import { Signup as SignupPage } from './components/Signup';
 import { Login as LoginPage } from './components/Login';
-import { Profile as ProfilePage } from './components/Profile';
 import { AuthContextProvider } from './contexts/authContext';
+import { PrivatePage } from './helpers/withProtectedRoute';
 
 export const App = () => {
   return (
@@ -19,7 +19,7 @@ export const App = () => {
             <Route path="/" exact component={HomePage} />
             <Route path="/signup" component={SignupPage} />
             <Route path="/login" component={LoginPage} />
-            <Route path="/:id" component={ProfilePage} />
+            <Route path="/profile" component={PrivatePage} />
           </Switch>
         </AuthContextProvider>
       </Layout>
