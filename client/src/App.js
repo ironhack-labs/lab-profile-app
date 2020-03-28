@@ -19,7 +19,7 @@ export const App = () => {
             <Route path="/" exact component={HomePage} />
             <Route path="/signup" component={SignupPage} />
             <Route path="/login" component={LoginPage} />
-            <Route path="/:id" component={PrivatePage} />
+            <Route path="/profile" component={PrivatePage} />
           </Switch>
         </AuthContextProvider>
       </Layout>

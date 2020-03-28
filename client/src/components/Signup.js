@@ -29,11 +29,9 @@ export const Signup = ({ history }) => {
     e.preventDefault();
     const response = await signup(newUser);
 
-    console.log('el usuario!!', response);
     if (response.username) {
       setUser(response);
-      const formatted = response.username.replace(' ', '').toLowerCase();
-      history.push(`/${formatted}`); //redirect to profile after signup & login
+      history.push('/profile'); //redirect to profile after signup & login
     } else {
       setError(response.message);
     }

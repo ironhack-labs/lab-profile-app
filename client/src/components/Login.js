@@ -27,16 +27,12 @@ export const Login = ({ history }) => {
   const handleSubmit = async e => {
     e.preventDefault();
     const response = await login(currentUser);
-    console.log('lol', response);
     if (response.user) {
-      console.log('que hay usuario', response);
       setUser(response.user);
 
       //redirect to profile after login in
-      const formatted = response.user.username.replace(' ', '').toLowerCase();
-      history.push(`/${formatted}`);
+      history.push('/profile');
     } else {
-      console.log('la respuesta!!', response.message);
       setError(response.message);
     }
   };

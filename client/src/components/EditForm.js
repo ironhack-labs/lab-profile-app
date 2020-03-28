@@ -14,7 +14,6 @@ export const EditForm = ({ history, setEditStatus }) => {
   const [currentUser, setCurrentUser] = useState(user);
 
   const handleSubmit = async e => {
-    console.log('submittin edit form');
     e.preventDefault();
 
     const editedUser = await editProfile(currentUser);

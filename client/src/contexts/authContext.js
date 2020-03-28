@@ -7,15 +7,11 @@ export const AuthContext = createContext();
 export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState();
   const [isLoading, setLoading] = useState(true);
-  console.log('usuario actual', user);
 
   useEffect(() => {
     (async () => {
-      console.log('useEffect del contextProvider');
-
       try {
         const { user } = await isLoggedIn();
-        console.log('is logged', user);
         setUser(user);
       } catch (error) {
         setUser(null);
