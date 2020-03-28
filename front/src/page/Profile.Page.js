@@ -5,6 +5,7 @@ import { doLogout, doEdit } from "../services/authServices";
 import { ApiContext } from "../context/Context";
 import { useForm, FormContext } from "react-hook-form";
 import { InputBox } from "../components/Input/index";
+import { SelectBox } from "../components/Select/index";
 import imgProfile from "../../public/images/user-placeholder.png";
 
 export const ProfilePage = withRouter(({ history }) => {
@@ -62,29 +63,39 @@ export const ProfilePage = withRouter(({ history }) => {
               }
             })}
           />
-          <div className="box-input">
-            <label>Ciudad del Campus</label>
-            <select name="campus" ref={register({ required: true })}>
-              <option value="Madrid">Madrid</option>
-              <option value="Barcelona">Barcelona</option>
-              <option value="Miami">Miami</option>
-              <option value="Paris">Paris</option>
-              <option value="Berlin">Berlin</option>
-              <option value="Amsterdam">Amsterdam</option>
-              <option value="México">México</option>
-              <option value="Sao Paulo">Sao Paulo</option>
-              <option value="Lisbon">Lisbon</option>
-            </select>
-          </div>
+          <SelectBox
+            label="Ciudad del Campus"
+            name="campus"
+            value={[
+              "Madrid",
+              "Barcelona",
+              "Miami",
+              "Paris",
+              "Berlin",
+              "Amsterdam",
+              "México",
+              "Sao Paulo",
+              "Lisbon"
+            ]}
+            ref={register({
+              required: {
+                value: true,
+                message: "Este campo es requerido"
+              }
+            })}
+          />
 
-          <div className="box-input">
-            <label>Curso</label>
-            <select name="course" ref={register({ required: true })}>
-              <option value="WebDev">WebDev</option>
-              <option value="UX/UI">UX/UI</option>
-              <option value="Data Analytics">Data Analytics</option>
-            </select>
-          </div>
+          <SelectBox
+            label="Curso"
+            name="course"
+            value={["WebDev", "UX/UI", "Data Analytics"]}
+            ref={register({
+              required: {
+                value: true,
+                message: "Este campo es requerido"
+              }
+            })}
+          />
           <button type="submit" className="button">
             Editar Profile
           </button>

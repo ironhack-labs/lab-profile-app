@@ -102,16 +102,6 @@ export const Col2 = styled.form`
     .box-input {
       position: relative;
       width: 100%;
-      label {
-        display: block;
-        margin-bottom: 7px;
-        width: 100%;
-      }
-      select {
-        display: block;
-        margin-bottom: 30px;
-        width: 100%;
-      }
     }
   }
 `;
