@@ -36,8 +36,8 @@ export const doLogOut = async (user) => {
   return res.data;
 }
 
-export const isLoggedIn = async (user) => {
-  const res = await api.post("/auth/loggedin", user);
+export const isLoggedIn = async () => {
+  const res = await api.get("/auth/loggedin");
   console.log("check if user is logged in");
   return res.data;
 }

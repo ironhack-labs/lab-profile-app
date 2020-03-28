@@ -13,7 +13,7 @@ const userSchema = new Schema({
 
 const defaultPicture =
     "https://ugc.kn3.net/i/760x/http://hotbeans.files.wordpress.com/2008/04/mustache-_0006_ned-flanders.jpg";
-schema.virtual("profilepic").get(function () {
+userSchema.virtual("profilepic").get(function () {
     // Try to get as local path
     let pic = _.get(this, "picture.path");
     if (!pic) {

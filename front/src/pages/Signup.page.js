@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { doSignUp } from "../lib/auth.api";
 import { Typography, Form, Button } from 'antd';
 import { Field } from "../components/form/Field";
-import { SelectField } from "../components/SelectField";
+import { SelectField } from "../components/form/SelectField";
 
 import { layout, tailLayout } from "../styles/Form.styles"
 
@@ -43,7 +43,7 @@ export const SignupPage = () => {
       <SelectField type="course" options={courses} {...{ handleInputChange }} />
 
 
-      <Form.Item {...tailLayout}> <Button type="primary" htmlType="submit">Submit</Button> </Form.Item>
+      <Form.Item {...tailLayout}> <Button htmlType="submit">Submit</Button> </Form.Item>
     </Form>
 
   </>)

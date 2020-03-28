@@ -57,6 +57,8 @@ app.use(
   })
 );
 require("./passport")(app);
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+
 
 const index = require('./routes/index');
 app.use('/', index);
