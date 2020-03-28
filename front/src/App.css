@@ -1,0 +1,15 @@
+.button {
+  background-color: #c1dfc4;
+  border: 0px;
+  color: white;
+  width: 24vw;
+  margin: 2vh 0;
+}
+
+.button:hover {
+  background-color: #deecdd;
+  color: white;
+}
+.ant-form {
+  height: 40vh;
+}
