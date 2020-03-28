@@ -40,7 +40,7 @@ const ProfilePage = withRouter(({ history }) => {
       <p>Username</p>
       <p>Course</p>
       <p>Username</p>
-      <p><a href='' onClick={logout()}>Log out</a></p>
+      <p><a href=''>Log out</a></p>
 
       <Form onSubmit={handleSubmit} >
             <div style={{textAlign: 'center'}}>
