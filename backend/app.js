@@ -6,6 +6,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const logger = require('morgan');
 const path = require('path');
+const cors = require('cors');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 
@@ -25,6 +26,19 @@ const app_name = require('./package.json').name;
 const debug = require('debug')(`${app_name}:${path.basename(__filename).split('.')[0]}`);
 
 const app = express();
+
+// Cross Domain CORS whitlist
+const whitelist = ["http://localhost:3000"];
+const corsOptions = {
+    origin: function (origin, callback) {
+        if (whitelist.indexOf(origin) !== -1) {
+            callback(null, true);
+        } else {
+            callback(new Error("Not allowed by CORS"));
+        }
+    },
+    credentials: true
+};
 
 // Middleware Setup
 app.use(logger('dev'));
