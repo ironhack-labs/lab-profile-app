@@ -1,0 +1,19 @@
+{
+  "name": "front",
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "start": "parcel index.html"
+  },
+  "dependencies": {
+    "antd": "^4.0.4",
+    "axios": "^0.19.2",
+    "front": "^0.0.1",
+    "parcel-bundler": "^1.12.4",
+    "react": ">= 16.8.0",
+    "react-dom": ">= 16.8.0",
+    "react-is": ">= 16.8.0",
+    "react-router-dom": "^5.1.2",
+    "styled-components": "^5.0.1"
+  }
+}
