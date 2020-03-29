@@ -43,7 +43,7 @@ router.post('/login', passport.authenticate('local'), (req, res) => {
 });
 
 /* LOGOUT */
-router.post('/logout', (req, res, next) => {
+router.post('/logout', isLoggedIn(), (req, res, next) => {
     if (req.user) {
         req.logout();
         return res.json({ status: 'You have been succesfully logged out' });
@@ -65,7 +65,7 @@ router.post('/edit', isLoggedIn(), upload.single('avatar'), async (req, res, nex
 })
 
 /* WHO AM I */
-router.get('/loggedin', async (req, res) => {
+router.get('/loggedin', isLoggedIn(), async (req, res) => {
     if (req.user)
         return res.json(req.user)
     else
