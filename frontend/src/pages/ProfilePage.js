@@ -1,5 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
+import { withRouter } from 'react-router-dom';
+
+// Service
+import { logout } from '../service';
 
 const Title = styled.h1`
     font-size: 29px;
@@ -30,7 +34,12 @@ const Text = styled.p`
     color: #56585B;
 `;
 
-export const ProfilePage = () => {
+export const ProfilePage = withRouter(({ history }) => {
+
+    const handleLogOut = () => {
+        logout().then(() => history.push('/'))
+    }
+
     return (
         <>
             <div className="col-left">
@@ -44,16 +53,14 @@ export const ProfilePage = () => {
                     <dd>Web Development</dd>
                 </dl>
                 <div className="text-center">
-                    <button className="btn-logout">Logout</button>
+                    <button onClick={handleLogOut} className="btn-logout">Logout</button>
                 </div>
             </div>
             <div className="col-right text-center">
-                <Title>IronProfile</Title>
-                <Text>Awesome to have at IronProfile again!</Text>
-
+                <ImgWrapper></ImgWrapper>
                 <button className="btn btn--secondary">Edit Photo</button>
                 <Small>The user is able to upload a new profile photo, using NodeJS and Multer uploader.</Small>
             </div>
         </>
     )
-}
+});

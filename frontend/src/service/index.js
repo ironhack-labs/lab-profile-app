@@ -1,17 +1,16 @@
 import axios from 'axios';
 
 const service = axios.create({
-    baseURL: 'http://localhost:3008/auth'
+    baseURL: 'http://localhost:3008/auth',
+    withCredentials: true
 });
 
 export const signup = async (formData) => {
-    const res = await service.post('/signup', formData);
-    return res.data;
+    return service.post('/signup', formData);
 }
 
 export const login = async (formData) => {
-    const res = await service.post('/login', formData);
-    return res.data;
+    return service.post('/login', formData);
 }
 
 export const upload = async (formData) => {
@@ -25,8 +24,7 @@ export const edit = async (formData) => {
 }
 
 export const logout = async () => {
-    const res = await service.post('/logout');
-    return res.data;
+    return service.post('/logout');
 }
 
 export const whoami = async () => {

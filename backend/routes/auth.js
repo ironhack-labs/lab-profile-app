@@ -40,12 +40,13 @@ router.post('/login', passport.authenticate('local'), (req, res) => {
 });
 
 /* LOGOUT */
-router.post('/logout', (req, res) => {
+router.post('/logout', (req, res, next) => {
     if (req.user) {
         req.logout();
         return res.json({ status: 'You have been succesfully logged out' });
     } else {
         res.status(401).json({ status: 'You are not logged in.' })
+        return next();
     }
 })
 
