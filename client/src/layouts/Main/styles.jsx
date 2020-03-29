@@ -16,3 +16,8 @@ export const BackgroundCard = styled.div`
   width: 717px;
   height: 458px;
 `;
+
+export const Content = styled.div`
+  display: flex;
+  padding: 3rem;
+`;
