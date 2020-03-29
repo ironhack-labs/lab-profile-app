@@ -19,7 +19,7 @@ html {
 }
 
 body {
-    background-color: #B7DBB9;
+    background-image: linear-gradient(to bottom right, #C1DFC4, #DEECDD);
     font: 14px 'Roboto', sans-serif;
 }
 
@@ -104,6 +104,8 @@ dd {
 }
 
 .control {
+    width: 100%;
+    max-width: 300px;
     margin-bottom: 15px;
 }
 
@@ -118,7 +120,12 @@ dd {
     background-color: #F4F4F4;
     border: none;
     width: 100%;
-    max-width: 220px;
     height: 35px;
+    font-size: 13px;
     padding: 8px;
+    outline: none!important;
+}
+
+.input-field--error {
+    border: 1px solid #CB1331;
 }

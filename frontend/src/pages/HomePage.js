@@ -24,8 +24,8 @@ export const HomePage = () => {
             <Title>IronProfile</Title>
             <Text>Today we will create an app with authoritaton, adding some cool styles!</Text>
             <Center>
-                <Link className="btn btn--primary" to="/">Sign up</Link>
-                <Link className="btn btn--primary" to="/">Log in</Link>
+                <Link className="btn btn--primary" to="/signup">Sign up</Link>
+                <Link className="btn btn--primary" to="/login">Log in</Link>
             </Center>
         </div>
     )

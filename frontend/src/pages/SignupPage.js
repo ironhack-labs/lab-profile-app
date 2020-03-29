@@ -1,6 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
+import { withRouter } from 'react-router-dom';
+
+// Service
+import { signup } from '../service';
 
 const Title = styled.h1`
     font-size: 29px;
@@ -25,7 +29,7 @@ const Small2 = styled.div`
     margin-left: 30px;
 `;
 
-const Form = styled.div`
+const Form = styled.form`
     width: 100%;
     display: flex;
 `;
@@ -36,27 +40,78 @@ const Text = styled.p`
     margin-top: 0;
 `;
 
-export const SignupPage = () => {
+const Hint = styled.span`
+    font-size: 10px;
+    color: #CB1331;
+    margin-top: 4px;
+    float: right;
+`;
+
+const Errors = styled.div`
+    font-size: 12px;
+    color: #CB1331;
+`;
+
+export const SignupPage = withRouter(({ history }) => {
+
+    const { handleSubmit, register, errors } = useForm();
+    const [formSubmitError, setFormSubmitError] = useState('');
+
+    const onFormSubmit = (data) => {
+        signup(data)
+            .then(() => history.push("/"))
+            .catch(e => setFormSubmitError(e.response.data.status))
+    }
+
     return (
-        <Form>
+        <Form onSubmit={handleSubmit(onFormSubmit)}>
             <div className="col-left">
                 <Title>Sign up</Title>
                 <div className="control">
-                    <label className="label" htmlFor="username">Username</label>
-                    <input className="input-field" name="username" id="username" type="text" />
+                    <label className="label" htmlFor="username">
+                        <span>Username</span>
+                        <Hint>{errors?.username && 'Field is required'}</Hint>
+                    </label>
+                    <input className={`input-field ${errors.username ? 'input-field--error' : ''}`} name="username" id="username" type="text" ref={register({ required: true })} />
                 </div>
                 <div className="control">
-                    <label className="label" htmlFor="password">Password</label>
-                    <input className="input-field" name="password" id="password" type="password" />
+                    <label className="label" htmlFor="password">
+                        <span>Password</span>
+                        <Hint>{errors?.password && 'Field is required'}</Hint>
+                    </label>
+                    <input className={`input-field ${errors.password ? 'input-field--error' : ''}`} name="password" id="password" type="password" ref={register({ required: true })} />
                 </div>
                 <div className="control">
-                    <label className="label" htmlFor="campus">Campus</label>
-                    <input className="input-field" name="campus" id="campus" type="text" />
+                    <label className="label" htmlFor="campus">
+                        <span>Campus</span>
+                        <Hint>{errors?.campus && 'Field is required'}</Hint>
+                    </label>
+                    <select className={`input-field ${errors.campus ? 'input-field--error' : ''}`} name="campus" id="campus" ref={register({ required: true })}>
+                        <option value="">Select...</option>
+                        <option value="Madrid">Madrid</option>
+                        <option value="Barcelona">Barcelona</option>
+                        <option value="Miami">Miami</option>
+                        <option value="Paris">Paris</option>
+                        <option value="Berlin">Berlin</option>
+                        <option value="Amsterdam">Amsterdam</option>
+                        <option value="México">México</option>
+                        <option value="Sao Paulo">Sao Paulo</option>
+                        <option value="Lisbon">Lisbon</option>
+                    </select>
                 </div>
                 <div className="control">
-                    <label className="label" htmlFor="course">Course</label>
-                    <input className="input-field" name="course" id="course" type="text" />
+                    <label className="label" htmlFor="course">
+                        <span>Course</span>
+                        <Hint>{errors?.course && 'Field is required'}</Hint>
+                    </label>
+                    <select className={`input-field ${errors.course ? 'input-field--error' : ''}`} name="course" id="course" ref={register({ required: true })}>
+                        <option value="">Select...</option>
+                        <option value='WebDev'>WebDev</option>
+                        <option value='UX/ UI'>UX/ UI</option>
+                        <option value='Data Analytics'>Data Analytics</option>
+                    </select>
                 </div>
+                {formSubmitError && <Errors>{formSubmitError}</Errors>}
             </div>
             <div className="col-right">
                 <Title2>Hello!!</Title2>
@@ -68,4 +123,4 @@ export const SignupPage = () => {
             </div>
         </Form>
     )
-}
+})
