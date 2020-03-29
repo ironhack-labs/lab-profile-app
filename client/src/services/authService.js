@@ -3,29 +3,21 @@ import axios from "axios";
 const authApi = axios.create({ baseURL: "http://localhost:3000/" });
 
 export const signup = async ({ username, password, campus, course }) => {
-  try {
-    const response = await authApi.post("auth/signup", {
-      username,
-      password,
-      campus,
-      course
-    });
-    return response.data;
-  } catch (error) {
-    console.log(error);
-  }
+  const response = await authApi.post("auth/signup", {
+    username,
+    password,
+    campus,
+    course
+  });
+  return response.data;
 };
 
 export const login = async ({ username, password }) => {
-  try {
-    const response = await authApi.post("auth/login", {
-      username,
-      password
-    });
-    return response.data;
-  } catch (error) {
-    console.log("Wrong user");
-  }
+  const response = await authApi.post("auth/login", {
+    username,
+    password
+  });
+  return response.data;
 };
 
 export const upload = async file => {

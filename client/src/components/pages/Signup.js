@@ -17,10 +17,12 @@ const Signup = () => {
   });
 
   const onSubmit = data =>
-    signup(data).then(res => {
-      if (res.success) history.push("/");
-      console.log(res);
-    });
+    signup(data)
+      .then(res => {
+        if (res.success) history.push("/");
+        console.log(res);
+      })
+      .catch(error => console.log(error));
 
   return (
     <AuthForm>

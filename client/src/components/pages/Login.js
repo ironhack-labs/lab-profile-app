@@ -18,6 +18,7 @@ const Login = () => {
     login(data)
       .then(res => {
         if (res?.username) history.push("/");
+        console.log(res);
       })
       .catch(error => console.log(error));
   };
