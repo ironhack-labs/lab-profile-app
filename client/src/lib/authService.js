@@ -18,47 +18,55 @@ export const useUserIsLoading = () => {
   return userState.loading;
 };
 
+export const useUserLogout = () => {
+  const userState = useContext(UserContext);
+  return async () => {
+    userState.setUser(null);
+    return logout();
+  };
+};
+
 const authApi = axios.create({
   baseURL: "http://localhost:3000/",
   withCredentials: true
 });
 
 export const signup = async ({ username, password, campus, course }) => {
-  const response = await authApi.post("auth/signup", {
+  const res = await authApi.post("auth/signup", {
     username,
     password,
     campus,
     course
   });
-  return response.data;
+  return res.data;
 };
 
 export const login = async ({ username, password }) => {
-  const response = await authApi.post("auth/login", {
+  const res = await authApi.post("auth/login", {
     username,
     password
   });
-  return response.data;
+  return res.data;
 };
 
 // export const upload = async file => {
-//   const response = await authApi.post("auth/upload", file);
-//   console.log(response);
+//   const res = await authApi.post("auth/upload", file);
+//   console.log(res);
 // };
 
 // export const edit = async ({ username, campus, course }) => {
-//   const response = await authApi.post("auth/edit", {
+//   const res = await authApi.post("auth/edit", {
 //     username,
 //     campus,
 //     course
 //   });
-//   console.log(response);
+//   console.log(res);
 // };
 
-// export const logout = async () => {
-//   const response = await authApi.post("auth/logout");
-//   console.log(response);
-// };
+export const logout = async () => {
+  const res = await authApi.post("auth/logout");
+  return res.data;
+};
 
 export const loggedin = async () => {
   const res = await authApi.get("auth/loggedin");

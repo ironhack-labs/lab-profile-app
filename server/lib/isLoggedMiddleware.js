@@ -2,7 +2,7 @@ const isLoggedIn = () => (req, res, next) => {
   if (req.user) {
     return next();
   } else {
-    return res.json({ status: "You have to be logged in" });
+    return res.status(401).json({ status: "You have to be logged in" });
   }
 };
 
@@ -10,7 +10,7 @@ const isLoggedOut = () => (req, res, next) => {
   if (!req.user) {
     return next();
   } else {
-    return res.json({ status: "You have to be logged out" });
+    return res.status(401).json({ status: "You have to be logged out" });
   }
 };
 

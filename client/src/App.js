@@ -7,16 +7,14 @@ import Home from "./components/pages/Home";
 import Signup from "./components/pages/Signup";
 import Login from "./components/pages/Login";
 import { withAuthentication } from "./lib/withAuthentication";
-import { useUser } from "./lib/authService";
+import Header from "./components/Header";
 
 const App = withAuthentication(() => {
-  const user = useUser();
-
   return (
     <div className="App">
       <ThemeProvider theme={theme}>
+        <Header />
         <Section>
-          {user && <h1>Welcome {user.username}</h1>}
           <Switch>
             <Route exact path="/">
               <Home />

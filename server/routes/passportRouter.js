@@ -4,7 +4,7 @@ const User = require("../models/user");
 const passport = require("passport");
 const { hashPassword } = require("../lib/hash");
 const _ = require("lodash");
-const { isLoggedOut } = require("./../lib/isLoggedMiddleware");
+const { isLoggedOut, isLoggedIn } = require("./../lib/isLoggedMiddleware");
 
 router.post(
   "/login",
@@ -67,9 +67,10 @@ router.post("/signup", isLoggedOut(), async (req, res, next) => {
 //   res.json(`User updated ${username} ${campus} ${course}`);
 // });
 
-// router.post("/logout", (req, res, next) => {
-//   res.json(`Logged out`);
-// });
+router.post("/logout", isLoggedIn(), (req, res, next) => {
+  req.logout();
+  return res.json({ status: "Logged out" });
+});
 
 router.get("/loggedin", (req, res, next) => {
   if (req.isAuthenticated())
