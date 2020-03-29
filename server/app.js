@@ -9,10 +9,12 @@ const path = require("path");
 const cors = require("cors");
 const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
-const passport = require("passport");
 
 mongoose
-  .connect("mongodb://localhost/profile-app", { useNewUrlParser: true })
+  .connect(process.env.DBURL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  })
   .then(x => {
     console.log(
       `Connected to Mongo! Database name: "${x.connections[0].name}"`
@@ -29,18 +31,32 @@ const debug = require("debug")(
 
 const app = express();
 
-app.use(cors());
+// Cross Domain CORS whitelist
+const whitelist = ["http://localhost:1234"];
+const corsOptions = {
+  origin: function(origin, callback) {
+    console.log(origin);
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true
+};
 
 // Middleware Setup
+app.use(cors(corsOptions));
 app.use(logger("dev"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-
-// Session
 app.use(
   session({
-    secret: "my secret",
+    cookie: {
+      maxAge: 1000 * 60 * 60 * 24 * 365
+    },
+    secret: "keyboard cat",
     resave: true,
     saveUninitialized: true,
     store: new MongoStore({
@@ -49,10 +65,7 @@ app.use(
   })
 );
 
-// Passport
-require("./passport");
-app.use(passport.initialize());
-app.use(passport.session());
+require("./passport")(app);
 
 app.use(express.static(path.join(__dirname, "public")));
 

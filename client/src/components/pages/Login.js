@@ -1,11 +1,12 @@
 import React from "react";
 import { AuthForm } from "./../ui/styled";
 import { useForm } from "react-hook-form";
-import { login } from "./../../services/authService";
+import { login, useUserSetter } from "./../../lib/authService";
 import { useHistory } from "react-router-dom";
 
 const Login = () => {
   let history = useHistory();
+  const setUser = useUserSetter();
   const { register, handleSubmit, errors } = useForm({
     mode: "onBlur",
     defaultValues: {
@@ -16,8 +17,10 @@ const Login = () => {
 
   const onSubmit = data => {
     login(data)
-      .then(res => {
-        if (res?.username) history.push("/");
+      .then(user => {
+        setUser(user);
+        history.push("/");
+        console.log(user);
       })
       .catch(error => console.log(error));
   };
