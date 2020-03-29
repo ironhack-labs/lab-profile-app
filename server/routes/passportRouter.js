@@ -4,15 +4,21 @@ const User = require("../models/user");
 const passport = require("passport");
 const { hashPassword } = require("../lib/hash");
 const _ = require("lodash");
+const { isLoggedOut, isLoggedIn } = require("./../lib/isLoggedMiddleware");
 
-router.post("/login", passport.authenticate("local"), (req, res) => {
-  // Return the logged in user
-  return res.json(
-    _.pick(req.user, ["username", "_id", "createdAt", "updatedAt"])
-  );
-});
+router.post(
+  "/login",
+  isLoggedOut(),
+  passport.authenticate("local"),
+  (req, res) => {
+    // Return the logged in user
+    return res.json(
+      _.pick(req.user, ["username", "_id", "createdAt", "updatedAt"])
+    );
+  }
+);
 
-router.post("/signup", async (req, res, next) => {
+router.post("/signup", isLoggedOut(), async (req, res, next) => {
   const { username, password, campus, course } = req.body;
   if (!username || !password) {
     return res.json({ error: "Invalid data" });
@@ -34,37 +40,44 @@ router.post("/signup", async (req, res, next) => {
         if (!err) {
           return res
             .status(201)
-            .json({ success: `User ${newUser.username} created` });
+            .json(
+              _.pick(req.user, ["username", "_id", "createdAt", "updatedAt"])
+            );
         } else {
           return res
-            .status(201)
+            .status(401)
             .json({ error: `Error trying to login with the new user` });
         }
       });
     } else {
-      return res.json({ error: "The user already exists" });
+      return res.status(401).json({ error: "The user already exists" });
     }
   } catch (e) {
     next(e);
   }
 });
 
-router.post("/upload", (req, res, next) => {
-  const { file } = req.body;
-  res.json(`User updated ${file}`);
-});
+// router.post("/upload", (req, res, next) => {
+//   const { file } = req.body;
+//   res.json(`User updated ${file}`);
+// });
 
-router.post("/edit", (req, res, next) => {
-  const { username, campus, course } = req.body;
-  res.json(`User updated ${username} ${campus} ${course}`);
-});
+// router.post("/edit", (req, res, next) => {
+//   const { username, campus, course } = req.body;
+//   res.json(`User updated ${username} ${campus} ${course}`);
+// });
 
-router.post("/logout", (req, res, next) => {
-  res.json(`Logged out`);
+router.post("/logout", isLoggedIn(), (req, res, next) => {
+  req.logout();
+  return res.json({ status: "Logged out" });
 });
 
 router.get("/loggedin", (req, res, next) => {
-  res.json(`User logged`);
+  if (req.isAuthenticated())
+    return res.json(
+      _.pick(req.user, ["username", "_id", "createdAt", "updatedAt"])
+    );
+  else return res.status(401).json({ status: "No user session present" });
 });
 
 module.exports = router;

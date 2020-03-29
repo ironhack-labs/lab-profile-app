@@ -6,11 +6,14 @@ import { Switch, Route } from "react-router-dom";
 import Home from "./components/pages/Home";
 import Signup from "./components/pages/Signup";
 import Login from "./components/pages/Login";
+import { withAuthentication } from "./lib/withAuthentication";
+import Header from "./components/Header";
 
-function App() {
+const App = withAuthentication(() => {
   return (
     <div className="App">
       <ThemeProvider theme={theme}>
+        <Header />
         <Section>
           <Switch>
             <Route exact path="/">
@@ -27,6 +30,6 @@ function App() {
       </ThemeProvider>
     </div>
   );
-}
+});
 
 export default App;
