@@ -129,3 +129,9 @@ dd {
 .input-field--error {
     border: 1px solid #CB1331;
 }
+
+.hidden {
+    position: absolute;
+    opacity: 0;
+    z-index: -10;
+}

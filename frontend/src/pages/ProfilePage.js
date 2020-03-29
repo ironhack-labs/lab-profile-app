@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import { withRouter } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
+
+// HOC
+import { withProtected } from '../components/withProtectedHOC';
+
+// Context
+import { useUser, useUserSetter } from "../context/user";
 
 // Service
-import { logout } from '../service';
+import { edit, logout } from '../service';
 
 const Title = styled.h1`
     font-size: 29px;
@@ -29,38 +35,59 @@ const Small = styled.div`
     margin-top: 60px;
 `;
 
-const Text = styled.p`
-    font-size: 20px;
-    color: #56585B;
-`;
+export const ProfilePage = withProtected(() => {
 
-export const ProfilePage = withRouter(({ history }) => {
+    const [avatar, setAvatar] = useState({});
+
+    const user = useUser();
+    const setUser = useUserSetter();
 
     const handleLogOut = () => {
-        logout().then(() => history.push('/'))
+        logout();
+        setUser('');
+    }
+
+    const onFileChangeHandler = e => {
+        setAvatar(e.target.files[0]);
+    }
+
+    const formSubmitHandler = e => {
+        e.preventDefault();
+        const formData = new FormData();
+        formData.append('avatar', avatar);
+        edit(formData);
     }
 
     return (
-        <>
-            <div className="col-left">
-                <Title>Profile</Title>
-                <dl>
-                    <dt>Username</dt>
-                    <dd>Harry Potter</dd>
-                    <dt>Campus</dt>
-                    <dd>Sao Paulo</dd>
-                    <dt>Course</dt>
-                    <dd>Web Development</dd>
-                </dl>
-                <div className="text-center">
-                    <button onClick={handleLogOut} className="btn-logout">Logout</button>
+        user ?
+            <>
+                <div className="col-left">
+                    <Title>Profile</Title>
+                    <dl>
+                        <dt>Username</dt>
+                        <dd>{user.username}</dd>
+                        <dt>Campus</dt>
+                        <dd>{user.campus}</dd>
+                        <dt>Course</dt>
+                        <dd>{user.course}</dd>
+                    </dl>
+                    <div className="text-center">
+                        <button onClick={handleLogOut} className="btn-logout">Logout</button>
+                    </div>
                 </div>
-            </div>
-            <div className="col-right text-center">
-                <ImgWrapper></ImgWrapper>
-                <button className="btn btn--secondary">Edit Photo</button>
-                <Small>The user is able to upload a new profile photo, using NodeJS and Multer uploader.</Small>
-            </div>
-        </>
+                <div className="col-right text-center">
+                    <form onSubmit={formSubmitHandler}>
+                        <label>
+                            <ImgWrapper>
+                                {/* {user.image && <img src={`http://localhost:3008/${user.image?.path}.jpg`} alt="" />} */}
+                            </ImgWrapper>
+                            <input className="hidden" type="file" name="file" onChange={onFileChangeHandler} />
+                        </label>
+                        <button className="btn btn--secondary" type="submit">Edit Photo</button>
+                    </form>
+                    <Small>The user is able to upload a new profile photo, using NodeJS and Multer uploader.</Small>
+                </div>
+            </> :
+            <Redirect to='/' />
     )
 });

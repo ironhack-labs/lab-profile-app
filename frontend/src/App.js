@@ -11,19 +11,18 @@ import { ProfilePage } from './pages/ProfilePage';
 import { LoginPage } from './pages/LoginPage';
 import { SignupPage } from './pages/SignupPage';
 
-function App() {
-    return (
-        <Router>
-            <Layout>
-                <Switch>
-                    <Route path="/" exact component={() => <HomePage />} />
-                    <Route path="/profile" component={() => <ProfilePage />} />
-                    <Route path="/login" component={() => <LoginPage />} />
-                    <Route path="/signup" component={() => <SignupPage />} />
-                </Switch>
-            </Layout>
-        </Router>
-    );
-}
+// HOCs
+import { withAuth } from './components/withAuthHOC';
 
-export default App;
+export const App = withAuth(() => (
+    <Router>
+        <Layout>
+            <Switch>
+                <Route path="/" exact component={() => <HomePage />} />
+                <Route path="/profile" component={() => <ProfilePage />} />
+                <Route path="/login" component={() => <LoginPage />} />
+                <Route path="/signup" component={() => <SignupPage />} />
+            </Switch>
+        </Layout>
+    </Router>
+));

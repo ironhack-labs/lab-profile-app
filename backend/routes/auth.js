@@ -1,9 +1,12 @@
 const express = require('express');
 const passport = require('passport');
 const router = express.Router();
+
 // Lib
 const { hashPassword } = require('../lib/hashing');
 const { isLoggedIn } = require('../lib/isLoggedIn');
+const upload = require('../lib/fileUpload');
+
 // Models
 const User = require('../models/User.js')
 
@@ -51,15 +54,11 @@ router.post('/logout', (req, res, next) => {
 })
 
 /* EDIT */
-router.post('/edit', isLoggedIn(), async (req, res) => {
+router.post('/edit', isLoggedIn(), upload.single('avatar'), async (req, res, next) => {
     try {
-        const { username, campus, course } = req.body;
-        const updatedUser = await User.findByIdAndUpdate(req.user._id, {
-            username,
-            campus,
-            course
-        });
-        return res.json(updatedUser);
+        req.user.image = req.file;
+        await req.user.save();
+        return res.status(200).json(req.user)
     } catch (error) {
         return res.status(400).json({ status: error })
     }

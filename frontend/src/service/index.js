@@ -13,11 +13,6 @@ export const login = async (formData) => {
     return service.post('/login', formData);
 }
 
-export const upload = async (formData) => {
-    const res = await service.post('/upload', formData);
-    return res.data;
-}
-
 export const edit = async (formData) => {
     const res = await service.post('/edit', formData);
     return res.data;
@@ -28,6 +23,5 @@ export const logout = async () => {
 }
 
 export const whoami = async () => {
-    const res = await service.get('/loggedin');
-    return res.data;
+    return await service.get('/loggedin');
 }
