@@ -6,12 +6,17 @@ import { Switch, Route } from "react-router-dom";
 import Home from "./components/pages/Home";
 import Signup from "./components/pages/Signup";
 import Login from "./components/pages/Login";
+import { withAuthentication } from "./lib/withAuthentication";
+import { useUser } from "./lib/authService";
 
-function App() {
+const App = withAuthentication(() => {
+  const user = useUser();
+
   return (
     <div className="App">
       <ThemeProvider theme={theme}>
         <Section>
+          {user && <h1>Welcome {user.username}</h1>}
           <Switch>
             <Route exact path="/">
               <Home />
@@ -27,6 +32,6 @@ function App() {
       </ThemeProvider>
     </div>
   );
-}
+});
 
 export default App;
