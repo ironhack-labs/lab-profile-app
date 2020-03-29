@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const HeaderStyle = styled.div`
   width: 300px;
-  padding: 3rem;
   h1 {
     margin-bottom: 0;
     font-weight: 500;

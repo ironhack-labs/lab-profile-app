@@ -8,9 +8,6 @@ export const ButtonContainer = styled(Link)`
   border-radius: 10px;
   text-align: center;
   padding: 10px 0;
-  position: absolute;
-  left: 70px;
-  bottom: ${props => props.position}px;
   font-weight: 500;
   font-size: 0.8rem;
 `;

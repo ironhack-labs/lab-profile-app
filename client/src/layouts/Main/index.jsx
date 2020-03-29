@@ -1,10 +1,13 @@
 import React from "react";
-import { BackgroundCard, MainContainer } from "./styles";
+import { BackgroundCard, MainContainer, Content } from "./styles";
 
 const MainLayout = ({ children }) => {
+  console.log(children);
   return (
     <MainContainer>
-      <BackgroundCard>{children}</BackgroundCard>
+      <BackgroundCard>
+        <Content>{children}</Content>
+      </BackgroundCard>
     </MainContainer>
   );
 };

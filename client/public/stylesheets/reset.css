@@ -131,3 +131,7 @@ a:visited {
   text-decoration: none;
   color: inherit;
 }
+input,
+button {
+  border: none;
+}
