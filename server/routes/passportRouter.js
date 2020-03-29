@@ -4,15 +4,21 @@ const User = require("../models/user");
 const passport = require("passport");
 const { hashPassword } = require("../lib/hash");
 const _ = require("lodash");
+const { isLoggedOut } = require("./../lib/isLoggedMiddleware");
 
-router.post("/login", passport.authenticate("local"), (req, res) => {
-  // Return the logged in user
-  return res.json(
-    _.pick(req.user, ["username", "_id", "createdAt", "updatedAt"])
-  );
-});
+router.post(
+  "/login",
+  isLoggedOut(),
+  passport.authenticate("local"),
+  (req, res) => {
+    // Return the logged in user
+    return res.json(
+      _.pick(req.user, ["username", "_id", "createdAt", "updatedAt"])
+    );
+  }
+);
 
-router.post("/signup", async (req, res, next) => {
+router.post("/signup", isLoggedOut(), async (req, res, next) => {
   const { username, password, campus, course } = req.body;
   if (!username || !password) {
     return res.json({ error: "Invalid data" });
