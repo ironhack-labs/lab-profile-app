@@ -1,105 +1,200 @@
 const express = require("express");
 const router = express.Router();
-const Users = require("../models/User");
+const User = require("../models/User");
 const _ = require("lodash");
 const passport = require("passport");
-const { hashPassword, checkHashed } = require("../lib/hashing");
-const { isLoggedIn, isLoggedOut } = require("../lib/isLoggedMiddleware");
-
+const { hashPassword } = require("../lib/hashing");
+const uploader = require('../config/cloudinary/cloudinary.config');
 
 
 // SIGNUP
 router.post("/signup", async (req, res, next) => {
   const { username, password, campus, course, image } = req.body;
-
   console.log(username, password, campus, course);
 
   // Create the user
-  const existingUser = await Users.findOne({ username });
-  if (!existingUser) {
-    const newUser = await Users.create({
+  try {
+    // Check if the user already exists
+    const registeredUser = await User.findOne({ username });
+    if (registeredUser) {
+      console.log(`User ${username} already exists`);
+      return res.status(400).json({ message: 'Username already taken' });
+    }
+
+    const newUser = await User.create({
       username,
       password: hashPassword(password),
       campus,
-      course,
-      image
+      course
     });
-    // Directly login user
-    req.logIn(newUser, err => {
-      res.json(
-        _.pick(req.user, [
-          "username",
-          "_id",
-          "campus",
-          "course",
-          "createdAt",
-          "updatedAt"
-        ])
-      );
+
+    // login after signup
+    req.login(newUser, error => {
+      if (!error) {
+        console.log('Created user and logged', newUser);
+        return res.status(201).json({
+          message: 'User registered successfully',
+          user: newUser
+        });
+      } else {
+        console.log(`Something went wrong while login: ${error}`);
+        return res.status(500).json({
+          message: 'Login after signup failed'
+        });
+      }
     });
-    console.log(username, "registrado");
-  } else {
-    res.json({ status: "User Exist" });
+  } catch (error) {
+    if (error.name === 'ValidationError') {
+      const errors = error.errors;
+      const message = errors.campus
+        ? errors.campus.message
+        : errors.course.message;
+      const formatMessage = message.replace(' enum', '').replace(' path', '');
+
+      console.log('validation error: ', formatMessage);
+      return res.status(400).json({
+        message: formatMessage
+      });
+    } else {
+      console.log('Error occurred during signup', error);
+      return res.status(500).json({
+        message: 'Signup failed'
+      });
+    }
   }
 });
 
 // LOGIN
-router.post(
-  "/login",
-  // isLoggedOut(),
-  passport.authenticate("local"),
-  (req, res) => {
-    // Directly login user
-    return res.json(
-      _.pick(req.user, ["username", "_id", "createdAt", "updatedAt"])
-    );
-  }
-);
+router.post('/login', (req, res, next) => {
+  passport.authenticate('local', (err, user, failureDetails) => {
+    if (err) {
+      console.log(err);
+      return res.json({ status: 500, message: 'Authentication error' });
+    }
+
+    if (!user) {
+      return res.json({ status: 401, message: failureDetails.message });
+    }
+
+    req.login(user, err => {
+      if (err) {
+        return res.status(500).json({ message: 'Session save went bad.' });
+      }
+
+      return res.json({ status: 200, message: 'Logged in successfully', user });
+    });
+  })(req, res, next);
+});
 
 // LOGOUT
-router.post("/logout", 
-// isLoggedIn(),
-async (req, res, next) => {
-  if (req.user) {
+router.post('/logout', (req, res, next) => {
+  if (req.isAuthenticated()) {
+    console.log(`${req.user.username} just logged out`);
     req.logout();
-    return res.json({ status: "Log out" });
-  } else {
-    return res
-      .status(401)
-      .json({ status: "You have to be logged in to logout" });
+    return res.status(200).json({ message: 'Log out successfully' });
   }
+
+  return res.json({ message: 'Cannot logout if not authenticated' });
 });
 
-/* EDIT */
-router.post("/edit", isLoggedIn(), async (req, res, next) => {
+// LOGGEDIN
+router.get('/loggedin', (req, res, next) => {
+  if (req.isAuthenticated()) {
+    console.log(req.user.username, ' is logged');
+    return res.status(200).json({ user: req.user });
+  }
+
+  return res.status(403).json({ message: 'Unauthorized to do that' });
+});
+
+// PUT route -  upload = create user image
+router.put('/upload', uploader.single('image'), async (req, res, next) => {
+  const { file } = req;
+  console.log('Uploading', file);
+
+  if (!file) {
+    return next(new Error('No file uploaded!'));
+  }
+
   try {
-    const id = req.user._id;
-    const { username, campus, course } = req.body;
-    await Users.findByIdAndUpdate(id, {
-      username,
-      campus,
-      course
+    const updatedUser = await User.findByIdAndUpdate(
+      req.user._id,
+      {
+        image: file.secure_url
+      },
+      { new: true }
+    );
+    console.log('User image uploaded ', updatedUser);
+    return res.status(200).json({
+      message: 'File successfully uploaded',
+      image: file.secure_url
     });
-    return res.json({ status: "Edit Profile" });
   } catch (error) {
-    return res.status(401).json({ status: "Not Found" });
+    console.log('Error uploading file', error);
+    return res.status(500).json({
+      message: 'Image upload failed'
+    });
   }
 });
 
-// WHOAMI
-router.post("/whoami", (req, res, next) => {
-  if (req.user)
-    return res.json(
-      _.pick(req.user, [
-        "username",
-        "_id",
-        "campus",
-        "course",
-        "createdAt",
-        "updatedAt"
-      ])
+
+
+// PUT route - edit logged user
+router.put('/edit', async (req, res, next) => {
+  const { username, campus, course } = req.body;
+  try {
+    const updatedUser = await User.findByIdAndUpdate(
+      req.user._id,
+      {
+        username: username,
+        campus: campus,
+        course: course
+      },
+      { new: true }
     );
-  else return res.status(401).json({ status: "No user session present" });
+    console.log('User edited ', updatedUser);
+
+    return res.status(200).json({
+      message: 'User successfully edited',
+      user: updatedUser
+    });
+  } catch (error) {
+    console.log('Error editing user', error);
+
+    return res.status(500).json({
+      message: 'Editing user failed'
+    });
+  }
+});
+
+// PUT route -  upload = create user image
+router.put('/upload', uploader.single('image'), async (req, res, next) => {
+  const { file } = req;
+  console.log('Uploading', file);
+
+  if (!file) {
+    return next(new Error('No file uploaded!'));
+  }
+
+  try {
+    const updatedUser = await User.findByIdAndUpdate(
+      req.user._id,
+      {
+        image: file.secure_url
+      },
+      { new: true }
+    );
+    console.log('User image uploaded ', updatedUser);
+    return res.status(200).json({
+      message: 'File successfully uploaded',
+      image: file.secure_url
+    });
+  } catch (error) {
+    console.log('Error uploading file', error);
+    return res.status(500).json({
+      message: 'Image upload failed'
+    });
+  }
 });
 
 module.exports = router;

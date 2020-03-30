@@ -1,13 +1,24 @@
+// dependencies
 import React from 'react';
-import { Link } from 'react-router-dom'
+
+// styled components
+import { StyledLink, LinksContainer, HomeContent } from '../styles/Home.styled';
 
 const Home = () => {
-    return(
-    <>
-        <Link to="/auth/login">LOGIN</Link><br/>
-        <Link to="/auth/signup">SIGNUP</Link>
-    </>
-    )
-}
+  return (
+    <HomeContent>
+      <div>
+        <h1>IronProfile</h1>
+        <p>
+          It doesn't work and I don't know why. Damn lab...
+        </p>
+      </div>
+      <LinksContainer>
+        <StyledLink to="/auth/signup">Sign up</StyledLink>
+        <StyledLink to="/auth/login">Login</StyledLink>
+      </LinksContainer>
+    </HomeContent>
+  );
+};
 
 export default Home;
