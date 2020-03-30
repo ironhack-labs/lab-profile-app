@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const service = axios.create({baseURL: 'http://localhost:3001/'});
+const service = axios.create({baseURL: 'http://localhost:3001/', withCredentials: true});
 
 // Sign Up
 export const signup = async (formData) => {

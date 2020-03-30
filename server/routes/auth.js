@@ -1,6 +1,7 @@
 const express = require('express');
 const router  = express.Router();
 const passport = require("passport");
+const _ = require("lodash");
 const User = require("../models/user");
 const { hashPassword } = require("../lib/hashing");
 
@@ -9,11 +10,16 @@ router.post('/auth/signup', async (req, res, next) => {
   try {
     const { username, password, campus, course} = req.body;
     console.log("Datos que lllegan " + username, password, campus, course);
+
+    if(!username || !password){
+      res.status(400).json({error: 'Provide username and password'});
+    }
+
     const registeredUser = await User.findOne({ username })
 
     if (registeredUser) {
       console.log(`User ${registeredUser.username} already exists`);
-      res.json(`Error ${username} already exists`);
+      res.status(400).json({error: 'User already exists'});
     } else {
       const newUser = await User.create({
         username,
@@ -21,23 +27,25 @@ router.post('/auth/signup', async (req, res, next) => {
         course,
         password: hashPassword(password)
       });
-      res.json(`User created ${username} ${password} ${campus} ${course}`);
+      
+      // Directly login user
+      req.logIn(newUser, err => {
+        if(err) res.status(500).json({error: 'Error login after signup'});
+        res.json(_.pick(req.user, ["username", "course", "campus"]));
+      });
     }
     
   } catch (error) {
     console.log(error);
-    res.json(`Error ${error} creating user`);
+    res.status(500).json({error: 'Error creating user'});
   }
 });
 
-// Login
-router.post('/auth/login', async (req, res, next) => {
-  try {
-    const { username, password } = req.body;
-    res.json(`User logged ${username} ${password}`);
-  } catch (error) {
-    console.log(error);
-  }
+// Login user
+router.post("/auth/login", passport.authenticate("local"), (req, res) => {
+  return res.json(
+    _.pick(req.user, ["username", "course", "campus"])
+  );
 });
 
 // Upload file
@@ -62,20 +70,24 @@ router.post('/auth/edit', async (req, res, next) => {
 
 // Logout
 router.post('/auth/logout', async (req, res, next) => {
-  try {
-    res.json(`OK Message`);
-  } catch (error) {
-    console.log(error);
+  if (req.user) {
+    req.logout();
+    return res.status(200).json({ message: "Log out success" });
+  } else {
+    return res
+      .status(401)
+      .json({ status: "You have to be logged in to logout" });
   }
 });
 
-// Logout
-router.get('/auth/loggedin', async (req, res, next) => {
-  try {
-    res.json(`User logged`);
-  } catch (error) {
-    console.log(error);
+// Logedin
+router.get('/auth/loggedin', (req, res, next) => {
+
+  if(req.isAuthenticated()) {
+    res.status(200).json(req.user);
+    return;
   }
+  res.status(403).json({error:'Unauthorized'});
 });
 
 module.exports = router;

@@ -7,7 +7,7 @@ import { withRouter } from "react-router-dom";
 import {UserContext} from './../contexts/userContext';
 
 const ProfilePage = withRouter(({ history }) => {
-  const {user} = useContext(UserContext);
+  const {user, campus, course} = useContext(UserContext);
   const [file, setFile] = useState('');
 
   const handleSubmit =  async (e) => {
@@ -35,11 +35,11 @@ const ProfilePage = withRouter(({ history }) => {
     <Container>
       <h1>Profile</h1>
       <p>Username</p>
-      <p>Username</p>
+      <p>{user}</p>
       <p>Campus</p>
-      <p>Username</p>
+      <p>{campus}</p>
       <p>Course</p>
-      <p>Username</p>
+      <p>{course}</p>
       <p><a href=''>Log out</a></p>
 
       <Form onSubmit={handleSubmit} >

@@ -7,18 +7,21 @@ import { withRouter } from "react-router-dom";
 import {UserContext} from './../contexts/userContext';
 
 const SignupPage =  withRouter(({ history })=> {
-  const {setUser} = useContext(UserContext);
+  const {setUser, setCampus, setCourse} = useContext(UserContext);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [campus, setCampus] = useState('');
-  const [course, setCourse] = useState('');
+  const [campus, setCamp] = useState('');
+  const [course, setCour] = useState('');
 
   const handleSubmit =  async (e) => {
     e.preventDefault();
     try {
       const res = await signup({username, password, campus, course})
+ 
       setUser(res.username);
-      console.log(res);
+      setCampus(res.campus);
+      setCourse(res.course);
+
       history.push("/profile");
     } catch (error) {
       console.log(error);
@@ -45,12 +48,12 @@ const SignupPage =  withRouter(({ history })=> {
 
             <Form.Group controlId="campus">
               <Form.Label>Campus</Form.Label>
-              <Form.Control type="text" value={campus} onChange={(e) => setCampus(e.target.value)}/>
+              <Form.Control type="text" value={campus} onChange={(e) => setCamp(e.target.value)}/>
             </Form.Group>
 
             <Form.Group controlId="course">
               <Form.Label>Course</Form.Label>
-              <Form.Control type="text" value={course} onChange={(e) => setCourse(e.target.value)}/>
+              <Form.Control type="text" value={course} onChange={(e) => setCour(e.target.value)}/>
             </Form.Group>
 
             <div style={{textAlign: 'center'}}>

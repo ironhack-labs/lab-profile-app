@@ -8,7 +8,7 @@ import Container from 'react-bootstrap/Container';
 import {UserContext} from './../contexts/userContext';
 
 const LoginPage = withRouter(({ history })=> {
-  const {setUser} = useContext(UserContext);
+  const {setUser, setCampus, setCourse} = useContext(UserContext);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
@@ -17,6 +17,8 @@ const LoginPage = withRouter(({ history })=> {
     try {
       const res = await login({username, password})
       setUser(res.username);
+      setCampus(res.campus);
+      setCourse(res.course);
       console.log(res);
       history.push("/profile");
     } catch (error) {
