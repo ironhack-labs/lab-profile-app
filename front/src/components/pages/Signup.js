@@ -1,36 +1,98 @@
-import React from 'react';
-import { useForm } from 'react-hook-form';
-import { doSignup } from '../authService';
+// dependencies
+import React, { useState, useContext } from 'react';
 
-export default function Signup() {
-  const { register, handleSubmit, errors } = useForm();
-  const onSubmit = data => {
-    console.log(data.Username);
-    doSignup(data.Username, data.Password, data.Campus, data.Course);
-  }
-  
+// styled components
+import {
+  Form,
+  SocialContent,
+  SocialContainer,
+  Button,
+  Error
+} from '../styles/Signup.styled';
+import { Content } from '../styles/Layout.styled';
+import { AuthContext } from '../../context/authContext';
+import { doSignup } from '../../services/authService';
+
+const Signup = ({ history }) => {
+  const { setUser } = useContext(AuthContext);
+  const [newUser, setNewUser] = useState({
+    username: '',
+    password: '',
+    campus: '',
+    course: ''
+  });
+  const [error, setError] = useState('');
+
+  const handleSubmit = async e => {
+    e.preventDefault();
+    const response = await doSignup(newUser);
+
+    if (response.username) {
+      setUser(response);
+      history.push('/profile'); //redirect to profile after signup & login
+    } else {
+      setError(response.message);
+    }
+  };
+
+  const handleChange = e => {
+    const { name, value } = e.target;
+    setNewUser({ ...newUser, [name]: value });
+  };
+
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <input type="text" placeholder="Username" name="Username" ref={register({required: true, maxLength: 80})} />
-      <input type="text" placeholder="Password" type="password" name="Password" ref={register({required: true, maxLength: 100})} />
-      <select name="Campus" ref={register({ required: true })}>
-        <option value="Madrid">Madrid</option>
-        <option value=" Barcelona"> Barcelona</option>
-        <option value=" Miami"> Miami</option>
-        <option value=" Paris"> Paris</option>
-        <option value=" Berlin"> Berlin</option>
-        <option value=" Amsterdam"> Amsterdam</option>
-        <option value=" México"> México</option>
-        <option value=" Sao Paulo"> Sao Paulo</option>
-        <option value=" Lisbon"> Lisbon</option>
-      </select>
-      <select name="Course" ref={register({ required: true })}>
-        <option value="WebDev">WebDev</option>
-        <option value=" UX/UI"> UX/UI</option>
-        <option value=" Data Analytics"> Data Analytics</option>
-      </select>
+    <SocialContainer>
+      <Content>
+        <h1>Sign up</h1>
+        <Form onSubmit={handleSubmit} id="signup-form">
+          <label htmlFor="username">Username</label>
+          <input
+            type="text"
+            name="username"
+            value={newUser.name}
+            onChange={handleChange}
+          />
+          <label htmlFor="password">Password</label>
+          <input
+            type="password"
+            name="password"
+            value={newUser.password}
+            onChange={handleChange}
+          />
+          <label htmlFor="campus">Campus</label>
+          <input
+            type="text"
+            name="campus"
+            value={newUser.campus}
+            onChange={handleChange}
+          />
+          <label htmlFor="course">Course</label>
+          <input
+            type="text"
+            name="course"
+            value={newUser.course}
+            onChange={handleChange}
+          />
+        </Form>
 
-      <input type="submit" />
-    </form>
+        {error && <Error>Sorry, {error}</Error>}
+      </Content>
+      <SocialContent>
+        <div className="header">
+          <p>Hi!</p>
+          <p>Don't waste your time, it's not gonna work.</p>
+        </div>
+        <div className="footer">
+          <p>
+            ...
+          </p>
+          <Button type="submit" form="signup-form">
+            Create the account
+          </Button>
+        </div>
+      </SocialContent>
+    </SocialContainer>
   );
-}
+};
+
+export default Signup;
