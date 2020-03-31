@@ -7,7 +7,7 @@ import { withRouter } from "react-router-dom";
 import {UserContext} from './../contexts/userContext';
 
 const SignupPage =  withRouter(({ history })=> {
-  const {setUser, setCampus, setCourse} = useContext(UserContext);
+  const {setUser} = useContext(UserContext);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [campus, setCamp] = useState('');
@@ -16,11 +16,10 @@ const SignupPage =  withRouter(({ history })=> {
   const handleSubmit =  async (e) => {
     e.preventDefault();
     try {
-      const res = await signup({username, password, campus, course})
+      const user = await signup({username, password, campus, course})
  
-      setUser(res.username);
-      setCampus(res.campus);
-      setCourse(res.course);
+      setUser(user);
+      console.log("EL usuario es " + JSON.stringify(user));
 
       history.push("/profile");
     } catch (error) {

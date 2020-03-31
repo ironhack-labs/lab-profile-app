@@ -8,18 +8,16 @@ import Container from 'react-bootstrap/Container';
 import {UserContext} from './../contexts/userContext';
 
 const LoginPage = withRouter(({ history })=> {
-  const {setUser, setCampus, setCourse} = useContext(UserContext);
+  const {setUser} = useContext(UserContext);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSubmit =  async (e) => {
     e.preventDefault();
     try {
-      const res = await login({username, password})
-      setUser(res.username);
-      setCampus(res.campus);
-      setCourse(res.course);
-      console.log(res);
+      const user = await login({username, password})
+      setUser(user);
+      console.log("Login con usuario " + user);
       history.push("/profile");
     } catch (error) {
       console.log(error);

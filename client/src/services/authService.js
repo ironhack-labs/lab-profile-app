@@ -77,12 +77,10 @@ export const edit = async (formData) => {
 }
 
 // Log Out
-export const logout = async (username) => {
+export const logout = async () => {
 
   try {
-    const res = await service.post('auth/logout', {
-      username
-    });
+    const res = await service.post('auth/logout');
   
     console.log("User logged out " + res);
     return res.data;
@@ -93,12 +91,10 @@ export const logout = async (username) => {
 }
 
 // Logged In
-export const loggedin = async (username) => {
+export const loggedin = async () => {
 
   try {
-    const res = await service.get('auth/loggedin', {
-      username
-    });
+    const res = await service.get('auth/loggedin');
   
     console.log("Check user loged in " + res);
     return res.data;
