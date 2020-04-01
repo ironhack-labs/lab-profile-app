@@ -3,10 +3,11 @@ import { signup } from './../services/authService';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
-import { withRouter } from "react-router-dom";
 import {UserContext} from './../contexts/userContext';
+import { useHistory } from "react-router-dom";
 
-const SignupPage =  withRouter(({ history })=> {
+const SignupPage =  ()=> {
+  const history = useHistory();
   const {setUser} = useContext(UserContext);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -63,6 +64,6 @@ const SignupPage =  withRouter(({ history })=> {
           </Form>    
     </Container>
   );
-});
+}
 
 export default SignupPage;
