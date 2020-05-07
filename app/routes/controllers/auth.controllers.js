@@ -101,8 +101,23 @@ module.exports = {
         User.find()
         .then(responseFromDB => res.status(200).json(responseFromDB))
         .catch(error => res.status(500).json(error))
+    },
+
+    //update
+    upload: (req, res, next) => {
+        
+        if(!req.file) {
+            next(new Error("No file uploaded!"));
+            return;
+        }
+
+        let { secure_url } = req.file;
+
+        res.status(200).json({ secure_url })
     }
+
 }
+
 
 
 

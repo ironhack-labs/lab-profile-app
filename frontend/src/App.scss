@@ -1,0 +1,11 @@
+@import './sass_modules/mixins';
+
+.app {
+    width: 100vw;
+    height: 100vh;
+    background-image: linear-gradient(to left, #dfecdd, #c1dfc4);
+
+    @include flex(display, flex);
+    @include flex(justify-content, center);
+    @include flex(align-items, center);
+}

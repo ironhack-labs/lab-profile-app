@@ -1,0 +1,14 @@
+@mixin flex($property, $value) {
+    #{$property}:$value;
+    -moz-#{$property}:$value;
+    -webkit-#{$property}:$value;
+    -ms-#{$property}:$value;
+    -o-#{$property}:$value;
+}
+
+@mixin box-shadow(){
+    -moz-box-shadow:$standard_properties;
+    -webkit-box-shadow:$standard_properties;
+    -ms-box-shadow:$standard_properties;
+    -o-box-shadow:$standard_properties;
+}

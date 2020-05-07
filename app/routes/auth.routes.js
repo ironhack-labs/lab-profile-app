@@ -3,6 +3,8 @@ const router = express.Router();
 
 const authControllers = require('./controllers/auth.controllers');
 
+const uploader = require('../config/cloudinary')
+
 /* GET home page. */
 // router.get('/', function(req, res, next) {
 //   res.render('index', { title: 'Express' });
@@ -20,13 +22,7 @@ router.get('/loggedin', authControllers.loggedin);
 
 router.get('/users', authControllers.getUsers);
 
+router.patch('/upload', uploader.single('image'), authControllers.upload);
+
 module.exports = router;
 
-
-/**
- * /login
- * /sihnup
- * /edit
- * /logout
- * loggedin
- */
