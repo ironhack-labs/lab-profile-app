@@ -1,0 +1,45 @@
+@import '../../index.scss';
+
+.home { 
+    width: 50%;
+
+    &__title, &__text {
+        width: 100%;
+    }
+
+    &__title {
+        color: $main_green;
+        font-size: $title_size;
+    }
+
+    &__text {
+        color:$gray;
+        font-size: 2rem;
+    }
+
+    &__btn-container {
+        width: 100%;
+
+        @include flex(display, flex);
+        @include flex(flex-direction, column);
+        @include flex(align-items, center);
+        @include flex(justify-content, center);
+
+        a {
+            width: 60%;
+        }
+
+    }
+
+    .button--home {
+        width: 100%;
+        margin-top: 20px;
+        padding: 15px 0;
+        background-color: $secondary_green;
+        border-radius: 5px;
+
+        &:hover {
+            @include box-shadow()
+        }
+    }
+}

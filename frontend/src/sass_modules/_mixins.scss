@@ -11,4 +11,6 @@
     -webkit-box-shadow:$standard_properties;
     -ms-box-shadow:$standard_properties;
     -o-box-shadow:$standard_properties;
+
+    transition: box-shadow 0.3s linear;
 }

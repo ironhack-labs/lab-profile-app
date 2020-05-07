@@ -1,11 +1,13 @@
-import React from 'react'
+import React from 'react';
+
+import './Signup.scss';
 
 const Signup = () => {
-  return (
-    <div>
-      Signup
-    </div>
-  )
+    return (
+        <div>
+            
+        </div>
+    )
 }
 
-export default Signup
+export default Signup;
