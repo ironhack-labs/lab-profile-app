@@ -1,0 +1,49 @@
+body {
+  background-color: #C1DFC4;
+}
+
+.home {
+  display: flex;
+  justify-content: center;
+ align-content: center;
+}
+
+.home-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: white;
+  width: 40rem;
+  height: 25rem;
+  margin-top: 7rem;
+  border-radius: 0.3rem;
+  background-color: #a3c4a5;
+}
+
+.home-div-content {
+  width: 12rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 7rem 5rem 2rem;
+  background-color: white;
+
+
+}
+
+.home-div-content p {
+margin-bottom: 4rem;
+}
+
+.btn {
+  width: 10rem;
+  height: 1.7rem;
+  border-radius: 0.2rem;
+  border-style: none;
+  background-color:#C1DFC4 ;
+  margin: 0.5rem;
+  font-size: 0.8rem;
+}
+
