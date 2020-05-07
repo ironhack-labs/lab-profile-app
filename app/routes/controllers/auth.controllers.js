@@ -1,7 +1,7 @@
 const passport = require('passport');
 
 const bcrypt = require('bcrypt');
-const salt = 20;
+const salt = 10;
 
 const User = require('../../models/User');
 
@@ -36,29 +36,71 @@ module.exports = {
     signup(req, res, next){
         const {
             username,
-            password,
-            campus,
-            course
+            password
         } = req.body;
-
-        console.log(req.body)
 
         if (username === '' || password === '') {
             res.status(400).json({ message: 'No username or password provided' })
-            console.log('inside if 400')
-
+            return
+        }
+        
+        if (password.length < 5 ) {
+            res.status(400).json({ message: 'Password must have 5 or more characters'})
             return
         }
         
         let syncSalt = bcrypt.genSaltSync(salt);
         let hash = bcrypt.hashSync(password, syncSalt);
         
-        User.create({ ...req.body, password: hash })
+        User.create({ 
+            ...req.body,
+            password: hash
+        })
             .then(responseFromDB => {
-                console.log('inside then')
-                res.status(200).json(responseFromDB)
+                req.login(responseFromDB, (error) => {
+                    if (error) {
+                        res.status(500).json({ message: "Login after signup went bad" })
+                        return
+                    }
+                    res.status(200).json(responseFromDB)
+                })
             })
             .catch(error => res.status(500).json(error))
+    },
+
+    //logout
+    logout(req, res, next){
+        req.logout()
+        res.status(200).json({ message: 'Logout successfully' })
+    },
+
+    //loggedin
+    loggedin(req, res, next){
+        if (req.isAuthenticated()) {
+            res.status(200).json(req.user)
+            return
+        }
+        res.status(403).json({ message: 'Unauthorized' })
+    },
+
+    //edit
+    edit(req, res, next){
+        const { username } = req.body;
+        if (username === '') {
+          res.status(400).json({ message: 'You must put a valid username' })
+        }
+
+
+        let { _id } = req.user;
+        User.findOneAndUpdate({_id} === '' || req.body)
+        .then( userFound => res.status(200).json({ message: "Update successfully"}))
+        .catch(error => res.status(500).json({ message: 'Update failed' }))
+   },
+
+    getUsers:(req, res, next) => {
+        User.find()
+        .then(responseFromDB => res.status(200).json(responseFromDB))
+        .catch(error => res.status(500).json(error))
     }
 }
 

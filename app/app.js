@@ -9,14 +9,13 @@ const mongoose = require('mongoose');
 const MongoStore = require('connect-mongo')(session)
 const passport = require('passport')
 const app = express();
+const cors = require('cors');
 
-
-//express session
 app.use(session({
     secret: 'keyboard cat',
-    resave: false,
+    resave: true,
     saveUninitialized: true,
-    cookie: { secure: true },
+    cookie: { maxAge: 60000 },
     store: new MongoStore({
         mongooseConnection: mongoose.connection,
         ttl: 24 * 60 * 60 // 1 day
@@ -40,6 +39,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(
+    cors({
+        credentials: true,
+        origin: "http://localhost:3000/"
+    })
+);
 
 app.use('/auth', require('./routes/auth.routes'));
 

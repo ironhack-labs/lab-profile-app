@@ -12,11 +12,13 @@ router.post('/login', authControllers.login);
 
 router.post('/signup', authControllers.signup);
 
-// router.post('/edit', authControllers.edit);
+router.get('/logout', authControllers.logout);
 
-// router.get('/logout', authControllers.logout);
+router.patch('/edit', authControllers.edit);
 
-// router.get('/loggedin', authControllers.loggedin);
+router.get('/loggedin', authControllers.loggedin);
+
+router.get('/users', authControllers.getUsers);
 
 module.exports = router;
 
