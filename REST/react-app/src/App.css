@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  --green: #638165;
+  --red: #D0021B;
+  font-family: 'Open Sans', sans-serif;
+}
+
+body {
+  background-image: linear-gradient(to right, #C1DFC4,  #DEECDD)
+}
+
+.all {
+  display: flex;
+  margin-left: 350px;
+  margin-top: 100px;
+  background-image: url('./assets/oval-bg.png');
+  background-repeat: no-repeat;
+  background-position: cover;
+  width: 50vw;
+  height: 80vh;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  margin-left: 50px;
+  margin-top: 50px;
+  width: 80%;
+}
+
+.left h1 {
+  margin-bottom: 50px;
+  color: var(--green)
+}
+
+.left input {
+  margin-bottom: 10px;
+  padding: 7px 10px;
+  width: 200px;
+  background-color: #F6F6F6;
+  border: none;
+}
+
+.left label {
+  color: #999
+}
+
+.right {
+  margin-left: 50px;
+  margin-top: 90px;
+  width: 80%;
+}
+
+.right h2 {
+  font-size: 20px;
+}
+
+.text {
+  margin-bottom: 160px;
+  font-weight: 300;
+  font-size: 18px;
+}
+
+.right p {
+  font-weight: 300;
+  font-size: 12px;
+  text-align: justify;
+  width: 200px;
+  margin-left: 50px;
+}
+
+.right input {
+  margin-left: 50px;
+  width: 200px;
+  border: none;
+}
+
+.text-login {
+  font-weight: 300;
+  font-size: 12px;
+  text-align: justify;
+  margin-top: 30px;
+}
+
+.btn {
+  width: 200px;
+  margin-left: 50px;
+  padding: 8px;
+  border:none;
+  border-radius: 5px;
+  margin-top: 10px;
+  font-weight: 600;
+  outline: none;
+}
+
+.btn:hover {
+  cursor: pointer;
+}
+
+.left-home {
+  display: flex;
+  flex-direction: column;
+  margin-left: 50px;
+  margin-top: 50px;
+  width: 80%;
+}
+
+.left-home h1 {
+  color: var(--green);
+  margin-bottom: 20px;
+}
+
+.left-home p {
+  font-size: 16px;
+  margin-bottom: 100px;
+}
+
+.home-text {
+  font-weight: 300;
+  font-size: 16px;
+  text-align: justify;
+  width: 200px;
+}
+
+.home-btn {
+  width: 180px;
+  border: none;
+  background-color: #C0E3BE;
+  margin: 10px 0 10px 30px;
+  padding: 7px 10px;
+  border-radius: 5px;
+  font-weight: bold;
+  outline: none;
+}
+
+.home-btn:hover {
+  cursor: pointer;
+}
