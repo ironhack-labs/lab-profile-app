@@ -23,5 +23,15 @@ a {
     text-decoration: none;
 }
 
-//Classes
+form {
+    @include flex(display, flex);
+    @include flex(flex-direction, column);
+    @include flex(align-items, center);
+    @include flex(justify-content, center);
+}
 
+//Classes
+.title {
+    color: $main_green;
+    font-size: $title_size;
+}

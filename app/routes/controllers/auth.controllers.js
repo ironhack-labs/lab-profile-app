@@ -112,10 +112,14 @@ module.exports = {
         }
 
         let { secure_url } = req.file;
+        let { id } = req.params;
 
-        res.status(200).json({ secure_url })
+        User.findByIdAndUpdate( id, { image: secure_url})
+            .then( response => res.status(200).json({ secure_url }))
+            .catch( error => res.status(501).json({ message: "Somenthing went wrong"}));
+
+        
     }
-
 }
 
 

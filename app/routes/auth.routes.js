@@ -22,7 +22,7 @@ router.get('/loggedin', authControllers.loggedin);
 
 router.get('/users', authControllers.getUsers);
 
-router.patch('/upload', uploader.single('image'), authControllers.upload);
+router.patch('/upload/:id', uploader.single('image'), authControllers.upload);
 
 module.exports = router;
 

@@ -8,7 +8,7 @@ import Button from '../../components/Button/Button';
 const HomePage = () => 
   
     <div className="home">
-      <h1 className="home__title">Iron Profile</h1>
+      <h1 className="title home__title">Iron Profile</h1>
       <p className="home__text">
         Today we will create an app 
         with authorization, adding 
