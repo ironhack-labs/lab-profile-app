@@ -1,6 +1,6 @@
 const passport = require('passport');
 
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const salt = 10;
 
 const User = require('../../models/User');

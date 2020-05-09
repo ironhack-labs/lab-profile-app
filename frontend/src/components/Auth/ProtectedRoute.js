@@ -1,20 +1,35 @@
-import React from "react";
+import React, { useContext, useLayoutEffect } from "react";
 import { Route, Redirect } from "react-router-dom";
+import { UserContext } from '../../UserContext'
+import AuthService from '../AuthService';
 
-const ProtectedRoute = ({ component: Component, user, image, handleFileChange ,...rest }) =>
+
+const service = new AuthService()
+
+const ProtectedRoute = ({ component: Component, ...rest }) => {
+	const { user, setUser } = useContext(UserContext)
+	useLayoutEffect(()=> {
+    console.log('I am about to render!');
+    if (user === null) {
+      service
+        .loggedin()
+        .then(user => setUser(user))
+        .catch(error => setUser(false))
+    }
+	},[]);
+	
+	console.log(user)
+	return (
 		<Route 
 			{...rest}
 			render={(props) => {
-				console.log(user)
 				return user
-					? <Component {...props} 
-						user={user}
-						image={image}
-						handleFileChange={handleFileChange}
-					  /> 
+					? <Component {...props} /> 
 					: <Redirect to="/login" />
 			}}
 		/>
+	)
+}
 
 export default ProtectedRoute;
 

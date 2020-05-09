@@ -1,52 +1,81 @@
-import React from 'react';
-
+import React, { useState, useContext } from 'react';
+import { UserContext } from '../../UserContext'
 import Input from '../../components/Input/Input';
 
 import './Signup.scss';
 
-const Signup = ({
-                handleInputChange,
-                handleSubmit, 
-                username, 
-                password, 
-                campus, 
-                course,
-                history
-            }) => 
+import AuthService from '../../components/AuthService';
+const service  = new AuthService();
+
+const Signup = ({ history }) => {
+    let [ username, setUsername ] = useState('');
+    let [ password, setPassword ] = useState('');
+    let [ campus, setCampus ] = useState('');
+    let [ course, setCourse ] = useState('');
+    let { setUser } = useContext(UserContext);
     
+    const handleNameInput = e => setUsername(e.target.value);
+    const handlePasswordInput = e => setPassword(e.target.value);
+    const handleCampusInput = e => setCampus(e.target.value);
+    const handleCourseInput = e => setCourse(e.target.value);
+    
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        service.signup({
+            username,
+            password,
+            campus,
+            course
+        })
+        .then( user => {
+            setUsername('')
+            setPassword('')
+            setCampus('')
+            setCourse('')
+            setUser(user)
+            history.push('/profile');
+        })
+        .catch( error => console.log(error))
+    }
+    
+    return (
         <div className="container__signup">
-            <form onSubmit={(e) => handleSubmit(e, 'signup', history)}>
+            <form onSubmit={handleSubmit}>
                 <Input 
                     type="text" 
                     name="username" 
-                    handleInputChange={handleInputChange} 
+                    handleInputChange={handleNameInput} 
                     auth="signup"
                     value={username}
                 >Username</Input>         
                 <Input 
                     type="password" 
                     name="password" 
-                    handleInputChange={handleInputChange} 
+                    handleInputChange={handlePasswordInput}
                     auth="signup"
                     value={password}
                 >Password</Input>         
                 <Input 
                     type="text" 
                     name="campus" 
-                    handleInputChange={handleInputChange} 
+                    handleInputChange={handleCampusInput} 
                     auth="signup"
                     value={campus}
                 >Campus</Input>         
                 <Input 
                     type="text" 
                     name="course" 
-                    handleInputChange={handleInputChange} 
+                    handleInputChange={handleCourseInput} 
                     auth="signup"
                     value={course}
                 >Course</Input> 
                 <button>SIGNUP</button>        
              </form>
         </div>
+    ) 
+    
+}
+    
 
 
 export default Signup;
