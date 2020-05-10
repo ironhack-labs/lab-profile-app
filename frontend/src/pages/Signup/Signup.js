@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { UserContext } from '../../UserContext'
+import { AuthContext } from '../../components/Auth/AuthProvider';
 import Input from '../../components/Input/Input';
 
 import './Signup.scss';
@@ -12,7 +12,7 @@ const Signup = ({ history }) => {
     let [ password, setPassword ] = useState('');
     let [ campus, setCampus ] = useState('');
     let [ course, setCourse ] = useState('');
-    let { setUser } = useContext(UserContext);
+    let { setCurrent } = useContext(AuthContext);
     
     const handleNameInput = e => setUsername(e.target.value);
     const handlePasswordInput = e => setPassword(e.target.value);
@@ -32,7 +32,7 @@ const Signup = ({ history }) => {
             setPassword('')
             setCampus('')
             setCourse('')
-            setUser(user)
+            setCurrent(user)
             history.push('/profile');
         })
         .catch( error => console.log(error))
@@ -40,6 +40,7 @@ const Signup = ({ history }) => {
     
     return (
         <div className="container__signup">
+            <h1 className="title">Signup</h1>
             <form onSubmit={handleSubmit}>
                 <Input 
                     type="text" 

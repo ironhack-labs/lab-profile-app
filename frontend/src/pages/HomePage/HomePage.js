@@ -8,12 +8,14 @@ import Button from '../../components/Button/Button';
 const HomePage = () => 
   
     <div className="home">
-      <h1 className="title home__title">Iron Profile</h1>
-      <p className="home__text">
-        Today we will create an app 
-        with authorization, adding 
-        some cool styles
-      </p>
+      <article className="home__content">
+        <h1 className="title home__title">Iron Profile</h1>
+        <p className="home__text">
+          Today we will create an app 
+          with authorization, adding 
+          some cool styles
+        </p>
+      </article>
       <div className="home__btn-container">
         <Link to="/signup">
           <Button btnClass='button--home'>Sign Up</Button>

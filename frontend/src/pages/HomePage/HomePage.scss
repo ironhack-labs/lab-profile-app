@@ -2,6 +2,11 @@
 
 .home { 
     width: 50%;
+    height: 100%;
+    @include flex(display, flex);
+    @include flex(flex-direction, column);
+    @include flex(align-items, center);
+    @include flex(justify-content, space-between);
 
     &__title, &__text {
         width: 100%;
@@ -14,7 +19,8 @@
 
     &__text {
         color:$gray;
-        font-size: 2rem;
+        font-size: 2.3rem;
+        font-weight: lighter;
     }
 
     &__btn-container {
@@ -37,6 +43,7 @@
         padding: 15px 0;
         background-color: $secondary_green;
         border-radius: 5px;
+        font-weight: bold;
 
         &:hover {
             @include box-shadow()

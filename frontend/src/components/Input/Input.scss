@@ -1,8 +1,15 @@
+@import '../../index.scss';
+
 label, input {
     width: 100%;
 }
 
-input {
+.label {
+    font-size: $label_size;
+    color: $medium_gray;
+}
+
+.input {
     height: 50px;
-    background-color: #f6f6f6;
+    background-color: $light_gray;
 }

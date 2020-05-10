@@ -1,10 +1,10 @@
 import React, { useState, useContext }  from 'react';
 
 import Input from '../../components/Input/Input';
-import AuthService from '../../components/AuthService';
 import './Login.scss'
-import { UserContext } from '../../UserContext'
+import { AuthContext } from '../../components/Auth/AuthProvider';
 
+import AuthService from '../../components/AuthService';
 const service = new AuthService();
 
 
@@ -12,7 +12,7 @@ const Login = ({history}) => {
     
         let [ username, setUsername ] = useState('');  
         let [ password, setPassword ] = useState('');
-        let { setUser } = useContext(UserContext);
+        let { setCurrent } = useContext(AuthContext);
         
         const handleNameInput = e => setUsername(e.target.value);    
         const handlePasswordInput = e => setPassword(e.target.value);
@@ -24,13 +24,14 @@ const Login = ({history}) => {
                 password
             })
             .then( user => {
-                setUser(user);
+                setCurrent(user);
                 history.push('/profile');
             })
-            .catch( error => console.log(error))
+            .catch( error => console.log('Error => ', error))
         }
 
        return <div className="container--form">
+            <h1 className="title">Login</h1>
             <form className="form form--login" onSubmit={(e) => handleSubmit(e)}>
                 <Input 
                     name="username" 
