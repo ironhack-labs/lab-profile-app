@@ -8,6 +8,7 @@ const logger = require('morgan');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const flash = require('connect-flash');
+const cors = require('cors');
 
 mongoose
   .connect('mongodb://localhost/full-server', { useNewUrlParser: true })
@@ -37,6 +38,14 @@ app.use(
     store: new MongoStore({ mongooseConnection: mongoose.connection }),
   })
 );
+
+app.use(
+  cors({
+    credentials: true,
+    origin: 'http://localhost:3001',
+  })
+);
+
 app.use(flash());
 require('./passport')(app);
 
