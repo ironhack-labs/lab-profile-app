@@ -80,6 +80,10 @@ router.post('/upload', uploadConfig.single('photo'), (req, res, next) => {
   res.status(201).json({ secure_url: req.file.secure_url });
 });
 
+router.get('/loggedin', (req, res) => {
+  res.status(200).json({ user: req.user });
+});
+
 // exports.createProject = async (req, res) => {
 //   // Por que no de req.file ?????????
 //   const { name, description, imgURL, imgName } = req.body;
