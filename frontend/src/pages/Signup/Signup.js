@@ -40,37 +40,46 @@ const Signup = ({ history }) => {
     
     return (
         <div className="container__signup">
-            <h1 className="title">Signup</h1>
-            <form onSubmit={handleSubmit}>
-                <Input 
-                    type="text" 
-                    name="username" 
-                    handleInputChange={handleNameInput} 
-                    auth="signup"
-                    value={username}
-                >Username</Input>         
-                <Input 
-                    type="password" 
-                    name="password" 
-                    handleInputChange={handlePasswordInput}
-                    auth="signup"
-                    value={password}
-                >Password</Input>         
-                <Input 
-                    type="text" 
-                    name="campus" 
-                    handleInputChange={handleCampusInput} 
-                    auth="signup"
-                    value={campus}
-                >Campus</Input>         
-                <Input 
-                    type="text" 
-                    name="course" 
-                    handleInputChange={handleCourseInput} 
-                    auth="signup"
-                    value={course}
-                >Course</Input> 
-                <button>SIGNUP</button>        
+            <form className="form--signup" onSubmit={handleSubmit}>
+                <div className="form-content">
+                    <h1 className="title">Signup</h1>
+                    <Input 
+                        type="text" 
+                        name="username" 
+                        handleInputChange={handleNameInput} 
+                        auth="signup"
+                        value={username}
+                    >Username</Input>         
+                    <Input 
+                        type="password" 
+                        name="password" 
+                        handleInputChange={handlePasswordInput}
+                        auth="signup"
+                        value={password}
+                    >Password</Input>         
+                    <Input 
+                        type="text" 
+                        name="campus" 
+                        handleInputChange={handleCampusInput} 
+                        auth="signup"
+                        value={campus}
+                    >Campus</Input>         
+                    <Input 
+                        type="text" 
+                        name="course" 
+                        handleInputChange={handleCourseInput} 
+                        auth="signup"
+                        value={course}
+                    >Course</Input> 
+                </div>
+                <aside className="aside">
+                    <div className="aside__title">
+                        <h1>Hello!!!</h1>
+                        <p>Welcome to the IronProfile!</p>
+                    </div>
+                    <p>if you signup you agree with all our terms and conditions where we can do whatever we want with the data</p>
+                    <button className="button button--signup">Create the Account</button>        
+                </aside>
              </form>
         </div>
     ) 
