@@ -23,7 +23,8 @@ const userSchema = new Schema(
       type: String,
       enum: ['WebDev', 'UX/UI', 'Data Analytics'],
     },
-    image: String,
+    imgUrl: String,
+    imgName: String,
   },
 
   {
