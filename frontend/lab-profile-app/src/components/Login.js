@@ -32,7 +32,7 @@ class Login extends Component {
           placeholder="password"
         />
         <br />
-        <input type="submit" value="Submit" />
+        <button type="submit">LogIn</button>
       </div>
     );
   }

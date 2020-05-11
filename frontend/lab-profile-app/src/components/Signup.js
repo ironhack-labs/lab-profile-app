@@ -6,7 +6,7 @@ class SignUp extends Component {
     password: '',
   };
 
-  handleInutChange = ({ target: { name, value } }) => {
+  handleInputChange = ({ target: { name, value } }) => {
     this.setState({ [name]: value });
   };
 
@@ -19,7 +19,7 @@ class SignUp extends Component {
           name="username"
           id="username"
           value={this.state.username}
-          onChange={this.handleInutChange}
+          onChange={this.handleInputChange}
           placeholder="username"
         />
         <br />
@@ -28,7 +28,7 @@ class SignUp extends Component {
           name="password"
           id="password"
           value={this.state.password}
-          onChange={this.handleInutChange}
+          onChange={this.handleInputChange}
           placeholder="password"
         />
         <br />

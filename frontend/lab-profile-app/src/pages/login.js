@@ -1,41 +1,43 @@
-import React, { Component } from "react";
-import Login from "../components/login/index";
-import AUTH_SERVICE from '../services/index'
+import React, { Component } from 'react';
+import Login from '../components/login/index';
+import PROFILE_SERVICE from '../services/index';
 
 class login extends Component {
   state = {
-    username: "",
-    password: ""
+    username: '',
+    password: '',
   };
 
   handleInputs = ({ target: { name, value } }) => {
     this.setState({ [name]: value });
   };
 
-  login = e => {
+  login = (e) => {
     e.preventDefault();
     const { username, password } = this.state;
-    AUTH_SERVICE.login({ username, password})
+    PROFILE_SERVICE.login({ username, password })
       .then(({ msg }) => {
         this.setState({
-          username: "",
-          password: ""
+          username: '',
+          password: '',
         });
         alert('loged - :)');
-        this.props.history.push("/profile");
+        this.props.history.push('/profile');
       })
       .catch(() => {
-        alert(":C - error");
+        alert(':C - error');
       });
   };
   render() {
-    return <Login 
+    return (
+      <Login
         handleInputs={this.handleInputs}
         login={this.login}
         username={this.state.username}
         password={this.state.password}
-    />;
+      />
+    );
   }
 }
 
-export default login
+export default login;

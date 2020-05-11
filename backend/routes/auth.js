@@ -8,15 +8,59 @@ const uploadCloud = require('../config/cloudinary');
 const bcrypt = require('bcrypt');
 const bcryptSalt = 10;
 
-router.post('/login', passport.authenticate('local'), (req, res, next) => {
-  const { user } = req;
-  res.status(200).json({ user, msg: 'User logged' });
+router.post(
+  '/login',
+  passport.authenticate('local', {
+    failureRedirect: '/auth/login',
+    failureFlash: true,
+    passReqToCallback: true,
+  }),
+  (req, res) => {
+    res.status(200).json({ user: req.user });
+  }
+);
+
+router.post('/signup', (req, res, next) => {
+  const username = req.body.username;
+  const password = req.body.password;
+  const campus = req.body.campus;
+  const course = req.body.course;
+
+  if (username === '' || password === '') {
+    res.json({ message: 'Indicate username and password' });
+    return;
+  }
+
+  User.findOne({ username }, 'username', (err, user) => {
+    if (user !== null) {
+      res.json({ message: 'The username already exists' });
+      return;
+    }
+
+    const salt = bcrypt.genSaltSync(bcryptSalt);
+    const hashPass = bcrypt.hashSync(password, salt);
+
+    const newUser = new User({
+      username,
+      password: hashPass,
+      campus,
+      course,
+    });
+
+    newUser
+      .save()
+      .then(({ username, _id }) => {
+        res.status('201').json({ username, _id });
+      })
+      .catch((err) => {
+        res.json({ message: 'Something went wrong' });
+      });
+  });
 });
 
-router.post('/signup', async (req, res, next) => {
-  const { username, password, campus, course } = req.body;
-  await User.register({ username, campus, course }, password);
-  res.status(200).json({ msg: 'User Created' });
+router.get('/logout', (req, res) => {
+  req.logout();
+  res.status(200).json({ message: 'Logged Out' });
 });
 
 router.post('/upload', uploadCloud.single('image'), async (req, res, next) => {
@@ -25,28 +69,5 @@ router.post('/upload', uploadCloud.single('image'), async (req, res, next) => {
   const user = await User.findByIdAndUpdate(id, { image }, { new: true });
   res.status(200).json({ msg: 'user updated', user });
 });
-
-router.post('/edit', isAuth, async (req, res, next) => {
-  const { username, campus, course } = req.body;
-  const { id } = req.user;
-  await User.findByIdAndUpdate(id, { username, campus, course }, { new: true });
-  res.status(200).json({ msg: 'User updated' });
-});
-
-router.post('/logout', (req, res, next) => {
-  req.logout();
-  res.status(200).json({ msg: 'OK - baibai' });
-});
-
-router.get('/loggedin', isAuth, async (req, res, next) => {
-  const user = await User.findById(req.user._id);
-  res.status(200).json({ msg: 'User  - Hello honey', user });
-});
-
-function isAuth(req, res, next) {
-  req.isAuthenticated()
-    ? next()
-    : res.status(401).json({ msg: 'Log in first' });
-}
 
 module.exports = router;
