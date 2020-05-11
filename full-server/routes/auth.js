@@ -2,7 +2,7 @@ const express = require('express');
 const passport = require('passport');
 const router = express.Router();
 const User = require('../models/User');
-const uploadConfig = require('../config/cloudinary');
+const uploadCloud = require('../config/cloudinary');
 
 // Bcrypt to encrypt passwords
 const bcrypt = require('bcrypt');
@@ -72,11 +72,14 @@ router.post('/edit/:id', async (req, res) => {
   res.status('200').json({ editUser });
 });
 
-router.post('/upload', uploadConfig.single('photo'), (req, res, next) => {
+// router.use((req, res, next) => {
+//   res.header('Access-Control-Allow-Origin', 'http://localhost:3001');
+//   next();
+// });
+router.post('/upload', uploadCloud.single('photo'), (req, res, next) => {
   if (!req.file) {
     next(new Error('No file uploaded'));
   }
-
   res.status(201).json({ secure_url: req.file.secure_url });
 });
 

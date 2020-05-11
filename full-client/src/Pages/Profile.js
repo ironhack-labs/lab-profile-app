@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { upload } from '../services/authService';
 
 export class Profile extends Component {
@@ -7,7 +6,6 @@ export class Profile extends Component {
     username: '',
     campus: '',
     course: '',
-    imgName: '',
     imgUrl: '',
   };
 
@@ -15,8 +13,17 @@ export class Profile extends Component {
     this.setState({ [name]: value });
   };
 
-  handileFileInput = (e) => {
+  handleFileInput = (e) => {
     const photo = e.target.files[0];
+    const uploadData = new FormData();
+    uploadData.append('photo', photo);
+    console.log(photo);
+    upload(uploadData)
+      .then((res) => {
+        console.dir(res);
+        this.setState({ imgUrl: res.data.secure_url });
+      })
+      .catch((err) => console.log(err));
   };
 
   componentDidMount = async () => {};
@@ -33,13 +40,15 @@ export class Profile extends Component {
         <p>{this.state.course}</p>
         <img src={this.state.imgUrl} alt="" />
 
-        <input
-          type="file"
-          name="photo"
-          onChange={this.handileFileInput}
-          id="photo"
-        />
-        <input type="submit" value="Upload Photo" />
+        <form>
+          <input
+            type="file"
+            name="photo"
+            onChange={(e) => this.handleFileInput(e)}
+            id="photo"
+          />
+          <input type="submit" value="Upload Photo" />
+        </form>
       </>
     );
   }
