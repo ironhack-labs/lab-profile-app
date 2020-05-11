@@ -15,7 +15,7 @@ const userSchema = new Schema(
     },
     image: {
       type: String,
-      default: 'https://mir-s3-cdn-cf.behance.net/project_modules/fs/b7c76929274393.55ead42cd721c.jpg'
+      default: 'https://i.pinimg.com/originals/d2/87/74/d28774bdf7994ca9749e3d62c79a8b3e.jpg'
     }
   },
   {
