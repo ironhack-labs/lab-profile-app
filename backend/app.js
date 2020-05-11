@@ -10,16 +10,15 @@ const MongoStore = require("connect-mongo")(session);
 const flash = require("connect-flash");
 const cors = require("cors");
 
+
 mongoose
-  .connect("mongodb://localhost/full-server", { useNewUrlParser: true })
-  .then((x) => {
-    console.log(
-      `Connected to Mongo! Database name: "${x.connections[0].name}"`
-    );
-  })
-  .catch((err) => {
-    console.error("Error connecting to mongo", err);
-  });
+  .connect(process.env.DB, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then((x) =>
+    console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
+  )
+  .catch((err) => console.error('Error connecting to mongo', err));
+
+
 const app = express();
 // Middleware Setup
 app.use(logger("dev"));
