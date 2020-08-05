@@ -14,6 +14,7 @@ h1 {
 }
 
 .window {
+  display: flex;
   width: 100%;
   height: 100%;
   margin-left: 500px;
@@ -53,6 +54,60 @@ h1 {
 }
 
 .green-button:active {
+  box-shadow: none;
+  top: 5px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
+
+.form > label {
+  margin-top: 25px;
+  margin-bottom: 5px;
+}
+
+.form > input {
+  height: 30px;
+  background-color: #f6f6f6;
+  border: none;
+}
+
+.right-container {
+  margin-left: 60px;
+  margin-top: 40px;
+  width: 250px;
+}
+
+.disclaimer {
+  width: 200px;
+  margin-left: 40px;
+  margin-top: 150px;
+  font-size: 10px;
+  text-align: justify;
+}
+
+.white-button {
+  text-align: center;
+  background-color: white;
+  box-shadow: 0 5px 0 lightgray;
+  border: none;
+  color: black;
+  padding: 1em 1.5em;
+  position: relative;
+  text-decoration: none;
+  width: 150px;
+  margin-top: 15px;
+  margin-left: 60px;
+}
+
+.white-button:hover {
+  background-color: lightgray;
+}
+
+.white-button:active {
   box-shadow: none;
   top: 5px;
 }
