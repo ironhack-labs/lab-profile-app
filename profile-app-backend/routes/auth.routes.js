@@ -34,7 +34,6 @@ authRoutes.post('/signup', (req, res, next) => {
       password: hashPass,
       campus: campus,
       course: course,
-      image: image,
     });
 
     newUser.save((err) => {
