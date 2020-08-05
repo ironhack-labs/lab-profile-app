@@ -29,7 +29,8 @@ class Signup extends Component {
       .signup(username, password, campus, course)
       .then((response) => {
         this.setState({ username: '', password: '', campus: '', course: '' });
-        this.props.callback(response);
+        this.props.getTheUser(response);
+        this.props.history.push('/profile');
       })
       .catch((error) => console.log(error));
   };

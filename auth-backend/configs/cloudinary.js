@@ -12,7 +12,7 @@ const storage = new CloudinaryStorage({
   cloudinary: cloudinary,
   params: {
     folder: 'lab-auth-react',
-    format: async (req, file) => 'png',
+    format: async (req, file) => 'jpg',
     public_id: (req, file) => file.originalname,
   },
 });

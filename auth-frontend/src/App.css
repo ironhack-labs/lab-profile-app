@@ -111,3 +111,23 @@ h1 {
   box-shadow: none;
   top: 5px;
 }
+
+.red-link {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.image-profile {
+  margin-left: 70px;
+  width: 150px;
+  height: 150px;
+  border: 2px solid lightgray;
+  border-radius: 100px;
+}
+
+.row-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  align-content: center;
+}

@@ -31,7 +31,11 @@ const userSchema = new Schema(
       enum: ['Web Dev', 'UX/UI', 'Data Analytics'],
       required: true,
     },
-    image: String,
+    image: {
+      type: String,
+      default:
+        'https://devshift.biz/wp-content/uploads/2017/04/profile-icon-png-898.png',
+    },
   },
   { timestamps: true }
 );

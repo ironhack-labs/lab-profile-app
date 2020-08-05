@@ -22,7 +22,7 @@ class AuthService {
 
   upload = (image) => {
     return this.service
-      .put('/upload', { image })
+      .post('/upload', image)
       .then((response) => response.data);
   };
 

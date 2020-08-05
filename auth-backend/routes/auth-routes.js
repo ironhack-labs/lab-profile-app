@@ -24,7 +24,7 @@ authRoutes.post('/login', (req, res, next) => {
         res.status(500).json({ message: 'Session save went bad.' });
         return;
       }
-      res.status(200).json(`User logged: ${theUser}`);
+      res.status(200).json(theUser);
     });
   })(req, res, next);
 });
@@ -77,7 +77,6 @@ authRoutes.post('/signup', (req, res, next) => {
         password: hashPass,
         campus: campus,
         course: course,
-        image: '',
       });
       aNewUser.save((err) => {
         if (err) {
@@ -91,7 +90,7 @@ authRoutes.post('/signup', (req, res, next) => {
             res.status(500).json({ message: 'Login after signup went bad.' });
             return;
           }
-          res.status(200).json(`User created: ${aNewUser}`);
+          res.status(200).json(aNewUser);
         });
       });
     }
@@ -99,7 +98,7 @@ authRoutes.post('/signup', (req, res, next) => {
 });
 
 // Upload Route
-authRoutes.put('/upload', uploader.single('image'), (req, res, next) => {
+authRoutes.post('/upload', uploader.single('image'), (req, res, next) => {
   if (!req.file) {
     next(new Error('No file uploaded!'));
     return;
@@ -120,7 +119,7 @@ authRoutes.put('/upload', uploader.single('image'), (req, res, next) => {
     { new: true }
   )
     .then((newImage) => {
-      res.status(200).json(`User updated: ${newImage}`);
+      res.status(200).json(newImage);
     })
     .catch((err) => next(err));
 });
@@ -144,7 +143,7 @@ authRoutes.put('/edit', (req, res, next) => {
     { new: true }
   )
     .then((newData) => {
-      res.status(200).json(`User updated: ${newData}`);
+      res.status(200).json(newData);
     })
     .catch((err) => next(err));
 });
