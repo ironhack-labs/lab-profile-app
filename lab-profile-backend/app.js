@@ -7,7 +7,9 @@ const favicon = require('serve-favicon');
 const hbs = require('hbs');
 const logger = require('morgan');
 const path = require('path');
-
+const cors = require('cors');
+const passport = require('passport');
+require('./configs/passport.config');
 require('./configs/db.config');
 
 const app_name = require('./package.json').name;
@@ -38,10 +40,22 @@ app.set('view engine', 'hbs');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(
+  cors({
+    credentials: true,
+    origin: ['http://localhost:3001', 'http://localhost:3000'], // <== aceptar llamadas desde este dominio
+  })
+);
+
 // default value for title local
-app.locals.title = 'Express - Generated with IronGenerator';
+app.locals.title = 'LAB - React IronProfile';
 
 const index = require('./routes/index');
 app.use('/', index);
+
+const auth = require('./routes/auth.routes');
+app.use('/auth/', auth);
 
 module.exports = app;
