@@ -1,0 +1,38 @@
+
+
+body {
+  background: linear-gradient(#C1DFC4 , #DEECDD);}
+
+.mainDiv {
+  background: url('./components/oval-bg.png') no-repeat center center fixed;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #638165;
+}
+
+.info-div {
+  display: flex;
+  flex-direction: column;
+
+}
+.btn-div {
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px
+}
+
+.btn-logs {
+  background-color: #C1DFC4;
+  width: 150px;
+  color: #ffffff;
+  margin: 10px 0;
+}
+.btn-logs:hover {
+  color: #638165;
+}
+
+
+
+
