@@ -79,16 +79,21 @@ router.post('/signup', (req, res, next) => {
 });
 
 router.post('/upload', uploadCloud.single('file'), (req, res, next) => {
-  const image = req.file.path;
-  if (req.user) {
-    const editUser = User.findByIdAndUpdate(
-      req.user._id,
-      { image },
-      {
-        new: true,
-      }
-    );
-    res.status(200).json({ message: 'User updated' });
+  console.log(req.user);
+  console.log(req.file);
+  if (req.user && req.file) {
+    const image = req.file.path;
+    const editUser = User.findByIdAndUpdate(req.user._id, {
+      image,
+    })
+      .then((response) => {
+        res.status(200).json(image);
+        return;
+      })
+      .catch((err) => {
+        res.status(500).json({ message: err.message });
+        return;
+      });
   } else {
     res.status(500).json({ message: 'Problem saving user image.' });
     return;

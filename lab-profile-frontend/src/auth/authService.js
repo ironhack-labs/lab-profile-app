@@ -19,8 +19,12 @@ class AuthService {
       .then((response) => response.data);
   };
   upload = (file) => {
+    console.log(file);
+    const dataFile = new FormData();
+    dataFile.append('file', file);
+
     return this.service
-      .post('/upload', { file })
+      .post('/upload', dataFile)
       .then((response) => response.data);
   };
   edit = (username, campus, course) => {

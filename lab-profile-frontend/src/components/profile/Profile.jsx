@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
+import UploadFoto from '../uploadphoto/UploadFoto';
+import { Link } from 'react-router-dom';
 
 function Profile(props) {
-  const initialState = {
-    showLoadImage: false,
-    image: props.user.image,
+  const [image, setImage] = useState(props.user.image);
+  const handleImage = (image) => {
+    setImage(image);
+    props.callback(props.user);
   };
-  const [profile, setProfile] = useState(initialState);
   return (
     <div className="container-layout">
       <div className="container-left">
@@ -24,15 +26,16 @@ function Profile(props) {
             <span className="profile-data">{props.user.course}</span>
           </div>
         </div>
+        <div>
+          <Link to="/logout" className="link-logout">
+            Logout
+          </Link>
+        </div>
       </div>
       <div className="container-right">
         <div className="content-left">
-          <img
-            src={props.user.image}
-            alt={props.user.username}
-            className="photo"
-          />
-          <button className="link-reverse">Edit foto</button>{' '}
+          <img src={image} alt={props.user.username} className="photo" />
+          <UploadFoto onUpload={handleImage} image={props.user.image} />
         </div>
         <div className="content-center">
           <p>

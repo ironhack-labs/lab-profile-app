@@ -6,12 +6,16 @@ import Signup from './components/signup/Signup';
 import Login from './components/login/Login';
 import Profile from './components/profile/Profile';
 import ProtectedRoute from './auth/protected-route';
+import Logout from './components/logout/Logout';
 
 function App() {
   const [user, setUser] = useState(null);
 
   const getUser = (_user) => {
     setUser(_user);
+  };
+  const setImage = (_image) => {
+    setUser({ ...user, image: _image });
   };
   return (
     <div className="home">
@@ -27,7 +31,17 @@ function App() {
           path="/login"
           render={(props) => <Login {...props} getUser={getUser} />}
         />
-        <ProtectedRoute user={user} path="/profile" component={Profile} />
+        <Route
+          exact
+          path="/logout"
+          render={(props) => <Logout {...props} getUser={getUser} />}
+        />
+        <ProtectedRoute
+          user={user}
+          callback={setImage}
+          path="/profile"
+          component={Profile}
+        />
       </Switch>
     </div>
   );

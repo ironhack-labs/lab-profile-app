@@ -61,6 +61,19 @@ body {
   border-radius: 5px;
   background-color: #c0e3be;
 }
+.link-logout {
+  margin: 10px 10px;
+  width: 250px;
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  text-decoration: none;
+  color: red;
+  border: 0px;
+  background-color: transparent;
+}
 .link-reverse {
   margin: 10px 10px;
   width: 250px;
