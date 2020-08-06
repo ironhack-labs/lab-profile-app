@@ -43,8 +43,6 @@ const ProfilePage = (props) => {
     history.push('/profile');
   };
 
-  console.log(state.file);
-
   return (
     <div>
       <h1>Profile</h1>
