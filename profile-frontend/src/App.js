@@ -33,7 +33,7 @@ export default class App extends Component {
         <Route exact path="/"><Homepage /></Route>
         <Route path="/signup" render={props => <Signup {...props} user={this.state.loggedInUser} callback={this.getUser} />} />
         <Route path="/login" render={props => <Login {...props} user={this.state.loggedInUser} callback={this.getUser} />} />
-        <Route exact path="/profile"><Profile user={this.state.loggedInUser}/></Route>
+        <Route path="/profile" render={props => <Profile {...props} user={this.state.loggedInUser} callback={this.getUser} />} />
 
       </Switch>
     )

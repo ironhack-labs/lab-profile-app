@@ -1,10 +1,17 @@
 import React, { Component } from 'react';
 import AuthService from '../../src/auth/auth-services';
+import axios from 'axios'
 
 export default class Signup extends Component {
     constructor(props) {
         super(props)
-        this.state = { username: '', password: '' }
+        this.state = {
+            username: '',
+            password: '',
+            campus: '',
+            course: '',
+            image: ''
+        }
         this.service = new AuthService() //===> para ter acesso aos métodos da classe AuthService
     }
 
@@ -19,11 +26,18 @@ export default class Signup extends Component {
         event.preventDefault();
         const username = this.state.username;
         const password = this.state.password;
-        this.service.signup(username, password) //service.signup envia os dados a AuthService
+        const campus = this.state.password;
+        const course = this.state.password;
+        const image = this.state.password;
+
+        this.service.signup(username, password, campus, course, image) //service.signup envia os dados a AuthService
             .then(response => {
                 this.setState({
                     username: '',
-                    password: ''
+                    password: '',
+                    campus: '',
+                    course: '',
+                    image: ''
                 })
                 this.props.callback(response)
                 this.props.history.push(`/profile/`);//como colocar o username na rota? this.props.user??
@@ -32,9 +46,20 @@ export default class Signup extends Component {
             .catch(err => console.log(err))
     }
 
+    handleFileUpLoad = (event) => {
+        console.log("file upload...")
+        const uploadData = new FormData()
+        uploadData.append("image", event.target.files[0])
+        axios.post('http://localhost:3001/api/upload', uploadData)
+        .then(response => {
+            console.log("file uploaded sucessfully", response.data)
+            this.setState({
+                image: response.data.path
+            })
+        })
+    }
 
     render() {
-        console.log('props: ', this.props)
 
         return (
             <div className="mainDiv container">
@@ -80,8 +105,8 @@ export default class Signup extends Component {
                                 <label>Campus</label>
                                 <input
                                     className="form-control"
-                                    type="password"
-                                    name="password"
+                                    type="text"
+                                    name="campus"
                                     value={this.state.campus}
                                     onChange={event => this.handleChange(event)} />
                             </div>
@@ -94,14 +119,23 @@ export default class Signup extends Component {
                     <div className="form-group row signupRows d-flex justify-content-around">
                         <div className="col-3">
                             <div className="form-group">
-                                <label>Cours</label>
+                                <label>Course</label>
                                 <input
                                     className="form-control"
-                                    type="password"
-                                    name="password"
+                                    type="text"
+                                    name="course"
                                     value={this.state.course}
                                     onChange={event => this.handleChange(event)} />
                             </div>
+                        </div>
+
+                        <div>
+                            <p>Photo</p>
+                            <input
+                                type="file"
+                                name="image"
+                                onChange={this.handleFileUpLoad}
+                            />
                         </div>
                         <div className="col-3">
                             <button
