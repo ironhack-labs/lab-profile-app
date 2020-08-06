@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css';
-import { Switch, Route, Link } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import Signup from './components/Signup';
 import Login from './components/Login';
+import Home from './components/Home';
 
 function App() {
   const [loggedUser, setLoggedUser] = useState(null)
@@ -11,14 +12,10 @@ function App() {
     setLoggedUser(userObject)
   }
   return (
-    <div className='App'>
-      <h1>Iron Profile</h1>
-      <h2>Today we will create an app with authoritation, adding some cool styles!</h2>
-      <Link className='btn' to='/signup'>Sign up</Link>
-      <Link className='btn' to='/login'>Log in</Link>
+    <div className='App d-flex flex-row justify-content-center align-items-center'>
       <Switch>
         <Route exact path='/'>
-          <h1>Home</h1>
+          <Home />
         </Route>
         <Route path="/signup">
           <Signup getUser={getUser}/>

@@ -26,25 +26,36 @@ export class Login extends Component {
                 username: '',
                 password: ''
             })
-            this.props.getUser(response._id)
+            this.props.getUser(response)
         })
         .catch(error => console.log(error))
     }
     render() {
         return (
-            <div>
-                <h2>Log in</h2>
-                <form onSubmit={this.handleSubmit}>
-                    <div className="form-group">
-                        <label>Username</label>
-                        <input type="text" name='username' value={this.state.username} onChange={this.handleChange}/>
+            <div className='box d-flex flex-row'>
+                <div className='box-element'>
+                    <h2>Log in</h2>
+                    <form onSubmit={this.handleSubmit}>
+                        <div className="form-group">
+                            <label>Username</label>
+                            <input className='form-control' type="text" name='username' value={this.state.username} onChange={this.handleChange}/>
+                        </div>
+                        <div className="form-group">
+                            <label>Password</label>
+                            <input className='form-control' type="text" name='password' value={this.state.password} onChange={this.handleChange}/>
+                        </div>
+                        <input className='btn' type="submit" value='Log In'/>
+                    </form>
+                </div>
+                <div className='box-element d-flex flex-column justify-content-around'>
+                    <div>
+                        <h2>Hello!!!</h2>
+                        <h3>Awesome to have at IronProfile again!</h3>
                     </div>
-                    <div className="form-group">
-                        <label>Password</label>
-                        <input type="text" name='password' value={this.state.password} onChange={this.handleChange}/>
+                    <div className='d-flex flex-column align-items-center'>
+                        <p>If you signup, you agree with all our terms and conditions where we can do whatever we want with the data</p>
                     </div>
-                    <input className='btn' type="submit" value='Log In'/>
-                </form>
+                </div>
             </div>
         )
     }
