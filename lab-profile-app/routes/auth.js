@@ -2,8 +2,10 @@ const express = require('express');
 const authRoutes = express.Router();
 const passport = require('passport');
 const bcrypt = require('bcryptjs');
+const uploader = require('../configs/cloudinary-setup')
 
-const User = require('../models/user-model')
+const User = require('../models/user-model');
+const { Router } = require('express');
 
 // POST	/auth/login	
 authRoutes.post('/login', (req, res, next) => {
@@ -31,6 +33,10 @@ authRoutes.post('/login', (req, res, next) => {
 authRoutes.post('/signup', (req, res, next) => {
   const username = req.body.username;
   const password = req.body.password;
+  const campus = req.body.campus;
+  const course = req.body.course;
+  const image = req.body.image;
+
   if (!username || !password) {
     res.status(400).json({ message: 'Provide username and password' });
     return;
@@ -53,7 +59,10 @@ authRoutes.post('/signup', (req, res, next) => {
     const hashPass = bcrypt.hashSync(password, salt);
     const aNewUser = new User({
       username: username,
-      password: hashPass
+      password: hashPass, 
+      campus: campus,
+      course: course,
+      image: image
     });
 
     aNewUser.save(err => {
@@ -75,7 +84,19 @@ authRoutes.post('/signup', (req, res, next) => {
 });
 
 
-// POST	/auth/upload	
+// POST	/auth/upload
+authRoutes.post('/upload', uploader.single("image"), (req, res, next) => {
+  console.log("upload listo")
+  console.log("File: ", req.file)
+
+  if(!req.file){
+    next(new Error('no file uploaded!'));
+    return;
+  }
+  res.json({path: req.file.path})
+})
+
+
 
 // POST	/auth/edit	
 
