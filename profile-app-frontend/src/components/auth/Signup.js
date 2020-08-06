@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import AuthService from '../../services/authService';
 import { useHistory } from 'react-router-dom';
 
-const Signup = () => {
+const Signup = (props) => {
   const initialState = {
     username: '',
     password: '',
@@ -24,6 +24,8 @@ const Signup = () => {
       .signup(username, password, campus, course)
       .then((res) => {
         setState(initialState);
+        console.log(res);
+        props.callback(res);
         history.push('/profile');
       })
       .catch((err) => console.log(err));

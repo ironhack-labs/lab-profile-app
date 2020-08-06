@@ -28,13 +28,13 @@ class AuthService {
 
   logout = () => this.service.post('/logout', {}).then((res) => res.data);
 
-  upload = (imageUrl) => {
-    return this.service.post('/upload', { imageUrl }).then((res) => res.data);
+  upload = (image) => {
+    return this.service.post('/upload', image).then((res) => res.data);
   };
 
   edit = (username, campus, course) => {
     return this.service
-      .post('/edit/:id', { username, campus, course })
+      .post('/edit', { username, campus, course })
       .then((res) => res.data);
   };
 }
