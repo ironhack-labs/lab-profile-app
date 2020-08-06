@@ -66,7 +66,7 @@ app.locals.title = 'Ironhack Profile App';
 app.use(
   cors({
     credentials: true,
-    origin: ['http://localhost:3000'] // <== aceptar llamadas desde este dominio
+    origin: ['http://localhost:1234'] // <== aceptar llamadas desde este dominio
   })
 );
 
