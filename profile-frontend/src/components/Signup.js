@@ -38,30 +38,79 @@ export default class Signup extends Component {
 
         return (
             <div className="mainDiv container">
-                <div className="row">
-                    <div className="col-6 info-div">
-                        <h4>Signup</h4>
-                        <form onSubmit={this.handleSubmit}>
+                <form onSubmit={this.handleSubmit}>
+                    <div className="form-group row signupRows d-flex justify-content-around">
+                        <div className="col-3">
+                            <h3>Signup</h3>
                             <label>Username</label>
                             <input
+                                className="form-control"
                                 type="text"
                                 name="username"
                                 value={this.state.username}
                                 onChange={event => this.handleChange(event)}
                             />
-                            <label>Password</label>
-                            <input
-                                type="password"
-                                name="password"
-                                value={this.state.password}
-                                onChange={event => this.handleChange(event)} />
-                            <button
-                                className="btn btn-logs"
-                                type="submit"
-                                value="Signup" >Signup</button>
-                        </form>
+                        </div>
+                        <div className="col-3">
+                            <h3>Hello!!!</h3>
+                            <h5>Welcome to IronProfile</h5>
+                        </div>
                     </div>
-                </div>
+
+                    <div className="form-group row signupRows d-flex justify-content-around">
+                        <div className="col-3">
+                            <div className="form-group">
+                                <label>Password</label>
+                                <input
+                                    className="form-control"
+                                    type="password"
+                                    name="password"
+                                    value={this.state.password}
+                                    onChange={event => this.handleChange(event)} />
+                            </div>
+                        </div>
+                        <div className="col-3">
+                        </div>
+                    </div>
+
+
+                    <div className="form-group row signupRows d-flex justify-content-around">
+                        <div className="col-3">
+                            <div className="form-group">
+                                <label>Campus</label>
+                                <input
+                                    className="form-control"
+                                    type="password"
+                                    name="password"
+                                    value={this.state.campus}
+                                    onChange={event => this.handleChange(event)} />
+                            </div>
+                        </div>
+                        <div className="col-3">
+                            <p>If you signup, you agree with all our terms and conditions where we can do watever we want with the data!</p>
+                        </div>
+                    </div>
+
+                    <div className="form-group row signupRows d-flex justify-content-around">
+                        <div className="col-3">
+                            <div className="form-group">
+                                <label>Cours</label>
+                                <input
+                                    className="form-control"
+                                    type="password"
+                                    name="password"
+                                    value={this.state.course}
+                                    onChange={event => this.handleChange(event)} />
+                            </div>
+                        </div>
+                        <div className="col-3">
+                            <button
+                                className="btn btn-danger"
+                                type="submit"
+                                value="Signup">Create the Account</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         )
     }

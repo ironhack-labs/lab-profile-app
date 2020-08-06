@@ -5,6 +5,8 @@ import { Switch, Route } from 'react-router-dom'
 import Homepage from './components/Homepage';
 import Login from './components/Login';
 import Signup from './components/Signup';
+import Profile from './components/Profile';
+
 
 
 export default class App extends Component {
@@ -29,9 +31,10 @@ export default class App extends Component {
     return (
       <Switch>
         <Route exact path="/"><Homepage /></Route>
-        <Route exact path="/login"><Login /></Route>
         <Route path="/signup" render={props => <Signup {...props} user={this.state.loggedInUser} callback={this.getUser} />} />
         <Route path="/login" render={props => <Login {...props} user={this.state.loggedInUser} callback={this.getUser} />} />
+        <Route exact path="/profile"><Profile user={this.state.loggedInUser}/></Route>
+
       </Switch>
     )
   }
