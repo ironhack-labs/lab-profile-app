@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css';
 import { Switch, Route, Link } from 'react-router-dom';
+import Signup from './components/Signup';
+import Login from './components/Login';
 
 function App() {
+  const [loggedUser, setLoggedUser] = useState(null)
+  const getUser = userObject => {
+    setLoggedUser(userObject)
+  }
   return (
     <div className='App'>
       <h1>Iron Profile</h1>
@@ -11,11 +17,14 @@ function App() {
       <Link className='btn' to='/signup'>Sign up</Link>
       <Link className='btn' to='/login'>Log in</Link>
       <Switch>
+        <Route exact path='/'>
+          <h1>Home</h1>
+        </Route>
         <Route path="/signup">
-          <h1>Sign up</h1>
+          <Signup getUser={getUser}/>
         </Route>
         <Route path="/login">
-        <h1>Log in</h1> 
+          <Login getUser={getUser}/>
         </Route>
       </Switch>
     </div>
