@@ -13,7 +13,7 @@ router.post('/login', (req, res, next) => {
         .json({ message: 'Something went wrong authenticating user' });
       return;
     }
-    if (!theUser) {
+    if (!user) {
       res.status(401).json(failureDetails);
       return;
     }
@@ -23,8 +23,8 @@ router.post('/login', (req, res, next) => {
         res.status(500).json({ message: 'Session save went bad.' });
         return;
       }
-      //res.status(200).json(user);
-      res.status(200).json({ message: 'User logged' });
+      res.status(200).json(user);
+      //res.status(200).json({ message: 'User logged' });
     });
   })(req, res, next);
 });
@@ -71,8 +71,8 @@ router.post('/signup', (req, res, next) => {
           res.status(500).json({ message: 'Login after signup went bad.' });
           return;
         }
-        //res.status(200).json(newUser);
-        res.status(200).json({ message: 'User created' });
+        res.status(200).json(newUser);
+        //res.status(200).json({ message: 'User created' });
       });
     });
   });

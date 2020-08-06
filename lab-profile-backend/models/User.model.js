@@ -19,7 +19,11 @@ const userSchema = new mongoose.Schema({
     ],
   },
   course: { type: String, enum: ['Web Dev', 'UX/ UI', 'Data Analytics'] },
-  image: { type: String },
+  image: {
+    type: String,
+    default:
+      'https://png.pngtree.com/png-vector/20190710/ourmid/pngtree-user-vector-avatar-png-image_1541962.jpg',
+  },
 });
 
 const User = mongoose.model('User', userSchema);

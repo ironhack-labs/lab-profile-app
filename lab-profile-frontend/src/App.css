@@ -1,58 +1,135 @@
-.App {
+body {
+  background-color: #c3e0c6;
+  /* color: #c0e3be; */
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+}
+.home {
+  margin-top: 100px;
   text-align: center;
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-.layout {
+.container-layout {
   width: 717px;
   height: 458px;
   background-image: url('/oval-bg.png');
+}
+.container-left {
+  float: left;
+  padding-left: 50px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  width: 360px;
+  height: 358px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: stretch;
 }
-
+.container-right {
+  padding-left: 20px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  height: 358px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.content-left {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.content-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 .link {
-  width: 200px;
-  height: 30px;
+  margin: 10px 10px;
+  width: 250px;
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   text-align: center;
   text-decoration: none;
+  border-radius: 5px;
   background-color: #c0e3be;
+}
+.link-reverse {
+  margin: 10px 10px;
+  width: 250px;
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+  border: 0px;
+  border-radius: 5px;
+  background-color: lightgray;
+  color: black;
+}
+.container-layout h1 {
+  color: #638165;
+  font-size: xx-large;
+  font-weight: bold;
+}
+.container-layout h2 {
+  color: #638165;
+  font-size: x-large;
+  font-weight: bold;
+}
+.container-layout p {
+  color: black;
+  font-size: large;
+}
+.container-layout span {
+  color: black;
+  font-size: large;
+}
+.container-right p {
+  margin: 5px;
+  text-align: left;
+  color: black;
+  font-size: 15px;
+  font-weight: lighter;
+}
+.form-field {
+  margin: 5px 5px;
+}
+.profile-data {
+  font-weight: bold;
+  font-size: large;
+}
+.photo {
+  vertical-align: middle;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+}
+label {
+  display: block;
+  color: black;
+  font-weight: normal;
+}
+input {
+  margin-top: 5px;
+  width: 250px;
+  height: 30px;
+  background-color: lightgrey;
+  border: 0px;
+}
+select {
+  margin-top: 5px;
+  width: 250px;
+  height: 30px;
+  background-color: lightgrey;
+  border: 0px;
 }

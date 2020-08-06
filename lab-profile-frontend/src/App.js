@@ -1,33 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
-import { Switch, Route, Link } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
+import Home from './components/home/Home';
+import Signup from './components/signup/Signup';
+import Login from './components/login/Login';
+import Profile from './components/profile/Profile';
+import ProtectedRoute from './auth/protected-route';
 
 function App() {
+  const [user, setUser] = useState(null);
+
+  const getUser = (_user) => {
+    setUser(_user);
+  };
   return (
-    <div className="App">
+    <div className="home">
       <Switch>
-        <Route exact path="/">
-          <div className="layout">
-            <div>
-              <h1>IronProfile</h1>
-              <p>
-                Today we will create an app with authorization, adding some cool
-                styles!
-              </p>
-            </div>
-            <div>
-              <Link to="/signup" className="link">
-                Sign up
-              </Link>
-              <Link to="/login" className="link">
-                Log in
-              </Link>
-            </div>
-          </div>
-        </Route>
-        <Route exact path="/signup" />
-        <Route exact path="/login" />
+        <Route exact path="/" component={Home} />
+        <Route
+          exact
+          path="/signup"
+          render={(props) => <Signup {...props} getUser={getUser} />}
+        />
+        <Route
+          exact
+          path="/login"
+          render={(props) => <Login {...props} getUser={getUser} />}
+        />
+        <ProtectedRoute user={user} path="/profile" component={Profile} />
       </Switch>
     </div>
   );
