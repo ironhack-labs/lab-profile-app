@@ -37,22 +37,28 @@ export default class Login extends Component {
         return (
             <div className="mainDiv container">
                 <div className="row">
-                    <div className="col-6 info-div">
+                    <div className="col info-login">
                         <h4>Login</h4>
                         <form onSubmit={this.handleSubmit}>
-                            <label>Username</label>
-                            <input
-                                type="text"
-                                name="username"
-                                value={this.state.username}
-                                onChange={event => this.handleChange(event)}
-                            />
-                            <label>Password</label>
-                            <input
-                                type="password"
-                                name="password"
-                                value={this.state.password}
-                                onChange={event => this.handleChange(event)} />
+                            <div className="form-group">
+                                <label>Username</label>
+                                <input
+                                    className="form-control"
+                                    type="text"
+                                    name="username"
+                                    value={this.state.username}
+                                    onChange={event => this.handleChange(event)}
+                                />
+                            </div>
+                            <div className="form-group">
+                                <label>Password</label>
+                                <input
+                                    className="form-control"
+                                    type="password"
+                                    name="password"
+                                    value={this.state.password}
+                                    onChange={event => this.handleChange(event)} />
+                            </div>
                             <button
                                 className="btn btn-logs"
                                 type="submit"

@@ -1,7 +1,6 @@
-
-
 body {
-  background: linear-gradient(#C1DFC4 , #DEECDD);}
+  background: linear-gradient(#C1DFC4, #DEECDD);
+}
 
 .mainDiv {
   background: url('./components/oval-bg.png') no-repeat center center fixed;
@@ -15,8 +14,27 @@ body {
 .info-div {
   display: flex;
   flex-direction: column;
-
+  padding: 0;
 }
+
+label {
+  font-size: 0.8rem;
+  margin-bottom: 0;
+}
+
+.info-login {
+  margin-right: 400px;
+}
+
+.info-div p {
+  color: grey;
+}
+
+.info-div h4 {
+  font-weight: 600;
+  color: black
+}
+
 .btn-div {
   display: flex;
   flex-direction: column;
@@ -29,12 +47,50 @@ body {
   color: #ffffff;
   margin: 10px 0;
 }
+
 .btn-logs:hover {
   color: #638165;
 }
 
 .profilePhoto {
-  width: 100px;
+  width: 140px;
 }
 
+.nav-link {
+  color: red
+}
 
+.signup-form{
+  width: 60%;
+}
+
+.form-control {
+  background-color: #ced4da;
+  height: calc(1em + 0.5rem + 2px);
+}
+
+.text {
+  font-size: 0.7rem;
+}
+
+.btn-signup {
+  background-color: #638165;
+  color:#ffffff;
+  height: 40px;
+  margin: 10px 0;
+}
+
+.profile-div {
+  display: flex;
+  width: 60%;
+}
+
+.profile-info p{
+  font-size: 20px;
+  color: black;
+}
+
+input[type='file'] {
+  color: transparent; 
+  background: blue;
+}
