@@ -3,8 +3,7 @@ import AuthService from '../services/authService';
 import { useHistory } from 'react-router-dom';
 
 const ProfilePage = (props) => {
-  console.log(props.user);
-  const { username, campus, course, image } = props.user;
+  const { username, campus, course, image } = props.loggedInUser;
   const initialState = {
     username: '',
     campus: '',
@@ -44,30 +43,34 @@ const ProfilePage = (props) => {
   };
 
   return (
-    <div>
+    <div id="profilePage">
       <h1>Profile</h1>
-      <div className="col left">
-        <ul>
-          <li>
-            <span>Username =></span>
-            {state.username}
-          </li>
-          <li>
-            <span>Campus =></span>
-            {state.campus}
-          </li>
-          <li>
-            <span>Course =></span>
-            {state.course}
-          </li>
-        </ul>
-      </div>
-      <div className="col right">
-        <img key={state.image} src={state.image} alt={state.username} />
-        <form onSubmit={handleSubmitImage}>
-          <input type="file" name="image" onChange={handleChangeImage} />
-          <button type="submit">Edit Photo</button>
-        </form>
+      <div className="content-wrapper">
+        <div className="col left">
+          <ul>
+            <li>
+              <span>Username</span>
+              {state.username}
+            </li>
+            <li>
+              <span>Campus</span>
+              {state.campus}
+            </li>
+            <li>
+              <span>Course</span>
+              {state.course}
+            </li>
+          </ul>
+        </div>
+        <div className="col right">
+          <div className="avatar">
+            <img key={state.image} src={state.image} alt={state.username} />
+          </div>
+          <form onSubmit={handleSubmitImage}>
+            <input type="file" name="image" onChange={handleChangeImage} />
+            <button type="submit">Edit Photo</button>
+          </form>
+        </div>
       </div>
     </div>
   );

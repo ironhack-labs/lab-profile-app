@@ -5,6 +5,7 @@ import HomePage from './components/HomePage';
 import Signup from './components/auth/Signup';
 import Login from './components/auth/Login';
 import ProfilePage from './components/ProfilePage';
+import ProtectedRoute from './services/protectedRoute';
 
 function App() {
   const initialState = {
@@ -13,9 +14,7 @@ function App() {
   const [state, setState] = useState(initialState);
   const getUserData = (user) => {
     setState({ loggedInUser: user });
-    console.log(user);
   };
-  console.log(state.loggedInUser);
   return (
     <div className="App">
       <Switch>
@@ -30,12 +29,11 @@ function App() {
           path="/login"
           render={(props) => <Login {...props} callback={getUserData} />}
         />
-        <Route
+        <ProtectedRoute
           exact
           path="/profile"
-          render={(props) => (
-            <ProfilePage {...props} user={state.loggedInUser} />
-          )}
+          user={state.loggedInUser}
+          component={ProfilePage}
         />
       </Switch>
     </div>

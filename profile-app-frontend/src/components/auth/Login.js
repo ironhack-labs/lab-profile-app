@@ -22,7 +22,6 @@ const Login = (props) => {
       .login(username, password)
       .then((res) => {
         setState(initialState);
-        console.log(res);
         props.callback(res);
         history.push('/profile');
       })

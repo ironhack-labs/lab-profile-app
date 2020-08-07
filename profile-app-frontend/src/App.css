@@ -1,0 +1,23 @@
+#profilePage {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+#profilePage .content-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#profilePage .avatar {
+  width: 140px;
+  height: 140px;
+  overflow: hidden;
+  border-radius: 100px;
+  margin-bottom: 20px;
+}
+
+#profilePage .avatar img {
+  width: auto;
+  height: 100%;
+}
