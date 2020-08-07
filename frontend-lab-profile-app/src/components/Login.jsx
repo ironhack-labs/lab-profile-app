@@ -27,6 +27,7 @@ export class Login extends Component {
                 password: ''
             })
             this.props.getUser(response)
+            this.props.history.push('/profile')
         })
         .catch(error => console.log(error))
     }

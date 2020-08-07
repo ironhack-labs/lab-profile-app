@@ -12,7 +12,10 @@ const UserSchema = new Schema({
     type: String,
     enum: ['Web Dev', 'UX/UI', 'Data Analytics']
   },
-  image: String
+  image: {
+    type: String,
+    default: 'https://freepikpsd.com/wp-content/uploads/2019/10/default-profile-image-png-1-Transparent-Images.png'
+  }
 })
 
 module.exports = mongoose.model('User', UserSchema)

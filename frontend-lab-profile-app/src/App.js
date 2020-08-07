@@ -5,6 +5,7 @@ import { Switch, Route } from 'react-router-dom';
 import Signup from './components/Signup';
 import Login from './components/Login';
 import Home from './components/Home';
+import Profile from './components/Profile';
 
 function App() {
   const [loggedUser, setLoggedUser] = useState(null)
@@ -14,15 +15,10 @@ function App() {
   return (
     <div className='App d-flex flex-row justify-content-center align-items-center'>
       <Switch>
-        <Route exact path='/'>
-          <Home />
-        </Route>
-        <Route path="/signup">
-          <Signup getUser={getUser}/>
-        </Route>
-        <Route path="/login">
-          <Login getUser={getUser}/>
-        </Route>
+        <Route exact path='/' component={Home}/>
+        <Route path="/signup" render={(props) => <Signup {...props} getUser={getUser} />} />
+        <Route path="/login" render={(props) => <Login {...props} getUser={getUser} />} />
+        <Route path="/profile" render={(props) => <Profile {...props} getUser={getUser} user={loggedUser} />} />
       </Switch>
     </div>
   );

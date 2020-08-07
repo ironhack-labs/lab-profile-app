@@ -30,3 +30,7 @@
   background-color: #C1DFC4;
   width: 60%;
 }
+
+.image img {
+  width: 400px;
+}

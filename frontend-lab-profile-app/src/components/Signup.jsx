@@ -31,6 +31,7 @@ export class Signup extends Component {
                 course: ''
             })
             this.props.getUser(response)
+            this.props.history.push('/profile')
         })
         .catch(error => console.log(error))
     }

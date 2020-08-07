@@ -10,8 +10,9 @@ function Home() {
                     <h5>Today we will create an app with authoritation, adding some cool styles!</h5>
                 </div>
                 <div className='d-flex flex-column align-items-center'>
-                    <Link className='btn btn-iron-profile m-4' to='/signup'>Sign up</Link>
-                    <Link className='btn btn-iron-profile' to='/login'>Log in</Link>
+                    <Link className='btn btn-iron-profile m-3' to='/signup'>Sign up</Link>
+                    <Link className='btn btn-iron-profile m-3' to='/login'>Log in</Link>
+                    {/* <Link className='btn btn-iron-profile m-3' to='/profile'>Profile</Link> */}
                 </div>
             </div>
             <div className='box-element'></div>
