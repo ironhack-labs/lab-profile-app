@@ -112,15 +112,15 @@ authRoutes.post('/edit', (req, res, next) => {
   )
 })
 
-authRoutes.post('/upload', uploader.single("imageUrl"), (req, res, next) => {
+authRoutes.post('/upload', uploader.single("image"), (req, res, next) => {
   if (!req.file) {
     next(new Error('No file uploaded!'));
     return;
   }
-  const image = req.file.path
-  /*User.findByIdAndUpdate(
+  const {_id: userId} = req.user
+  User.findByIdAndUpdate(
     userId, 
-    {image}, 
+    {image: req.file.path}, 
     {new: true}, 
     (err, updatedProfile) => {
       if (err) {
@@ -129,7 +129,7 @@ authRoutes.post('/upload', uploader.single("imageUrl"), (req, res, next) => {
       }
       res.status(200).json(updatedProfile)
     }
-  )*/
+  )
 })
 
 module.exports = authRoutes

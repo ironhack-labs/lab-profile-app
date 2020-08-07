@@ -12,7 +12,6 @@ function Home() {
                 <div className='d-flex flex-column align-items-center'>
                     <Link className='btn btn-iron-profile m-3' to='/signup'>Sign up</Link>
                     <Link className='btn btn-iron-profile m-3' to='/login'>Log in</Link>
-                    {/* <Link className='btn btn-iron-profile m-3' to='/profile'>Profile</Link> */}
                 </div>
             </div>
             <div className='box-element'></div>

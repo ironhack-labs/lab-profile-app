@@ -6,7 +6,8 @@ export class Profile extends Component {
         super(props)
         this.state = {
             uploadClicked: false,
-            imageFile: null
+            imageFile: null,
+            user: this.props.user
         }
         this.service = new AuthService()
     }
@@ -22,6 +23,20 @@ export class Profile extends Component {
             imageFile: target.files[0]
         }))
     }
+    submitImage = (e) => {
+        e.preventDefault()
+        const uploadImage = new FormData()
+        uploadImage.append('image', this.state.imageFile)
+        this.service.upload(uploadImage)
+        .then(response => {
+            this.setState(() => ({
+                user: response,
+                uploadClicked: false,
+                imageFile: null
+            }))
+            this.props.getUser(response)
+        })
+    }
     logout = () => {
         this.service.logout()
         .then(() => {
@@ -30,7 +45,6 @@ export class Profile extends Component {
         })
     }
     render() {
-        console.log(this.props)
         return (
             <div className='box d-flex flex-row'>
                 <div className='box-element d-flex flex-column justify-content-around'>
@@ -43,7 +57,7 @@ export class Profile extends Component {
                         <h5>Campus</h5>
                         <h4>{this.props.user.campus}</h4>
                         <h5>Course</h5>
-                        <h4>{this.props.user.course}</h4>  
+                        <h4>{this.props.user.course}</h4>
                     </div>
                     <div>
                         <button className='btn btn-danger' onClick={this.logout}>Logout</button>  
@@ -54,8 +68,7 @@ export class Profile extends Component {
                     {
                         !this.state.uploadClicked ?
                         <button onClick={this.clickEdit}>Edit Photo</button> :
-                        // FALTA EL ONSUBMIT Y EL ONCHANGE
-                        <form>
+                        <form onSubmit={this.submitImage}>
                             <input type='file' name='image' onChange={this.fileChange}/>
                             <input className='btn' type='submit' value='Upload photo'/>
                         </form>
