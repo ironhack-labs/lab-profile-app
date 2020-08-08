@@ -74,7 +74,7 @@ class Signup extends Component {
                                 <option value='Paris'>Paris</option>
                                 <option value='Berlin'>Berlin</option>
                                 <option value='Amsterdam'>Amsterdam</option>
-                                <option value='México'>México</option>
+                                <option value='Mexico'>Mexico</option>
                                 <option value='Sao Paulo'>Sao Paulo</option>
                                 <option value='Lisbon'>Lisbon</option>
                             </select>
