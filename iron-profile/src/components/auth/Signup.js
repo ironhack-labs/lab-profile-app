@@ -87,7 +87,7 @@ class Signup extends Component {
                                 value={this.state.course}>
                                 <option value=''></option>
                                 <option value='Web Dev'>Web Dev</option>
-                                <option value='UX/ UI'>UX/ UI</option>
+                                <option value='UX/UI'>UX/UI</option>
                                 <option value='Data Analytics'>Data Analytics</option>
                             </select>
                         </div>
