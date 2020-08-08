@@ -4,6 +4,7 @@ const passport = require('passport');
 const bcrypt = require('bcryptjs');
 const uploader = require('../configs/cloudinary-setup')
 
+
 const User = require('../models/user-model');
 const { Router } = require('express');
 
@@ -59,7 +60,7 @@ authRoutes.post('/signup', (req, res, next) => {
     const hashPass = bcrypt.hashSync(password, salt);
     const aNewUser = new User({
       username: username,
-      password: hashPass, 
+      password: hashPass,
       campus: campus,
       course: course,
       image: image
@@ -88,17 +89,31 @@ authRoutes.post('/signup', (req, res, next) => {
 authRoutes.post('/upload', uploader.single("image"), (req, res, next) => {
   console.log("upload listo")
   console.log("File: ", req.file)
-
-  if(!req.file){
+  if (!req.file) {
     next(new Error('no file uploaded!'));
     return;
   }
-  res.json({path: req.file.path})
+  res.json({ path: req.file.path })
 })
 
+// PUT	/auth/edit
+authRoutes.put('/edit', (req, res, next) => {
+  // const username = req.body.username;
+  // const password = req.body.password;
+  // const campus = req.body.campus;
+  // const course = req.body.course;
+  const image = req.body.image;
 
 
-// POST	/auth/edit	
+  //achar o usuário pelo id e modificar a imagem
+  //se o usuario está logado, tem uma sessao 
+  const id = req.user._id
+  User.findByIdAndUpdate(id, {image})
+  .then(response => res.json({message: "image updated with success"}))
+  .catch(err => res.json(err))
+  
+
+});
 
 
 // POST	/auth/logout	
@@ -112,7 +127,7 @@ authRoutes.post('/logout', (req, res, next) => {
 authRoutes.get('/loggedin', (req, res, next) => {
   // req.isAuthenticated() is defined by passport
   if (req.isAuthenticated()) {
-    res.status(200).json(req.user);
+    res.status(200).json(req.user);//req.user ==> acesso ao usuário que está logado. 
     return;
   }
   res.status(403).json({ message: 'Unauthorized' });
