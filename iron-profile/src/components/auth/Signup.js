@@ -13,7 +13,6 @@ class Signup extends Component {
         };
         this.service = new AuthService();
     }
-    // handleChange() and handleSubmit() will be added here
     handleFormSubmit = (event) => {
         event.preventDefault();
         const username = this.state.username;
@@ -39,7 +38,6 @@ class Signup extends Component {
         const {name, value} = event.target;
         this.setState({[name]: value});
     }
-
     render() {
         return (
             <div className='container'>

@@ -20,9 +20,7 @@ class Profile extends Component {
             .reloadProfile
             .bind(this)
         this.service = new AuthService();
-
     }
-
     componentDidMount() {
         console.log(this.props)
         this.setState({
@@ -36,13 +34,11 @@ class Profile extends Component {
             loading: false
         });
     }
-
     handleChange = (event) => {
         const {name, value} = event.target;
         this.setState({[name]: value});
         console.log(this.state);
     };
-
     handleFormSubmit = (event) => {
         event.preventDefault();
         const username = this.state.username;
@@ -63,7 +59,6 @@ class Profile extends Component {
             })
             .catch((error) => console.log(error));
     };
-
     handleImageChange = (event) => {
         console.log(this.state.file)
         event.preventDefault();
@@ -75,7 +70,6 @@ class Profile extends Component {
             .service
             .upload(this.state.file)
             .then((response) => {
-
                 console.log('response', response)
                 this
                     .props
@@ -90,7 +84,6 @@ class Profile extends Component {
             })
             .catch((err) => console.log(err));
     };
-
     reloadProfile() {
         this.setState({
             ...this.state,
@@ -101,8 +94,7 @@ class Profile extends Component {
             .props
             .history
             .push('/profile');
-    }
-
+    };
     handleFileUpload = (event) => {
         console.log(event.target.files[0])
         this.setState({
@@ -110,7 +102,6 @@ class Profile extends Component {
             file: event.target.files[0]
         });
     };
-
     render() {
         if (this.state.loading) {
             return <LoadingInfo/>;
@@ -140,7 +131,7 @@ class Profile extends Component {
                                 <option value='Paris'>Paris</option>
                                 <option value='Berlin'>Berlin</option>
                                 <option value='Amsterdam'>Amsterdam</option>
-                                <option value='México'>México</option>
+                                <option value='Mexico'>Mexico</option>
                                 <option value='Sao Paulo'>Sao Paulo</option>
                                 <option value='Lisbon'>Lisbon</option>
                             </select>
@@ -152,7 +143,7 @@ class Profile extends Component {
                                     value={this.state.course}>
                                     <option value=''></option>
                                     <option value='Web Dev'>Web Dev</option>
-                                    <option value='UX/ UI'>UX/ UI</option>
+                                    <option value='UX/UI'>UX/UI</option>
                                     <option value='Data Analytics'>Data Analytics</option>
                                 </select>
                             </div>

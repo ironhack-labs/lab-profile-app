@@ -50,7 +50,6 @@ class Login extends Component {
                             name='password'
                             value={this.state.password}
                             onChange={e => this.handleChange(e)}/>
-
                     </form>
                     <p>If you don't have an account yet, you can create your account  <Link to={'/signup'}>here</Link></p>
                 </div>
