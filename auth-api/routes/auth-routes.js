@@ -145,7 +145,6 @@ authRoutes.put('/edit', (req, res, next) => {
     const campus = req.body.campus;
     const course = req.body.course;
     const currentUser = req.session.passport.user;
-
     User.findOneAndUpdate({
             _id: currentUser,
         }, {
