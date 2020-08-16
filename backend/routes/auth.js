@@ -17,6 +17,7 @@ authRoutes.post('/signup', (req, res, next) => {
 
     if (!campus || !course) {
         res.status(400).json({ message: 'Provide campus and course' });
+        return;
     }
 
  
@@ -110,6 +111,7 @@ authRoutes.get('/loggedin', (req, res, next) => {
         return;
     }
     res.status(403).json({ message: 'Unauthorized' });
+    return;
 });
  
 module.exports = authRoutes;
