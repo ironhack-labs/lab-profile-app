@@ -1,0 +1,36 @@
+.App {
+  background-image: linear-gradient(to right, #C1DFC4  , #DEECDD);
+  width: 100%;
+  height: 100vh;
+}
+
+.box {
+  width: 70%;
+  height: 70vh;
+}
+
+.box-element:first-child {
+  background-color: white; 
+}
+
+.box-element:first-child h2 {
+  color: #638165;
+}
+
+.box-element:last-child {
+  background-color: #C1DFC4;
+}
+
+.box-element {
+  width: 50%;
+  padding: 80px;
+}
+
+.btn-iron-profile {
+  background-color: #C1DFC4;
+  width: 60%;
+}
+
+.image img {
+  width: 400px;
+}
