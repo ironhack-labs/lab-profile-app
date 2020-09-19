@@ -2,13 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import Router from "./router"
-/* import App from './App'; */
+import OurContext from './context'
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
-  <React.StrictMode>
+  (<OurContext>
     <Router />
-  </React.StrictMode>,
+  </OurContext>),
   document.getElementById('root')
 );
 

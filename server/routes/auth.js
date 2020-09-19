@@ -33,8 +33,12 @@ router.post("/login", (req, res, next) => {
 
 
 router.post("/signup", (req, res, next) => {
-    const username = req.body.username;
-    const password = req.body.password;
+    const {
+        username,
+        password,
+        campus,
+        course
+    } = req.body;
     if (username === "" || password === "") {
         res.status(401).json({
             message: "Indicate username and password"
@@ -57,7 +61,9 @@ router.post("/signup", (req, res, next) => {
 
         const newUser = new User({
             username,
-            password: hashPass
+            password: hashPass,
+            campus,
+            course
         });
 
         newUser.save()
@@ -85,8 +91,8 @@ router.get('/loggedin', (req, res) => {
     res.status(200).json(req.user)
 })
 
-/* POST edit profile */
-router.post('/edit', async(req, res) => {
+/* PUT edit profile */
+router.put('/edit', async(req, res) => {
     const newProfile = req.body
     const user = await User.findByIdAndUpdate(req.user._id, newProfile, {
         new: true
@@ -94,6 +100,18 @@ router.post('/edit', async(req, res) => {
         res.status(500).json({
             message: "Something went wrong"
         });
+    })
+    res.status(200).json(user)
+})
+
+router.put('/upload', async(req, res) => {
+    const {
+        image
+    } = req.body
+    const user = await User.findByIdAndUpdate(req.user.id, {
+        image
+    }, {
+        new: true
     })
     res.status(200).json(user)
 })
