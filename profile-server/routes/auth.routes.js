@@ -69,9 +69,9 @@ router.post('/signup', (req, res, next) => {
 });
 
 router.put('/edit', (req, res, next) => {
-    const { password, campus, course } = req.body;
+    const { username, campus, course } = req.body;
 
-    userObj = { password, campus, course }
+    userObj = { username, campus, course }
     User.findByIdAndUpdate(req.user._id, { new: true })
         .then((updatedUser) => {
             res.json({
