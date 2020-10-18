@@ -1,25 +1,9 @@
-.outer-container{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-
-}
-
-.inner-container{
-  background-image: url("/oval-bg.png");
+body {
+  background: url('/oval-bg.png');
+  background-attachment: fixed;
+  background-position: center;
   background-repeat: no-repeat;
-  height: 60vh;
-  width: 60vw;
-  background-size: cover;
-  
-  /* flex-direction: "column"; */
-}
-
-.btn-container{
-  display: "flex";
-  justify-content: "center";
-  align-items: "center";
+  padding: 30vh 60vh;
 }
 
 .btn{
