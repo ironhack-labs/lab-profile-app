@@ -6,9 +6,9 @@ export default class HomePage extends Component {
         return (
          <div className='card'>
             <h1>IronProfile</h1>
-            <p>Create your profile or login!</p>
-            <button><Link to='/signup'>Signup</Link> </button>
-            <button><Link to='/login'>Login</Link> </button>
+            <p>Create your profile or log in!</p>
+            <button><Link to='/signup'>Sign up</Link> </button>
+            <button><Link to='/login'>Log in</Link> </button>
          </div>
         )
     }

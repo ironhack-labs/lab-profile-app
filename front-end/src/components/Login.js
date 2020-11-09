@@ -48,15 +48,21 @@ export default class Login extends Component {
         }
 
         return (
-            <div>
-                <h1>Log in</h1>
-                <form onSubmit={this.submitHandler}>
-                    <input type="text" name="username" placeholder="username" value={this.state.username} onChange={this.onChangeHandler}></input>
-                    <input type="password" name="password" placeholder="password" value={this.state.password} onChange={this.onChangeHandler}></input>
-                    <button>Login</button>
-                </form>
-                {this.state.errorMsg}
-                <p>No account yet? <Link to="/signup">Signup</Link></p>
+            <div className='card'>
+                <div>
+                    <h1>Log in</h1>
+                    <form onSubmit={this.submitHandler}>
+                        <label>Username</label>
+                        <input type="text" name="username" placeholder="username" value={this.state.username} onChange={this.onChangeHandler}></input>
+                        <label>Password</label>
+                        <input type="password" name="password" placeholder="password" value={this.state.password} onChange={this.onChangeHandler}></input>
+                        <button>Login</button>
+                    </form> 
+        
+                
+                    {this.state.errorMsg}
+                    <p>No account yet? <Link to="/signup">Signup</Link></p>
+                </div>
             </div>
         )
     }

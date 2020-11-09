@@ -54,7 +54,7 @@ export default class Signup extends Component {
         }
 
         return (
-            <div>
+            <div className='card'>
                 <h1>Sign up</h1>
                 <form onSubmit={this.handleFormSubmit}>
                     <label>Username</label>
@@ -83,7 +83,7 @@ export default class Signup extends Component {
                         <option value='Data Analytics'>Data Analytics</option>
                     </select>
                     
-                    <button>Signup</button>
+                    <button>Create the account</button>
 
                 </form>
                 {this.state.errorMessage}

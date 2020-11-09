@@ -1,14 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+
 .App {
   background-image: linear-gradient(to bottom right, #C1DFC4,#DEECDD );
   height: 100vh;
   width: 100vw;
+  font-family: 'Roboto', sans-serif;
 }
 
 
 .card {
   background-image: url('./oval-bg.png');
   background-repeat: no-repeat;
-
   width: 60vw;
   height: 70vh;
   position: absolute;
@@ -18,5 +20,37 @@
 }
 
 .card h1 {
-  color: #638165
+  color: #638165;
+  letter-spacing: 1.5px;
+  padding: 40px 40px 20px 40px; 
 }
+
+.card p {
+  color: black;
+  font-weight: 300;
+  padding: 10px 40px 40px 40px;
+}
+
+.card button {
+  background-color: #C1DFC4;
+  border: none;
+  display: block;
+  width: 150px;
+  height: 30px;
+  margin: 40px 80px;
+  border-radius: 3px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.card form{
+  padding-left: 40px;
+}
+
+.card form label {
+  display: block;
+}
+
+
