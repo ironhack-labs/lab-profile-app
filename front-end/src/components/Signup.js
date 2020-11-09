@@ -1,29 +1,61 @@
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import React, { Component } from 'react'
+import AuthService from '../services/authService'
 
 export default class Signup extends Component {
 
     state = {
         username: '',
         password: '',
-        campus: [],
-        course: []
+        campus: '',
+        course: '',
+        errorMessage: '',
+        redirect: false
     }
+
+    service = new AuthService()
 
     handleChange = (e) => {
         const { name, value} = e.target
+      
 
         this.setState({
-            [name]: value
+            [name]: value,
+
+        })
+
+    }
+
+    handleFormSubmit = (e) => {
+        e.preventDefault()
+
+        this.service.signup(this.state.username, this.state.password, this.state.course, this.state.campus)
+        .then(user => {
+            console.log(user)
+            this.props.getTheUser(user)
+            this.setState({
+                redirect: true
+            })
+        })
+        .catch(err => {
+            console.log(err)
+            console.log(err.response)
+            this.setState({
+                errorMessage: err.response.data.message
+            })
         })
     }
 
 
     render() {
-        console.log(this.state.password)
+      
+        if(this.state.redirect){
+            return <Redirect to='/profile'></Redirect>
+        }
+
         return (
             <div>
-                <h1>Signup</h1>
+                <h1>Sign up</h1>
                 <form onSubmit={this.handleFormSubmit}>
                     <label>Username</label>
                     <input type="text" name="username" value={this.state.username} onChange={this.handleChange} />
@@ -52,11 +84,10 @@ export default class Signup extends Component {
                     </select>
                     
                     <button>Signup</button>
-                    <p>Already have an account? 
-                        <Link to="/login">Login</Link>
-                    </p>
+
                 </form>
-                
+                {this.state.errorMessage}
+                <p>Already have an account? <Link to="/login">Login</Link></p>
             </div>
         )
     }
