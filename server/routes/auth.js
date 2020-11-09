@@ -12,7 +12,7 @@ router.post('/signup', async (req, res) => {
 
   if(!username || !password || !campus || !course){
     if(userFound){
-      res.status(400).json({ message: 'Username already in use, pick another username + provided all information'})
+      res.status(400).json({ message: 'Username already in use, pick another username.'})
     } else{
     res.status(400).json({ message: 'Please provide all information (username password, campus, course)'})
     }
