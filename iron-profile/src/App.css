@@ -36,3 +36,38 @@
     transform: rotate(360deg);
   }
 }
+
+
+.signup-form form{
+  margin-left:25%;
+  width:50%;
+  display:flex;
+  flex-direction:column;
+}
+
+.signup-form label{
+  margin:5px;
+}
+
+.signup-form button{
+  margin-top:15px;
+  width:15%;
+  margin-left:43%;
+}
+
+.login-form form{
+  margin-left:25%;
+  width:50%;
+  display:flex;
+  flex-direction:column;
+}
+
+.login-form input{
+  margin:5px;
+}
+
+.login-form button{
+  margin-top:15px;
+  width:15%;
+  margin-left:43%;
+}

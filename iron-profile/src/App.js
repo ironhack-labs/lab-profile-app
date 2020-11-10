@@ -4,6 +4,7 @@ import { Link, Redirect, Route } from 'react-router-dom'
 import './App.css';
 import Home from './components/home'
 import Signup from './components/signup'
+import Login from './components/login'
 
 class App extends React.Component{
 
@@ -39,6 +40,7 @@ class App extends React.Component{
     <div className="App">
       <Home />
       <Route exact path='/signup' component={Signup} />
+      <Route exact path='/login' component={Login} />
     </div>
   );
 
