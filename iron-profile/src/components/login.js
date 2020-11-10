@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 import AuthService from '../authService/authService'
 
 class Login extends React.Component {
@@ -7,6 +7,7 @@ class Login extends React.Component {
   state = {
     username: '',
     password: '',
+    redirect: false 
   }
 
   service = new AuthService()
@@ -23,10 +24,12 @@ class Login extends React.Component {
     this.service.login(this.state.username, this.state.password)
     .then(user => {
       console.log(user)
-      this.props.getTheUser(user) 
+      this.setState({
+        redirect: true 
+      })
     })
     .catch(err => {
-        console.log(err)
+      console.log(err)
     })
 
   }
@@ -35,6 +38,7 @@ class Login extends React.Component {
     if(this.state.redirect){
       return <Redirect to="/profile"></Redirect>
     }
+    
     return(
       <div className='login-form'>
         <h1>Login</h1>
@@ -43,9 +47,6 @@ class Login extends React.Component {
           <input type="password" name="password" placeholder="password" value={this.state.password} onChange={this.onChangeHandler}></input>
           <button>Login</button>
         </form>
-       {this.state.errorMsg}
-
-       
       </div>
     )
   }

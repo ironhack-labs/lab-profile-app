@@ -7,7 +7,7 @@ const bcryptSalt = 10
 /* Create User */
 router.post('/signup', async(req, res) => {
   const { username, password, campus, course } = req.body
-
+  console.log(req.body)
 
 if(!username || !password){
   res.status(400).json({ message: "Please fill in everything"})
@@ -17,7 +17,7 @@ if(!username || !password){
 try {
   const nameTaken = await User.findOne( { username })
   if(nameTaken){
-     res.status(400).json({ message: "This username already exists" })
+     res.status(401).json({ message: "This username already exists" })
      return
   } 
 
@@ -32,7 +32,7 @@ try {
   }
 
   catch(err){
-    //console.log(err)
+    console.log(err)
     res.status(500).json({ message: "Something went wrong"})
   }
 })

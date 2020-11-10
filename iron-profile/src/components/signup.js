@@ -15,15 +15,18 @@ export default class Signup extends Component {
 
       handleFormSubmit = e => {
         e.preventDefault()
+        console.log(this.state)
         this.service.signup(this.state.username, this.state.password, this.state.campus, this.state.course)
         .then(response => {
+
           console.log(response)
           this.setState({
             username: '',
             password: '',
-            campus:'',
+            campus: '',
             course:''
           })
+  
         })
         .catch(err => {
           console.log(err)
