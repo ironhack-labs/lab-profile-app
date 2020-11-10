@@ -43,7 +43,7 @@ class App extends React.Component {
           {/* <Route exact path='/login'  component={Login} /> */}
           <Route exact path='/signup' render={() => <Signup getTheUser={this.getTheUser} /> } />
           <Route exact path='/login' render={() => <Login getTheUser={this.getTheUser} />} />
-          <Route exact path='/profile' component={Profile} />
+          <Route exact path='/profile' render={() => <Profile getTheUser={this.getTheUser} loggedInUser={this.state.loggedInUser}/>} />
           </Switch>
       </div>
     );

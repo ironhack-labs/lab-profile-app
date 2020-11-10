@@ -12,7 +12,10 @@ const userSchema = new Schema ({
         type: String, 
         enum: ['Web Dev', 'UX/UI', 'Data Analytics']
     },
-    image: String
+    image: {
+        type: String,
+        default: 'https://ynnovate.it/default-avatar-4/'
+    }
 })
 
 const User = mongoose.model('User', userSchema)

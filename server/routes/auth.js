@@ -3,6 +3,8 @@ const router  = express.Router();
 const User = require('../models/User.model')
 const bcrypt = require('bcrypt')
 const bcryptSalt = 10
+const multer = require('multer')
+const upload = multer({ dest: 'uploads/' })
 
 
 ////SIGNUP ROUTE////
@@ -88,13 +90,24 @@ router.get('/loggedin', (req,res) => {
   }
 })
 
+////FILE UPLOAD////
 
-////EDIT ROUTE////
+router.post('/upload', upload.single('profileImage'), (req, res) => {
+  if(!req.session.user){
+    res.status(400).json({ message: 'No user in session'})
+  }
 
+  const { username } = req.session.user
 
+  User.updateOne({username: username}, {image: req.file.filename})
+  .then(response => {
+    res.status(200).json(response)
+  })
+  .catch(err => {
+    res.status(500).json({ message: 'Something went wrong with uploading your profile picture'})
+  })
 
-
-
+})
 
 
 module.exports = router;

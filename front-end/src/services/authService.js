@@ -31,6 +31,12 @@ class AuthService {
         .then(response => response.data)
     }
 
+    imageUpload = (image) => {
+        return this.service.post('auth/upload', image)
+        .then(response => response.data)
+    }
+
+
 }
 
 
