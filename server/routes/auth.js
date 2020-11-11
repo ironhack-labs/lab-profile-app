@@ -4,41 +4,40 @@ const User = require('../models/User.model')
 const bcrypt = require('bcrypt')
 const bcryptSalt = 10
 const multer = require('multer')
-const upload = multer({ dest: 'uploads/' })
+const upload = multer({ dest: 'public/uploads/' })
 
 
 ////SIGNUP ROUTE////
 router.post('/signup', async (req, res) => {
   const { username, password, campus, course } = req.body
-  const userFound = await User.findOne( { username } )
+  
 
-  if(!username || !password || !campus || !course){
-    if(userFound){
-      res.status(400).json({ message: 'Username already in use, pick another username.'})
-    } else{
-    res.status(400).json({ message: 'Please provide all information (username password, campus, course)'})
-    }
-    return
+  if(!username || !password || !campus || !course) {
+    res.status(400).json({ message: 'Please provide all information (username password, campus, course)'});
+    return;
   }
 
   try {
+    const userFound = await User.findOne( { username } );
 
     if(userFound){
-      res.status(400).json({ message: 'This username already exist, pick another username'})
-      return
+      res.status(400).json({ message: 'This username already exist, pick another username'});
+      return;
     }
 
-    const salt = bcrypt.genSaltSync(bcryptSalt)
-    const hashPass = bcrypt.hashSync(password, salt)
+    const salt = bcrypt.genSaltSync(bcryptSalt);
+    const hashPass = bcrypt.hashSync(password, salt);
 
     const user = await User.create( { username: username, password: hashPass, campus: campus, course: course } )
+    console.log(user)
 
     req.session.user = user
-    res.status(200).json(user)
-    return
+    res.status(200).json(user);
+    return;
 
   } catch(err){
-    res.status(500).json({ message: "Something went wrong"})
+    console.log(err)
+    res.status(500).json({ message: "Something went wrong"});
   }
 })
 
@@ -48,22 +47,22 @@ router.post('/login', async (req, res) => {
   const { username, password } = req.body
 
   if(!username || !password){
-    res.status(400).json({ message: 'Please provide both username and password'})
-    return
+    res.status(400).json({ message: 'Please provide both username and password'});
+    return;
   }
 
   try{
     const user = await User.findOne({ username })
 
     if(user){
-      const correctPassword = await bcrypt.compare(password, user.password)
+      const correctPassword = await bcrypt.compare(password, user.password);
 
       if(correctPassword) {
         req.session.user = user
-        res.status(200).json(user)
+        res.status(200).json(user);
       } 
       else {
-        res.status(400).json({ message: 'Your password is not correct, please try again'})
+        res.status(400).json({ message: 'Your password is not correct, please try again'});
       }
     } else {
       res.status(400).json({ message: 'Please provide the right credentials' })
@@ -92,7 +91,7 @@ router.get('/loggedin', (req,res) => {
 
 ////FILE UPLOAD////
 
-router.post('/upload', upload.single('profileImage'), (req, res) => {
+router.post('/profile', upload.single('profileImage'), (req, res) => {
   if(!req.session.user){
     res.status(400).json({ message: 'No user in session'})
   }

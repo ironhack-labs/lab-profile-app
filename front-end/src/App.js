@@ -18,21 +18,25 @@ class App extends React.Component {
 
   componentDidMount(){
     this.service.loggedin()
-    .then(user => {
+    .then((user) => {
       this.setState({
-        loggedInUser: user
+        loggedInUser: user,
       })
     })
-    .catch(err => console.log(err))
+    .catch((err) => {
+      console.log(err)
+    })
   }
 
-  getTheUser = user => {
+
+  getTheUser = (user) => {
     this.setState({
       loggedInUser: user
     })
   }
 
   render(){
+    
     return (
       <div className='App' >
         

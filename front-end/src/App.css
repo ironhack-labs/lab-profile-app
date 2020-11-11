@@ -7,12 +7,17 @@
   font-family: 'Roboto', sans-serif;
 }
 
+a {
+  text-decoration: none;
+  color: black;
+}
+
 
 .card {
   background-image: url('./oval-bg.png');
   background-repeat: no-repeat;
-  width: 60vw;
-  height: 70vh;
+  width: 717px;
+  height: 458px;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -22,27 +27,26 @@
 .card h1 {
   color: #638165;
   letter-spacing: 1.5px;
-  padding: 40px 40px 20px 40px; 
+  padding: 20px 40px 20px 40px; 
 }
 
 .card p {
   color: black;
   font-weight: 300;
-  padding: 10px 40px 40px 40px;
+  padding: 40px 40px;
 }
 
 .card button {
-  background-color: #C1DFC4;
+  background-color: #DEECDD;
   border: none;
-  display: block;
-  width: 150px;
+  font-weight: 600;
+  width: 35%;
   height: 30px;
-  margin: 40px 80px;
+  margin-left: 40px;
+  margin-bottom: 20px;
   border-radius: 3px;
-}
-
-a {
-  text-decoration: none;
+  display: block;
+  outline: none;
 }
 
 .card form{
@@ -51,6 +55,83 @@ a {
 
 .card form label {
   display: block;
+  margin: 0 0 5px 0;
+  font-weight: 300;
+}
+
+input {
+  width: 35%;
+  padding: 8px 8px;
+  border: none;
+  background-color: rgb(238, 236, 236);
+  margin-bottom: 15px;
 }
 
 
+span {
+  color: #D0021B;
+  font-weight: 400;
+  font-style: italic;
+  padding: 0 40px;
+ 
+}
+
+#one-button-on-page {
+  background-color: white;
+  border: none;
+  font-weight: 600;
+  width: 35%;
+  height: 30px;
+  margin-right: 40px;
+  border-radius: 3px;
+  float: right;
+  outline: none;
+}
+
+select {
+  width: 250px;
+  padding: 8px 8px;
+  border: none;
+  background-color: rgb(238, 236, 236);
+  margin-bottom: 20px;
+  outline: none;
+}
+
+.card div {
+  display: flex;
+}
+
+.card-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  width: 400px;
+}
+
+.card-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.card img {
+  width: 150px;
+}
+
+.card div p {
+  padding: 0 0 10px 40px;
+  margin: 0;
+}
+
+.card div h3 {
+  padding: 5px 0 20px 40px;
+  margin: 0;
+}
+
+.card div a {
+  align-self: center;
+  margin-top: 30px;
+  font-weight: 600;
+  color:  #D0021B;
+}

@@ -30,24 +30,39 @@ export default class Profile extends Component {
            return <h1>Loading</h1>
        }
 
+       console.log(this.props.loggedInUser)
         return (
+
        
             <div className='card'>
-                <h1>Profile</h1>
-                <p>Username</p>
-                <h3>{this.props.loggedInUser.username}</h3>
-                <p>Campus</p>
-                <h3>{this.props.loggedInUser.campus}</h3>
-                <p>Course</p>
-                <h3>{this.props.loggedInUser.course}</h3>
+                <div>
+                    <div className='card-left'>
+                        <h1>Profile</h1>
+                        <p>Username</p>
+                        <h3>{this.props.loggedInUser.username}</h3>
+                        <p>Campus</p>
+                        <h3>{this.props.loggedInUser.campus}</h3>
+                        <p>Course</p>
+                        <h3>{this.props.loggedInUser.course}</h3>
 
-                <Link to='/logout' onClick={this.logout}>Logout</Link>
-                
-                <img src='' alt='profile picture'></img>
-                <form>
-                    <input type='file' name='profileImage' onChange={(e) => this.handleFileUpload(e)} />
-                    <button type='submit'>Edit Photo</button>
-                </form>
+                        <Link to='/' onClick={this.logout}>Logout</Link>
+                    
+                    </div>
+
+                    <div className='card-right'>
+                        <img src={
+                            this.props.loggedInUser.image === `http://localhost:5000/uploads/default.png`
+                            ? `http://localhost:5000/uploads/default.png`
+                            : `http://localhost:5000/uploads/${this.props.loggedInUser.image}`} alt={this.props.loggedInUser.username}></img>
+                        <form>
+                            <input type='file' name='profileImage' onChange={(e) => this.handleFileUpload(e)} />
+                            {/* <button type='submit'>Edit Photo</button> */}
+                        </form>
+                    </div>
+                    
+
+                </div>
+          
             </div>
         )
     }

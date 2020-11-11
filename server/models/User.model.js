@@ -14,7 +14,7 @@ const userSchema = new Schema ({
     },
     image: {
         type: String,
-        default: 'https://ynnovate.it/default-avatar-4/'
+        default: 'http://localhost:5000/uploads/default.png'
     }
 })
 

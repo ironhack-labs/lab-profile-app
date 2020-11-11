@@ -17,19 +17,15 @@ export default class Signup extends Component {
 
     handleChange = (e) => {
         const { name, value} = e.target
-      
-
         this.setState({
             [name]: value,
-
         })
-
     }
 
     handleFormSubmit = (e) => {
         e.preventDefault()
 
-        this.service.signup(this.state.username, this.state.password, this.state.course, this.state.campus)
+        this.service.signup(this.state.username, this.state.password, this.state.campus, this.state.course)
         .then(user => {
             console.log(user)
             this.props.getTheUser(user)
@@ -38,8 +34,6 @@ export default class Signup extends Component {
             })
         })
         .catch(err => {
-            console.log(err)
-            console.log(err.response)
             this.setState({
                 errorMessage: err.response.data.message
             })
@@ -48,7 +42,6 @@ export default class Signup extends Component {
 
 
     render() {
-      
         if(this.state.redirect){
             return <Redirect to='/profile'></Redirect>
         }
@@ -64,30 +57,35 @@ export default class Signup extends Component {
                     <input type="password" name="password" value={this.state.password} onChange={this.handleChange}/>
 
                     <label>Campus</label>
-                    <select name='campus' value={this.state.campus} onChange={this.handleChange}>
-                        <option value='Madrid'>Madrid</option>
-                        <option value='Barcelona'>Barcelona</option>
-                        <option value='Miami'>Miami</option>
-                        <option value='Paris'>Paris</option>
-                        <option value='Berlin'>Berlin</option>
-                        <option value='Amsterdam'>Amsterdam</option>
-                        <option value='Mexico'>México</option>
-                        <option value='Sao Paulo'>Sao Paulo</option>
-                        <option value='Lisbon'>Lisbon</option>
-                    </select>
+                    <div className='custom-select'>
+                        <select name='campus' value={this.state.campus} onChange={this.handleChange}>
+                            <option value='------'> ----Choose campus---- </option>
+                            <option value='Madrid'>Madrid</option>
+                            <option value='Barcelona'>Barcelona</option>
+                            <option value='Miami'>Miami</option>
+                            <option value='Paris'>Paris</option>
+                            <option value='Berlin'>Berlin</option>
+                            <option value='Amsterdam'>Amsterdam</option>
+                            <option value='Mexico'>México</option>
+                            <option value='Sao Paulo'>Sao Paulo</option>
+                            <option value='Lisbon'>Lisbon</option>
+                        </select>
 
+                    </div>
+                 
                     <label>Course</label>
                     <select name='course' value={this.state.course} onChange={this.handleChange}>
+                        <option value='------'> ----Choose course---- </option>
                         <option value='Web Dev'>Web Dev</option>
                         <option value='UX/UI'>UX/UI</option>
                         <option value='Data Analytics'>Data Analytics</option>
                     </select>
                     
-                    <button>Create the account</button>
+                    <button id='one-button-on-page'>Create the account</button>
 
                 </form>
-                {this.state.errorMessage}
-                <p>Already have an account? <Link to="/login">Login</Link></p>
+                <span>{this.state.errorMessage}</span> 
+             
             </div>
         )
     }

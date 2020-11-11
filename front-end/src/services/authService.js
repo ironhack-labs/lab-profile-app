@@ -13,7 +13,10 @@ class AuthService {
 
     signup = (username, password, campus, course) => {
         return this.service.post('/auth/signup', { username, password, campus, course })
-        .then(response => response.data)
+        .then(response => {
+            console.log(response.data)
+            return response.data
+        })
     }
 
     login = (username, password) => {
@@ -32,7 +35,7 @@ class AuthService {
     }
 
     imageUpload = (image) => {
-        return this.service.post('auth/upload', image)
+        return this.service.post('auth/profile', image)
         .then(response => response.data)
     }
 
