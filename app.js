@@ -60,12 +60,6 @@ app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
 const userRoutes = require('./routes/userRoutes');
 
-// default value for title local
-app.locals.title = 'lab-profile-app';
-
 app.use('/', userRoutes);
-
-// const index = require('./routes/index');
-// app.use('/', index);
 
 module.exports = app;
