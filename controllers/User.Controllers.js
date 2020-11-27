@@ -3,10 +3,10 @@ const bcrypt = require('bcrypt'),
   passport = require('../config/passport'),
   { emailRegistro } = require('../config/nodemailer');
 
-exports.indexView = (req, res) => res.send('welcome to our Lab Project File');
+exports.indexView = (req, res) => res.render('index');
 
 exports.signupView = (req, res) => {
-  // res.render('user/signup')
+  res.send('user/signup');
 };
 
 exports.signupProcessUser = async (req, res) => {
