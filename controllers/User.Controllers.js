@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt'),
   User = require('../models/User.Model'),
-  passport = require('../config/passport'),
+  passport = require('../config/passport');
 
 exports.indexView = (req, res) => res.send('index');
 
@@ -12,15 +12,16 @@ exports.signupProcessUser = async (req, res) => {
   const { email, password, name } = req.body;
   if (!email || !password) {
     // return res.send('user/signup', {errorMessage: 'Please fill email and password ',});
-    return res.status(401).json({errorMessage: 'Please fill email and password ',})
+    return res
+      .status(401)
+      .json({ errorMessage: 'Please fill email and password ' });
   }
   const user = await User.findOne({
     email,
   });
   if (user) {
     // return res.send('user/signup', {errorMessage: 'user already exists' });
-    return res.status(401).json({errorMessage: 'user already exists' })
-
+    return res.status(401).json({ errorMessage: 'user already exists' });
   }
   const salt = bcrypt.genSaltSync(12);
   const hashPass = bcrypt.hashSync(password, salt);
@@ -31,7 +32,7 @@ exports.signupProcessUser = async (req, res) => {
   })
     .then(() => {
       // res.send('user/login', {infoFlash: 'Welcome, please login', });
-      res.status(401).json({infoFlash: 'Welcome, please login', })
+      res.status(401).json({ infoFlash: 'Welcome, please login' });
     })
     .catch((err) => {
       console.log(err);
@@ -41,7 +42,7 @@ exports.signupProcessUser = async (req, res) => {
 exports.loginView = (req, res) => {
   // console.log(req.session);
   // res.send('user/login', {    errorMessage: req.flash('error'),  });
-  res.status(200).json({    errorMessage: req.flash('error'),  })
+  res.status(200).json({ errorMessage: req.flash('error') });
 };
 
 exports.loginProcess = passport.authenticate('local', {
@@ -64,8 +65,7 @@ exports.profileView = async (req, res) => {
   } catch (e) {
     console.error(e);
     // res.send('index', {      errorMessage: 'Please fill email and password ',    });
-    res.status(401).json({ errorMessage: 'Please fill email and password ',    })
-
+    res.status(401).json({ errorMessage: 'Please fill email and password ' });
   } finally {
     console.log('End ProfileView');
   }
@@ -85,13 +85,12 @@ exports.profilePicture = (req, res) => {
   )
     .then(() => {
       // res.send('profile', { infoFlash: 'cool new image' });
-      res.status(202).json({ infoFlash: 'cool new image' })
-
+      res.status(202).json({ infoFlash: 'cool new image' });
     })
     .catch((e) => {
       console.log(e);
       // res.send('profile', { errorMessage: e });
-      res.status(401).json({ errorMessage: e })
+      res.status(401).json({ errorMessage: e });
     });
 };
 
@@ -117,7 +116,7 @@ exports.editProfile = async (req, res) => {
       new: true,
     }
   );
-  res.status(202).json(user)
+  res.status(202).json(user);
   // res.send('profile', user);
 };
 
@@ -128,5 +127,5 @@ exports.deleteProfile = async (req, res) => {
     _id: userId,
   });
   // res.redirect('/');
-  res.status(200).json({ messaje: 'Profile deleted' })
+  res.status(200).json({ messaje: 'Profile deleted' });
 };
