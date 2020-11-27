@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt'),
   passport = require('../config/passport'),
   { emailRegistro } = require('../config/nodemailer');
 
-exports.indexView = (req, res) => res.render('index');
+exports.indexView = (req, res) => res.send('index');
 
 exports.signupView = (req, res) => {
   res.send('user/signup');
@@ -12,7 +12,7 @@ exports.signupView = (req, res) => {
 exports.signupProcessUser = async (req, res) => {
   const { email, password, name } = req.body;
   if (!email || !password) {
-    return res.render('user/signup', {
+    return res.send('user/signup', {
       errorMessage: 'Please fill email and password ',
     });
   }
@@ -20,7 +20,7 @@ exports.signupProcessUser = async (req, res) => {
     email,
   });
   if (user) {
-    return res.render('user/signup', {
+    return res.send('user/signup', {
       errorMessage: 'user already exists',
     });
   }
@@ -34,7 +34,7 @@ exports.signupProcessUser = async (req, res) => {
     //esto es de nodemailer
     .then(() => {
       emailRegistro(email, name);
-      res.render('user/login', {
+      res.send('user/login', {
         infoFlash: 'Welcome, please login',
       });
     })
@@ -45,7 +45,7 @@ exports.signupProcessUser = async (req, res) => {
 
 exports.loginView = (req, res) => {
   // console.log(req.session);
-  res.render('user/login', {
+  res.send('user/login', {
     errorMessage: req.flash('error'),
   });
 };
@@ -66,10 +66,10 @@ exports.profileView = async (req, res) => {
   try {
     const id = req.session.passport.user;
     const user = await User.findById(id);
-    res.render('profile', user);
+    res.send('profile', user);
   } catch (e) {
     console.error(e);
-    res.render('index', {
+    res.send('index', {
       errorMessage: 'Please fill email and password ',
     });
   } finally {
@@ -90,11 +90,11 @@ exports.profilePicture = (req, res) => {
     }
   )
     .then(() => {
-      res.render('profile', { infoFlash: 'cool new image' });
+      res.send('profile', { infoFlash: 'cool new image' });
     })
     .catch((e) => {
       console.log(e);
-      res.render('profile', { errorMessage: e });
+      res.send('profile', { errorMessage: e });
     });
 };
 
@@ -103,7 +103,7 @@ exports.editProfile = async (req, res) => {
   //obtener userId
   const userId = req.session.passport.user;
   if (!email || !password) {
-    return res.render('profile', {
+    return res.send('profile', {
       errorMessage: 'Please fill email and password ',
     });
   }
@@ -122,7 +122,7 @@ exports.editProfile = async (req, res) => {
   );
   //esto es de nodemailer
   // await emailRegistro(email, name)
-  res.render('profile', user);
+  res.send('profile', user);
 };
 
 exports.deleteProfile = async (req, res) => {
