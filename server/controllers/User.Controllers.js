@@ -10,6 +10,8 @@ const bcrypt = require('bcrypt'),
 // };
 
 exports.signupProcessUser = async (req, res) => {
+  console.log(req.body);
+
   const { email, password, name } = req.body;
   if (!email || !password) {
     return res.status(403).json({ message: 'Provide email and password' });
@@ -44,7 +46,6 @@ exports.signupProcessUser = async (req, res) => {
 // };
 
 exports.loginProcess = async (req, res, next) => {
-  console.log(req.body);
   passport.authenticate('local', (err, user, failureDetails) => {
     if (err) {
       return res
@@ -144,4 +145,8 @@ exports.deleteProfile = async (req, res) => {
   });
   // res.redirect('/');
   res.status(200).json({ messaje: 'Profile deleted' });
+};
+
+exports.currentUser = (req, res) => {
+  res.json(req.user || null);
 };

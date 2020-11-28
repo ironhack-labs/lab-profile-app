@@ -11,6 +11,7 @@ const {
   logout,
   editProfile,
   deleteProfile,
+  currentUser,
 } = require('../controllers/User.controllers');
 const uploadPicture = require('../config/cloudinary');
 
@@ -26,5 +27,6 @@ router.post('/profile-picture', uploadPicture.single('image'), profilePicture);
 router.get('/logout', logout);
 router.post('/editProfile', editProfile);
 router.get('/deleteProfile', deleteProfile);
+router.get('/current-user', currentUser);
 
 module.exports = router;
