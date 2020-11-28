@@ -2,19 +2,18 @@ const bcrypt = require('bcrypt'),
   User = require('../models/User.Model'),
   passport = require('../config/passport');
 
-exports.indexView = (req, res) => res.send('index');
-
-exports.signupView = (req, res) => {
-  res.send('user/signup');
-};
+// exports.indexView = (req, res) => res.send('index');
+//
+// //parece esta ya no se usará
+// exports.signupView = (req, res) => {
+//   res.send('user/signup');
+// };
 
 exports.signupProcessUser = async (req, res) => {
   const { email, password, name } = req.body;
+  console.log('b1234567yuijuhygtfr');
   if (!email || !password) {
-    // return res.send('user/signup', {errorMessage: 'Please fill email and password ',});
-    return res
-      .status(401)
-      .json({ errorMessage: 'Please fill email and password ' });
+    return res.status(403).json({ message: 'Provide email and password' });
   }
   const user = await User.findOne({
     email,

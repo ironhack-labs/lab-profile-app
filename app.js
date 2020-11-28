@@ -6,7 +6,7 @@ const express = require('express');
 
 const mongoose = require('mongoose');
 const logger = require('morgan');
-// const path = require('path');
+const path = require('path');
 const passport = require('./config/passport');
 const log = require('chalk-animation');
 const flash = require('connect-flash');
@@ -28,9 +28,9 @@ mongoose
   });
 
 const app_name = require('./package.json').name;
-// const debug = require('debug')(
-//   `${app_name}:${path.basename(__filename).split('.')[0]}`
-// );
+const debug = require('debug')(
+  `${app_name}:${path.basename(__filename).split('.')[0]}`
+);
 
 const app = express();
 
@@ -55,3 +55,5 @@ const userRoutes = require('./routes/userRoutes');
 app.use('/', userRoutes);
 
 module.exports = app;
+
+// app.listen(3000);
