@@ -19,7 +19,7 @@ mongoose
     useFindAndModify: false,
   })
   .then((x) => {
-    log.karaoke(
+    log.rainbow(
       `Connected to Mongo! Database name: "${x.connections[0].name}"`
     );
   })
@@ -56,6 +56,6 @@ app.use('/', userRoutes);
 
 module.exports = app;
 
-app.listen(process.env.PORT, () => {
-  console.log(`Listening on http://localhost:${process.env.PORT}`);
-});
+// app.listen(process.env.PORT, () => {
+//   console.log(`Listening on http://localhost:${process.env.PORT}`);
+// });
