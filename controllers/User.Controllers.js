@@ -38,17 +38,35 @@ exports.signupProcessUser = async (req, res) => {
     });
 };
 
-exports.loginView = (req, res) => {
-  // console.log(req.session);
-  // res.send('user/login', {    errorMessage: req.flash('error'),  });
-  res.status(200).json({ errorMessage: req.flash('error') });
-};
+// exports.loginView = (req, res) => {
+//   // console.log(req.session);
+//   // res.send('user/login', {    errorMessage: req.flash('error'),  });
+//   res.status(200).json({ errorMessage: req.flash('error') });
+// };
 
-exports.loginProcess = passport.authenticate('local', {
-  successRedirect: '/profile',
-  failureRedirect: '/login',
-  failureFlash: true,
-});
+exports.loginProcess = async (req, res, next) => {
+  console.log(req.body);
+  passport.authenticate('local', (err, user, failureDetails) => {
+    if (err) {
+      return res
+        .status(500)
+        .json({ message: 'Something went wrong authenticating user' });
+    }
+    if (!user) {
+      return res.status(401).json(failureDetails);
+    }
+
+    req.login(user, (err) => {
+      if (err) {
+        return res
+          .status(500)
+          .json({ message: 'Something went wrong authenticating user' });
+      }
+      user.password = null;
+      res.status(200).json(user);
+    });
+  })(req, res, next);
+};
 
 exports.logout = (req, res) => {
   // req.logout(); //NOt working
