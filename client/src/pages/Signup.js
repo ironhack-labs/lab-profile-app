@@ -1,15 +1,15 @@
-import React from 'react'
-import { Row, Col, Form, Input, Button, Typography, Divider } from 'antd'
-import { signupFn } from '../services/auth'
+import React from 'react';
+import { Row, Col, Form, Input, Button, Typography, Divider } from 'antd';
+import { signupFn } from '../services/auth';
 
-const { Title } = Typography
+const { Title } = Typography;
 
 const Signup = ({ history }) => {
-  const [form] = Form.useForm()
+  const [form] = Form.useForm();
 
   async function handleSubmit(userInput) {
-    await signupFn(userInput)
-    history.push('/login')
+    await signupFn(userInput);
+    history.push('/login');
   }
 
   return (
@@ -20,19 +20,19 @@ const Signup = ({ history }) => {
       <Divider />
       <Col span={24}>
         <Form layout="vertical" form={form} onFinish={handleSubmit}>
-          <Form.Item name='email' label="Email:">
+          <Form.Item name="email" label="Email:">
             <Input />
           </Form.Item>
-          <Form.Item name='password' label="Password:">
+          <Form.Item name="password" label="Password:">
             <Input.Password />
           </Form.Item>
-          <Button type="primary" block htmlType="submit">
+          <Button type="primary" htmlType="submit">
             Signup
           </Button>
         </Form>
       </Col>
     </Row>
-  )
-}
+  );
+};
 
-export default Signup
+export default Signup;
