@@ -8,6 +8,7 @@ import LayoutApp from "./components/LayoutApp";
 import Signup from './pages/Signup'
 import Login from './pages/Login'
 import Profile from './pages/Profile'
+import UpdateProfileForm from './components/UpdateProfileForm'
 
 
 const Home = () => <h1>Home</h1>

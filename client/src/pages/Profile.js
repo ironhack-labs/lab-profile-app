@@ -1,10 +1,12 @@
-import React from 'react'
-import { Typography, Row, Col } from 'antd'
+import {React, useState} from 'react'
+import { Typography, Row, Col, Button } from 'antd'
 import { useContextInfo } from '../hooks/context'
 import { Redirect } from 'react-router-dom'
+import UpdateProfileForm from '../components/UpdateProfileForm'
 
 const Profile = () => {
   const { user } = useContextInfo()
+  const [showEditForm, setShowEditForm] = useState(false)
   return user ? (
     <Row>
       <Col xs={24} sm={24} md={12}>
@@ -22,6 +24,13 @@ const Profile = () => {
           <br/>
           {user.course}
           <br/>
+          {showEditForm && <UpdateProfileForm {...user} />}
+        <br />
+        <Button
+          type="primary"
+          onClick={() => setShowEditForm(!showEditForm)}
+          block>Edit Profile</Button>
+        <br />
 
         </Typography.Title>
       </Col>

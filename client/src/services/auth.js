@@ -19,3 +19,7 @@ export const currentUserFn = () =>
 
 export const logoutFn = () =>
   authService.get('/logout')
+
+export const updateFn = (id, user) =>
+authService.post(`/edit/${id}`, user)
+

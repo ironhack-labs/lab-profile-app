@@ -64,11 +64,25 @@ exports.login = async (req, res, next) => {
   })(req, res, next)
 }
 
-exports.currentUser = (req, res) => {
+exports.loggedIn = (req, res) => {
+  /*if(req.user){
+    return res.status(200).json({ message: 'User logged' })
+  }else{
+    res.status(204).json({ message: 'No User' })
+  }*/
   res.json(req.user || null)
 }
 
 exports.logout = (req, res) => {
   req.logout()
-  res.status(200).json({ message: 'logged out' })
+  res.status(200).json({ message: 'OK' })
+}
+
+exports.edit = async (req, res) => {
+  const { id } = req.params
+  const { username, campus, course } = req.body
+
+  await User.findByIdAndUpdate(id, { username, campus, course })
+
+  res.status(202).json({ message: 'Profile updated' })
 }
