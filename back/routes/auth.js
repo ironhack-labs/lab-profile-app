@@ -13,8 +13,6 @@ router.get('/current-user', currentUser)
 
 router.get("/logout", logout);
 
-router.get("/logout", logout)
-
 router.post("/upload/:id", upload)
 
 router.post("/edit/:id", edit)
