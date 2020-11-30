@@ -12,8 +12,8 @@ const {
 router.post('/login', loginProcess)
 router.post('/signup', signupProcess)
 router.post('/upload', uploadProcess)
-router.post('/edit', editProcess)
-router.post('/logout', logoutProcess)
+router.post('/edit/:id', editProcess)
+router.get('/logout', logoutProcess)
 router.get('/loggedin', loggedinProcess)
 
 module.exports = router;

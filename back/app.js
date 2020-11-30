@@ -4,8 +4,11 @@ const bodyParser   = require('body-parser');
 const cookieParser = require('cookie-parser');
 const express      = require('express');
 const mongoose     = require('mongoose');
+const session = require("express-session");
 const logger       = require('morgan');
 const path         = require('path');
+const MongoStore = require('connect-mongo')(session);
+const cors = require('cors')
 
 
 mongoose
@@ -28,7 +31,18 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-// Express View engine setup
+
+app.use(session({
+  secret: 'irongenerator',
+  resave: true,
+  saveUninitialized: true,
+  store: new MongoStore({ mongooseConnection: mongoose.connection })
+}))
+
+app.use(cors({
+  origin: ['http://localhost:3000'],
+  credentials: true
+}))
 
 app.use(require('node-sass-middleware')({
   src:  path.join(__dirname, 'public'),
@@ -40,7 +54,7 @@ app.use(require('node-sass-middleware')({
 // default value for title local
 app.locals.title = 'Lab profile app';
 
-
+require('./configs/passport')(app);
 
 const index = require('./routes/index');
 const auth = require('./routes/auth');

@@ -12,7 +12,7 @@ const userSchema = new Schema({
     },
     image: {
         type: String,
-        default: ''
+        default: 'https://thumbs.dreamstime.com/b/default-avatar-profile-icon-social-media-user-vector-default-avatar-profile-icon-social-media-user-vector-portrait-176194876.jpg'
     }
 }, {
     timestamps: true
