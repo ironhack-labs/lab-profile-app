@@ -22,7 +22,7 @@ function Home() {
                     </Link>
                     <br/>
                     <br/>
-                    <Link to={'/login'}>
+                    <Link to={'/auth/login'}>
                     <Button type="primary">Login</Button>
                     </Link>
                 </Col>

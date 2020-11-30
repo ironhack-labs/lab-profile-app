@@ -47,7 +47,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 require('./config/session')(app)
 app.use(flash());
 app.use(cors({
-  origin: ['http://localhost:3001'],
+  origin: ['http://localhost:3000'],
   credentials: true
 }))
 app.use(passport.initialize())

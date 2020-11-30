@@ -6,9 +6,9 @@ import {
 } from 'react-router-dom'
 import LayoutApp from './components/LayoutApp'
 import Home from './pages/Home'
+import Login from './pages/Login'
+import Signup from './pages/Signup'
 
-const Login=()=><h1>Login</h1>
-const Signup=()=><h1>Signup</h1>
 const Profile=()=><h1>Profile</h1>
 
 
@@ -18,7 +18,7 @@ function AppRouter() {
         <LayoutApp>
         <Switch>
             <Route path="/" component={Home} exact/>
-            <Route path="/login" component={Login}/>
+            <Route path="/auth/login" component={Login}/>
             <Route path="/signup" component={Signup}/>
             <Route path="/profile" component={Profile}/>
         </Switch>

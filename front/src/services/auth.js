@@ -7,7 +7,7 @@ const authService= axios.create({
     withCredentials:true
 })
 
-export const singUpFn= userInfo=>
+export const signUpFn= userInfo=>
 authService.post('/signup', userInfo)
 
 export const loginFn= userInfo=>
@@ -16,8 +16,8 @@ authService.post('/login', userInfo)
 export const editUserFn= userInfo=>
 authService.post('/edit/:id', userInfo)
 
-export const currentUserFn= userInfo=>
+export const currentUserFn=()=>
 authService.get('/loggedin')
 
-export const logoutFn= userInfo=>
+export const logoutFn= ()=>
 authService.get('/logout')

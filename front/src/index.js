@@ -5,11 +5,14 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import AppRouter from './Router'
 import 'antd/dist/antd.css'
+import {AppCtxProvider} from './hooks/context'
 
 ReactDOM.render(
-  <React.StrictMode>
+  // <React.StrictMode>
+  <AppCtxProvider>
     <AppRouter />
-  </React.StrictMode>,
+    </AppCtxProvider>,
+  // </React.StrictMode>,
   document.getElementById('root')
 );
 
