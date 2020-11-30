@@ -75,3 +75,11 @@ exports.logout = (req,res)=>{
     req.logout()
     res.status(200).json({message:'OK'})
 }
+
+exports.uploadFile= async (req,res)=>{
+    const {id}=req.params
+    const {image}=req.body
+    await User.findByIdAndUpdate(id, {image})
+    res.status(202).json({message:'updated'})
+
+}

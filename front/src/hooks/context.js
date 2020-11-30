@@ -29,8 +29,10 @@ import {
       //TODO: Cerrar la sesion en el server y en el cliente
       setUser(null)
     }
+
+    const addProfilePic=img=>setUser({...user,img})
   
-    const value = { user, login, logout }
+    const value = { user, login, logout, addProfilePic }
   
     return (
       <AppContext.Provider {...props} value={value} />

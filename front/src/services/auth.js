@@ -21,3 +21,6 @@ authService.get('/loggedin')
 
 export const logoutFn= ()=>
 authService.get('/logout')
+
+export const updateFn=userInfo=>
+authService.post('/upload/:id')

@@ -8,8 +8,7 @@ import LayoutApp from './components/LayoutApp'
 import Home from './pages/Home'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
-
-const Profile=()=><h1>Profile</h1>
+import Profile from './pages/Profile'
 
 
 function AppRouter() {
