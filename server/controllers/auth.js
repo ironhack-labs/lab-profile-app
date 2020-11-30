@@ -65,12 +65,14 @@ exports.login = async (req, res, next) => {
 }
 
 exports.loggedIn = (req, res) => {
-  /*if(req.user){
+  if(req.user){
     return res.status(200).json({ message: 'User logged' })
+    console.log("User logged")
   }else{
     res.status(204).json({ message: 'No User' })
-  }*/
-  res.json(req.user || null)
+    console.log("User not logged")
+  }
+  //res.json(req.user || null)
 }
 
 exports.logout = (req, res) => {

@@ -15,7 +15,7 @@ export const loginFn = userInfo =>
   authService.post('/login', userInfo)
 
 export const currentUserFn = () =>
-  authService.get('/current-user')
+  authService.get('/loggedIn')
 
 export const logoutFn = () =>
   authService.get('/logout')
