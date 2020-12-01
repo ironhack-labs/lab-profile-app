@@ -2,3 +2,7 @@
   /* background: rgb(190, 200, 200); */
   padding: 6em;
 }
+
+.hidden {
+  display: none;
+}
