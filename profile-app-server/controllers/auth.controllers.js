@@ -2,14 +2,12 @@ const bcrypt = require('bcrypt');
 const User = require('../models/User');
 const passport = require('../config/passport');
 
-
-
 exports.signupProcess = async (req, res) => {
-  const { username , password, campus, course } = req.body;
+  const { username, password, campus, course } = req.body;
 
-  if (!email || !password) {
+  if (!username || !password) {
     return res.status(400).json({
-      message: 'Email or password empty',
+      message: 'Username or password empty',
     });
   }
 
@@ -17,7 +15,7 @@ exports.signupProcess = async (req, res) => {
 
   if (user) {
     return res.status(400).json({
-      message: 'Email already taken',
+      message: 'Username already taken',
     });
   }
 
@@ -27,7 +25,7 @@ exports.signupProcess = async (req, res) => {
     username,
     password: hashPass,
     campus,
-    course
+    course,
   });
 
   res.status(201).json(newUser);
@@ -90,18 +88,22 @@ exports.googleCallback = (req, res, next) => {
 };
 
 exports.uploadProcess = async (req, res) => {
-  const imgPath = req.file.url;
-  const {_id} = req.user
+  const imgPath = req.file.path;
+  const { _id } = req.user;
 
   if (!_id) {
     return res.status(400).json({
       message: 'Invalalid operation',
     });
-  }
+  } 
 
-  const updatedUser = await User.findByIdAndUpdate(_id, {image: imgPath}, {new: true});
-
-  res.status(201).json(updatedUser);
+     const updatedUser = await User.findByIdAndUpdate(
+       _id,
+       { image: imgPath },
+       { new: true }
+       )
+       
+       res.status(201).json(updatedUser);
+      
+    
 };
-
-

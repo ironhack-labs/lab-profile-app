@@ -1,8 +1,8 @@
-const cloudinary = require("cloudinary").v2;
+const cloudinary = require('cloudinary').v2;
 
-const { CloudinaryStorage } = require("multer-storage-cloudinary");
+const { CloudinaryStorage } = require('multer-storage-cloudinary');
 
-const multer = require("multer");
+const multer = require('multer');
 
 cloudinary.config({
   cloud_name: process.env.CLOUDNAME,
@@ -16,7 +16,7 @@ const storage = new CloudinaryStorage({
   cloudinary,
 
   params: {
-    folder: "ironmovies",
+    folder: 'profile_app',
   },
 });
 

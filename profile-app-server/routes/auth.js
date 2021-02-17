@@ -7,9 +7,9 @@ const {
   getCurrentUser,
   googleInit,
   googleCallback,
-  uploadProcess
+  uploadProcess,
 } = require('../controllers/auth.controllers');
-const uploadCloud = require('../config/cloudinary');
+const uploader = require('../config/cloudinary');
 
 const router = Router();
 
@@ -21,11 +21,14 @@ router.get('/logout', logoutProcess);
 
 router.get('/loggedin', getCurrentUser);
 
-router.patch('/upload', uploadCloud.single('photo'), uploadProcess);
+router.post('/upload', uploader.single('image'), catchErrors(uploadProcess));
 
 router.get('/google', googleInit);
 router.get('/google/callback', googleCallback);
 
+// router.post('/upload', uploader.single('image'), (req, res) => {
+//   // res.status(201).json(req);
+//   console.log(req)
+// });
 
 module.exports = router;
-
