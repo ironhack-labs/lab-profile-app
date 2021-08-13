@@ -1,0 +1,130 @@
+@import '~antd/dist/antd.css';
+@import '~antd-button-color/dist/css/style.css';
+
+.app {
+    background-color: #C1DFC4;
+    height: 800px;
+}
+
+.h1{
+    color:  #638165;
+}
+.input{
+    width: 300px;
+    margin-top: -10%;
+    margin-bottom: -10%;
+    padding-top: -10%;
+}
+.formitem{
+    margin-top: -10%;
+    
+}
+.auth {
+    display: flex;
+
+}
+.greenzone{
+    margin-left: 70%;
+    margin-top: 5%;
+    
+}
+
+.button{
+    margin-left: 65%;
+    margin-top: 10%;
+    width: 150px;
+    height: 40px;
+    color:#3d533f;
+    background-color: #C1DFC4;
+    font-weight: bold;
+    text-decoration: none;
+    box-shadow: 0px 10px 14px -7px #276873;
+}
+.button2{
+    color:#3d533f;
+    background-color: white;
+    font-weight: bold;
+    text-decoration: none;
+    box-shadow: 0px 10px 14px -7px #276873;
+    margin-left: -15%;
+}
+.greentext{
+    margin-top: 100%;
+}
+
+.title2{
+    color: #3d533f;
+}
+.titlesmall{
+    color: #638165;
+    width: 170%;
+    margin-left: -40%;
+}
+.form{
+    margin-left: 25%;
+    margin-top: 10%;
+}
+
+.backgroundimg {
+    background-image: url('./app/assets/images/oval-bg.png');
+    background-repeat: no-repeat;
+    width: 750px;
+    height: 700px;
+    margin-top: 10%;
+    margin-left: 20%;
+
+}
+.insideauth{
+    display: flex;
+    flex-direction: column;
+   
+}
+
+.profilecard{
+    background-image: url('./app/assets/images/oval-bg.png');
+    background-repeat: no-repeat;
+    width: 750px;
+    height: 700px;
+    margin-top: 10%;
+    margin-left: 20%;
+}
+.profiletitle{
+    color:  #638165;
+    margin-top: 5%;
+}
+
+.profileinfo{
+    margin-top: -5%;
+}
+
+.profiletitle2{
+    color: #90b993;
+}
+.profilebutton{
+    color:red;
+    background-color: white;
+    font-weight: bold;
+    width: 20%;
+    text-decoration: none;
+    box-shadow: 0px 10px 14px -7px #276873;
+    margin-top: 3%;
+}
+.profilerow{
+    display: flex;
+    flex-direction: column;
+    margin-top: -50%;
+    margin-left: 60%;
+    justify-content: space-around;
+    align-content: center;
+}
+.button3{
+    color: rgb(110, 109, 109);
+    box-shadow: 0px 10px 14px -7px #276873;
+}
+
+.profileimg{
+    border-radius: 50%;
+}
+.greentext2{
+    color: #638165;
+}
