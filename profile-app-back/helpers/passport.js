@@ -24,7 +24,7 @@ passport.deserializeUser(async (id,callback)=>{
 passport.use(
     new LocalStrategy(
         {
-            usernameField: "email" //usernameField:"username"
+            /*usernameField: "email"*/ usernameField:"username"
         },
         async (email, password, callback)=>{
             try{

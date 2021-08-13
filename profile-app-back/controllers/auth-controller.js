@@ -57,7 +57,7 @@ exports.googleCallback = (req,res,next)=> {
                     return res.status(400).json({error:err})
                 }
                 //res.status(200).json({result: user })
-                res.redirect("http://localhost:3001/api/auth/current-user")
+                res.redirect("http://localhost:3000/api/profile")
             })
         }
     )(req,res,next)

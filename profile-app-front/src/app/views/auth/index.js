@@ -25,27 +25,27 @@ const {Title} = Typography
             //props = {match,history,location,...} restProps es todo lo que no esta listado
 function Auth ({match,history,location,...restProps}){
         const {login} = useContext(Ctx)//jala el contexto de nuestro archivo en hooks
-        const [data, setData] = useState({})
+        const [img, setImg] = useState({})
 
         const handleSubmit = async (user) => {
             try{
                 const registro = match.path === "/signup" ? signupWS : loginWS
                 const {data} = await registro(user)
                 history.push('/profile')
-                if(match.path === '/auth'){
+                if(match.path === '/login'){
                     login(data.result)
                 }
                 
             }
             catch(error){
-                        console.log(error,"error")
+                        console.log("error, no conectado",error)
             }
     
         }
 
         const uploadFile = (e) => {
             console.log(e.target.files)
-            setData({...data, avatar:e.target.files[0]})
+            setImg({...img, avatar:e.target.files[0]})
           }
 
         return(
@@ -84,15 +84,15 @@ function Auth ({match,history,location,...restProps}){
                     > 
                     <Input className="input"/>
                     </Form.Item>: ''}
-                        <Input  className="input"type="file" name="avatar" onChange={uploadFile}/>
+                         <Input  className="input"type="file" name="avatar" onChange={uploadFile}/> 
                     </div>
                     
-                    <div >
+                    
                         
                     <button className="button" type="primary" htmlType="submit" block htmlType="submit">
                     {match.path === '/signup' ? 'Create the Account' : 'Login'}
                     </button>
-                    </div> 
+                    
                         </Form>
                 </Col>
                 <Col span={24}>

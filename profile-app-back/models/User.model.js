@@ -9,18 +9,18 @@ const userSchema = new Schema({
     },
     password:{
         type:String,
-       // required:true
+        //required:true
     },
     campus:{
         type:String,
         enum:["Madrid","Barcelona","Miami","Paris","Berlin","Amsterdam","Mexico","Lisbon","Sao Paulo"],
-        required:[true,"Debes agregar un Nombre"],
+        //required:[true,"Debes agregar un Nombre"],
         unique:[true,"El campus ya existe"]
     },
     course:{
         type:String,
         enum:["Web Dev","UX/UI","Data Analytics","Cyber Security"],
-        required:[true,"Debes agregar un Nombre"],
+        //required:[true,"Debes agregar un Nombre"],
         unique:[true,"El curso ya existe"]
     },
     avatar:{type:String},
