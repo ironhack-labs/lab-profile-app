@@ -1,29 +1,56 @@
-import { Flex } from '@chakra-ui/layout'
-import { Box, Button, Link } from '@chakra-ui/react'
-import { Link as ReachLink } from "@reach/router"
-import React from 'react'
+
+import {
+    Container,
+    Heading,
+    Stack,
+    Text,
+    Button,
+  } from '@chakra-ui/react';
+  import React from 'react'
+import {Link} from 'react-router-dom';
 
 function Home(){
     return(
-        <Flex bgColor="#C1DFC4" h="100vh" justify="center" align="center">
-            <Box w="650px" h="450px" className="container-img">
-            <Flex direction="column" w="300px" p="40px">
-               <h1>IronProfile</h1>
-                <h2>Today we will create an app with authoritation, adding some cool styles!</h2>
-                <Link as={ReachLink} to="/signup">
-                    <Button colorScheme="teal" variant="solid">
-                        Signup
-                    </Button>
-                </Link>
-                <Link as={ReachLink} to="/login">
-                <Button colorScheme="teal" variant="outline">
-                    Login
-                </Button>
-                </Link>
-            </Flex>
+        <Container maxW={'5xl'}>
+        <Stack
+          textAlign={'center'}
+          align={'center'}
+          spacing={{ base: 8, md: 10 }}
+          py={{ base: 20, md: 28 }}>
+          <Heading
+            fontWeight={600}
+            fontSize={{ base: '3xl', sm: '4xl', md: '6xl' }}
+            lineHeight={'110%'}>
+            IronProfile{' '}
+            <Text as={'span'} color={'blue.400'}>
+              made easy
+            </Text>
+          </Heading>
+          <Text color={'gray.500'} maxW={'3xl'}>
+          Today we will create an app with authorization, adding some cool styles!
+          </Text>
+          <Stack spacing={6} direction={'row'}>
+          <Link to="/signup">
+            <Button
+              rounded={'full'}
+              px={6}
+              colorScheme={'orange'}
+              bg={'blue.400'}
+              _hover={{ bg: 'blue.500' }}>
+              Sign In
+            </Button>
+            </Link>
 
-            </Box>
-        </Flex>
+            <Link to="/login">
+            <Button rounded={'full'} px={6}>
+             Login
+            </Button>
+            </Link>
+
+
+          </Stack>
+        </Stack>
+      </Container>
     )
 }
 

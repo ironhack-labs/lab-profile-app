@@ -4,10 +4,22 @@ const {Schema, model} = mongoose;
 const userSchema = new Schema({
     username: {
         type: String,
-        required: [true, "Necesitas añadir un usuario"],
         unique: [true, "Ese usuario ya existe"]
     },
-    password: String,
+    email: {
+        type: String,
+        required: [true, "Necesitas añadir un correo"],
+        unique: [true, "Ese correo ya existe"]
+    },
+    password: {
+        type: String,
+        required: [true, "Necesitas añadir una contraseña"],
+    },
+    status: {
+        type: String,
+        enum: ['Active', "Pending"],
+        default: "Pending",
+    },
     campus: {
         type: String,
         enum: ['Madrid', 'Barcelona', ' Miami', 'Paris', 'Berlin', 'Amsterdam', 'Mexico', 'Sao Paulo', 'Lisbon']
@@ -16,7 +28,14 @@ const userSchema = new Schema({
         type: String,
         enum: ['Web Dev', 'UX/UI', 'Data Analytics', 'Cyber security']
     },
-    image: String
+    confirmationCode: {
+        type: String,
+        unique: true,
+    },
+    image: {
+        type: String,
+        default: "https://res.cloudinary.com/wbnkfjbkjf/image/upload/v1628884978/lab-profile-app/xcuska8fnhuvywsesyvt.png"
+    }
 }, {timestamps: true});
 
 module.exports = model("User", userSchema)
