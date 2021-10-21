@@ -16,8 +16,6 @@ We will create a backend REST API using NodeJS and a front-end app using React w
 
 ```shell
 $ cd lab-profile-app
-$ npm install
-$ npm start
 ```
 
 ## Submission
