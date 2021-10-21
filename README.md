@@ -34,7 +34,7 @@ $ cd lab-profile-app
 
 ### Iteration 1 | The REST API
 
-You will start by creating the backend REST API. Create a new _server_ app using the [Ironlauncher](https://www.npmjs.com/package/ironlauncher) with the command `npx ironlauncher choose-app-name --json`.
+You will start by creating the backend REST API. Create a new _server_ app using the [Ironlauncher](https://www.npmjs.com/package/ironlauncher) with the command `npx ironlauncher profile-app-server --json`.
 
 Once done, create the **user model** in the `user.model.js` file having the following fields:
 
@@ -62,7 +62,7 @@ Remember to test the REST API using Postman, to make sure everything is working!
 
 ### Iteration 2 | The React App
 
-Create a new React App using the command `npx create-react-app choose-app-name`. 
+Create a new React App using the command `npx create-react-app profile-app-client`. 
 
 Once done, set up the app routing using the `react-router-dom`. Create a page component called `HomePage` that displays two buttons: `Sign up` and `Log in`. Buttons should redirect to the front-end routes `/signup` and `/login` respectively.
 
