@@ -51,7 +51,7 @@ The server should have the following routes:
 | POST   | `/auth/signup` | { `username`, `password`, `campus`, `course` } | User object          |
 | POST   | `/auth/login`  | { `username`, `password` }                     | Authentication Token |
 | GET    | `/auth/verify` |                                                | User logged          |
-| PUT    | `/api/user`    | {`username`, `campus`, `course`, `image`}      | Updated user object  |
+| PUT    | `/api/user`    | {`userId`, `username`, `campus`, `course`, `image`}      | Updated user object  |
 | POST   | `/api/upload`  | form-data with the image file                  | Image URL            |
 
 :::info
