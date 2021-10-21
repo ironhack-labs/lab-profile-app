@@ -52,6 +52,7 @@ The server should have the following routes:
 | POST   | `/auth/login`  | { `username`, `password` }                     | Authentication Token |
 | GET    | `/auth/verify` |                                                | User logged          |
 | PUT    | `/api/user`    | {`userId`, `username`, `campus`, `course`, `image`}      | Updated user object  |
+| GET    | `/api/user`    |     | Current user object  |
 | POST   | `/api/upload`  | form-data with the image file                  | Image URL            |
 
 :::info
@@ -120,6 +121,7 @@ Create an `authService` file, where you will have the methods to abstract the ax
 - **logIn** that makes a `POST` request to the server endpoint `/auth/login` passing _username_ and _password_,
 - **verifyToken** that makes a `GET` request to the server endpoint `/auth/verify` to check if a user is logged in.
 - **uploadPhoto** that makes a `POST` request to the server endpoint `/api/upload` and sends the _file_,
+- **getCurrentUser** that makes a `GET` request to the server endpoint `/api/user` to retrieve the current user data,
 - **editUser** that makes a `PUT` request to the server endpoint `/api/user` passing _username_, _campus_, _course_ and _image_.
 
 
