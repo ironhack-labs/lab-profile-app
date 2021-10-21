@@ -36,7 +36,7 @@ $ cd lab-profile-app
 
 You will start by creating the backend REST API. Create a new _server_ app using the [Ironlauncher](https://www.npmjs.com/package/ironlauncher) with the command `npx ironlauncher profile-app-server --json`.
 
-Once done, create the **user model** in the `user.model.js` file having the following fields:
+Once done, create the **user model** in the `user.model.js` file with the following fields:
 
 - **username**: String,
 - **password**: String
