@@ -124,7 +124,7 @@ Create an `authService` file, where you will have the methods to abstract the ax
 
 
 
-### Iteration 7 | Bonus| Styling your App
+### Iteration 7 (Bonus) | Styling your App
 
 Feel free to style it how ever you want. :art:
 Or you can use `.png` inside of the `assets` folder that you can use as a background image. Don't forget to copy (or move) the image inside public folder of your React app. Here you can check the colors:
