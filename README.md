@@ -80,7 +80,8 @@ All the assets you need for the design are stored inside the `assets/` folder, b
 
 You should create the `Signup` and `Login` page components, where the user will be able to fill the form with the specified fields.
 
-If the *signup* or *login* is successful, the user must be redirected to the **Home Page** page.
+If the *signup* is successful, the user should be redirected to the **Login Page** page.
+If the *login* is successful, the user should be redirected to the **Home Page** page.
 
 ![image](https://user-images.githubusercontent.com/23629340/43787810-2c9dc94e-9a6c-11e8-8854-0993c5de16a3.png)
 
