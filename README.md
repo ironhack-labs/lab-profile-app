@@ -3,11 +3,11 @@
 # LAB | React IronProfile
 
 
-Profile page is one of the most common features you will need to add to your projects, so today we are going to practice creating one.
+The profile page is one of the most common features you will need to add to your projects. Today we are going to practice creating one.
 
 ## Introduction
 
-We will create a backend REST API using NodeJS and a front-end app using React where users will be able to **signup, login, upload a profile picture, check their profiles and edit it.**
+We will create a backend REST API using NodeJS and a front-end app using React where users can sign up**, log in, upload a profile picture, check their profiles, and edit it.**
 
 ## Setup
 
@@ -50,13 +50,13 @@ The server should have the following routes:
 | ------ | -------------- | ---------------------------------------------- | -------------------- |
 | POST   | `/auth/signup` | { `username`, `password`, `campus`, `course` } | User object          |
 | POST   | `/auth/login`  | { `username`, `password` }                     | Authentication Token |
-| GET    | `/auth/verify` |                                                | Current user object          |
-| PUT    | `/api/user`    | { `image` }      | Updated user object  |
-| GET    | `/api/user`    |     | Current user object  |
+| GET    | `/auth/verify` |                                                | Current user object  |
+| PUT    | `/api/users`   | { `image` }                                    | Updated user object  |
+| GET    | `/api/users`   |                                                | Current user object  |
 | POST   | `/api/upload`  | form-data with the image file                  | Image URL            |
 
 :::info
-Remember to test the REST API using Postman, to make sure everything is working! :wink:
+Remember to test the REST API using Postman to make sure everything is working! :wink:
 :::
 
 
@@ -65,12 +65,12 @@ Remember to test the REST API using Postman, to make sure everything is working!
 
 Create a new React App using the command `npx create-react-app profile-app-client`. 
 
-Once done, set up the app routing using the `react-router-dom`. Create a page component called `HomePage` that displays two buttons: `Sign up` and `Log in`. Buttons should redirect to the front-end routes `/signup` and `/login` respectively.
+Once done, set up the app routing using the `react-router-dom`. Create a page component called `HomePage` that displays two buttons: `Sign up` and `Log in`. Buttons should redirect to the front-end routes `/signup` and `/login`, respectively.
 
 ![image](https://user-images.githubusercontent.com/23629340/43786924-1c5d3d5a-9a6a-11e8-90c4-7ff2f92ef983.png)
 
 :::
-All the assets you need for the design are stored inside the `assets/` folder, but for now, don't worry about that, focus on the functionality!
+All the assets you need for the design are stored inside the `assets/` folder. For now, don't worry about the design, but rather focus on the functionality!
 :::
 
 
@@ -78,10 +78,10 @@ All the assets you need for the design are stored inside the `assets/` folder, b
 
 ### Iteration 3 | Signup/Login Components
 
-You should create the `Signup` and `Login` page components, where the user will be able to fill the form with the specified fields.
+You should create the `Signup` and `Login` page components, where the user can fill the form with the specified fields.
 
-If the *signup* is successful, the user should be redirected to the **Login Page** page.
-If the *login* is successful, the user should be redirected to the **Home Page** page.
+If the *signup* is successful, you should naviagate the user to the **Login Page** page.
+If the *login* is successful, you should naviagate the user to the **Home Page** page.
 
 ![image](https://user-images.githubusercontent.com/23629340/43787810-2c9dc94e-9a6c-11e8-8854-0993c5de16a3.png)
 
@@ -93,15 +93,15 @@ If the *login* is successful, the user should be redirected to the **Home Page**
 
 You should create a new folder named `context/` and inside of it a file `auth.context.js`. Inside of the file you should create a new *Context* object and the `AuthProviderWrapper` component.
 
-1. To create a *Context* object use the method `React.createContext()` ([example](https://github.com/ironhack-labs/lesson-code-h-react-authentication-frontend/blob/master/src/context/auth.context.js#L5)).
+1. To create a *Context* object use the method `React.createContext()` ([example](https://github.com/ironhack-labs/lesson-code-h-react-authentication-frontend/blob/master/src/context/auth.context.js#L6)).
 
-2. The `AuthProviderWrapper` component should have the following state variables for storing the user information and the authentication state: `isLoggedIn`, `isLoading` and `user` ([example](https://github.com/ironhack-labs/lesson-code-h-react-authentication-frontend/blob/master/src/context/auth.context.js#L8-L10)).
+2. The `AuthProviderWrapper` component should have the following state variables for storing user information and authentication state: `isLoggedIn`, `isLoading`, and `user` ([example](https://github.com/ironhack-labs/lesson-code-h-react-authentication-frontend/blob/master/src/context/auth.context.js#L9-L11)).
 
-3. The `AuthProviderWrapper` component should also have functions `verifyStoredToken`, `logInUser` and `logOutUser` used for handling the authentication logic ([example](https://github.com/ironhack-labs/lesson-code-h-react-authentication-frontend/blob/master/src/context/auth.context.js#L13-L64)). 
-   You will need to provide the above mentioned state values and functions through the `value` prop ([example](https://github.com/ironhack-labs/lesson-code-h-react-authentication-frontend/blob/master/src/context/auth.context.js#L73)).
+3. The `AuthProviderWrapper` component should also have functions `storeToken`, `authenticateUser`,  `removeToken` and `logOutUser` used for handling the authentication logic ([example](https://github.com/ironhack-labs/lesson-code-h-react-authentication-frontend/blob/master/src/context/auth.context.js#L13-L59)). 
+   You will need to provide the above mentioned state values and functions through the Context Provider's `value` prop ([example](https://github.com/ironhack-labs/lesson-code-h-react-authentication-frontend/blob/master/src/context/auth.context.js#L71)).
 
 4. Finally, remember to wrap the `<App />` component with the `<AuthProviderWrapper></AuthProviderWrapper>` ([example](https://github.com/ironhack-labs/lesson-code-h-react-authentication-frontend/blob/master/src/index.js#L13-L15)).
-5. Use the React hook `useContext()` to access the values coming from the `AuthProviderWrapper`  and to finish implementing the log in ([example](https://github.com/ironhack-labs/lesson-code-h-react-authentication-frontend/blob/812bdce8d55cdad3d428dc9a8f4b3fdd8e3f6fd0/src/pages/LoginPage.js#L14)).
+5. Use the React hook `useContext()` to access the values coming from the `AuthProviderWrapper`  and to finish implementing the log-in process ([example](https://github.com/ironhack-labs/lesson-code-h-react-authentication-frontend/blob/812bdce8d55cdad3d428dc9a8f4b3fdd8e3f6fd0/src/pages/LoginPage.js#L14)).
 
 
 
@@ -116,7 +116,7 @@ On the profile route, the user should be able to upload a photo to the profile. 
 
 ### Iteration 6 | Auth Service
 
-Create an `authService` file, where you will have the methods to abstract the axios requests to your REST API. Create the following methods:
+Create an `auth.service.js` file, where you will have the functions that abstract the axios requests to your REST API. Create the following methods:
 
 - **signUp** that makes a `POST` request to the server endpoint `/auth/signup` passing _username_, _password_, _campus_ and _course_ info,
 - **logIn** that makes a `POST` request to the server endpoint `/auth/login` passing _username_ and _password_,
@@ -129,8 +129,8 @@ Create an `authService` file, where you will have the methods to abstract the ax
 
 ### Iteration 7 (Bonus) | Styling your App
 
-Feel free to style it how ever you want. :art:
-Or you can use `.png` inside of the `assets` folder that you can use as a background image. Don't forget to copy (or move) the image inside public folder of your React app. Here you can check the colors:
+Feel free to style the app anyway you see fit. :art:
+Or you can use the `.png`  available in the `assets/` folder, as a background image. Remember to include the image in the `src/` folder of your React app to be able to import it. Here you can check the colors:
 
 - Gradient background color: `#C1DFC4` to `#DEECDD`
 - Green: `#638165`
