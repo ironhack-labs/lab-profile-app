@@ -69,9 +69,10 @@ Once done, set up the app routing using the `react-router-dom`. Create a page co
 
 ![image](https://user-images.githubusercontent.com/23629340/43786924-1c5d3d5a-9a6a-11e8-90c4-7ff2f92ef983.png)
 
-:::
+<br>
+
 All the assets you need for the design are stored inside the `assets/` folder. For now, don't worry about the design, but rather focus on the functionality!
-:::
+
 
 
 
@@ -98,10 +99,11 @@ You should create a new folder named `context/` and inside of it a file `auth.co
 2. The `AuthProviderWrapper` component should have the following state variables for storing user information and authentication state: `isLoggedIn`, `isLoading`, and `user` ([example](https://github.com/ironhack-labs/lesson-code-h-react-authentication-frontend/blob/master/src/context/auth.context.js#L9-L11)).
 
 3. The `AuthProviderWrapper` component should also have functions `storeToken`, `authenticateUser`,  `removeToken` and `logOutUser` used for handling the authentication logic ([example](https://github.com/ironhack-labs/lesson-code-h-react-authentication-frontend/blob/master/src/context/auth.context.js#L13-L59)). 
+   
    You will need to provide the above mentioned state values and functions through the Context Provider's `value` prop ([example](https://github.com/ironhack-labs/lesson-code-h-react-authentication-frontend/blob/master/src/context/auth.context.js#L71)).
 
 4. Finally, remember to wrap the `<App />` component with the `<AuthProviderWrapper></AuthProviderWrapper>` ([example](https://github.com/ironhack-labs/lesson-code-h-react-authentication-frontend/blob/master/src/index.js#L13-L15)).
-5. Use the React hook `useContext()` to access the values coming from the `AuthProviderWrapper`  and to finish implementing the log-in process ([example](https://github.com/ironhack-labs/lesson-code-h-react-authentication-frontend/blob/812bdce8d55cdad3d428dc9a8f4b3fdd8e3f6fd0/src/pages/LoginPage.js#L14)).
+5. Use the React hook `useContext()` in the `LoginPage.js` to access the values coming from the `AuthProviderWrapper`  and to finish implementing the log-in process ([example 1](https://github.com/ironhack-labs/lesson-code-h-react-authentication-frontend/blob/812bdce8d55cdad3d428dc9a8f4b3fdd8e3f6fd0/src/pages/LoginPage.js#L14), [example 2](https://github.com/ironhack-labs/lesson-code-h-react-authentication-frontend/blob/812bdce8d55cdad3d428dc9a8f4b3fdd8e3f6fd0/src/pages/LoginPage.js#L25-L36)).
 
 
 
