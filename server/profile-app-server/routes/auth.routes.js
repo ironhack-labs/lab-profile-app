@@ -34,7 +34,7 @@ router.post('/signup', async (req, res, next) => {
 
 router.post('/signin', async (req, res, next) => {
   const { username, password } = req.body;
-  if (!username || !password || !campus || !course) {
+  if (!username || !password) {
     return res
       .status(400)
       .json({ message: 'We need some informations to work with here!' });
