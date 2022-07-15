@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 const API_URL = 'http://localhost:5005';
 
 const Signup = () => {
@@ -7,6 +8,8 @@ const Signup = () => {
   const [password, setPassword] = useState('');
   const [campus, setCampus] = useState('');
   const [course, setCourse] = useState('');
+  const navigate = useNavigate();
+
   const handleUsername = (e) => setUsername(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
   const handleCampus = (e) => setCampus(e.target.value);
@@ -14,13 +17,16 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post(`${API_URL}/auth/signup`, {
+      const response = await axios.post(`${API_URL}/api/auth/signup`, {
         username,
         password,
         campus,
         course,
       });
-      console.log(data);
+      console.log(response);
+      if (response.status === 201) {
+        navigate('/profile');
+      }
     } catch (error) {}
   };
   return (

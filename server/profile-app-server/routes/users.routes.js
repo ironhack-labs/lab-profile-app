@@ -2,9 +2,11 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/User.model');
 
-// router.get('/users', (req, res) => {
-//   res.status(200).json(req.payload);
-// });
+router.get('/users', (req, res) => {
+  User.find()
+    .then((users) => res.status(200).json(users))
+    .catch((err) => res.status(500).json(err));
+});
 
 router.post('/upload', async (req, res, next) => {
   try {

@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import { AuthContext } from '../context/auth.context';
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const API_URL = 'http://localhost:5005';
 
@@ -10,17 +10,18 @@ const Signin = () => {
   const [password, setPassword] = useState('');
   const handleUsername = (e) => setUsername(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
+  const navigate = useNavigate();
   const { storeToken, authenticateUser } = useContext(AuthContext); // Get the stored token from the localStorage
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post(`${API_URL}/auth/signin`, {
+      const { data } = await axios.post(`${API_URL}/api/auth/signin`, {
         username,
         password,
       });
       storeToken(data.authToken);
       authenticateUser();
-      <Navigate to="/" />;
+      navigate('/profile');
     } catch (error) {}
   };
   return (
