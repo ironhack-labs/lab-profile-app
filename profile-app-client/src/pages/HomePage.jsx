@@ -7,6 +7,7 @@ const HomePage = () => {
     <p>Today we will create an app with auth, adding some cool styles!</p>
     <Link to="/auth/login">Login</Link>
     <Link to="/auth/signup">Signup</Link>
+    
     </div>
 }
 
