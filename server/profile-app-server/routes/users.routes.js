@@ -15,10 +15,11 @@ router.get('/', isAuthenticated, async (req, res) => {
   }
 });
 
-router.post('/upload', async (req, res, next) => {
+router.post('/upload', isAuthenticated, async (req, res, next) => {
   try {
     const { image } = req.body;
-    const todo = await User.create({ image });
+    const user = await User.findById(req.payload.id);
+    const todo = await user.create({ image });
     return res.status(200).json(todo);
   } catch (error) {
     next(error);
@@ -27,9 +28,13 @@ router.post('/upload', async (req, res, next) => {
 
 router.put('/:id', async (req, res, next) => {
   try {
-    const { id } = req.params;
     const { image } = req.body;
-    const todo = await User.findByIdAndUpdate(id, { image }, { new: true });
+    console.log(req.user);
+    const todo = await User.findByIdAndUpdate(
+      req.user.id,
+      { image },
+      { new: true }
+    );
     return res.status(200).json(todo);
   } catch (error) {
     next(error);
