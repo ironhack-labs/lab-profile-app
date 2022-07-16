@@ -19,8 +19,9 @@ const Signin = () => {
         username,
         password,
       });
-      storeToken(data.authToken);
-      authenticateUser();
+
+      storeToken(data);
+      //authenticateUser();
       navigate('/profile');
     } catch (error) {}
   };

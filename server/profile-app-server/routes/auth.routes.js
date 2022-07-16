@@ -2,6 +2,7 @@ const router = require('express').Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { Mongoose } = require('mongoose');
+const isAuthenticated = require('../middlewares/isAuthenticated');
 const User = require('../models/User.model');
 
 router.post('/signup', async (req, res, next) => {
@@ -65,7 +66,7 @@ router.post('/signin', async (req, res, next) => {
   }
 });
 
-router.get('/verify', (req, res) => {
+router.get('/verify', isAuthenticated, (req, res) => {
   res.status(200).json(req.payload);
 });
 

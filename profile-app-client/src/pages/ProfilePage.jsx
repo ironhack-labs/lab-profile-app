@@ -1,29 +1,27 @@
 import PhotoUpload from "../components/PhotoUpload";  
-import axios from "axios";
-import { useState , useEffect } from "react";
+import { useState , useEffect , useContext } from "react";
 import { AuthContext } from '../context/auth.context';
- 
-const API_URL = 'http://localhost:5005';
+
 
 const ProfilePage = () => {
-  const [user, setUser] = useState(null);
-
-  const getUserData = async () => {
-		const response = await axios.get(`${API_URL}/api/users`)
-		setUser(response.data)
-	}
-	useEffect(() => {
-		getUserData()
-	}, [])
+  
+  const [userPhotos, setUserPhotos] = useState(null);
+  const {  isLoggedIn, user , isLoading } = useContext(AuthContext);
 
   return (
     <div>
       <h1>Profile Page</h1>
-      <p>Username: {setUser.username }</p>
-      <p>Campus: </p>
-      <p>Course: </p>
+      { isLoggedIn && user &&
+      <div>
+      <p>Welcome {user.username}</p> 
+      <p>Username: { user.username }</p>
+      <p>Campus:{user.campus} </p>
+      <p>Course: {user.course} </p>
+    <img src={user.img} alt="img" />  
 
 <PhotoUpload />
+      </div>
+}
     </div>
   );
 }
