@@ -1,6 +1,7 @@
 import PhotoUpload from "../components/PhotoUpload";  
 import axios from "axios";
 import { useState , useEffect } from "react";
+import { AuthContext } from '../context/auth.context';
  
 const API_URL = 'http://localhost:5005';
 
