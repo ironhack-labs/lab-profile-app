@@ -18,20 +18,24 @@ router.get('/', isAuthenticated, async (req, res) => {
 router.post('/upload', isAuthenticated, async (req, res, next) => {
   try {
     const { image } = req.body;
-    const user = await User.findById(req.payload.id);
-    const todo = await user.create({ image });
+    console.log(req.user);
+    const todo = await User.findByIdAndUpdate(
+      req.payload.id,
+      { image },
+      { new: true }
+    );
     return res.status(200).json(todo);
   } catch (error) {
     next(error);
   }
 });
 
-router.put('/:id', async (req, res, next) => {
+router.put('/:id', isAuthenticated, async (req, res, next) => {
   try {
     const { image } = req.body;
     console.log(req.user);
     const todo = await User.findByIdAndUpdate(
-      req.user.id,
+      req.payload.id,
       { image },
       { new: true }
     );
