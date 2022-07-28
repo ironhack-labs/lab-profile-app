@@ -7,7 +7,7 @@ The profile page is one of the most common features you will need to add to your
 
 ## Introduction
 
-We will create a backend REST API using NodeJS and a front-end app using React where users can sign up**, log in, upload a profile picture, check their profiles, and edit it.**
+We will create a backend REST API using NodeJS and a front-end app using React where users can **sign up**, **log in**, **upload a profile picture**, **check their profile**, and **edit it.**
 
 ## Setup
 
@@ -77,12 +77,12 @@ All the assets you need for the design are stored inside the `assets/` folder. F
 
 
 
-### Iteration 3 | Signup/Login Components
+### Iteration 3 | Sign Up/Login Components
 
-You should create the `Signup` and `Login` page components, where the user can fill the form with the specified fields.
+You should create the **Sign Up** and **Login** page components, where the user can fill the form with the specified fields.
 
-If the *signup* is successful, you should naviagate the user to the **Login Page** page.
-If the *login* is successful, you should naviagate the user to the **Home Page** page.
+If the *sign-up* is successful, you should navigate the user to the **Login Page** page.
+If the *login* is successful, you should navigate the user to the **Home Page** page.
 
 ![image](https://user-images.githubusercontent.com/23629340/43787810-2c9dc94e-9a6c-11e8-8854-0993c5de16a3.png)
 
@@ -102,7 +102,7 @@ You should create a new folder named `context/` and inside of it a file `auth.co
    
    You will need to provide the above mentioned state values and functions through the Context Provider's `value` prop ([example](https://github.com/ironhack-labs/lesson-code-h-react-authentication-frontend/blob/master/src/context/auth.context.js#L71)).
 
-4. Finally, remember to wrap the `<App />` component with the `<AuthProviderWrapper></AuthProviderWrapper>` ([example](https://github.com/ironhack-labs/lesson-code-h-react-authentication-frontend/blob/master/src/index.js#L13-L15)).
+4. Finally, remember to wrap the `<App />` component with the `<AuthProviderWrapper></AuthProviderWrapper>` ([example](https://github.com/ironhack-labs/lesson-code-h-react-authentication-frontend/blob/master/src/index.js#L15-L17)).
 5. Use the React hook `useContext()` in the `LoginPage.js` to access the values coming from the `AuthProviderWrapper`  and to finish implementing the log-in process ([example 1](https://github.com/ironhack-labs/lesson-code-h-react-authentication-frontend/blob/812bdce8d55cdad3d428dc9a8f4b3fdd8e3f6fd0/src/pages/LoginPage.js#L14), [example 2](https://github.com/ironhack-labs/lesson-code-h-react-authentication-frontend/blob/812bdce8d55cdad3d428dc9a8f4b3fdd8e3f6fd0/src/pages/LoginPage.js#L25-L36)).
 
 
