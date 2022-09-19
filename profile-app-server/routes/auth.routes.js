@@ -25,7 +25,7 @@ router.post('/signup', async (req, res, next) => {
     .then(function (userFromDB) {
       if (userFromDB) {
         // STOP: le user existe !!!
-        res.status(409).json({errorMessage: "email already taken"}) // Conflict
+        res.status(409).json({errorMessage: "username already taken"}) // Conflict
         return
       }
 
