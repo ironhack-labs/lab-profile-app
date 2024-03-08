@@ -1,6 +1,6 @@
 ![logo_ironhack_blue 7](https://user-images.githubusercontent.com/23629340/40541063-a07a0a8a-601a-11e8-91b5-2f13e4e6b441.png)
 
-# LAB | React IronProfile
+# LAB | Profile App
 
 
 The profile page is one of the most common features you will need to add to your projects. Today we are going to practice creating one.
@@ -15,7 +15,7 @@ We will create a backend REST API using NodeJS and a front-end app using React w
 - Clone this repo
 
 ```shell
-$ cd lab-profile-app
+cd lab-profile-app-vite
 ```
 
 ## Submission
@@ -63,7 +63,13 @@ Remember to test the REST API using Postman to make sure everything is working! 
 
 ### Iteration 2 | The React App
 
-Create a new React App using the command `npx create-react-app profile-app-client`. 
+Create a new React App using the command:
+
+```bash 
+npm create vite@latest profile-app-client -- --template react
+```
+
+
 
 Once done, set up the app routing using the `react-router-dom`. Create a page component called `HomePage` that displays two buttons: `Sign up` and `Log in`. Buttons should redirect to the front-end routes `/signup` and `/login`, respectively.
 
@@ -71,7 +77,7 @@ Once done, set up the app routing using the `react-router-dom`. Create a page co
 
 <br>
 
-All the assets you need for the design are stored inside the `assets/` folder. For now, don't worry about the design, but rather focus on the functionality!
+All the assets you need for the design are stored inside the `images/` folder. You should copy them to the `assets/` folder of your React app.  But don't worry about the design yet - just focus on making things work first!
 
 
 
@@ -99,7 +105,7 @@ You should create a new folder named `context/` and inside of it a file `auth.co
 2. The `AuthProviderWrapper` component should have the following state variables for storing user information and authentication state: `isLoggedIn`, `isLoading`, and `user` ([example](https://github.com/ironhack-labs/lesson-code-h-react-authentication-frontend/blob/master/src/context/auth.context.js#L9-L11)).
 
 3. The `AuthProviderWrapper` component should also have functions `storeToken`, `authenticateUser`,  `removeToken` and `logOutUser` used for handling the authentication logic ([example](https://github.com/ironhack-labs/lesson-code-h-react-authentication-frontend/blob/master/src/context/auth.context.js#L13-L59)). 
-   
+  
    You will need to provide the above mentioned state values and functions through the Context Provider's `value` prop ([example](https://github.com/ironhack-labs/lesson-code-h-react-authentication-frontend/blob/master/src/context/auth.context.js#L71)).
 
 4. Finally, remember to wrap the `<App />` component with the `<AuthProviderWrapper></AuthProviderWrapper>` ([example](https://github.com/ironhack-labs/lesson-code-h-react-authentication-frontend/blob/master/src/index.js#L15-L17)).
@@ -132,7 +138,7 @@ Create an `auth.service.js` file, where you will have the functions that abstrac
 ### Iteration 7 (Bonus) | Styling your App
 
 Feel free to style the app anyway you see fit. :art:
-Or you can use the `.png`  available in the `assets/` folder, as a background image. Remember to include the image in the `src/` folder of your React app to be able to import it. Here you can check the colors:
+Or you can use the `.png`  available in the `images/` folder, as a background image. Remember to include the image in the `src/assets/` folder of your React app to be able to import it. Here are the colors used in the design:
 
 - Gradient background color: `#C1DFC4` to `#DEECDD`
 - Green: `#638165`
